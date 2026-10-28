@@ -4,10 +4,10 @@
   "creators": [
     {
       "name": "Celebrano, Luca",
-      "affiliation": "Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy"
+      "affiliation": "Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy"
     }
   ],
-  "license": "GPL-3.0-or-later",
+  "license": "CC-BY-4.0",
   "upload_type": "software",
   "keywords": [
     "mathematical oncology",
@@ -16,6 +16,7 @@
     "ADAURA",
     "reaction-diffusion",
     "pharmacological sanctuary",
-    "NSCLC"
+    "NSCLC",
+    "Composite Resistance Index"
   ]
 }

@@ -1,15 +1,16 @@
 cff-version: 1.2.0
-message: "If you use this biophysical model or software in your research, please cite it as below."
+message: "If you use this biophysical model, CRI software suite, or dataset in your research, please cite it as below."
 authors:
   - family-names: "Celebrano"
     given-names: "Luca"
-    affiliation: "Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy"
+    affiliation: "Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy"
     email: "l.celebrano@studenti.unina.it"
 title: "The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol"
 version: 1.0.0
 date-released: 2026-10-28
 url: "https://github.com/Lukecele/spatial-continuum-oncology"
-license: GPL-3.0
+repository-code: "https://github.com/Lukecele/spatial-continuum-oncology"
+license: "CC-BY-4.0"
 keywords:
   - "mathematical oncology"
   - "biophysical pharmacology"
@@ -21,3 +22,14 @@ keywords:
   - "Darcy law"
   - "Bessel function"
   - "Composite Resistance Index"
+  - "translational oncology"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Celebrano"
+      given-names: "Luca"
+      affiliation: "Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy"
+      email: "l.celebrano@studenti.unina.it"
+  title: "The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol"
+  journal: "medRxiv / Nature Communications (Under Review)"
+  year: 2026

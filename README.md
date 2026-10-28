@@ -1,6 +1,6 @@
 # The Spatial-Genomic Oncology Continuum
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
 [![Preprint: medRxiv](https://img.shields.io/badge/Preprint-medRxiv-orange.svg)](https://www.medrxiv.org/)
@@ -138,4 +138,4 @@ If you use this model, software tools, or the CRI score in your research, please
 
 ## ⚖️ License
 
-This project is licensed under the **GNU General Public License v3.0 (GPLv3)** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** License — see the [LICENSE](LICENSE) file for details.
