@@ -416,11 +416,14 @@ The true breakthrough is not modifying the ATP-binding pocket indefinitely, but 
 
 ## 9. Reproducibility, Software & Data Availability
 
-All mathematical derivations, numerical integrations, and clinical algorithms are implemented in **pure Python 3 standard library** (zero external package dependencies, zero container requirements) and are archived for public clinical use:
+All mathematical derivations, numerical integrations, and clinical algorithms are implemented in **pure Python 3 standard library** (zero external package dependencies, zero container requirements) and are archived for public open-source access under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license:
+- **Permanent Zenodo DOI:** [10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
+- **Public GitHub Repository:** [https://github.com/Lukecele/spatial-continuum-oncology](https://github.com/Lukecele/spatial-continuum-oncology)
 - **Clinical Decision Engine:** [`software_strumenti_calcolo/cri_calc.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/cri_calc.py)
 - **Mathematical & Statistical Audit Engine:** [`software_strumenti_calcolo/audit_matematica_e_statistica.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/audit_matematica_e_statistica.py)
 - **Adversarial Stress-Testing Suite:** [`software_strumenti_calcolo/test_stress_avversi.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/test_stress_avversi.py)
-- **Core Bioinformatic Pipeline:** `insitugame 1.0.7` archived on Anaconda/Bioconda (PR #70894) and nf-core/modules (PR #13471).
+- **Scientific Figure Generator:** [`software_strumenti_calcolo/generate_scientific_figures.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/generate_scientific_figures.py)
+- **Core Bioinformatic Pipeline:** `insitugame 1.0.7` archived on Anaconda/Bioconda (PR #70893) and nf-core/modules (PR #13471).
 
 ---
 
