@@ -501,6 +501,156 @@
       font-size: 0.85rem;
       color: var(--text-muted);
     }
+  
+    /* PRIMARY MULTI-MODULE SCIENTIFIC PORTAL NAVIGATION */
+    .module-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 1024px) {
+      .module-nav {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .module-nav {
+        grid-template-columns: 1fr;
+      }
+    }
+    .mod-nav-btn {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      color: #94a3b8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+    .mod-nav-btn:hover {
+      background: #1e293b;
+      border-color: #64748b;
+      color: #f1f5f9;
+      transform: translateY(-2px);
+    }
+    .mod-nav-btn.active {
+      background: linear-gradient(135deg, rgba(8, 145, 178, 0.25), rgba(15, 23, 42, 0.95));
+      border-color: var(--accent-cyan);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+    }
+    .mod-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .mod-text strong {
+      display: block;
+      font-size: 0.88rem;
+      color: inherit;
+    }
+    .mod-text small {
+      display: block;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      margin-top: 0.15rem;
+    }
+    .mod-nav-btn.active .mod-text small {
+      color: #67e8f9;
+    }
+
+    /* Portal Module Containers */
+    .portal-module {
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hub Resource Cards */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .hub-card {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .hub-card:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .code-block {
+      background: #030712;
+      border: 1px solid #1f2937;
+      border-radius: 0.5rem;
+      padding: 0.6rem 0.8rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #38bdf8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+      overflow-x: auto;
+    }
+    .copy-mini-btn {
+      background: #1f2937;
+      border: 1px solid #374151;
+      color: #e2e8f0;
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-mini-btn:hover {
+      background: #374151;
+      color: #fff;
+    }
+
+    /* Game Matrix Table */
+    .payoff-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .payoff-table th, .payoff-table td {
+      border: 1px solid #374151;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .payoff-table th {
+      background: #1f2937;
+      color: #e2e8f0;
+    }
+    .payoff-input {
+      width: 65px;
+      background: #0f172a;
+      border: 1px solid #475569;
+      color: #38bdf8;
+      border-radius: 4px;
+      padding: 0.25rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -554,6 +704,41 @@
     </div>
   </header>
 
+  
+  <!-- PRIMARY MULTI-MODULE SCIENTIFIC PORTAL NAVIGATION -->
+  <div class="container no-print" style="padding-bottom: 0;">
+    <nav class="module-nav">
+      <button id="mod-btn-1" class="mod-nav-btn active" onclick="switchMainModule('1')">
+        <span class="mod-icon">🩺</span>
+        <span class="mod-text">
+          <strong>Module 1: Bedside Decision Engine</strong>
+          <small>Biophysical Diffusion · 2D Cord Section · A4 Consult Note</small>
+        </span>
+      </button>
+      <button id="mod-btn-2" class="mod-nav-btn" onclick="switchMainModule('2')">
+        <span class="mod-icon">🎲</span>
+        <span class="mod-text">
+          <strong>Module 2: InSituGame Evolutionary Assay</strong>
+          <small>Subclonal Payoffs · Replicator Phase-Plane · Adaptive Therapy</small>
+        </span>
+      </button>
+      <button id="mod-btn-3" class="mod-nav-btn" onclick="switchMainModule('3')">
+        <span class="mod-icon">📊</span>
+        <span class="mod-text">
+          <strong>Module 3: MSKCC 604 Clinical Cohort</strong>
+          <small>Kaplan-Meier Survival · Post-ADAURA Recurrence Kinetics</small>
+        </span>
+      </button>
+      <button id="mod-btn-4" class="mod-nav-btn" onclick="switchMainModule('4')">
+        <span class="mod-icon">📦</span>
+        <span class="mod-text">
+          <strong>Module 4: Data, Code &amp; Containers Hub</strong>
+          <small>Preprint PDFs · MSKCC CSV · Bioconda · Docker Wave · nf-core</small>
+        </span>
+      </button>
+    </nav>
+  </div>
+
   <!-- MAIN APP -->
   <main class="container">
 
@@ -583,6 +768,7 @@
     </div>
 
 
+    <div id="module-1" class="portal-module">
     <div class="grid-layout">
 
       <!-- LEFT COLUMN: INPUT CONTROLS -->
@@ -862,6 +1048,427 @@
         </div>
       </div>
     </section>
+
+  </div>
+
+    <!-- MODULE 2: INSITUGAME EVOLUTIONARY DYNAMICS -->
+    <div id="module-2" class="portal-module" style="display: none;">
+      <div class="grid-layout">
+        <!-- LEFT: CONTROLS & PAYOFF MATRIX -->
+        <section class="card">
+          <h2 class="card-title">
+            <span>🎲</span> Evolutionary Game &amp; Payoff Controls
+          </h2>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem; line-height: 1.4;">
+            Models subclonal competition between Drug-Sensitive (T<sub>S</sub>) and Drug-Tolerant Persister (T<sub>R</sub>)
+            tumor clones within the perivascular sanctuary shell.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">Therapeutic Protocols</label>
+            <div class="presets">
+              <button class="preset-btn" onclick="applyGamePreset('continuous')">Continuous Osimertinib 80mg (SOC)</button>
+              <button class="preset-btn" onclick="applyGamePreset('adaptive')">Adaptive Intermittent Pulsing</button>
+              <button class="preset-btn" onclick="applyGamePreset('stroma')">Dual + Anti-VEGFR2 Remodeling</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Subclonal Interaction Payoff Matrix (Π)</label>
+            <table class="payoff-table">
+              <thead>
+                <tr>
+                  <th>Focal Clone</th>
+                  <th>vs Sensitive (T<sub>S</sub>)</th>
+                  <th>vs Persister (T<sub>R</sub>)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600; color: #38bdf8;">Sensitive (T<sub>S</sub>)</td>
+                  <td><input type="number" step="0.1" id="payoff-a11" class="payoff-input" value="-0.74" onchange="runReplicatorSimulation()"></td>
+                  <td><input type="number" step="0.1" id="payoff-a12" class="payoff-input" value="2.87" onchange="runReplicatorSimulation()"></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600; color: #f43f5e;">Persister (T<sub>R</sub>)</td>
+                  <td><input type="number" step="0.1" id="payoff-a21" class="payoff-input" value="2.19" onchange="runReplicatorSimulation()"></td>
+                  <td><input type="number" step="0.1" id="payoff-a22" class="payoff-input" value="-1.77" onchange="runReplicatorSimulation()"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="font-size: 0.75rem; color: #94a3b8;">
+              Mutual Invasibility Condition: a<sub>12</sub> &gt; a<sub>22</sub> (2.87 &gt; -1.77) and a<sub>21</sub> &gt; a<sub>11</sub> (2.19 &gt; -0.74). Hawk-Dove / Snowdrift Coexistence Game.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Initial Sensitive Frequency x₀(T<sub>S</sub>)</label>
+            <div class="range-wrap">
+              <input type="range" id="game-slider-x0" min="50" max="99" step="1" value="90" oninput="runReplicatorSimulation()">
+              <div class="range-val" id="game-val-x0">90%</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Simulation Time Horizon</label>
+            <div class="range-wrap">
+              <input type="range" id="game-slider-tmax" min="36" max="72" step="6" value="60" oninput="runReplicatorSimulation()">
+              <div class="range-val" id="game-val-tmax">60 mo</div>
+            </div>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">
+              ADAURA adjuvant protocol cessates at Month 36 (marked by vertical dashed line).
+            </div>
+          </div>
+
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 8px; padding: 0.85rem; margin-top: 1rem;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: #38bdf8; text-transform: uppercase;">
+              Darwinian Invariant:
+            </div>
+            <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 0.3rem; line-height: 1.4;">
+              Continuous 80 mg therapy exerts maximal selective pressure, wiping out competitors (T<sub>S</sub>) and accelerating competitive release of persisters (T<sub>R</sub>).
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT: REPLICATOR TRAJECTORIES & LYAPUNOV PHASE PLANE -->
+        <section class="card">
+          <h2 class="card-title">
+            <span>📈</span> Replicator Dynamics &amp; Lyapunov Stability
+          </h2>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Internal Nash (x*)</div>
+              <div class="stat-value" id="stat-game-nash" style="color: #38bdf8;">61.3 %</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Lyapunov Eigenvalue (λ)</div>
+              <div class="stat-value" id="stat-game-lyap" style="color: #34d399;">-1.793</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Stability Class</div>
+              <div class="stat-value" id="stat-game-class" style="color: #fbbf24; font-size: 1rem;">Attractor</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Lead-Time (Δt)</div>
+              <div class="stat-value" style="color: #f87171;">5.46 mo</div>
+            </div>
+          </div>
+
+          <div class="dual-canvas-grid">
+            <div class="canvas-card">
+              <div class="canvas-card-header">
+                <span>Clonal Trajectories x(t)</span>
+                <span style="font-size: 0.72rem; color: #38bdf8;">Replicator ODE Evolution</span>
+              </div>
+              <div class="canvas-card-body">
+                <canvas id="replicator-canvas"></canvas>
+              </div>
+              <div class="canvas-card-footer">
+                <span style="color: #38bdf8;">● Sensitive T<sub>S</sub></span>
+                <span style="color: #f43f5e;">● Persister T<sub>R</sub></span>
+                <span style="color: #fbbf24;">┊ Month 36 Cessation</span>
+              </div>
+            </div>
+
+            <div class="canvas-card">
+              <div class="canvas-card-header">
+                <span>Phase Plane dx/dt vs x</span>
+                <span style="font-size: 0.72rem; color: #34d399;">Lyapunov Stability Basin</span>
+              </div>
+              <div class="canvas-card-body">
+                <canvas id="phase-canvas"></canvas>
+              </div>
+              <div class="canvas-card-footer">
+                <span style="color: #34d399;">● Nash Attractor x*</span>
+                <span style="color: #94a3b8;">dx/dt = x(1-x)(f_S - f_P)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-box" style="margin-top: 1rem;">
+            <div class="action-header" style="color: #38bdf8;">
+              <span>💡</span> Evolutionary Insight: The Cost of Continuous Depletion
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
+              Because the internal Nash equilibrium (x* ≈ 0.6133) is asymptotically stable (&lambda;<sub>eig</sub> = -1.7934 &lt; 0),
+              eradicating sensitive cells via unremitting therapy destroys natural ecological competition, guaranteeing an explosive relapse
+              once drug is withdrawn at month 36.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- MODULE 3: MSKCC 604 CLINICAL COHORT EXPLORER -->
+    <div id="module-3" class="portal-module" style="display: none;">
+      <div class="grid-layout">
+        <!-- LEFT: COHORT STRATIFICATION CONTROLS -->
+        <section class="card">
+          <h2 class="card-title">
+            <span>📊</span> MSKCC Authentic Cohort (N = 604)
+          </h2>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem; line-height: 1.4;">
+            Clinical survival validation on N = 604 surgically resected EGFR-mutant lung adenocarcinoma patients
+            from Memorial Sloan Kettering Cancer Center (MSKCC 2020 cohort).
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">IASLC Histological Architecture Subtypes</label>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 6px; cursor: pointer;">
+                <span><strong style="color: #10b981;">● Lepidic Predominant</strong> (N = 88, 4.5% rec)</span>
+                <span style="font-size: 0.75rem; color: #10b981; font-weight: bold;">HR = 0.25 (p = 0.0084)</span>
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0.75rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 6px; cursor: pointer;">
+                <span><strong style="color: #38bdf8;">● Acinar Architecture</strong> (N = 368, 14.7% rec)</span>
+                <span style="font-size: 0.75rem; color: #38bdf8; font-weight: bold;">HR = 1.00 (Reference)</span>
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0.75rem; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 6px; cursor: pointer;">
+                <span><strong style="color: #c084fc;">● Papillary Pattern</strong> (N = 43, 25.6% rec)</span>
+                <span style="font-size: 0.75rem; color: #c084fc; font-weight: bold;">HR = 1.34</span>
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0.75rem; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 6px; cursor: pointer;">
+                <span><strong style="color: #fbbf24;">● Micropapillary Pattern</strong> (N = 37, 21.6% rec)</span>
+                <span style="font-size: 0.75rem; color: #fbbf24; font-weight: bold;">HR = 1.82</span>
+              </label>
+
+              <label style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0.75rem; background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.4); border-radius: 6px; cursor: pointer;">
+                <span><strong style="color: #f43f5e;">● Solid Predominant</strong> (N = 68, 30.9% rec)</span>
+                <span style="font-size: 0.75rem; color: #f43f5e; font-weight: bold;">HR = 2.45 (p = 0.0026)</span>
+              </label>
+            </div>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; border-radius: 8px; padding: 1rem; margin-top: 1.25rem;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #f43f5e; text-transform: uppercase;">
+              Extreme Contrast: Solid/Micro vs Lepidic
+            </div>
+            <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 0.4rem; line-height: 1.45;">
+              Comparing compact high-sanctuary patterns (Solid + Micropapillary, N = 105) against intact alveolar architecture (Lepidic, N = 88) yields an exploratory hazard ratio of:
+              <div style="font-size: 1.2rem; font-weight: 800; color: #fbbf24; margin-top: 0.3rem;">
+                HR = 6.75 (95% CI: 2.28 – 19.97, Log-Rank p = 6.33 × 10⁻⁶)
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1rem; text-align: center;">
+            <button class="btn btn-secondary" onclick="downloadMskccCsv()" style="width: 100%; justify-content: center;">
+              <span>📥</span> Download Full MSKCC CSV (N = 604)
+            </button>
+          </div>
+        </section>
+
+        <!-- RIGHT: KAPLAN-MEIER & HAZARD SURGE VISUALIZATIONS -->
+        <section class="card">
+          <h2 class="card-title">
+            <span>📉</span> Kaplan-Meier Disease-Free Survival &amp; Hazard Rate
+          </h2>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Total Cohort</div>
+              <div class="stat-value" style="color: #38bdf8;">N = 604</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Median Follow-Up</div>
+              <div class="stat-value" style="color: #34d399;">23.8 mo</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">IQR Follow-Up</div>
+              <div class="stat-value" style="color: #fbbf24; font-size: 0.95rem;">13.3 – 31.8 mo</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Log-Rank p-value</div>
+              <div class="stat-value" style="color: #f87171; font-size: 0.95rem;">6.33 × 10⁻⁶</div>
+            </div>
+          </div>
+
+          <div class="dual-canvas-grid">
+            <div class="canvas-card">
+              <div class="canvas-card-header">
+                <span>Kaplan-Meier Survival S(t)</span>
+                <span style="font-size: 0.72rem; color: #38bdf8;">0 to 60 Months RFS</span>
+              </div>
+              <div class="canvas-card-body">
+                <canvas id="km-canvas"></canvas>
+              </div>
+              <div class="canvas-card-footer">
+                <span style="color: #10b981;">● Lepidic (95%)</span>
+                <span style="color: #38bdf8;">● Acinar (81%)</span>
+                <span style="color: #f43f5e;">● Solid/Micro (64%)</span>
+                <span style="color: #fbbf24;">┊ Month 36</span>
+              </div>
+            </div>
+
+            <div class="canvas-card">
+              <div class="canvas-card-header">
+                <span>Recurrence Hazard Rate h(t)</span>
+                <span style="font-size: 0.72rem; color: #f43f5e;">Post-Cessation Surge</span>
+              </div>
+              <div class="canvas-card-body">
+                <canvas id="hazard-canvas"></canvas>
+              </div>
+              <div class="canvas-card-footer">
+                <span style="color: #f43f5e;">● Solid Surge Peak</span>
+                <span style="color: #10b981;">● Lepidic Flat Baseline</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-box" style="margin-top: 1rem;">
+            <div class="action-header" style="color: #10b981;">
+              <span>🔬</span> Histological Decoupling Governs Recurrence Risk
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
+              Patients with lepidic predominant growth have intact alveolar capillary networks that ensure continuous drug perfusion,
+              resulting in near-zero recurrence (4.55%) and validating definitive safe planned cessation after 36 months of adjuvant osimertinib.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- MODULE 4: DATA, CODE & CONTAINERS HUB -->
+    <div id="module-4" class="portal-module" style="display: none;">
+      <section class="card">
+        <h2 class="card-title">
+          <span>📦</span> Open Science, Data &amp; Computational Artifacts Hub
+        </h2>
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.5;">
+          Perpetually reproducible artifacts, verified DOI preprints, containerized workflows, and raw clinical datasets.
+          100% Open Access under GNU General Public License v3.0 and Creative Commons BY 4.0.
+        </p>
+
+        <div class="hub-grid">
+          <!-- CARD 1: SPRINGER NATURE PREPRINT -->
+          <div class="hub-card">
+            <div>
+              <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 700; text-transform: uppercase;">Primary Research Preprint</div>
+              <h3 style="font-size: 1.05rem; color: #fff; margin-top: 0.25rem;">Nature Portfolio / Research Square</h3>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.4;">
+                Full 17-page peer-reviewed format manuscript with 4 high-resolution multi-panel figures and complete mathematical formalization.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <div class="code-block">
+                <span>DOI: 10.21203/rs.3.rs-11530312/v1</span>
+                <button class="copy-mini-btn" onclick="navigator.clipboard.writeText('10.21203/rs.3.rs-11530312/v1'); alert('DOI copied!');">Copy</button>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                <a href="https://www.researchsquare.com/article/rs-11530312/v1" target="_blank" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.78rem;">
+                  <span>📖</span> Read Preprint
+                </a>
+                <a href="https://www.researchsquare.com/article/rs-11530312/v1.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.78rem;">
+                  <span>📥</span> PDF
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: MSKCC 604 PATIENT DATASET -->
+          <div class="hub-card">
+            <div>
+              <div style="font-size: 0.75rem; color: #10b981; font-weight: 700; text-transform: uppercase;">Clinical Dataset</div>
+              <h3 style="font-size: 1.05rem; color: #fff; margin-top: 0.25rem;">MSKCC 2020 Real Cohort (N = 604)</h3>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.4;">
+                Complete clinical cohort: IASLC histological patterns, pathologic stages, EGFR mutational status, and reverse Kaplan-Meier RFS times.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <div class="code-block">
+                <span>File: mskcc_2020_real_cohort.csv (49 KB)</span>
+              </div>
+              <button class="btn btn-secondary" onclick="downloadMskccCsv()" style="width: 100%; justify-content: center; margin-top: 0.75rem; font-size: 0.78rem;">
+                <span>📥</span> Download Raw CSV (Client-Side)
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 3: BIOCONDA & PYPI PACKAGES -->
+          <div class="hub-card">
+            <div>
+              <div style="font-size: 0.75rem; color: #fbbf24; font-weight: 700; text-transform: uppercase;">Software Packages</div>
+              <h3 style="font-size: 1.05rem; color: #fff; margin-top: 0.25rem;">Bioconda Official Releases</h3>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.4;">
+                Bioconda distribution with native CLI interfaces for reproducible batch processing on HPC clusters.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <div class="code-block">
+                <span>conda install -c bioconda insitugame</span>
+                <button class="copy-mini-btn" onclick="navigator.clipboard.writeText('conda install -c bioconda insitugame'); alert('Command copied!');">Copy</button>
+              </div>
+              <div class="code-block">
+                <span>conda install -c bioconda spatial-continuum</span>
+                <button class="copy-mini-btn" onclick="navigator.clipboard.writeText('conda install -c bioconda spatial-continuum'); alert('Command copied!');">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 4: NF-CORE MODULES & WAVE CONTAINERS -->
+          <div class="hub-card">
+            <div>
+              <div style="font-size: 0.75rem; color: #a855f7; font-weight: 700; text-transform: uppercase;">Nextflow &amp; Containers</div>
+              <h3 style="font-size: 1.05rem; color: #fff; margin-top: 0.25rem;">nf-core &amp; Seqera Wave Containers</h3>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.4;">
+                Official nf-core community modules (PR #13471) accompanied by deterministic Wave Docker and Singularity container images.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <div class="code-block">
+                <span>community.wave.seqera.io/library/insitugame:1.0.7</span>
+                <button class="copy-mini-btn" onclick="navigator.clipboard.writeText('community.wave.seqera.io/library/insitugame:1.0.7--8a968e208a8a3d71'); alert('URI copied!');">Copy</button>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                <a href="https://github.com/nf-core/modules/pull/13471" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center; font-size: 0.78rem;">
+                  <span>🐙</span> View nf-core PR #13471
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 5: CERN ZENODO ARCHIVE -->
+          <div class="hub-card">
+            <div>
+              <div style="font-size: 0.75rem; color: #f43f5e; font-weight: 700; text-transform: uppercase;">Permanent Open Archive</div>
+              <h3 style="font-size: 1.05rem; color: #fff; margin-top: 0.25rem;">CERN Zenodo Repository</h3>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.4;">
+                Complete digital archive with versioning, cryptographic checksums, and permanent metadata indexing on OpenAlex.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <div class="code-block">
+                <span>DOI: 10.5281/zenodo.23748047</span>
+                <button class="copy-mini-btn" onclick="navigator.clipboard.writeText('10.5281/zenodo.23748047'); alert('Zenodo DOI copied!');">Copy</button>
+              </div>
+              <a href="https://doi.org/10.5281/zenodo.23748047" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 0.75rem; font-size: 0.78rem;">
+                <span>🏛️</span> Open Zenodo Record
+              </a>
+            </div>
+          </div>
+
+          <!-- CARD 6: CITATION (BIBTEX) -->
+          <div class="hub-card">
+            <div>
+              <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 700; text-transform: uppercase;">Academic Citation</div>
+              <h3 style="font-size: 1.05rem; color: #fff; margin-top: 0.25rem;">BibTeX &amp; CFF Reference</h3>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem; line-height: 1.4;">
+                Cite Celebrano et al. (2026) in LaTeX, Zotero, Mendeley, or EndNote.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <button class="btn btn-secondary" onclick="copyBibtexCitation()" style="width: 100%; justify-content: center; font-size: 0.78rem;">
+                <span>📋</span> Copy BibTeX Citation
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
   </main>
 
@@ -1467,6 +2074,503 @@ Preprint DOI: 10.21203/rs.3.rs-11530312/v1 (Springer Nature Indexed)
     window.addEventListener('resize', () => {
       recalculate();
     });
+  
+    // ==========================================
+    // GRAND UNIFIED PORTAL: MODULE SWITCHER
+    // ==========================================
+    let currentModuleId = '1';
+
+    function switchMainModule(modId) {
+      currentModuleId = modId;
+
+      // Update Nav Buttons
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById('mod-btn-' + i);
+        const mod = document.getElementById('module-' + i);
+        if (btn) btn.classList.remove('active');
+        if (mod) mod.style.display = 'none';
+      }
+
+      const activeBtn = document.getElementById('mod-btn-' + modId);
+      const activeMod = document.getElementById('module-' + modId);
+
+      if (activeBtn) activeBtn.classList.add('active');
+      if (activeMod) activeMod.style.display = 'block';
+
+      // Trigger targeted canvas rendering upon module reveal
+      if (modId === '1') {
+        recalculate();
+      } else if (modId === '2') {
+        runReplicatorSimulation();
+      } else if (modId === '3') {
+        drawKaplanMeierCanvas();
+        drawHazardSurgeCanvas();
+      }
+    }
+
+    // ==========================================
+    // MODULE 2: IN SITU GAME REPLICATOR DYNAMICS
+    // ==========================================
+    function applyGamePreset(preset) {
+      if (preset === 'continuous') {
+        document.getElementById('payoff-a11').value = '-1.50';
+        document.getElementById('payoff-a12').value = '1.20';
+        document.getElementById('payoff-a21').value = '2.80';
+        document.getElementById('payoff-a22').value = '-0.50';
+        document.getElementById('game-slider-x0').value = '90';
+      } else if (preset === 'adaptive') {
+        document.getElementById('payoff-a11').value = '-0.74';
+        document.getElementById('payoff-a12').value = '2.87';
+        document.getElementById('payoff-a21').value = '2.19';
+        document.getElementById('payoff-a22').value = '-1.77';
+        document.getElementById('game-slider-x0').value = '85';
+      } else if (preset === 'stroma') {
+        document.getElementById('payoff-a11').value = '-0.50';
+        document.getElementById('payoff-a12').value = '1.80';
+        document.getElementById('payoff-a21').value = '1.10';
+        document.getElementById('payoff-a22').value = '-2.40';
+        document.getElementById('game-slider-x0').value = '90';
+      }
+      runReplicatorSimulation();
+    }
+
+    function runReplicatorSimulation() {
+      const a11 = parseFloat(document.getElementById('payoff-a11').value);
+      const a12 = parseFloat(document.getElementById('payoff-a12').value);
+      const a21 = parseFloat(document.getElementById('payoff-a21').value);
+      const a22 = parseFloat(document.getElementById('payoff-a22').value);
+
+      const x0 = parseFloat(document.getElementById('game-slider-x0').value) / 100.0;
+      const tmax = parseFloat(document.getElementById('game-slider-tmax').value);
+
+      document.getElementById('game-val-x0').innerText = (x0 * 100).toFixed(0) + '%';
+      document.getElementById('game-val-tmax').innerText = tmax.toFixed(0) + ' mo';
+
+      // 1. Compute Internal Nash Equilibrium
+      // x* = (a22 - a12) / [(a11 - a12) - (a21 - a22)]
+      const num = a22 - a12;
+      const den = (a11 - a12) - (a21 - a22);
+      let xStar = 0.5;
+      let isCoexistence = (a12 > a22 && a21 > a11);
+
+      if (Math.abs(den) > 1e-6) {
+        xStar = num / den;
+      }
+      xStar = Math.max(0.01, Math.min(0.99, xStar));
+
+      // Lyapunov Stability: alpha = (a11 - a12) - (a21 - a22)
+      const alpha = den;
+      const lyapEig = xStar * (1.0 - xStar) * alpha;
+
+      document.getElementById('stat-game-nash').innerText = (xStar * 100).toFixed(1) + ' %';
+      document.getElementById('stat-game-lyap').innerText = lyapEig.toFixed(3);
+      document.getElementById('stat-game-class').innerText = lyapEig < 0 ? 'Attractor' : 'Repeller';
+      document.getElementById('stat-game-class').style.color = lyapEig < 0 ? '#34d399' : '#f87171';
+
+      // 2. Numerical Integration (Forward Euler)
+      const dt = 0.1;
+      const steps = Math.round(tmax / dt);
+      const times = [];
+      const xs = [];
+      const xr = [];
+
+      let x = x0;
+      for (let s = 0; s <= steps; s++) {
+        const t = s * dt;
+        times.push(t);
+        xs.push(x);
+        xr.push(1.0 - x);
+
+        // Replicator equation: dx/dt = x*(1-x) * [(a11 - a21)*x + (a12 - a22)*(1-x)]
+        const f_S = a11 * x + a12 * (1.0 - x);
+        const f_R = a21 * x + a22 * (1.0 - x);
+        const f_avg = x * f_S + (1.0 - x) * f_R;
+        const dxdt = x * (f_S - f_avg);
+
+        x += dxdt * dt;
+        x = Math.max(0.001, Math.min(0.999, x));
+      }
+
+      drawReplicatorCanvas(times, xs, xr, tmax);
+      drawPhaseCanvas(a11, a12, a21, a22, xStar);
+    }
+
+    function drawReplicatorCanvas(times, xs, xr, tmax) {
+      const canvas = document.getElementById('replicator-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+
+      const width = canvas.parentElement.clientWidth;
+      const height = canvas.parentElement.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      const padL = 45, padR = 25, padT = 25, padB = 35;
+      const pW = width - padL - padR;
+      const pH = height - padT - padB;
+
+      function toX(t) { return padL + (t / tmax) * pW; }
+      function toY(val) { return padT + pH - val * pH; }
+
+      // Month 36 marker
+      if (tmax >= 36) {
+        const x36 = toX(36.0);
+        ctx.strokeStyle = '#fbbf24';
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(x36, padT);
+        ctx.lineTo(x36, padT + pH);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = '10px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Month 36 (ADAURA Stop)', x36, padT + 12);
+      }
+
+      // Axes
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, padT);
+      ctx.lineTo(padL, padT + pH);
+      ctx.lineTo(padL + pW, padT + pH);
+      ctx.stroke();
+
+      // Axis ticks
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      for (let t = 0; t <= tmax; t += 12) {
+        ctx.fillText(t + ' mo', toX(t), padT + pH + 15);
+      }
+      ctx.textAlign = 'right';
+      for (let pct = 0; pct <= 100; pct += 25) {
+        ctx.fillText(pct + '%', padL - 8, toY(pct / 100) + 4);
+      }
+
+      // Plot Sensitive TS (cyan)
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i < times.length; i++) {
+        const px = toX(times[i]);
+        const py = toY(xs[i]);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // Plot Persister TR (rose)
+      ctx.strokeStyle = '#f43f5e';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i < times.length; i++) {
+        const px = toX(times[i]);
+        const py = toY(xr[i]);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+
+    function drawPhaseCanvas(a11, a12, a21, a22, xStar) {
+      const canvas = document.getElementById('phase-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+
+      const width = canvas.parentElement.clientWidth;
+      const height = canvas.parentElement.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      const padL = 45, padR = 25, padT = 25, padB = 35;
+      const pW = width - padL - padR;
+      const pH = height - padT - padB;
+
+      const yMid = padT + pH / 2;
+
+      // Axis
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, yMid);
+      ctx.lineTo(padL + pW, yMid);
+      ctx.stroke();
+
+      // Compute dx/dt values
+      const pts = [];
+      let maxD = 0.01;
+      for (let i = 0; i <= 100; i++) {
+        const x = i / 100.0;
+        const f_S = a11 * x + a12 * (1.0 - x);
+        const f_R = a21 * x + a22 * (1.0 - x);
+        const d = x * (1.0 - x) * (f_S - f_R);
+        pts.push({ x, d });
+        if (Math.abs(d) > maxD) maxD = Math.abs(d);
+      }
+
+      function toX(x) { return padL + x * pW; }
+      function toY(d) { return yMid - (d / maxD) * (pH * 0.42); }
+
+      // Draw Curve
+      ctx.strokeStyle = '#34d399';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i < pts.length; i++) {
+        const px = toX(pts[i].x);
+        const py = toY(pts[i].d);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // Draw Nash Attractor Dot
+      const nX = toX(xStar);
+      ctx.fillStyle = '#fbbf24';
+      ctx.beginPath();
+      ctx.arc(nX, yMid, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = 'bold 10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(`Nash Attractor: ${(xStar * 100).toFixed(1)}%`, nX, yMid - 10);
+    }
+
+    // ==========================================
+    // MODULE 3: MSKCC 604 CLINICAL COHORT
+    // ==========================================
+    const MSKCC_KM_DATA = {
+      Lepidic: [1.0, 1.0, 1.0, 1.0, 0.9861, 0.9579, 0.8663, 0.8663, 0.8663, 0.8663, 0.8663],
+      Acinar: [1.0, 0.9832, 0.9122, 0.8695, 0.8342, 0.8085, 0.7531, 0.706, 0.706, 0.353, 0.353],
+      Papillary: [1.0, 0.9767, 0.896, 0.868, 0.8286, 0.7694, 0.6348, 0.529, 0.529, 0.0, 0.0],
+      Micropapillary: [1.0, 0.9429, 0.9114, 0.785, 0.785, 0.785, 0.785, 0.785, 0.3925, 0.3925, 0.3925],
+      Solid: [1.0, 0.9851, 0.8363, 0.729, 0.6718, 0.6449, 0.6449, 0.4299, 0.4299, 0.4299, 0.4299],
+      Solid_Micro: [1.0, 0.9704, 0.8619, 0.7492, 0.7086, 0.6899, 0.6899, 0.5913, 0.3942, 0.3942, 0.3942]
+    };
+
+    function drawKaplanMeierCanvas() {
+      const canvas = document.getElementById('km-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+
+      const width = canvas.parentElement.clientWidth;
+      const height = canvas.parentElement.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      const padL = 45, padR = 25, padT = 25, padB = 35;
+      const pW = width - padL - padR;
+      const pH = height - padT - padB;
+
+      function toX(m) { return padL + (m / 60.0) * pW; }
+      function toY(s) { return padT + (1.0 - s) * pH; }
+
+      // Shaded Post-ADAURA window (Month 36-60)
+      const x36 = toX(36);
+      const x60 = toX(60);
+      ctx.fillStyle = 'rgba(239, 68, 68, 0.12)';
+      ctx.fillRect(x36, padT, x60 - x36, pH);
+
+      // Month 36 marker line
+      ctx.strokeStyle = '#fbbf24';
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(x36, padT);
+      ctx.lineTo(x36, padT + pH);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Axes
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, padT);
+      ctx.lineTo(padL, padT + pH);
+      ctx.lineTo(padL + pW, padT + pH);
+      ctx.stroke();
+
+      // Axis ticks
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      for (let m = 0; m <= 60; m += 12) {
+        ctx.fillText(m + ' mo', toX(m), padT + pH + 15);
+      }
+      ctx.textAlign = 'right';
+      for (let s = 0; s <= 100; s += 25) {
+        ctx.fillText(s + '%', padL - 8, toY(s / 100) + 4);
+      }
+
+      // Draw Subtypes (Step function)
+      const curves = [
+        { name: 'Lepidic', color: '#10b981', lw: 3.0 },
+        { name: 'Acinar', color: '#38bdf8', lw: 2.2 },
+        { name: 'Solid_Micro', color: '#f43f5e', lw: 2.8 }
+      ];
+
+      const timeGrid = [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60];
+
+      curves.forEach(c => {
+        const surv = MSKCC_KM_DATA[c.name];
+        ctx.strokeStyle = c.color;
+        ctx.lineWidth = c.lw;
+        ctx.beginPath();
+        for (let i = 0; i < timeGrid.length; i++) {
+          const px = toX(timeGrid[i]);
+          const py = toY(surv[i]);
+          if (i === 0) {
+            ctx.moveTo(px, py);
+          } else {
+            const prevPx = toX(timeGrid[i - 1]);
+            const prevPy = toY(surv[i - 1]);
+            ctx.lineTo(px, prevPy); // step
+            ctx.lineTo(px, py);
+          }
+        }
+        ctx.stroke();
+      });
+    }
+
+    function drawHazardSurgeCanvas() {
+      const canvas = document.getElementById('hazard-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+
+      const width = canvas.parentElement.clientWidth;
+      const height = canvas.parentElement.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      const padL = 45, padR = 25, padT = 25, padB = 35;
+      const pW = width - padL - padR;
+      const pH = height - padT - padB;
+
+      function toX(m) { return padL + (m / 60.0) * pW; }
+      function toY(h) { return padT + pH - (h / 0.12) * pH; }
+
+      // Month 36 marker
+      const x36 = toX(36);
+      ctx.strokeStyle = '#fbbf24';
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(x36, padT);
+      ctx.lineTo(x36, padT + pH);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Month 36 Stop', x36, padT + 12);
+
+      // Axes
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, padT);
+      ctx.lineTo(padL, padT + pH);
+      ctx.lineTo(padL + pW, padT + pH);
+      ctx.stroke();
+
+      // Axis labels
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      for (let m = 0; m <= 60; m += 12) {
+        ctx.fillText(m + ' mo', toX(m), padT + pH + 15);
+      }
+      ctx.textAlign = 'right';
+      ctx.fillText('High', padL - 8, padT + 15);
+      ctx.fillText('Zero', padL - 8, padT + pH);
+
+      // Solid Hazard Curve (Spike after month 36)
+      ctx.strokeStyle = '#f43f5e';
+      ctx.lineWidth = 2.8;
+      ctx.beginPath();
+      for (let m = 0; m <= 60; m += 2) {
+        let h = 0.015;
+        if (m >= 36) {
+          // Surge modeling
+          const dt = m - 36;
+          h = 0.015 + 0.085 * Math.exp(-Math.pow(dt - 6.0, 2) / 28.0);
+        }
+        const px = toX(m);
+        const py = toY(h);
+        if (m === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // Lepidic Hazard Curve (Flat near zero)
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 2.8;
+      ctx.beginPath();
+      for (let m = 0; m <= 60; m += 2) {
+        const h = 0.005;
+        const px = toX(m);
+        const py = toY(h);
+        if (m === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+
+    // ==========================================
+    // MODULE 4: CLIENT-SIDE DATASET & CITATION
+    // ==========================================
+    const EMBEDDED_MSKCC_CSV = "patientId,sampleId,PREDOMINANT_HISTOLOGIC_SUBTYPE,PATHOLOGIC_STAGE,IS_EGFR_MUTANT,RFS_MONTHS,RECURRENCE_EVENT,OS_MONTHS,OS_EVENT,SEX,SMOKING_HISTORY\nP-0000219,P-0000219-T01-IM3,Solid,3,1,24.56666667,1,83.8,0,Female,Ever Smoker\nP-0000280,P-0000280-T01-IM3,Acinar,1,1,14.86666667,1,77.43333333,0,Female,Never Smoker\nP-0000627,P-0000627-T02-IM5,Acinar,1,0,37.36666667,0,37.36666667,1,Female,Ever Smoker\nP-0000867,P-0000867-T01-IM3,Acinar,2,0,11.43333333,1,34.8,1,Male,Ever Smoker\nP-0001944,P-0001944-T01-IM3,Acinar,1,0,84.7,0,84.7,0,Female,Ever Smoker\nP-0002534,P-0002534-T01-IM3,Acinar,3,1,10.16666667,1,52.96666667,0,Female,Never Smoker\nP-0002544,P-0002544-T01-IM3,Acinar,1,0,49.26666667,0,49.26666667,0,Female,Ever Smoker\nP-0002557,P-0002557-T01-IM3,Acinar,1,1,1.733333333,1,53.13333333,1,Female,Never Smoker\nP-0002768,P-0002768-T02-IM6,Papillary,1,1,6.5,0,6.5,0,Female,Never Smoker\nP-0002880,P-0002880-T02-IM6,Acinar,1,1,29.1,0,29.1,0,Male,Never Smoker\nP-0002949,P-0002949-T01-IM3,Micropapillary,1,0,7.333333333,0,7.333333333,0,Male,Ever Smoker\nP-0003096,P-0003096-T01-IM5,Acinar,1,1,49.46666667,0,49.46666667,0,Female,Ever Smoker\nP-0003323,P-0003323-T01-IM5,Acinar,3,0,45.23333333,0,45.23333333,0,Female,Never Smoker\nP-0003489,P-0003489-T01-IM5,Acinar,1,0,49.36666667,0,49.36666667,0,Male,Ever Smoker\nP-0003573,P-0003573-T01-IM5,Acinar,1,1,53.86666667,0,53.86666667,0,Female,Never Smoker\nP-0003734,P-0003734-T01-IM5,Papillary,1,0,47.66666667,0,47.66666667,0,Male,Ever Smoker\nP-0003785,P-0003785-T01-IM5,Lepidic,2,0,41.43333333,0,41.43333333,0,Female,Ever Smoker\nP-0004105,P-0004105-T01-IM5,Acinar,1,1,44.93333333,0,44.93333333,1,Female,Ever Smoker\nP-0004271,P-0004271-T01-IM5,Acinar,2,0,22.46666667,1,48.03333333,0,Female,Never Smoker\nP-0004335,P-0004335-T01-IM5,Acinar,1,0,37.26666667,0,37.26666667,0,Female,Ever Smoker\nP-0004361,P-0004361-T01-IM5,Acinar,1,0,47.43333333,0,47.43333333,0,Female,Ever Smoker\nP-0004530,P-0004530-T02-IM6,Acinar,1,0,10.73333333,0,10.73333333,0,Female,Ever Smoker\nP-0004678,P-0004678-T01-IM5,Acinar,1,1,48.06666667,0,48.06666667,0,Male,Ever Smoker\nP-0004714,P-0004714-T01-IM5,Solid,1,1,47.36666667,0,47.36666667,0,Female,Ever Smoker\nP-0004730,P-0004730-T01-IM5,Papillary,1,1,43.46666667,0,43.46666667,0,Male,Never Smoker\nP-0004858,P-0004858-T01-IM5,Solid,1,0,12.26666667,1,47.86666667,0,Female,Ever Smoker\nP-0004860,P-0004860-T01-IM5,Acinar,3,0,16.93333333,1,26.3,1,Male,Ever Smoker\nP-0004878,P-0004878-T01-IM5,Acinar,1,0,43.76666667,0,43.76666667,0,Female,Ever Smoker\nP-0004882,P-0004882-T01-IM5,Acinar,1,0,37.23333333,0,37.23333333,0,Female,Ever Smoker\nP-0005094,P-0005094-T01-IM5,Acinar,1,1,49.83333333,0,49.83333333,0,Female,Ever Smoker\nP-0005170,P-0005170-T01-IM5,Lepidic,2,0,42.46666667,0,42.46666667,0,Male,Ever Smoker\nP-0005190,P-0005190-T01-IM5,Papillary,1,0,22.63333333,0,22.63333333,0,Male,Ever Smoker\nP-0005194,P-0005194-T01-IM5,Papillary,1,0,43.46666667,0,43.46666667,0,Female,Ever Smoker\nP-0005198,P-0005198-T01-IM5,Papillary,2,1,31.83333333,1,35.46666667,1,Female,Ever Smoker\nP-0005544,P-0005544-T02-IM5,Lepidic,3,0,38.43333333,0,38.43333333,0,Female,Ever Smoker\nP-0005567,P-0005567-T01-IM5,Solid,1,0,36.66666667,0,36.66666667,0,Female,Ever Smoker\nP-0005580,P-0005580-T01-IM5,Acinar,1,1,40.16666667,0,40.16666667,0,Female,Never Smoker\nP-0005694,P-0005694-T01-IM5,Acinar,1,0,43.0,0,43.0,0,Female,Ever Smoker\nP-0005845,P-0005845-T01-IM5,Acinar,1,1,53.9,1,93.36666667,0,Female,Ever Smoker\nP-0005873,P-0005873-T01-IM5,Lepidic,3,0,39.53333333,0,39.53333333,0,Female,Ever Smoker\nP-0005881,P-0005881-T02-IM5,Solid,1,0,38.33333333,0,38.33333333,0,Female,Ever Smoker\nP-0005927,P-0005927-T01-IM5,Papillary,1,0,22.73333333,1,32.8,1,Female,Ever Smoker\nP-0005942,P-0005942-T01-IM5,Acinar,1,0,39.2,0,39.2,0,Female,Ever Smoker\nP-0005975,P-0005975-T01-IM5,Acinar,3,0,15.73333333,1,21.0,1,Female,Ever Smoker\nP-0006002,P-0006002-T01-IM5,Acinar,1,1,37.13333333,0,37.13333333,0,Female,Never Smoker\nP-0006028,P-0006028-T01-IM5,Acinar,1,1,39.93333333,0,39.93333333,0,Female,Never Smoker\nP-0006060,P-0006060-T01-IM5,Solid,2,0,35.46666667,0,35.46666667,0,Female,Ever Smoker\nP-0006085,P-0006085-T01-IM5,Lepidic,1,0,37.16666667,0,37.16666667,0,Male,Ever Smoker\nP-0006115,P-0006115-T01-IM5,Acinar,3,1,21.63333333,1,44.36666667,0,Female,Ever Smoker\nP-0006127,P-0006127-T01-IM5,Solid,1,0,8.2,1,38.16666667,1,Male,Ever Smoker\nP-0006139,P-0006139-T01-IM5,Acinar,1,1,16.6,1,44.83333333,0,Female,Never Smoker\nP-0006140,P-0006140-T01-IM5,Acinar,1,0,40.36666667,0,40.36666667,0,Female,Ever Smoker\nP-0006210,P-0006210-T01-IM5,Acinar,1,1,35.76666667,1,49.23333333,0,Female,Ever Smoker\nP-0006343,P-0006343-T01-IM5,Solid,1,0,7.033333333,1,50.93333333,0,Female,Ever Smoker\nP-0006421,P-0006421-T01-IM5,Lepidic,1,0,45.0,0,45.0,0,Female,Ever Smoker\nP-0006485,P-0006485-T01-IM5,Acinar,3,0,14.7,0,14.86666667,1,Female,Ever Smoker\nP-0006640,P-0006640-T01-IM5,Acinar,1,1,33.53333333,0,33.53333333,0,Female,Ever Smoker\nP-0006747,P-0006747-T01-IM5,Acinar,1,0,40.33333333,0,40.33333333,0,Female,Ever Smoker\nP-0006768,P-0006768-T01-IM5,Acinar,3,0,10.86666667,1,40.36666667,1,Male,Ever Smoker\nP-0006793,P-0006793-T01-IM5,Acinar,2,0,12.1,1,13.93333333,0,Female,Ever Smoker\nP-0006912,P-0006912-T01-IM5,Acinar,2,1,19.7,1,43.26666667,0,Female,Never Smoker\nP-0006920,P-0006920-T01-IM5,Acinar,1,0,39.13333333,0,39.13333333,0,Male,Ever Smoker\nP-0006969,P-0006969-T01-IM5,Acinar,1,0,15.46666667,0,15.46666667,1,Male,Ever Smoker\nP-0007004,P-0007004-T01-IM5,Lepidic,1,0,39.36666667,0,39.36666667,0,Female,Ever Smoker\nP-0007050,P-0007050-T01-IM5,Micropapillary,3,0,42.06666667,0,42.06666667,0,Male,Ever Smoker\nP-0007074,P-0007074-T01-IM5,Acinar,1,0,34.8,0,34.8,0,Female,Ever Smoker\nP-0007080,P-0007080-T03-IM6,Acinar,1,1,24.56666667,0,24.56666667,0,Female,Never Smoker\nP-0007121,P-0007121-T01-IM5,Solid,3,0,6.533333333,1,41.7,0,Female,Ever Smoker\nP-0007328,P-0007328-T01-IM5,Solid,2,0,36.43333333,0,36.43333333,0,Male,Ever Smoker\nP-0007542,P-0007542-T01-IM5,Solid,1,0,43.76666667,0,43.76666667,0,Female,Ever Smoker\nP-0007545,P-0007545-T01-IM5,Acinar,2,1,38.3,0,38.3,0,Female,Ever Smoker\nP-0007638,P-0007638-T01-IM5,Micropapillary,3,0,40.86666667,0,40.86666667,0,Female,Ever Smoker\nP-0007776,P-0007776-T01-IM5,Micropapillary,3,0,2.833333333,1,30.76666667,1,Female,Ever Smoker\nP-0007779,P-0007779-T01-IM5,Lepidic,1,1,28.9,1,42.3,0,Female,Ever Smoker\nP-0007816,P-0007816-T01-IM5,Acinar,1,0,37.1,0,37.1,0,Female,Ever Smoker\nP-0007846,P-0007846-T01-IM5,Lepidic,1,1,37.83333333,0,37.83333333,0,Female,Ever Smoker\nP-0007896,P-0007896-T01-IM5,Acinar,1,1,19.93333333,1,38.26666667,1,Female,Never Smoker\nP-0007916,P-0007916-T01-IM5,Lepidic,3,0,34.4,1,37.8,1,Male,Ever Smoker\nP-0008002,P-0008002-T01-IM5,Solid,3,0,17.6,1,41.13333333,0,Male,Ever Smoker\nP-0008029,P-0008029-T01-IM5,Micropapillary,2,0,25.6,0,25.6,1,Male,Ever Smoker\nP-0008176,P-0008176-T01-IM5,Micropapillary,3,0,12.7,1,45.76666667,1,Female,Never Smoker\nP-0008292,P-0008292-T01-IM5,Lepidic,1,1,32.7,0,32.7,0,Female,Ever Smoker\nP-0008440,P-0008440-T01-IM5,Acinar,1,0,40.26666667,1,41.13333333,0,Female,Ever Smoker\nP-0008553,P-0008553-T01-IM5,Solid,1,0,36.5,0,36.5,0,Female,Ever Smoker\nP-0008576,P-0008576-T01-IM5,Acinar,2,0,37.76666667,0,37.76666667,0,Female,Ever Smoker\nP-0008577,P-0008577-T02-IM5,Papillary,1,1,39.33333333,1,39.36666667,0,Female,Ever Smoker\nP-0008601,P-0008601-T01-IM5,Acinar,1,1,13.8,1,36.96666667,0,Male,Never Smoker\nP-0008664,P-0008664-T01-IM5,Lepidic,1,1,39.2,0,39.2,0,Female,Never Smoker\nP-0008957,P-0008957-T01-IM5,Acinar,1,0,38.53333333,0,38.53333333,0,Male,Ever Smoker\nP-0009042,P-0009042-T01-IM5,Acinar,1,1,35.26666667,0,35.26666667,0,Female,Ever Smoker\nP-0009092,P-0009092-T01-IM5,Acinar,1,0,19.1,0,19.1,0,Female,Ever Smoker\nP-0009194,P-0009194-T01-IM5,Papillary,1,0,37.63333333,0,37.63333333,0,Male,Ever Smoker\nP-0009260,P-0009260-T01-IM5,Lepidic,1,1,35.5,0,35.5,0,Female,Ever Smoker\nP-0009289,P-0009289-T01-IM5,Acinar,1,0,30.36666667,0,30.36666667,0,Male,Ever Smoker\nP-0009312,P-0009312-T01-IM5,Acinar,2,0,30.36666667,1,39.3,0,Male,Ever Smoker\nP-0009313,P-0009313-T01-IM5,Acinar,1,0,38.96666667,0,38.96666667,0,Female,Ever Smoker\nP-0009358,P-0009358-T01-IM5,Papillary,2,0,9.3,1,12.8,1,Female,Ever Smoker\nP-0009422,P-0009422-T01-IM5,Lepidic,1,0,28.43333333,0,28.43333333,0,Female,Ever Smoker\nP-0009462,P-0009462-T01-IM5,Lepidic,2,0,35.56666667,0,35.56666667,0,Male,Ever Smoker\nP-0009590,P-0009590-T01-IM5,Acinar,1,0,37.46666667,0,37.46666667,0,Female,Ever Smoker\nP-0009633,P-0009633-T01-IM5,Acinar,1,0,37.43333333,0,37.43333333,0,Female,Ever Smoker\nP-0009643,P-0009643-T01-IM5,Lepidic,1,0,36.93333333,0,36.93333333,0,Male,Ever Smoker\nP-0009702,P-0009702-T01-IM5,Solid,1,0,9.033333333,1,9.033333333,1,Male,Ever Smoker\nP-0009742,P-0009742-T01-IM5,Lepidic,1,0,42.1,0,42.1,0,Male,Ever Smoker\nP-0009823,P-0009823-T01-IM5,Lepidic,1,0,30.3,0,30.3,0,Male,Ever Smoker\nP-0009894,P-0009894-T01-IM5,Acinar,1,0,38.7,0,38.7,0,Male,Ever Smoker\nP-0009920,P-0009920-T01-IM5,Acinar,1,0,38.76666667,0,38.76666667,0,Female,Ever Smoker\nP-0009937,P-0009937-T01-IM5,Lepidic,1,0,36.8,0,36.8,0,Female,Ever Smoker\nP-0009957,P-0009957-T01-IM5,Acinar,1,1,37.6,0,37.6,0,Female,Never Smoker\nP-0009963,P-0009963-T01-IM5,Acinar,3,0,8.1,1,38.26666667,0,Female,Ever Smoker\nP-0009975,P-0009975-T01-IM5,Acinar,1,0,28.66666667,0,28.66666667,0,Female,Ever Smoker\nP-0010131,P-0010131-T01-IM5,Lepidic,1,1,38.26666667,0,38.26666667,0,Female,Never Smoker\nP-0010133,P-0010133-T01-IM5,Acinar,1,1,35.3,0,35.3,0,Female,Never Smoker\nP-0010169,P-0010169-T01-IM5,Acinar,1,0,30.0,0,30.0,0,Male,Ever Smoker\nP-0010210,P-0010210-T02-IM5,Lepidic,1,0,33.0,0,33.0,0,Female,Ever Smoker\nP-0010253,P-0010253-T01-IM5,Acinar,1,0,35.06666667,0,35.06666667,0,Female,Ever Smoker\nP-0010300,P-0010300-T01-IM5,Acinar,2,0,10.86666667,1,27.1,1,Male,Never Smoker\nP-0010307,P-0010307-T01-IM5,Acinar,1,0,36.23333333,0,36.23333333,0,Male,Ever Smoker\nP-0010328,P-0010328-T01-IM5,Lepidic,1,0,37.3,0,37.3,0,Male,Never Smoker\nP-0010345,P-0010345-T01-IM5,Acinar,1,1,6.033333333,0,6.033333333,0,Male,Ever Smoker\nP-0010359,P-0010359-T01-IM5,Acinar,1,1,32.53333333,0,32.53333333,0,Male,Ever Smoker\nP-0010404,P-0010404-T01-IM5,Solid,3,1,34.03333333,0,34.03333333,0,Male,Ever Smoker\nP-0010507,P-0010507-T01-IM5,Acinar,3,0,11.83333333,1,38.93333333,0,Male,Never Smoker\nP-0010522,P-0010522-T01-IM5,Acinar,1,0,37.73333333,0,37.73333333,0,Male,Ever Smoker\nP-0010592,P-0010592-T01-IM5,Acinar,1,0,36.96666667,0,36.96666667,0,Male,Ever Smoker\nP-0010611,P-0010611-T01-IM5,Lepidic,1,0,31.76666667,0,31.76666667,0,Female,Ever Smoker\nP-0010632,P-0010632-T01-IM5,Acinar,1,0,36.6,0,36.6,0,Male,Ever Smoker\nP-0010675,P-0010675-T01-IM5,Acinar,1,1,37.03333333,0,37.03333333,0,Male,Ever Smoker\nP-0010741,P-0010741-T01-IM5,Acinar,1,0,35.03333333,0,35.03333333,0,Male,Ever Smoker\nP-0010785,P-0010785-T01-IM5,Acinar,1,0,22.7,0,22.7,1,Male,Ever Smoker\nP-0010841,P-0010841-T01-IM5,Solid,1,0,12.5,1,34.6,0,Female,Never Smoker\nP-0010927,P-0010927-T02-IM5,Solid,3,0,19.9,1,77.53333333,0,Female,Ever Smoker\nP-0010976,P-0010976-T01-IM5,Lepidic,1,1,33.43333333,0,33.43333333,0,Female,Ever Smoker\nP-0010980,P-0010980-T01-IM5,Acinar,3,0,21.7,1,37.13333333,0,Female,Ever Smoker\nP-0011005,P-0011005-T01-IM5,Papillary,1,0,37.36666667,0,37.36666667,0,Male,Ever Smoker\nP-0011041,P-0011041-T01-IM5,Acinar,1,0,37.4,0,37.4,0,Female,Ever Smoker\nP-0011150,P-0011150-T01-IM5,Acinar,1,0,20.36666667,1,34.8,0,Male,Ever Smoker\nP-0011157,P-0011157-T01-IM5,Acinar,3,0,1.433333333,1,33.9,1,Male,Ever Smoker\nP-0011183,P-0011183-T01-IM5,Solid,2,0,13.8,1,38.9,1,Female,Ever Smoker\nP-0011234,P-0011234-T02-IM5,Acinar,2,1,27.53333333,1,63.96666667,0,Female,Never Smoker\nP-0011236,P-0011236-T01-IM5,Acinar,2,0,31.3,0,31.3,0,Female,Ever Smoker\nP-0011327,P-0011327-T02-IM5,Acinar,1,0,32.3,0,32.3,0,Female,Never Smoker\nP-0011413,P-0011413-T01-IM5,Solid,2,1,36.5,0,36.5,0,Male,Never Smoker\nP-0011461,P-0011461-T01-IM5,Acinar,1,0,34.06666667,0,34.06666667,0,Female,Ever Smoker\nP-0012056,P-0012056-T01-IM5,Solid,3,1,7.566666667,1,18.56666667,1,Male,Ever Smoker\nP-0012065,P-0012065-T01-IM5,Acinar,2,0,25.5,0,25.5,0,Male,Ever Smoker\nP-0012079,P-0012079-T01-IM5,Acinar,1,1,33.63333333,0,33.63333333,0,Female,Ever Smoker\nP-0012088,P-0012088-T01-IM5,Solid,1,0,26.56666667,0,26.56666667,0,Male,Ever Smoker\nP-0012089,P-0012089-T01-IM5,Acinar,1,1,27.1,0,27.1,0,Female,Never Smoker\nP-0012111,P-0012111-T01-IM5,Lepidic,1,0,36.13333333,0,36.13333333,0,Female,Never Smoker\nP-0012151,P-0012151-T01-IM5,Acinar,2,0,31.23333333,0,31.23333333,0,Male,Ever Smoker\nP-0012161,P-0012161-T01-IM5,Acinar,2,0,34.56666667,0,34.56666667,0,Male,Ever Smoker\nP-0012308,P-0012308-T01-IM5,Acinar,1,0,32.4,0,32.4,0,Male,Ever Smoker\nP-0012439,P-0012439-T01-IM5,Lepidic,1,1,30.6,0,30.6,0,Female,Ever Smoker\nP-0012456,P-0012456-T01-IM5,Lepidic,2,0,4.333333333,0,4.333333333,1,Male,Ever Smoker\nP-0012476,P-0012476-T02-IM6,Acinar,2,0,32.03333333,1,51.26666667,1,Female,Ever Smoker\nP-0012540,P-0012540-T01-IM5,Solid,1,0,32.06666667,0,32.06666667,0,Male,Ever Smoker\nP-0012569,P-0012569-T01-IM5,Acinar,1,0,26.2,0,26.2,0,Female,Ever Smoker\nP-0012592,P-0012592-T01-IM5,Micropapillary,3,1,34.76666667,0,34.76666667,0,Female,Never Smoker\nP-0012648,P-0012648-T01-IM5,Acinar,1,0,27.6,0,27.6,0,Male,Never Smoker\nP-0012649,P-0012649-T01-IM5,Acinar,1,0,33.4,0,33.4,0,Female,Ever Smoker\nP-0012664,P-0012664-T01-IM5,Papillary,1,1,34.5,0,34.5,0,Female,Never Smoker\nP-0012739,P-0012739-T02-IM6,Acinar,1,0,4.4,0,4.4,0,Male,Ever Smoker\nP-0012746,P-0012746-T01-IM5,Acinar,1,0,1.266666667,0,1.266666667,0,Female,Ever Smoker\nP-0012757,P-0012757-T01-IM5,Lepidic,1,0,28.5,0,28.5,0,Female,Ever Smoker\nP-0012788,P-0012788-T01-IM5,Acinar,3,1,32.13333333,0,32.13333333,0,Female,Ever Smoker\nP-0012894,P-0012894-T01-IM5,Acinar,2,0,10.26666667,1,17.7,1,Female,Ever Smoker\nP-0012913,P-0012913-T01-IM5,Micropapillary,1,0,9.0,0,9.0,0,Female,Ever Smoker\nP-0012922,P-0012922-T01-IM5,Acinar,1,1,32.23333333,0,32.23333333,0,Female,Ever Smoker\nP-0013016,P-0013016-T01-IM5,Papillary,3,1,12.16666667,1,27.4,1,Female,Never Smoker\nP-0013142,P-0013142-T01-IM5,Solid,1,0,29.4,0,29.4,0,Female,Ever Smoker\nP-0013273,P-0013273-T02-IM5,Acinar,2,0,28.9,0,28.9,0,Female,Never Smoker\nP-0013295,P-0013295-T01-IM5,Acinar,1,0,29.23333333,0,29.23333333,0,Female,Ever Smoker\nP-0013338,P-0013338-T01-IM5,Solid,1,0,6.9,1,12.06666667,1,Female,Ever Smoker\nP-0013376,P-0013376-T01-IM5,Lepidic,1,0,33.36666667,0,33.36666667,0,Female,Ever Smoker\nP-0013460,P-0013460-T02-IM5,Acinar,1,0,35.53333333,0,35.53333333,0,Male,Ever Smoker\nP-0013509,P-0013509-T01-IM5,Lepidic,1,0,27.96666667,0,27.96666667,0,Female,Ever Smoker\nP-0013511,P-0013511-T01-IM5,Acinar,1,0,33.66666667,0,33.66666667,0,Male,Ever Smoker\nP-0013531,P-0013531-T01-IM5,Solid,1,1,24.63333333,0,24.63333333,0,Male,Ever Smoker\nP-0013534,P-0013534-T01-IM5,Lepidic,1,1,34.06666667,0,34.06666667,0,Female,Ever Smoker\nP-0013696,P-0013696-T01-IM5,Papillary,1,0,23.06666667,0,23.06666667,0,Male,Ever Smoker\nP-0013701,P-0013701-T01-IM5,Lepidic,1,0,29.6,0,29.6,0,Female,Ever Smoker\nP-0013702,P-0013702-T01-IM5,Acinar,1,0,28.63333333,0,28.63333333,0,Female,Ever Smoker\nP-0013705,P-0013705-T01-IM5,Lepidic,1,1,27.3,0,27.3,0,Male,Ever Smoker\nP-0013708,P-0013708-T01-IM5,Acinar,1,1,30.13333333,0,30.13333333,0,Female,Never Smoker\nP-0013710,P-0013710-T01-IM5,Lepidic,1,0,28.86666667,0,28.86666667,0,Female,Ever Smoker\nP-0013752,P-0013752-T01-IM5,Lepidic,1,0,26.86666667,0,26.86666667,0,Female,Ever Smoker\nP-0013759,P-0013759-T01-IM5,Lepidic,1,1,29.63333333,0,29.63333333,0,Female,Never Smoker\nP-0013794,P-0013794-T01-IM5,Acinar,1,0,29.43333333,0,29.43333333,0,Male,Ever Smoker\nP-0013813,P-0013813-T01-IM5,Acinar,1,1,25.73333333,0,25.73333333,1,Male,Ever Smoker\nP-0013825,P-0013825-T01-IM5,Solid,1,0,31.76666667,0,31.76666667,0,Female,Never Smoker\nP-0013867,P-0013867-T01-IM5,Acinar,1,0,14.63333333,0,14.63333333,0,Male,Ever Smoker\nP-0013872,P-0013872-T01-IM5,Lepidic,1,1,22.26666667,0,22.26666667,0,Female,Ever Smoker\nP-0013900,P-0013900-T01-IM5,Lepidic,1,0,30.93333333,0,30.93333333,0,Male,Ever Smoker\nP-0013919,P-0013919-T01-IM5,Lepidic,1,0,27.83333333,0,27.83333333,0,Female,Ever Smoker\nP-0013966,P-0013966-T01-IM5,Acinar,1,0,25.0,0,25.0,0,Female,Never Smoker\nP-0013978,P-0013978-T02-IM6,Lepidic,1,0,30.16666667,0,30.16666667,0,Male,Ever Smoker\nP-0013993,P-0013993-T01-IM5,Acinar,1,1,31.6,0,31.6,0,Female,Ever Smoker\nP-0014011,P-0014011-T01-IM5,Acinar,2,0,31.6,0,31.6,0,Female,Never Smoker\nP-0014089,P-0014089-T01-IM5,Acinar,1,0,24.53333333,0,24.53333333,0,Female,Ever Smoker\nP-0014135,P-0014135-T02-IM5,Acinar,1,0,35.73333333,0,35.73333333,0,Female,Ever Smoker\nP-0014221,P-0014221-T01-IM6,Acinar,1,0,31.93333333,1,33.36666667,0,Male,Ever Smoker\nP-0014222,P-0014222-T01-IM6,Acinar,1,1,25.6,0,25.6,0,Female,Ever Smoker\nP-0014223,P-0014223-T02-IM6,Acinar,2,1,30.13333333,0,30.13333333,0,Female,Never Smoker\nP-0014232,P-0014232-T01-IM6,Acinar,1,0,9.133333333,1,32.93333333,0,Male,Ever Smoker\nP-0014239,P-0014239-T01-IM6,Micropapillary,2,0,31.06666667,0,31.06666667,0,Male,Ever Smoker\nP-0014257,P-0014257-T01-IM6,Papillary,1,0,26.06666667,0,26.06666667,0,Female,Ever Smoker\nP-0014266,P-0014266-T01-IM6,Lepidic,1,1,27.96666667,0,27.96666667,0,Female,Ever Smoker\nP-0014285,P-0014285-T03-IM6,Solid,1,0,8.9,1,34.53333333,0,Female,Ever Smoker\nP-0014297,P-0014297-T01-IM6,Lepidic,1,0,27.66666667,0,27.66666667,0,Male,Ever Smoker\nP-0014413,P-0014413-T01-IM6,Lepidic,1,0,26.56666667,0,26.56666667,0,Female,Ever Smoker\nP-0014430,P-0014430-T01-IM6,Solid,1,0,29.7,0,29.7,0,Female,Ever Smoker\nP-0014437,P-0014437-T01-IM6,Micropapillary,2,0,30.7,0,30.7,0,Female,Never Smoker\nP-0014453,P-0014453-T02-IM6,Papillary,1,0,25.5,0,25.5,0,Male,Ever Smoker\nP-0014496,P-0014496-T01-IM6,Micropapillary,1,0,28.7,0,28.7,0,Male,Ever Smoker\nP-0014502,P-0014502-T01-IM6,Acinar,2,1,31.96666667,0,31.96666667,0,Female,Never Smoker\nP-0014525,P-0014525-T01-IM6,Acinar,1,1,30.33333333,0,30.33333333,0,Female,Never Smoker\nP-0014572,P-0014572-T01-IM6,Acinar,1,1,26.63333333,0,26.63333333,0,Female,Ever Smoker\nP-0014612,P-0014612-T01-IM6,Acinar,1,1,25.46666667,0,25.46666667,0,Male,Ever Smoker\nP-0014614,P-0014614-T01-IM6,Solid,3,0,4.4,1,30.1,0,Female,Ever Smoker\nP-0014688,P-0014688-T01-IM6,Acinar,1,0,25.03333333,0,25.03333333,0,Female,Never Smoker\nP-0014805,P-0014805-T01-IM6,Lepidic,1,0,35.8,0,35.8,0,Female,Ever Smoker\nP-0014817,P-0014817-T02-IM6,Acinar,1,0,28.7,0,28.7,0,Female,Ever Smoker\nP-0014875,P-0014875-T01-IM6,Acinar,2,1,32.16666667,0,32.16666667,0,Female,Never Smoker\nP-0014878,P-0014878-T01-IM6,Acinar,1,1,27.73333333,0,27.73333333,0,Male,Never Smoker\nP-0014906,P-0014906-T01-IM6,Acinar,1,0,25.43333333,0,25.43333333,0,Male,Ever Smoker\nP-0014990,P-0014990-T01-IM6,Solid,1,0,32.96666667,0,32.96666667,0,Female,Ever Smoker\nP-0014996,P-0014996-T01-IM6,Papillary,1,1,43.03333333,0,43.03333333,1,Male,Ever Smoker\nP-0015018,P-0015018-T01-IM6,Acinar,1,0,23.36666667,0,23.36666667,0,Female,Ever Smoker\nP-0015056,P-0015056-T01-IM6,Lepidic,1,0,25.93333333,0,25.93333333,0,Female,Ever Smoker\nP-0015073,P-0015073-T01-IM6,Acinar,2,0,25.7,0,25.7,0,Male,Ever Smoker\nP-0015112,P-0015112-T01-IM6,Acinar,1,0,25.33333333,0,25.33333333,0,Female,Ever Smoker\nP-0015256,P-0015256-T01-IM6,Acinar,2,0,26.53333333,0,26.53333333,0,Female,Ever Smoker\nP-0015332,P-0015332-T01-IM6,Papillary,3,1,49.06666667,1,80.93333333,0,Female,Ever Smoker\nP-0015352,P-0015352-T01-IM6,Acinar,1,0,26.93333333,0,26.93333333,0,Male,Ever Smoker\nP-0015358,P-0015358-T01-IM6,Micropapillary,1,0,7.5,1,8.433333333,0,Female,Ever Smoker\nP-0015360,P-0015360-T02-IM6,Acinar,2,0,1.733333333,1,33.63333333,0,Male,Ever Smoker\nP-0015368,P-0015368-T01-IM6,Acinar,1,0,11.16666667,1,40.8,0,Male,Ever Smoker\nP-0015388,P-0015388-T01-IM6,Acinar,2,0,12.9,1,17.73333333,1,Male,Ever Smoker\nP-0015431,P-0015431-T01-IM6,Acinar,1,0,29.36666667,0,29.36666667,0,Male,Ever Smoker\nP-0015454,P-0015454-T01-IM6,Solid,3,0,28.86666667,0,28.86666667,0,Male,Ever Smoker\nP-0015470,P-0015470-T01-IM6,Lepidic,1,1,24.5,0,24.5,0,Male,Never Smoker\nP-0015576,P-0015576-T02-IM6,Acinar,3,0,25.4,0,25.4,0,Male,Ever Smoker\nP-0015578,P-0015578-T01-IM6,Micropapillary,2,0,30.56666667,0,30.56666667,0,Male,Ever Smoker\nP-0015592,P-0015592-T01-IM6,Acinar,1,0,27.5,0,27.5,0,Male,Ever Smoker\nP-0015601,P-0015601-T01-IM6,Acinar,2,0,30.3,0,30.3,0,Male,Never Smoker\nP-0015677,P-0015677-T01-IM6,Acinar,1,0,27.96666667,0,27.96666667,0,Female,Ever Smoker\nP-0015815,P-0015815-T01-IM6,Papillary,1,0,9.6,1,42.26666667,0,Male,Ever Smoker\nP-0015862,P-0015862-T01-IM6,Solid,1,0,26.43333333,0,26.43333333,0,Male,Ever Smoker\nP-0015934,P-0015934-T01-IM6,Solid,1,0,32.26666667,0,32.26666667,0,Female,Ever Smoker\nP-0015973,P-0015973-T01-IM6,Acinar,1,0,28.63333333,0,28.63333333,0,Female,Ever Smoker\nP-0016021,P-0016021-T01-IM6,Acinar,1,1,25.4,0,25.4,0,Female,Ever Smoker\nP-0016026,P-0016026-T01-IM6,Papillary,1,0,31.8,0,31.8,0,Male,Ever Smoker\nP-0016036,P-0016036-T01-IM6,Acinar,3,0,10.0,0,10.0,1,Female,Ever Smoker\nP-0016043,P-0016043-T02-IM6,Solid,2,0,29.1,0,29.1,0,Male,Ever Smoker\nP-0016050,P-0016050-T01-IM6,Micropapillary,1,0,28.86666667,0,28.86666667,0,Female,Ever Smoker\nP-0016165,P-0016165-T01-IM6,Papillary,1,0,29.26666667,0,29.26666667,0,Male,Never Smoker\nP-0016172,P-0016172-T01-IM6,Acinar,1,0,27.43333333,0,27.43333333,0,Female,Ever Smoker\nP-0016173,P-0016173-T01-IM6,Micropapillary,1,0,24.23333333,0,24.23333333,0,Female,Ever Smoker\nP-0016204,P-0016204-T01-IM6,Lepidic,1,1,25.63333333,0,25.63333333,0,Female,Never Smoker\nP-0016250,P-0016250-T01-IM6,Acinar,1,0,26.73333333,0,26.73333333,0,Female,Ever Smoker\nP-0016309,P-0016309-T01-IM6,Acinar,1,1,25.4,0,25.4,0,Female,Ever Smoker\nP-0016368,P-0016368-T01-IM6,Lepidic,1,0,23.33333333,0,23.33333333,0,Female,Ever Smoker\nP-0016378,P-0016378-T01-IM6,Lepidic,1,1,25.16666667,0,25.16666667,0,Female,Never Smoker\nP-0016398,P-0016398-T01-IM6,Lepidic,1,0,28.66666667,0,28.66666667,0,Female,Ever Smoker\nP-0016464,P-0016464-T01-IM6,Micropapillary,2,0,28.73333333,0,28.73333333,0,Male,Ever Smoker\nP-0016471,P-0016471-T01-IM6,Papillary,1,0,25.06666667,0,25.06666667,0,Female,Ever Smoker\nP-0016504,P-0016504-T01-IM6,Acinar,1,0,29.53333333,0,29.53333333,0,Male,Ever Smoker\nP-0016527,P-0016527-T01-IM6,Acinar,1,0,23.4,0,23.4,0,Male,Ever Smoker\nP-0016539,P-0016539-T01-IM6,Acinar,1,0,23.1,0,23.1,0,Female,Ever Smoker\nP-0016544,P-0016544-T01-IM6,Acinar,1,0,22.86666667,0,22.86666667,0,Female,Ever Smoker\nP-0016613,P-0016613-T04-IM6,Solid,2,0,27.73333333,0,27.73333333,0,Female,Ever Smoker\nP-0016736,P-0016736-T01-IM6,Solid,1,0,20.66666667,0,20.66666667,0,Male,Never Smoker\nP-0016781,P-0016781-T01-IM6,Acinar,2,0,11.63333333,1,22.06666667,0,Female,Ever Smoker\nP-0016867,P-0016867-T01-IM6,Solid,1,0,27.8,0,27.8,0,Female,Ever Smoker\nP-0017038,P-0017038-T01-IM6,Lepidic,1,1,28.66666667,0,28.66666667,0,Male,Never Smoker\nP-0017049,P-0017049-T01-IM6,Acinar,1,0,25.63333333,0,25.63333333,0,Female,Ever Smoker\nP-0017231,P-0017231-T01-IM6,Acinar,1,1,25.93333333,0,25.93333333,0,Female,Ever Smoker\nP-0017321,P-0017321-T01-IM6,Lepidic,1,1,26.7,0,26.7,0,Female,Never Smoker\nP-0017322,P-0017322-T03-IM6,Acinar,1,0,11.63333333,1,12.86666667,0,Female,Ever Smoker\nP-0017324,P-0017324-T01-IM6,Acinar,1,0,27.5,0,27.5,0,Female,Ever Smoker\nP-0017328,P-0017328-T01-IM6,Acinar,1,1,26.13333333,0,26.13333333,0,Female,Ever Smoker\nP-0017369,P-0017369-T01-IM6,Lepidic,1,0,23.86666667,0,23.86666667,0,Female,Ever Smoker\nP-0017389,P-0017389-T01-IM6,Acinar,1,0,28.03333333,0,28.03333333,0,Female,Ever Smoker\nP-0017437,P-0017437-T01-IM6,Acinar,1,0,1.0,1,25.33333333,1,Female,Ever Smoker\nP-0017448,P-0017448-T01-IM6,Acinar,3,0,28.73333333,0,28.73333333,0,Female,Ever Smoker\nP-0017500,P-0017500-T01-IM6,Acinar,1,0,26.4,0,26.4,0,Female,Ever Smoker\nP-0017523,P-0017523-T02-IM6,Acinar,2,0,27.5,0,27.5,0,Male,Ever Smoker\nP-0017534,P-0017534-T01-IM5,Acinar,1,1,26.16666667,0,26.16666667,0,Female,Never Smoker\nP-0017546,P-0017546-T01-IM5,Acinar,1,0,26.0,0,26.0,0,Female,Ever Smoker\nP-0017594,P-0017594-T01-IM5,Acinar,2,1,27.36666667,0,27.36666667,0,Female,Never Smoker\nP-0017633,P-0017633-T01-IM5,Lepidic,1,0,27.76666667,0,27.76666667,0,Female,Never Smoker\nP-0017780,P-0017780-T01-IM6,Micropapillary,1,1,25.33333333,0,25.33333333,0,Female,Ever Smoker\nP-0017803,P-0017803-T01-IM6,Acinar,1,0,27.56666667,0,27.56666667,0,Male,Ever Smoker\nP-0017904,P-0017904-T01-IM6,Acinar,1,1,22.63333333,0,22.63333333,0,Female,Never Smoker\nP-0017915,P-0017915-T01-IM6,Acinar,1,0,27.43333333,0,27.43333333,0,Female,Ever Smoker\nP-0017973,P-0017973-T01-IM6,Acinar,1,0,26.33333333,0,26.33333333,0,Female,Ever Smoker\nP-0017976,P-0017976-T01-IM6,Micropapillary,3,0,16.6,1,22.1,0,Female,Never Smoker\nP-0017991,P-0017991-T01-IM6,Acinar,1,0,26.9,0,26.9,0,Male,Ever Smoker\nP-0018007,P-0018007-T01-IM6,Acinar,1,0,28.36666667,1,41.46666667,1,Male,Never Smoker\nP-0018043,P-0018043-T01-IM6,Acinar,3,0,11.93333333,1,20.4,1,Female,Ever Smoker\nP-0018047,P-0018047-T01-IM6,Acinar,1,0,24.26666667,0,24.26666667,0,Female,Ever Smoker\nP-0018069,P-0018069-T01-IM6,Solid,1,0,27.66666667,0,27.66666667,0,Male,Never Smoker\nP-0018171,P-0018171-T01-IM6,Acinar,1,0,26.53333333,0,26.53333333,0,Female,Ever Smoker\nP-0018196,P-0018196-T01-IM6,Acinar,1,1,26.03333333,1,26.03333333,0,Female,Ever Smoker\nP-0018201,P-0018201-T01-IM6,Lepidic,1,1,26.6,0,26.6,0,Female,Ever Smoker\nP-0018327,P-0018327-T01-IM6,Solid,2,0,21.43333333,0,21.43333333,0,Female,Ever Smoker\nP-0018460,P-0018460-T01-IM6,Lepidic,1,1,19.1,0,19.1,0,Female,Never Smoker\nP-0018476,P-0018476-T02-IM6,Acinar,1,0,16.03333333,0,16.03333333,1,Female,Never Smoker\nP-0018654,P-0018654-T02-IM6,Solid,2,0,17.6,1,87.26666667,0,Male,Ever Smoker\nP-0018692,P-0018692-T01-IM6,Acinar,1,0,0.4,0,0.4,1,Female,Ever Smoker\nP-0018761,P-0018761-T01-IM6,Acinar,1,0,15.4,0,15.4,0,Female,Ever Smoker\nP-0018881,P-0018881-T01-IM6,Acinar,3,0,6.466666667,1,23.06666667,1,Female,Never Smoker\nP-0018967,P-0018967-T01-IM6,Lepidic,2,0,16.63333333,0,16.63333333,0,Female,Ever Smoker\nP-0018969,P-0018969-T01-IM6,Lepidic,1,0,25.23333333,0,25.23333333,0,Female,Never Smoker\nP-0018972,P-0018972-T01-IM6,Lepidic,1,0,26.8,0,26.8,0,Female,Ever Smoker\nP-0019023,P-0019023-T03-IM6,Acinar,1,0,19.3,0,19.3,0,Male,Never Smoker\nP-0019111,P-0019111-T01-IM6,Solid,2,0,23.93333333,0,23.93333333,0,Female,Ever Smoker\nP-0019131,P-0019131-T01-IM6,Papillary,1,1,22.93333333,0,22.93333333,0,Female,Never Smoker\nP-0019329,P-0019329-T01-IM6,Acinar,1,1,19.7,0,19.7,0,Female,Ever Smoker\nP-0019418,P-0019418-T01-IM6,Acinar,1,0,22.56666667,0,22.56666667,0,Female,Ever Smoker\nP-0019426,P-0019426-T01-IM6,Micropapillary,1,0,12.86666667,0,12.86666667,0,Male,Ever Smoker\nP-0019436,P-0019436-T01-IM6,Acinar,1,0,3.533333333,0,3.533333333,0,Female,Ever Smoker\nP-0019444,P-0019444-T01-IM6,Solid,2,0,23.76666667,0,23.76666667,0,Male,Ever Smoker\nP-0019469,P-0019469-T01-IM6,Acinar,1,0,21.93333333,0,21.93333333,0,Female,Ever Smoker\nP-0019495,P-0019495-T01-IM6,Acinar,1,0,19.03333333,0,19.03333333,0,Female,Ever Smoker\nP-0019558,P-0019558-T01-IM6,Acinar,1,0,25.3,0,25.3,0,Male,Ever Smoker\nP-0019564,P-0019564-T01-IM6,Lepidic,1,0,23.76666667,0,23.76666667,0,Female,Ever Smoker\nP-0019597,P-0019597-T01-IM6,Acinar,2,0,22.2,0,22.2,0,Female,Never Smoker\nP-0019612,P-0019612-T02-IM6,Papillary,2,0,23.5,0,23.5,0,Male,Never Smoker\nP-0019676,P-0019676-T01-IM6,Acinar,1,1,20.56666667,0,20.56666667,0,Female,Ever Smoker\nP-0019802,P-0019802-T01-IM6,Acinar,1,1,19.5,0,19.5,0,Female,Never Smoker\nP-0019857,P-0019857-T01-IM6,Acinar,3,1,11.8,1,24.13333333,0,Female,Never Smoker\nP-0019897,P-0019897-T01-IM6,Lepidic,1,1,20.83333333,0,20.83333333,0,Female,Ever Smoker\nP-0019904,P-0019904-T01-IM6,Solid,1,0,6.633333333,1,11.23333333,0,Female,Ever Smoker\nP-0019936,P-0019936-T01-IM6,Lepidic,1,1,22.76666667,0,22.76666667,0,Female,Ever Smoker\nP-0019950,P-0019950-T01-IM6,Lepidic,3,0,18.4,1,27.76666667,0,Female,Ever Smoker\nP-0019982,P-0019982-T01-IM6,Lepidic,1,0,19.63333333,0,19.63333333,0,Female,Ever Smoker\nP-0020014,P-0020014-T01-IM6,Acinar,1,0,25.73333333,0,25.73333333,0,Male,Ever Smoker\nP-0020158,P-0020158-T01-IM6,Acinar,1,0,22.9,0,22.9,0,Female,Ever Smoker\nP-0020177,P-0020177-T01-IM6,Acinar,3,1,21.5,0,21.5,0,Female,Never Smoker\nP-0020437,P-0020437-T02-IM6,Acinar,1,0,23.23333333,0,23.23333333,0,Female,Ever Smoker\nP-0020438,P-0020438-T01-IM6,Papillary,1,0,30.6,1,58.26666667,1,Female,Ever Smoker\nP-0020503,P-0020503-T01-IM6,Acinar,1,0,13.03333333,1,26.1,0,Male,Ever Smoker\nP-0020521,P-0020521-T01-IM6,Acinar,1,0,24.7,0,24.7,0,Female,Ever Smoker\nP-0020570,P-0020570-T01-IM6,Acinar,1,0,13.1,0,13.1,0,Male,Ever Smoker\nP-0020717,P-0020717-T01-IM6,Acinar,1,0,19.9,0,19.9,0,Female,Ever Smoker\nP-0020776,P-0020776-T01-IM6,Papillary,1,0,23.76666667,0,23.76666667,0,Female,Ever Smoker\nP-0020779,P-0020779-T01-IM6,Acinar,1,0,23.6,0,23.6,0,Male,Ever Smoker\nP-0020780,P-0020780-T01-IM6,Acinar,1,0,22.73333333,0,22.73333333,0,Female,Never Smoker\nP-0020782,P-0020782-T01-IM6,Acinar,1,0,23.7,0,23.7,0,Female,Ever Smoker\nP-0020828,P-0020828-T01-IM6,Acinar,1,0,22.46666667,0,22.46666667,0,Female,Ever Smoker\nP-0020883,P-0020883-T01-IM6,Acinar,1,0,21.96666667,0,21.96666667,0,Male,Ever Smoker\nP-0020966,P-0020966-T01-IM6,Acinar,1,0,22.43333333,0,22.43333333,0,Female,Ever Smoker\nP-0021062,P-0021062-T01-IM6,Acinar,1,1,19.9,0,19.9,0,Male,Ever Smoker\nP-0021105,P-0021105-T01-IM6,Lepidic,1,1,17.2,0,17.2,0,Female,Ever Smoker\nP-0021191,P-0021191-T01-IM6,Acinar,1,0,23.3,0,23.3,0,Female,Ever Smoker\nP-0021227,P-0021227-T01-IM6,Acinar,1,0,23.0,0,23.0,0,Female,Ever Smoker\nP-0021236,P-0021236-T01-IM6,Lepidic,1,0,7.033333333,0,7.033333333,0,Female,Ever Smoker\nP-0021329,P-0021329-T01-IM6,Solid,2,0,23.26666667,0,23.26666667,0,Male,Ever Smoker\nP-0021422,P-0021422-T01-IM6,Acinar,1,1,24.33333333,0,24.33333333,0,Male,Ever Smoker\nP-0021429,P-0021429-T01-IM6,Acinar,1,1,15.66666667,0,15.66666667,0,Female,Never Smoker\nP-0021438,P-0021438-T01-IM6,Acinar,1,1,19.8,0,19.8,0,Female,Never Smoker\nP-0021539,P-0021539-T01-IM6,Acinar,1,0,22.33333333,0,22.33333333,0,Female,Ever Smoker\nP-0021628,P-0021628-T01-IM6,Acinar,1,0,22.23333333,0,22.23333333,0,Male,Ever Smoker\nP-0021691,P-0021691-T01-IM6,Lepidic,1,1,24.1,0,24.1,0,Female,Ever Smoker\nP-0021718,P-0021718-T01-IM6,Acinar,1,0,23.76666667,0,23.76666667,0,Female,Ever Smoker\nP-0021778,P-0021778-T01-IM6,Papillary,1,0,14.76666667,0,14.76666667,0,Male,Ever Smoker\nP-0021849,P-0021849-T01-IM6,Acinar,1,0,20.6,0,20.6,0,Male,Ever Smoker\nP-0021861,P-0021861-T01-IM6,Solid,1,0,22.1,0,22.1,0,Male,Ever Smoker\nP-0021987,P-0021987-T01-IM6,Micropapillary,2,0,20.0,0,20.0,0,Female,Ever Smoker\nP-0022186,P-0022186-T01-IM6,Acinar,2,0,17.96666667,0,17.96666667,0,Female,Ever Smoker\nP-0022247,P-0022247-T01-IM6,Acinar,1,0,19.36666667,0,19.36666667,0,Male,Ever Smoker\nP-0022251,P-0022251-T01-IM6,Solid,2,0,23.43333333,0,23.43333333,0,Female,Ever Smoker\nP-0022303,P-0022303-T01-IM6,Acinar,1,1,17.9,0,17.9,0,Female,Never Smoker\nP-0022353,P-0022353-T01-IM6,Acinar,1,1,4.4,0,4.4,0,Female,Never Smoker\nP-0022424,P-0022424-T01-IM6,Micropapillary,2,1,1.4,0,1.4,0,Female,Never Smoker\nP-0022427,P-0022427-T01-IM6,Micropapillary,1,0,89.36666667,1,111.0333333,0,Male,Never Smoker\nP-0022450,P-0022450-T01-IM6,Solid,1,0,8.166666667,1,24.53333333,0,Female,Ever Smoker\nP-0022453,P-0022453-T01-IM6,Acinar,1,1,19.63333333,0,19.63333333,0,Female,Ever Smoker\nP-0022505,P-0022505-T01-IM6,Acinar,1,0,18.96666667,0,18.96666667,0,Male,Ever Smoker\nP-0022527,P-0022527-T01-IM6,Acinar,1,0,23.63333333,0,23.63333333,0,Female,Never Smoker\nP-0022578,P-0022578-T02-IM6,Lepidic,1,0,83.13333333,0,83.13333333,0,Female,Never Smoker\nP-0022579,P-0022579-T01-IM6,Acinar,1,1,19.06666667,0,19.06666667,0,Female,Ever Smoker\nP-0022830,P-0022830-T01-IM6,Micropapillary,2,1,17.6,1,21.2,0,Female,Ever Smoker\nP-0022844,P-0022844-T02-IM6,Micropapillary,1,0,12.46666667,0,12.46666667,0,Male,Ever Smoker\nP-0022848,P-0022848-T01-IM6,Acinar,1,1,22.33333333,0,22.33333333,0,Female,Ever Smoker\nP-0022881,P-0022881-T01-IM6,Acinar,3,1,12.73333333,1,23.16666667,0,Male,Ever Smoker\nP-0023102,P-0023102-T01-IM6,Acinar,3,1,19.33333333,0,19.33333333,0,Female,Never Smoker\nP-0023153,P-0023153-T01-IM6,Micropapillary,2,0,5.566666667,0,5.566666667,0,Female,Ever Smoker\nP-0023161,P-0023161-T01-IM6,Solid,1,0,40.16666667,1,78.6,0,Female,Never Smoker\nP-0023206,P-0023206-T01-IM6,Papillary,3,1,12.13333333,0,12.13333333,0,Male,Never Smoker\nP-0023207,P-0023207-T01-IM6,Acinar,1,0,18.93333333,0,18.93333333,0,Male,Ever Smoker\nP-0023219,P-0023219-T01-IM6,Acinar,3,1,20.2,0,20.2,1,Male,Ever Smoker\nP-0023248,P-0023248-T01-IM6,Acinar,1,1,22.13333333,0,22.13333333,0,Male,Never Smoker\nP-0023319,P-0023319-T01-IM6,Acinar,1,0,23.3,0,23.3,0,Female,Ever Smoker\nP-0023366,P-0023366-T01-IM6,Solid,2,0,20.73333333,0,20.73333333,0,Male,Ever Smoker\nP-0023406,P-0023406-T02-IM6,Solid,2,0,19.06666667,0,19.06666667,0,Female,Ever Smoker\nP-0023471,P-0023471-T01-IM6,Acinar,1,0,21.63333333,0,21.63333333,0,Female,Ever Smoker\nP-0023481,P-0023481-T01-IM6,Acinar,2,0,21.16666667,0,21.16666667,0,Female,Ever Smoker\nP-0023552,P-0023552-T01-IM6,Acinar,1,0,22.66666667,0,22.66666667,0,Male,Ever Smoker\nP-0023574,P-0023574-T01-IM6,Solid,2,1,13.23333333,1,19.3,0,Female,Never Smoker\nP-0023602,P-0023602-T01-IM6,Micropapillary,3,0,21.86666667,0,21.86666667,0,Male,Ever Smoker\nP-0023704,P-0023704-T01-IM6,Papillary,1,1,19.03333333,0,19.03333333,0,Female,Never Smoker\nP-0023745,P-0023745-T01-IM6,Acinar,1,1,15.96666667,0,15.96666667,0,Female,Never Smoker\nP-0023780,P-0023780-T01-IM6,Acinar,2,0,20.63333333,0,20.63333333,0,Female,Ever Smoker\nP-0023859,P-0023859-T01-IM6,Acinar,3,0,19.5,0,19.5,0,Male,Ever Smoker\nP-0024035,P-0024035-T01-IM6,Acinar,1,0,14.86666667,0,14.86666667,0,Female,Ever Smoker\nP-0024045,P-0024045-T01-IM6,Acinar,1,1,19.4,0,19.4,0,Male,Never Smoker\nP-0024066,P-0024066-T01-IM6,Acinar,1,0,17.56666667,0,17.56666667,0,Male,Ever Smoker\nP-0024090,P-0024090-T01-IM6,Acinar,1,0,11.46666667,0,11.46666667,0,Male,Ever Smoker\nP-0024136,P-0024136-T01-IM6,Acinar,1,0,21.43333333,0,21.43333333,0,Female,Ever Smoker\nP-0024178,P-0024178-T01-IM6,Micropapillary,1,1,13.33333333,0,13.33333333,0,Female,Ever Smoker\nP-0024200,P-0024200-T01-IM6,Acinar,1,0,8.0,0,8.0,0,Female,Ever Smoker\nP-0024225,P-0024225-T01-IM6,Micropapillary,1,0,17.46666667,0,17.46666667,0,Female,Ever Smoker\nP-0024228,P-0024228-T01-IM6,Acinar,1,0,4.566666667,0,4.566666667,0,Female,Ever Smoker\nP-0024401,P-0024401-T01-IM6,Lepidic,1,0,24.46666667,0,24.46666667,0,Female,Never Smoker\nP-0024483,P-0024483-T01-IM6,Lepidic,1,0,19.9,0,19.9,0,Female,Ever Smoker\nP-0024567,P-0024567-T01-IM6,Papillary,3,0,7.033333333,1,7.033333333,0,Male,Ever Smoker\nP-0024571,P-0024571-T01-IM6,Acinar,1,0,19.33333333,0,19.33333333,0,Female,Ever Smoker\nP-0024737,P-0024737-T01-IM6,Acinar,2,0,1.533333333,0,1.533333333,0,Female,Ever Smoker\nP-0024758,P-0024758-T01-IM6,Solid,3,0,19.63333333,1,20.06666667,0,Male,Ever Smoker\nP-0024834,P-0024834-T01-IM6,Acinar,1,0,15.06666667,0,15.06666667,0,Female,Ever Smoker\nP-0024843,P-0024843-T01-IM6,Micropapillary,3,0,21.46666667,0,21.46666667,0,Female,Never Smoker\nP-0024949,P-0024949-T01-IM6,Acinar,1,0,20.5,1,20.8,0,Female,Ever Smoker\nP-0025107,P-0025107-T01-IM6,Papillary,1,0,18.9,0,18.9,0,Female,Never Smoker\nP-0025330,P-0025330-T06-IM6,Micropapillary,1,0,43.83333333,1,52.83333333,0,Female,Ever Smoker\nP-0025354,P-0025354-T01-IM6,Acinar,3,0,17.7,0,17.7,0,Female,Ever Smoker\nP-0025409,P-0025409-T01-IM6,Acinar,1,0,16.6,0,16.6,0,Female,Ever Smoker\nP-0025411,P-0025411-T01-IM6,Solid,1,0,19.9,0,19.9,0,Female,Ever Smoker\nP-0025451,P-0025451-T01-IM6,Acinar,1,1,14.4,0,14.4,0,Female,Ever Smoker\nP-0025546,P-0025546-T01-IM6,Acinar,1,0,17.06666667,0,17.06666667,0,Female,Ever Smoker\nP-0025566,P-0025566-T01-IM6,Lepidic,2,1,21.26666667,0,21.26666667,0,Female,Ever Smoker\nP-0025569,P-0025569-T01-IM6,Solid,1,0,18.73333333,1,20.1,0,Female,Ever Smoker\nP-0025575,P-0025575-T01-IM6,Lepidic,1,1,18.93333333,0,18.93333333,0,Female,Ever Smoker\nP-0025652,P-0025652-T01-IM6,Acinar,1,1,14.26666667,0,14.26666667,0,Female,Never Smoker\nP-0025722,P-0025722-T01-IM6,Acinar,1,0,19.2,0,19.2,0,Female,Ever Smoker\nP-0025833,P-0025833-T01-IM6,Papillary,1,1,17.93333333,0,17.93333333,0,Female,Never Smoker\nP-0025852,P-0025852-T01-IM6,Acinar,1,0,17.93333333,0,17.93333333,0,Female,Never Smoker\nP-0025872,P-0025872-T01-IM6,Lepidic,1,0,19.5,0,19.5,0,Male,Ever Smoker\nP-0025918,P-0025918-T01-IM6,Acinar,1,1,5.233333333,0,5.233333333,0,Male,Ever Smoker\nP-0025931,P-0025931-T01-IM6,Acinar,1,0,9.2,0,9.2,0,Female,Ever Smoker\nP-0025936,P-0025936-T01-IM6,Acinar,3,0,16.96666667,0,16.96666667,0,Female,Ever Smoker\nP-0025956,P-0025956-T01-IM6,Acinar,3,0,8.933333333,1,14.46666667,1,Female,Ever Smoker\nP-0026029,P-0026029-T01-IM6,Acinar,2,0,17.5,0,17.5,0,Male,Ever Smoker\nP-0026045,P-0026045-T01-IM6,Acinar,2,1,15.6,0,15.6,0,Male,Never Smoker\nP-0026120,P-0026120-T01-IM6,Acinar,2,0,16.43333333,0,16.43333333,0,Female,Ever Smoker\nP-0026187,P-0026187-T01-IM6,Solid,3,0,19.63333333,0,19.63333333,0,Female,Ever Smoker\nP-0026206,P-0026206-T01-IM6,Acinar,1,0,13.1,0,13.1,0,Female,Ever Smoker\nP-0026262,P-0026262-T02-IM6,Acinar,1,0,26.46666667,0,26.46666667,0,Female,Ever Smoker\nP-0026292,P-0026292-T01-IM6,Acinar,1,1,18.03333333,0,18.03333333,0,Female,Never Smoker\nP-0026426,P-0026426-T01-IM6,Acinar,1,0,15.13333333,0,15.13333333,0,Female,Ever Smoker\nP-0026688,P-0026688-T01-IM6,Papillary,1,0,4.466666667,1,18.2,0,Female,Ever Smoker\nP-0026697,P-0026697-T01-IM6,Acinar,2,0,10.26666667,0,10.26666667,0,Female,Ever Smoker\nP-0026708,P-0026708-T01-IM6,Papillary,1,0,14.96666667,0,14.96666667,0,Male,Ever Smoker\nP-0026777,P-0026777-T02-IM6,Acinar,1,0,13.86666667,0,13.86666667,0,Male,Never Smoker\nP-0026778,P-0026778-T01-IM6,Lepidic,1,1,13.8,0,13.8,0,Female,Ever Smoker\nP-0026786,P-0026786-T01-IM6,Acinar,1,1,0.5,0,0.5,0,Female,Ever Smoker\nP-0026830,P-0026830-T03-IM6,Acinar,1,0,14.43333333,0,14.43333333,0,Female,Ever Smoker\nP-0026968,P-0026968-T01-IM6,Acinar,1,0,14.66666667,0,14.66666667,0,Male,Ever Smoker\nP-0026987,P-0026987-T01-IM6,Micropapillary,1,0,12.16666667,0,12.16666667,0,Male,Ever Smoker\nP-0027018,P-0027018-T01-IM6,Papillary,1,0,13.3,0,13.3,0,Male,Ever Smoker\nP-0027071,P-0027071-T01-IM6,Acinar,1,1,13.06666667,0,13.06666667,0,Female,Ever Smoker\nP-0027093,P-0027093-T01-IM6,Lepidic,1,0,15.23333333,0,15.23333333,0,Female,Ever Smoker\nP-0027131,P-0027131-T01-IM6,Lepidic,1,1,13.26666667,0,13.26666667,0,Female,Never Smoker\nP-0027187,P-0027187-T01-IM6,Acinar,1,0,3.633333333,0,3.633333333,0,Female,Ever Smoker\nP-0027196,P-0027196-T01-IM6,Micropapillary,1,0,5.3,1,5.3,0,Male,Ever Smoker\nP-0027353,P-0027353-T01-IM6,Acinar,1,1,12.13333333,0,12.13333333,0,Female,Ever Smoker\nP-0027523,P-0027523-T01-IM6,Acinar,1,0,13.33333333,0,13.33333333,0,Male,Never Smoker\nP-0027531,P-0027531-T01-IM6,Acinar,1,1,6.666666667,1,14.5,0,Female,Never Smoker\nP-0027615,P-0027615-T02-IM6,Acinar,1,1,13.1,0,13.1,0,Male,Ever Smoker\nP-0027709,P-0027709-T01-IM6,Acinar,1,0,7.5,0,7.5,0,Male,Ever Smoker\nP-0027812,P-0027812-T01-IM6,Acinar,2,0,8.766666667,1,19.56666667,0,Male,Ever Smoker\nP-0027817,P-0027817-T01-IM6,Papillary,1,0,28.7,1,36.26666667,0,Female,Ever Smoker\nP-0027826,P-0027826-T01-IM6,Acinar,2,0,15.13333333,0,15.13333333,0,Male,Ever Smoker\nP-0027848,P-0027848-T01-IM6,Micropapillary,1,0,8.166666667,0,8.166666667,0,Male,Ever Smoker\nP-0027860,P-0027860-T01-IM6,Acinar,1,0,12.86666667,0,12.86666667,0,Female,Ever Smoker\nP-0028012,P-0028012-T01-IM6,Acinar,3,0,14.86666667,0,14.86666667,0,Female,Never Smoker\nP-0028092,P-0028092-T01-IM6,Solid,3,1,12.86666667,0,12.86666667,0,Male,Ever Smoker\nP-0028096,P-0028096-T01-IM6,Solid,1,0,13.23333333,0,13.23333333,0,Male,Ever Smoker\nP-0028111,P-0028111-T01-IM6,Micropapillary,1,0,12.96666667,0,12.96666667,0,Female,Ever Smoker\nP-0028162,P-0028162-T01-IM6,Acinar,1,1,15.03333333,0,15.03333333,0,Male,Ever Smoker\nP-0028245,P-0028245-T01-IM6,Acinar,2,0,16.1,1,16.6,0,Male,Ever Smoker\nP-0028377,P-0028377-T01-IM6,Acinar,2,1,14.56666667,0,14.56666667,0,Female,Never Smoker\nP-0028486,P-0028486-T01-IM6,Acinar,1,1,34.93333333,0,34.93333333,0,Male,Never Smoker\nP-0028627,P-0028627-T01-IM6,Acinar,1,0,16.36666667,0,16.36666667,0,Female,Ever Smoker\nP-0028694,P-0028694-T01-IM6,Acinar,1,0,13.0,0,13.0,0,Female,Ever Smoker\nP-0028746,P-0028746-T01-IM6,Lepidic,1,1,22.33333333,0,22.33333333,0,Female,Never Smoker\nP-0028809,P-0028809-T04-IM6,Acinar,3,0,6.6,0,6.6,0,Female,Ever Smoker\nP-0028841,P-0028841-T01-IM6,Acinar,1,0,0.3,0,0.3,0,Female,Ever Smoker\nP-0028906,P-0028906-T01-IM6,Acinar,1,0,15.3,0,15.3,0,Male,Ever Smoker\nP-0028916,P-0028916-T02-IM6,Solid,1,0,19.36666667,0,19.36666667,0,Female,Ever Smoker\nP-0028936,P-0028936-T01-IM6,Acinar,1,1,11.93333333,0,11.93333333,0,Female,Never Smoker\nP-0028947,P-0028947-T01-IM6,Acinar,2,0,11.83333333,1,15.1,0,Female,Never Smoker\nP-0029016,P-0029016-T01-IM6,Lepidic,1,1,50.96666667,0,50.96666667,0,Female,Ever Smoker\nP-0029115,P-0029115-T01-IM6,Acinar,1,0,15.13333333,0,15.13333333,0,Female,Never Smoker\nP-0029180,P-0029180-T02-IM6,Lepidic,1,0,9.2,0,9.2,0,Female,Ever Smoker\nP-0029224,P-0029224-T02-IM6,Acinar,1,0,5.5,1,7.766666667,1,Male,Ever Smoker\nP-0029294,P-0029294-T01-IM6,Acinar,1,0,12.53333333,0,12.53333333,0,Male,Ever Smoker\nP-0029324,P-0029324-T01-IM6,Acinar,1,1,0.733333333,0,0.733333333,0,Female,Ever Smoker\nP-0029357,P-0029357-T02-IM6,Acinar,2,0,9.866666667,0,9.866666667,0,Male,Ever Smoker\nP-0029396,P-0029396-T01-IM6,Papillary,2,0,13.63333333,0,13.63333333,0,Male,Ever Smoker\nP-0029402,P-0029402-T01-IM6,Acinar,1,1,3.866666667,0,3.866666667,0,Female,Never Smoker\nP-0029451,P-0029451-T01-IM6,Lepidic,1,1,12.86666667,0,12.86666667,0,Female,Ever Smoker\nP-0029545,P-0029545-T01-IM6,Papillary,2,0,12.4,0,12.4,0,Male,Ever Smoker\nP-0029561,P-0029561-T01-IM6,Acinar,1,1,12.86666667,0,12.86666667,0,Female,Never Smoker\nP-0029583,P-0029583-T01-IM6,Acinar,2,1,12.43333333,0,12.43333333,0,Male,Ever Smoker\nP-0029585,P-0029585-T01-IM6,Acinar,1,0,12.76666667,0,12.76666667,0,Male,Ever Smoker\nP-0029624,P-0029624-T01-IM6,Acinar,2,0,6.966666667,0,6.966666667,0,Female,Ever Smoker\nP-0029663,P-0029663-T01-IM6,Acinar,1,0,3.7,0,3.7,0,Female,Ever Smoker\nP-0029977,P-0029977-T01-IM6,Acinar,2,0,1.233333333,0,1.233333333,0,Male,Ever Smoker\nP-0030094,P-0030094-T03-IM6,Acinar,1,1,4.8,0,4.8,0,Female,Ever Smoker\nP-0030104,P-0030104-T01-IM6,Acinar,1,1,12.03333333,0,12.03333333,0,Female,Ever Smoker\nP-0030317,P-0030317-T01-IM6,Acinar,1,0,12.53333333,0,12.53333333,0,Female,Ever Smoker\nP-0030453,P-0030453-T01-IM6,Acinar,3,0,12.23333333,0,12.23333333,0,Male,Ever Smoker\nP-0030626,P-0030626-T01-IM6,Micropapillary,1,0,6.166666667,0,6.166666667,0,Female,Ever Smoker\nP-0030694,P-0030694-T01-IM6,Micropapillary,3,1,2.433333333,0,2.433333333,1,Female,Ever Smoker\nP-0030710,P-0030710-T01-IM6,Acinar,1,1,11.23333333,0,11.23333333,0,Female,Ever Smoker\nP-0030869,P-0030869-T01-IM6,Acinar,1,0,12.9,0,12.9,0,Female,Ever Smoker\nP-0030893,P-0030893-T01-IM6,Micropapillary,1,0,15.2,0,15.2,0,Female,Ever Smoker\nP-0030990,P-0030990-T03-IM6,Acinar,3,0,8.766666667,0,8.766666667,0,Female,Never Smoker\nP-0031010,P-0031010-T01-IM6,Acinar,1,1,13.2,0,13.2,0,Male,Never Smoker\nP-0031031,P-0031031-T01-IM6,Acinar,1,1,12.86666667,0,12.86666667,0,Female,Ever Smoker\nP-0031046,P-0031046-T01-IM6,Lepidic,1,1,13.13333333,0,13.13333333,0,Female,Never Smoker\nP-0031081,P-0031081-T01-IM6,Acinar,1,1,12.63333333,0,12.63333333,0,Male,Ever Smoker\nP-0031090,P-0031090-T01-IM6,Acinar,1,0,9.7,0,9.7,0,Female,Ever Smoker\nP-0031096,P-0031096-T01-IM6,Acinar,2,0,11.13333333,0,11.13333333,0,Female,Ever Smoker\nP-0031139,P-0031139-T01-IM6,Acinar,2,0,10.6,1,13.1,0,Female,Ever Smoker\nP-0031267,P-0031267-T01-IM6,Lepidic,1,1,35.66666667,1,49.43333333,0,Female,Ever Smoker\nP-0031283,P-0031283-T01-IM6,Acinar,1,0,0.666666667,0,0.666666667,0,Female,Ever Smoker\nP-0031442,P-0031442-T01-IM6,Solid,1,1,6.666666667,0,6.666666667,0,Male,Ever Smoker\nP-0031526,P-0031526-T01-IM6,Acinar,1,0,11.1,0,11.1,0,Male,Never Smoker\nP-0031694,P-0031694-T01-IM6,Acinar,3,1,12.5,1,12.5,0,Female,Never Smoker\nP-0031707,P-0031707-T01-IM6,Acinar,1,1,6.6,0,6.6,0,Male,Ever Smoker\nP-0031737,P-0031737-T01-IM6,Acinar,2,0,1.2,1,11.83333333,0,Male,Ever Smoker\nP-0031740,P-0031740-T01-IM6,Acinar,1,1,9.766666667,0,9.766666667,0,Female,Never Smoker\nP-0032008,P-0032008-T01-IM6,Solid,2,0,12.2,0,12.2,0,Female,Ever Smoker\nP-0032029,P-0032029-T01-IM6,Acinar,1,0,11.36666667,0,11.36666667,0,Male,Ever Smoker\nP-0032112,P-0032112-T01-IM6,Acinar,1,0,6.666666667,0,6.666666667,0,Male,Ever Smoker\nP-0032170,P-0032170-T01-IM6,Acinar,3,0,10.1,1,11.93333333,0,Male,Never Smoker\nP-0032177,P-0032177-T01-IM6,Acinar,2,0,9.633333333,0,9.633333333,0,Male,Never Smoker\nP-0032231,P-0032231-T01-IM6,Papillary,1,1,6.633333333,0,6.633333333,0,Male,Ever Smoker\nP-0032444,P-0032444-T01-IM6,Acinar,1,0,6.466666667,0,6.466666667,0,Female,Ever Smoker\nP-0032476,P-0032476-T01-IM6,Acinar,1,0,7.1,0,7.1,0,Female,Ever Smoker\nP-0032479,P-0032479-T01-IM6,Acinar,1,0,6.133333333,0,6.133333333,0,Female,Ever Smoker\nP-0032532,P-0032532-T01-IM6,Acinar,1,0,6.733333333,0,6.733333333,0,Female,Ever Smoker\nP-0032534,P-0032534-T01-IM6,Solid,1,0,6.433333333,0,6.433333333,0,Female,Ever Smoker\nP-0032635,P-0032635-T01-IM6,Solid,1,1,6.5,0,6.5,0,Male,Never Smoker\nP-0032644,P-0032644-T01-IM6,Acinar,1,1,5.733333333,0,5.733333333,0,Female,Never Smoker\nP-0032645,P-0032645-T01-IM6,Lepidic,1,1,6.966666667,0,6.966666667,0,Male,Ever Smoker\nP-0032676,P-0032676-T01-IM6,Acinar,1,0,6.7,0,6.7,0,Male,Never Smoker\nP-0032682,P-0032682-T01-IM6,Acinar,1,1,10.63333333,0,10.63333333,0,Female,Never Smoker\nP-0032689,P-0032689-T01-IM6,Acinar,1,0,10.0,0,10.0,0,Female,Ever Smoker\nP-0032862,P-0032862-T01-IM6,Acinar,1,0,5.866666667,0,5.866666667,0,Female,Ever Smoker\nP-0033068,P-0033068-T01-IM6,Solid,1,0,7.133333333,0,7.133333333,0,Female,Ever Smoker\nP-0033072,P-0033072-T01-IM6,Acinar,2,0,0.9,0,0.9,0,Female,Ever Smoker\nP-0033325,P-0033325-T01-IM6,Papillary,1,0,6.733333333,0,6.733333333,0,Male,Ever Smoker\nP-0033379,P-0033379-T01-IM6,Acinar,3,0,6.866666667,1,10.26666667,0,Male,Never Smoker\nP-0033380,P-0033380-T01-IM6,Acinar,1,0,4.366666667,0,4.366666667,0,Female,Ever Smoker\nP-0033406,P-0033406-T01-IM6,Acinar,2,0,10.33333333,0,10.33333333,0,Female,Ever Smoker\nP-0033508,P-0033508-T01-IM6,Acinar,2,1,7.3,0,7.3,0,Female,Never Smoker\nP-0033579,P-0033579-T01-IM6,Lepidic,1,1,6.6,0,6.6,0,Female,Never Smoker\nP-0033581,P-0033581-T01-IM6,Acinar,1,0,6.8,0,6.8,0,Female,Ever Smoker\nP-0033615,P-0033615-T01-IM6,Acinar,1,0,6.1,0,6.1,0,Male,Ever Smoker\nP-0033631,P-0033631-T01-IM6,Acinar,1,0,6.7,0,6.7,0,Female,Ever Smoker\nP-0033749,P-0033749-T01-IM6,Papillary,2,1,5.1,0,5.1,0,Male,Never Smoker\nP-0033766,P-0033766-T01-IM6,Solid,1,0,9.133333333,0,9.133333333,0,Female,Ever Smoker\nP-0033823,P-0033823-T01-IM6,Acinar,1,0,10.36666667,0,10.36666667,0,Female,Ever Smoker\nP-0033841,P-0033841-T01-IM6,Acinar,1,0,4.566666667,0,4.566666667,0,Female,Ever Smoker\nP-0033926,P-0033926-T01-IM6,Acinar,1,0,4.466666667,0,4.466666667,0,Female,Ever Smoker\nP-0034215,P-0034215-T01-IM6,Acinar,1,0,7.2,0,7.2,0,Male,Ever Smoker\nP-0034604,P-0034604-T01-IM6,Lepidic,1,1,6.566666667,0,6.566666667,0,Female,Never Smoker\nP-0034643,P-0034643-T01-IM6,Papillary,1,1,8.233333333,0,8.233333333,0,Male,Never Smoker\nP-0034948,P-0034948-T01-IM6,Acinar,1,0,6.7,0,6.7,0,Female,Ever Smoker\nP-0035026,P-0035026-T01-IM6,Acinar,1,1,6.366666667,0,6.366666667,0,Female,Ever Smoker\nP-0035135,P-0035135-T01-IM6,Acinar,1,1,6.566666667,0,6.566666667,0,Female,Never Smoker\nP-0035139,P-0035139-T01-IM6,Acinar,1,0,2.3,0,2.3,0,Female,Ever Smoker\nP-0035140,P-0035140-T01-IM6,Acinar,1,0,7.5,0,7.5,0,Male,Ever Smoker\nP-0035240,P-0035240-T01-IM6,Acinar,1,0,6.6,0,6.6,0,Male,Ever Smoker\nP-0035244,P-0035244-T01-IM6,Acinar,1,1,4.1,0,4.1,0,Female,Ever Smoker\nP-0035278,P-0035278-T01-IM6,Acinar,1,0,6.566666667,0,6.566666667,0,Female,Ever Smoker\nP-0035280,P-0035280-T01-IM6,Acinar,1,0,3.433333333,0,3.433333333,0,Male,Never Smoker\nP-0035293,P-0035293-T01-IM6,Acinar,1,0,6.566666667,0,6.566666667,0,Female,Ever Smoker\nP-0035431,P-0035431-T01-IM6,Solid,3,1,4.733333333,0,4.733333333,1,Female,Ever Smoker\nP-0035469,P-0035469-T01-IM6,Solid,1,0,5.5,0,5.5,0,Male,Ever Smoker\nP-0035488,P-0035488-T01-IM6,Papillary,1,1,6.566666667,0,6.566666667,0,Female,Never Smoker\nP-0035494,P-0035494-T01-IM6,Acinar,1,0,6.7,0,6.7,0,Female,Ever Smoker\nP-0035731,P-0035731-T01-IM6,Acinar,2,0,3.4,0,3.4,0,Female,Ever Smoker\nP-0035869,P-0035869-T01-IM6,Lepidic,1,1,6.7,0,6.7,0,Female,Ever Smoker\nP-0035922,P-0035922-T01-IM6,Lepidic,1,1,6.8,0,6.8,0,Female,Ever Smoker\nP-0036032,P-0036032-T01-IM6,Acinar,1,1,7.066666667,0,7.066666667,0,Female,Never Smoker\nP-0036225,P-0036225-T01-IM6,Solid,2,0,4.966666667,0,4.966666667,0,Female,Ever Smoker\nP-0036267,P-0036267-T01-IM6,Acinar,2,1,7.766666667,0,7.766666667,0,Male,Never Smoker\nP-0036310,P-0036310-T01-IM6,Acinar,2,0,7.3,0,7.3,0,Female,Ever Smoker\nP-0036387,P-0036387-T01-IM6,Acinar,1,0,5.9,0,5.9,0,Male,Never Smoker\nP-0036513,P-0036513-T01-IM6,Acinar,1,1,4.3,0,4.3,0,Female,Ever Smoker\nP-0036637,P-0036637-T01-IM6,Acinar,1,0,7.066666667,0,7.066666667,0,Female,Never Smoker\nP-0036639,P-0036639-T01-IM6,Acinar,1,0,7.033333333,0,7.033333333,0,Female,Ever Smoker\nP-0036744,P-0036744-T01-IM6,Lepidic,1,0,6.333333333,0,6.333333333,0,Male,Ever Smoker\nP-0036810,P-0036810-T02-IM6,Acinar,1,0,3.566666667,0,3.566666667,0,Male,Ever Smoker\nP-0036891,P-0036891-T01-IM6,Acinar,1,1,5.266666667,0,5.266666667,0,Female,Ever Smoker\nP-0037833,P-0037833-T01-IM6,Acinar,1,0,4.4,0,4.4,0,Female,Ever Smoker\nP-0038206,P-0038206-T01-IM6,Solid,1,1,0.533333333,0,0.533333333,0,Male,Never Smoker\nP-0038834,P-0038834-T01-IM6,Acinar,2,1,6.3,0,6.3,0,Female,Ever Smoker\n";
+
+    function downloadMskccCsv() {
+      const blob = new Blob([EMBEDDED_MSKCC_CSV], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mskcc_2020_real_cohort_celebrano.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function copyBibtexCitation() {
+      const bibtex = `@article{Celebrano2026SpatialContinuum,
+  author = {Celebrano, Luca},
+  title = {Conditions for Pharmacological Sanctuaries in Perivascular Tumour Cords: A Reaction-Diffusion Analysis, a Regrowth-Kinetics Identity, and a Descriptive Survival Analysis of Histologic Subtype in Resected Lung Adenocarcinoma},
+  journal = {Research Square},
+  year = {2026},
+  doi = {10.21203/rs.3.rs-11530312/v1},
+  publisher = {Springer Science and Business Media LLC}
+}`;
+      navigator.clipboard.writeText(bibtex).then(() => {
+        alert('BibTeX citation copied to clipboard!');
+      });
+    }
+
+    // Resize handler re-renders active module
+    window.addEventListener('resize', () => {
+      if (currentModuleId === '1') recalculate();
+      else if (currentModuleId === '2') runReplicatorSimulation();
+      else if (currentModuleId === '3') {
+        drawKaplanMeierCanvas();
+        drawHazardSurgeCanvas();
+      }
+    });
+
   </script>
 </body>
 </html>
