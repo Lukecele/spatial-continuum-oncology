@@ -1,6 +1,7 @@
 # The Spatial-Genomic Oncology Continuum
 
 [![DOI](https://zenodo.org/badge/1437679243.svg)](https://doi.org/10.5281/zenodo.23748046)
+[![Research Square DOI](https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg)](https://doi.org/10.21203/rs.3.rs-11530312/v1)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
@@ -122,16 +123,21 @@ python3 software_strumenti_calcolo/generate_scientific_figures.py
 
 ---
 
-## 📖 Citation
+## 📖 Citation & Scholarly Records
 
-If you use this model, software tools, or the CRI score in your research, please cite:
+* **Research Square Preprint (Springer Nature):** [https://doi.org/10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)
+* **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
+
+If you use this biophysical model, the computational suite, or the CRI clinical decision engine, please cite:
 
 ```bibtex
 @article{celebrano2026spatialcontinuum,
-  title={The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol},
+  title={Conditions for Pharmacological Sanctuaries in Perivascular Tumour Cords: A Reaction–Diffusion Analysis, a Regrowth-Kinetics Identity, and a Descriptive Survival Analysis of Histologic Subtype in Resected Lung Adenocarcinoma},
   author={Celebrano, Luca},
-  journal={medRxiv / Nature Communications (Submitted)},
+  journal={Research Square (Springer Nature)},
   year={2026},
+  doi={10.21203/rs.3.rs-11530312/v1},
+  url={https://doi.org/10.21203/rs.3.rs-11530312/v1},
   institution={Department of Clinical Medicine and Surgery, School of Medicine, Universit{\`a} degli Studi di Napoli Federico II},
   note={Independent Medical Student Research Program in Mathematical Oncology}
 }
