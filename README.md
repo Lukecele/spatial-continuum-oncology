@@ -7,7 +7,6 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
-[![Preprint: medRxiv](https://img.shields.io/badge/medRxiv-Under%20Screening%20(MEDRXIV%2F2026%2F366778)-00599c.svg)](https://submit.medrxiv.org)
 [![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/Lucace/spatial-oncology-simulator)
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
