@@ -237,16 +237,54 @@
       gap: 0.4rem;
     }
 
-    /* Simulation Canvas */
-    .canvas-container {
-      position: relative;
-      width: 100%;
-      height: 320px;
+    /* Dual Synchronized Canvas Grid */
+    .dual-canvas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 960px) {
+      .dual-canvas-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .canvas-card {
       background: #0f172a;
       border: 1px solid #334155;
       border-radius: 0.75rem;
       overflow: hidden;
-      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+    .canvas-card-header {
+      padding: 0.55rem 0.85rem;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .canvas-card-body {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      background: #0f172a;
+    }
+    .canvas-card-footer {
+      padding: 0.45rem 0.75rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid #1e293b;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.35rem;
     }
     canvas {
       width: 100%;
@@ -415,9 +453,28 @@
       .action-header, #trial-arm, #action-body {
         color: #0f172a !important;
       }
-      .canvas-container {
-        background: #ffffff !important;
+      .dual-canvas-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.5rem !important;
+      }
+      .canvas-card {
         border: 1px solid #cbd5e1 !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+      }
+      .canvas-card-header {
+        background: #f1f5f9 !important;
+        color: #0f172a !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+      }
+      .canvas-card-body {
+        background: #ffffff !important;
+        height: 230px !important;
+      }
+      .canvas-card-footer {
+        background: #f8fafc !important;
+        color: #475569 !important;
+        border-top: 1px solid #cbd5e1 !important;
       }
       .print-report-header {
         display: block !important;
@@ -478,23 +535,20 @@
       </div>
 
       <div class="badge-bar">
-        <a href="https://github.com/Lukecele/spatial-continuum-oncology" target="_blank" class="badge" style="background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fbbf24; font-weight: 700; text-decoration: none;">
-          <span>⭐ Star on GitHub</span>
+        <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1" target="_blank" class="badge badge-teal" title="Official Research Square Preprint DOI">
+          <span>📄 Preprint DOI: 10.21203/rs.3.rs-11530312/v1</span>
         </a>
-        <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1" target="_blank" class="badge badge-teal">
-          <span>DOI: 10.21203/rs.3.rs-11530312/v1</span>
+        <a href="https://www.researchsquare.com/article/rs-11530312/v1" target="_blank" class="badge badge-cyan" title="Open Official Preprint on Research Square (In Review with Springer Nature / Nature Portfolio)">
+          <span>🔬 Springer Nature · Research Square</span>
         </a>
-        <a href="https://api.crossref.org/works/10.21203/rs.3.rs-11530312/v1" target="_blank" class="badge badge-cyan">
-          <span>Springer Nature Indexed</span>
+        <a href="https://doi.org/10.5281/zenodo.23748047" target="_blank" class="badge badge-purple" title="Zenodo Open Science Archive">
+          <span>📦 Zenodo: 23748047</span>
         </a>
-        <a href="https://doi.org/10.5281/zenodo.23748047" target="_blank" class="badge badge-purple">
-          <span>Zenodo: 23748047</span>
-        </a>
-        <span class="badge badge-amber">
-          <span>Pure Zero-Dependencies</span>
+        <span class="badge badge-amber" title="Pure Vanilla JS & Standard Web APIs">
+          <span>⚡ Pure Zero-Dependencies</span>
         </span>
         <span class="badge badge-cyan">
-          <span>Target: Nature Comms</span>
+          <span>🎯 Target: Nature Communications</span>
         </span>
       </div>
     </div>
@@ -672,29 +726,40 @@
           </div>
         </div>
 
-        <!-- BESSEL K0 CONCENTRATION GRADIENT & 2D CORD CROSS-SECTION -->
-        <div class="canvas-tabs no-print">
-          <button id="tab-1d" class="tab-btn active" onclick="switchCanvasTab('1d')">📈 1D Radial Concentration Decay C(r)</button>
-          <button id="tab-2d" class="tab-btn" onclick="switchCanvasTab('2d')">🎯 2D Perivascular Cord Cross-Section</button>
-        </div>
+        <!-- DUAL SYNCHRONIZED VISUALIZATION GRID (1D BESSEL & 2D ANATOMICAL CORD) -->
+        <div class="dual-canvas-grid">
+          <!-- CARD 1: 1D BESSEL GRADIENT -->
+          <div class="canvas-card">
+            <div class="canvas-card-header">
+              <span>📈 1D Biophysical Diffusion</span>
+              <span style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 500;">Bessel K₀ Decay C(r)</span>
+            </div>
+            <div class="canvas-card-body">
+              <canvas id="bessel-canvas"></canvas>
+            </div>
+            <div class="canvas-card-footer">
+              <span>Capillary: r<sub>v</sub>=10μm</span>
+              <span style="color: #fbbf24; font-weight: 600;">Sanctuary (Δr)</span>
+              <span>Anoxia: r<sub>ox</sub>=200μm</span>
+            </div>
+          </div>
 
-        <div class="canvas-container" id="container-1d">
-          <canvas id="bessel-canvas"></canvas>
-        </div>
-        <div class="canvas-container" id="container-2d" style="display: none;">
-          <canvas id="cord-canvas"></canvas>
-        </div>
-
-        <div id="canvas-legend-1d" style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: -0.5rem; margin-bottom: 1.25rem;">
-          <div>Capillary Wall: r<sub>cap</sub> = 10 μm</div>
-          <div style="color: #fbbf24;">Sanctuary Shell (Δr = r<sub>ox</sub> − r<sub>crit</sub>)</div>
-          <div>Hypoxia Limit: r<sub>ox</sub> = 200 μm</div>
-        </div>
-        <div id="canvas-legend-2d" style="display: none; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: -0.5rem; margin-bottom: 1.25rem;">
-          <div style="color: #f43f5e; font-weight: 600;">● Capillary Core (r ≤ 10 μm)</div>
-          <div style="color: #10b981; font-weight: 600;">● Kill Zone (C ≥ IC₅₀)</div>
-          <div style="color: #fbbf24; font-weight: 600;">● Sanctuary Shell (Δr, Persisters)</div>
-          <div style="color: #64748b; font-weight: 600;">● Anoxic Necrosis (r &gt; 200 μm)</div>
+          <!-- CARD 2: 2D PERIVASCULAR CORD CROSS-SECTION -->
+          <div class="canvas-card">
+            <div class="canvas-card-header">
+              <span>🎯 2D Perivascular Cord Anatomy</span>
+              <span style="font-size: 0.72rem; color: #f59e0b; font-weight: 500;">Sanctuary Sleeve &amp; Persisters</span>
+            </div>
+            <div class="canvas-card-body">
+              <canvas id="cord-canvas"></canvas>
+            </div>
+            <div class="canvas-card-footer">
+              <span style="color: #f43f5e;">● Capillary</span>
+              <span style="color: #10b981;">● Kill Zone</span>
+              <span style="color: #fbbf24;">● Sanctuary</span>
+              <span style="color: #64748b;">● Necrosis</span>
+            </div>
+          </div>
         </div>
 
         <!-- EVIDENCE-BASED ACTION RECOMMENDATION -->
@@ -1273,32 +1338,8 @@ Preprint DOI: 10.21203/rs.3.rs-11530312/v1 (Springer Nature Indexed)
       ctx.fillText('50 μm', sbX + scale50_px / 2, sbY - 4);
     }
 
-    // Canvas Tab Switcher
-    let currentCanvasTab = '1d';
+    // Synchronized Dual Visualization (1D Bessel + 2D Cord Section)
     function switchCanvasTab(tab) {
-      currentCanvasTab = tab;
-      const tab1d = document.getElementById('tab-1d');
-      const tab2d = document.getElementById('tab-2d');
-      const cont1d = document.getElementById('container-1d');
-      const cont2d = document.getElementById('container-2d');
-      const leg1d = document.getElementById('canvas-legend-1d');
-      const leg2d = document.getElementById('canvas-legend-2d');
-
-      if (tab === '1d') {
-        tab1d.classList.add('active');
-        tab2d.classList.remove('active');
-        cont1d.style.display = 'block';
-        cont2d.style.display = 'none';
-        leg1d.style.display = 'flex';
-        leg2d.style.display = 'none';
-      } else {
-        tab2d.classList.add('active');
-        tab1d.classList.remove('active');
-        cont2d.style.display = 'block';
-        cont1d.style.display = 'none';
-        leg2d.style.display = 'flex';
-        leg1d.style.display = 'none';
-      }
       recalculate();
     }
 
