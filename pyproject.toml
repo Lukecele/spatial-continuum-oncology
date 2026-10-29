@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spatial-continuum"
+version = "1.0.1"
+description = "Universal biophysical reaction-diffusion transport framework and Bedside Composite Resistance Index (CRI) for NSCLC."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "CC-BY-4.0"}
+authors = [
+  {name = "Luca Celebrano", email = "l.celebrano@studenti.unina.it"}
+]
+keywords = [
+  "spatial-transcriptomics",
+  "biophysics",
+  "reaction-diffusion",
+  "oncology",
+  "bedside-cdss",
+  "osimertinib",
+  "adaura"
+]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Topic :: Scientific/Engineering :: Medical Science Apps.",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
+]
+dependencies = []
+
+[project.scripts]
+cri-calc = "spatial_continuum.cri_calc:main"
+spatial-continuum-audit = "spatial_continuum.audit:main"
+
+[project.urls]
+Homepage = "https://github.com/Lukecele/spatial-continuum-oncology"
+Documentation = "https://github.com/Lukecele/spatial-continuum-oncology"
+Repository = "https://github.com/Lukecele/spatial-continuum-oncology.git"
+"Interactive Simulator" = "https://huggingface.co/spaces/Lucace/spatial-oncology-simulator"
