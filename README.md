@@ -5,7 +5,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
-[![Preprint: medRxiv](https://img.shields.io/badge/Preprint-medRxiv-orange.svg)](https://www.medrxiv.org/)
+[![Preprint: medRxiv](https://img.shields.io/badge/medRxiv-Under%20Screening%20(MEDRXIV%2F2026%2F366778)-00599c.svg)](https://submit.medrxiv.org)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
 
 **A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
