@@ -1,6 +1,6 @@
 # Progetto di Ricerca: The Spatial-Genomic Oncology Continuum
 ## Guida Ragionata ai Documenti e ai Software
-**Autore:** Dr. Luca Celebrano  
+**Autore:** Luca Celebrano  
 **Affiliazione:** Dipartimento di Medicina Clinica e Chirurgia, Scuola di Medicina e Chirurgia, Università degli Studi di Napoli Federico II  
 **Contatto:** `l.celebrano@studenti.unina.it`  
 

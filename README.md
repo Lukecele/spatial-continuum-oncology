@@ -9,7 +9,7 @@
 
 **A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
 
-*Author:* **Dr. Luca Celebrano**, MD Candidate  
+*Author:* **Luca Celebrano**, MD Candidate  
 *Affiliation:* Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy  
 *Correspondence:* `l.celebrano@studenti.unina.it`  
 

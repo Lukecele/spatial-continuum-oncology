@@ -3,7 +3,7 @@
 Scientific Figure Generator for:
 'The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of
 Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol'
-Author: Dr. Luca Celebrano (Universita degli Studi di Napoli Federico II)
+Author: Luca Celebrano (Universita degli Studi di Napoli Federico II)
 Format: Nature Communications / medRxiv Publication Standards (300 DPI PNG & Vector PDF)
 """
 

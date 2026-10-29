@@ -1,6 +1,6 @@
 # Adversarial Stress-Testing & Falsification Dossier
 ## Independent Red-Teaming, Boundary Singularities, and Popperian Refutation Protocols
-**Author:** Dr. Luca Celebrano  
+**Author:** Luca Celebrano  
 **Affiliation:** Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy  
 **Program:** Independent Research Program in Computational Oncology, Mathematical Biology & Spatial Biophysics  
 

@@ -4,7 +4,7 @@
 **To:** The Editors, *Nature Communications*  
 **Section:** Cancer Biophysics / Applied Physics, Mathematics & Translational Oncology  
 **Subject:** Submission of Original Research Article: *"The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol"*  
-**Author:** Dr. Luca Celebrano, MD Candidate  
+**Author:** Luca Celebrano, MD Candidate  
 **Affiliation:** Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Via Sergio Pansini 5, 80131 Naples, Italy  
 **Corresponding Email:** `l.celebrano@studenti.unina.it`  
 
@@ -47,7 +47,7 @@ Thank you very much for your time and consideration of our manuscript.
 
 Yours sincerely,
 
-**Dr. Luca Celebrano, MD Candidate**  
+**Luca Celebrano, MD Candidate**  
 Department of Clinical Medicine and Surgery  
 School of Medicine and Surgery  
 Università degli Studi di Napoli Federico II  
