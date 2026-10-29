@@ -1,6 +1,7 @@
 # The Spatial-Genomic Oncology Continuum
 
 [![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
+[![GitHub stars](https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold)](https://github.com/Lukecele/spatial-continuum-oncology)
 [![DOI](https://zenodo.org/badge/1437679243.svg)](https://doi.org/10.5281/zenodo.23748046)
 [![Research Square DOI](https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg)](https://doi.org/10.21203/rs.3.rs-11530312/v1)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -22,6 +23,8 @@
 
 > 🚀 **Interactive Clinical Web App Available**: Test the real-time Bedside CRI Decision Engine and Bessel $K_0$ reaction-diffusion sanctuary simulator directly in your browser:  
 > 👉 **[https://lukecele.github.io/spatial-continuum-oncology/](https://lukecele.github.io/spatial-continuum-oncology/)**
+
+> ⭐️ **Support Open-Science Oncology**: If you find this framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
 
 ---
 
