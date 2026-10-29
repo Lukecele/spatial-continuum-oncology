@@ -232,3 +232,4 @@ def run_deep_audit():
 if __name__ == "__main__":
     res = run_deep_audit()
     print(json.dumps(res, indent=2))
+    print("\n⭐ Support Open-Science Oncology: Star this repo on GitHub -> https://github.com/Lukecele/spatial-continuum-oncology", file=sys.stderr)

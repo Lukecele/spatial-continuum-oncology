@@ -124,6 +124,9 @@ def print_report(res):
     print("  EVIDENCE-BASED BEDSIDE RECOMMENDATION:")
     print(f"  {res['action']}")
     print("=" * 72)
+    print("  ⭐ Support Open-Science Oncology: Star this repo on GitHub:")
+    print("     👉 https://github.com/Lukecele/spatial-continuum-oncology")
+    print("=" * 72)
 
 def main():
     parser = argparse.ArgumentParser(
