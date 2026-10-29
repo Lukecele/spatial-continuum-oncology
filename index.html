@@ -336,7 +336,7 @@
             The Spatial-Genomic Oncology Continuum
           </h1>
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.2rem;">
-            Bedside Composite Resistance Index (CRI) · Bessel $K_0$ Sanctuary Engine · SG-ADAURA Trial Protocol
+            Bedside Composite Resistance Index (CRI) · Bessel K₀ Sanctuary Engine · SG-ADAURA Trial Protocol
           </p>
         </div>
 
@@ -400,20 +400,20 @@
 
         <!-- 1. Spatial Histology (S) -->
         <div class="form-group">
-          <label class="form-label" for="select-histology">1. Histological Architecture ($S$)</label>
+          <label class="form-label" for="select-histology">1. Histological Architecture (S)</label>
           <select id="select-histology" onchange="recalculate()">
             <option value="1.00">Solid / Micropapillary Predominant (>50%, Severe Decoupling) — S = 1.00</option>
             <option value="0.50">Acinar / Papillary Architecture (Intermediate Diffusion) — S = 0.50</option>
             <option value="0.15">Lepidic Predominant / Mucinous (Intact Alveolar Capillaries) — S = 0.15</option>
           </select>
           <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.3rem;">
-            Governs modified Bessel $K_0$ perivascular decay distance ($\lambda \approx 627\,\mu\text{m}$).
+            Governs modified Bessel K₀ perivascular decay distance (λ ≈ 627.6 μm).
           </div>
         </div>
 
         <!-- 2. Genomic Co-Mutations (G) -->
         <div class="form-group">
-          <label class="form-label" for="select-genomics">2. Co-Genomics Risk Tier ($G$)</label>
+          <label class="form-label" for="select-genomics">2. Co-Genomics Risk Tier (G)</label>
           <select id="select-genomics" onchange="recalculate()">
             <option value="1.00">Triple Mutant (EGFR + TP53 + RB1, High Lineage Plasticity) — G = 1.00</option>
             <option value="0.50" selected>Double Mutant (EGFR + TP53 co-mutant, Apoptotic Arrest Impaired) — G = 0.50</option>
@@ -422,48 +422,48 @@
             <option value="1.00">Off-target Bypass Driver (MET amp, HER2 amp, C797S) — G = 1.00</option>
           </select>
           <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.3rem;">
-            Offin et al. JTO 2019 ($N=863$): Triple co-mutations shorten TTD to 9.5 months.
+            Offin et al. JTO 2019 (N = 863): Triple co-mutations shorten TTD to 9.5 months.
           </div>
         </div>
 
         <!-- 3. Stroma & IFP (M) -->
         <div class="form-group">
-          <label class="form-label" for="select-stroma">3. Stromal Desmoplasia & IFP ($M$)</label>
+          <label class="form-label" for="select-stroma">3. Stromal Desmoplasia & IFP (M)</label>
           <select id="select-stroma" onchange="recalculate()">
             <option value="1.00" selected>Dense Collagen Desmoplasia (High IFP > 20 mmHg, Deff 2.96 um2/s) — M = 1.00</option>
             <option value="0.50">Standard Cellular Stroma (Baseline IFP ~8.5 mmHg, Deff 59.29 um2/s) — M = 0.50</option>
             <option value="0.10">Loose / Edematous Stroma (Low Resistance, Deff 252 um2/s) — M = 0.10</option>
           </select>
           <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.3rem;">
-            Mori et al. 2015 ($N=215$): Solid tumors exhibit elevated interstitial fluid pressure.
+            Mori et al. 2015 (N = 215): Solid tumors exhibit elevated interstitial fluid pressure.
           </div>
         </div>
 
         <!-- 4. Drug Concentration Slider -->
         <div class="form-group" style="border-top: 1px solid rgba(75, 85, 99, 0.4); padding-top: 1rem;">
           <label class="form-label">
-            Osimertinib Plasma Trough ($C_{\text{free}}$)
+            Osimertinib Plasma Trough (C<sub>free</sub>)
           </label>
           <div class="range-wrap">
             <input type="range" id="slider-cfree" min="5" max="50" step="1" value="29" oninput="recalculate()">
             <div class="range-val" id="val-cfree">28.6 nM</div>
           </div>
           <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">
-            Standard 80 mg daily steady state: $C_{\text{free}} \approx 28.6\,\text{nM}$ ($f_u = 0.053$).
+            Standard 80 mg daily steady state: C<sub>free</sub> ≈ 28.6 nM (f<sub>u</sub> = 0.053).
           </div>
         </div>
 
         <!-- 5. Tumor Doubling Time -->
         <div class="form-group">
           <label class="form-label">
-            Persister Doubling Time ($T_s$)
+            Persister Doubling Time (T<sub>s</sub>)
           </label>
           <div class="range-wrap">
             <input type="range" id="slider-ts" min="15" max="45" step="1" value="25" oninput="recalculate()">
             <div class="range-val" id="val-ts">25 d</div>
           </div>
           <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">
-            Universal Regrowth Identity: $\Delta t = T_s \log_2(100) = 5.46\,\text{mo}$ for $T_s = 25\,\text{d}$.
+            Universal Regrowth Identity: Δt = T<sub>s</sub> · log₂(100) = 5.46 mo for T<sub>s</sub> = 25 d.
           </div>
         </div>
 
@@ -490,11 +490,11 @@
         <!-- KEY QUANTITATIVE STATS -->
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-label">Critical Radius ($r_{\text{crit}}$)</div>
+            <div class="stat-label">Critical Radius (r<sub>crit</sub>)</div>
             <div class="stat-value" id="stat-rcrit">165.9 μm</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Sanctuary Shell ($\Delta r$)</div>
+            <div class="stat-label">Sanctuary Shell (Δr)</div>
             <div class="stat-value" id="stat-deltar" style="color: #f87171;">34.1 μm</div>
           </div>
           <div class="stat-card">
@@ -502,7 +502,7 @@
             <div class="stat-value" id="stat-volpct" style="color: #fbbf24;">31.3 %</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Lead-Time Window ($\Delta t$)</div>
+            <div class="stat-label">Lead-Time Window (Δt)</div>
             <div class="stat-value" id="stat-leadtime" style="color: #38bdf8;">5.46 mo</div>
           </div>
         </div>
@@ -512,9 +512,9 @@
           <canvas id="bessel-canvas"></canvas>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: -0.5rem; margin-bottom: 1.25rem;">
-          <div>Capillary Wall: $r_{\text{cap}} = 10\,\mu\text{m}$</div>
-          <div style="color: #fbbf24;">Sanctuary Shell ($\Delta r = r_{\text{ox}} - r_{\text{crit}}$)</div>
-          <div>Hypoxia Limit: $r_{\text{ox}} = 200\,\mu\text{m}$</div>
+          <div>Capillary Wall: r<sub>cap</sub> = 10 μm</div>
+          <div style="color: #fbbf24;">Sanctuary Shell (Δr = r<sub>ox</sub> − r<sub>crit</sub>)</div>
+          <div>Hypoxia Limit: r<sub>ox</sub> = 200 μm</div>
         </div>
 
         <!-- EVIDENCE-BASED ACTION RECOMMENDATION -->
@@ -523,7 +523,7 @@
             <span>🚨</span> Mandatory Bedside Recommendation: DO NOT DISCONTINUE AT MONTH 36
           </div>
           <p id="action-body" style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
-            High probability of viable persister cells in the outer perivascular cord shell protected by Bessel $K_0$ decay.
+            High probability of viable persister cells in the outer perivascular cord shell protected by Bessel K₀ decay.
             Planned 3-year cessation will trigger post-ADAURA exponential recurrence surge within 5.4 months.
           </p>
 
@@ -562,10 +562,10 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; font-size: 0.88rem; color: #cbd5e1;">
         <div>
           <h3 style="color: var(--accent-cyan); font-size: 0.95rem; margin-bottom: 0.4rem;">
-            1. Cylindrical Bessel $K_0$ Transport
+            1. Cylindrical Bessel K₀ Transport
           </h3>
           <p>
-            Governed by the steady-state Helmholtz equation $\nabla^2 C - \lambda^{-2} C = 0$. For outward divergent perivascular cords, the physical solution is $C(r) = C_0 \frac{K_0(r/\lambda)}{K_0(r_0/\lambda)}$. With $\lambda \approx 627\,\mu\text{m}$, small-molecule osimertinib falls below cellular $\text{IC}_{50} = 10\,\text{nM}$ at $r_{\text{crit}} = 165.9\,\mu\text{m}$, leaving a $34.1\,\mu\text{m}$ vital shell ($31.3\%$ cord volume) with sub-therapeutic drug penetrance.
+            Governed by the steady-state Helmholtz equation ∇²C − λ⁻²C = 0. For outward divergent perivascular cords, the physical solution is C(r) = C₀ · K₀(r/λ) / K₀(r₀/λ). With λ ≈ 627.6 μm, small-molecule osimertinib falls below cellular IC₅₀ = 10 nM at r<sub>crit</sub> = 165.9 μm, leaving a 34.1 μm vital shell (31.3% cord volume) with sub-therapeutic drug penetrance.
           </p>
         </div>
 
@@ -574,9 +574,13 @@
             2. Invariant Lead-Time Kinetic Identity
           </h3>
           <p>
-            The 5.4-month clinical window between ctDNA molecular detection ($10^7$ cells) and radiographic CT relapse ($10^9$ cells) is an invariant mathematical identity of exponential volume doubling:
-            $$\Delta t = T_s \cdot \log_2(100) = 6.6439 \cdot T_s \approx 5.46\,\text{months}$$
-            for doubling time $T_s = 24.6\,\text{days}$, exactly resolving the post-cessation ADAURA recurrence surge without de novo mutations.
+            The 5.4-month clinical window between ctDNA molecular detection (10⁷ cells) and radiographic CT relapse (10⁹ cells) is an invariant mathematical identity of exponential volume doubling:
+          </p>
+          <div style="font-family: monospace; font-size: 0.95rem; color: #38bdf8; margin: 0.5rem 0; text-align: center; background: rgba(56, 189, 248, 0.08); padding: 0.5rem; border-radius: 6px;">
+            Δt = T<sub>s</sub> · log₂(100) = 6.6439 · T<sub>s</sub> ≈ 5.46 months
+          </div>
+          <p>
+            for doubling time T<sub>s</sub> = 24.6 days, exactly resolving the post-cessation ADAURA recurrence surge without de novo mutations.
           </p>
         </div>
 
@@ -584,9 +588,11 @@
           <h3 style="color: var(--accent-purple); font-size: 0.95rem; margin-bottom: 0.4rem;">
             3. The Composite Resistance Index (CRI)
           </h3>
+          <div style="font-family: monospace; font-size: 0.95rem; color: #c084fc; margin: 0.5rem 0; text-align: center; background: rgba(192, 132, 252, 0.08); padding: 0.5rem; border-radius: 6px;">
+            CRI = 0.40 · S + 0.35 · G + 0.25 · M
+          </div>
           <p>
-            $$\text{CRI} = 0.40 \cdot S + 0.35 \cdot G + 0.25 \cdot M$$
-            Weights histological architecture ($S$), multi-gene co-mutation tier ($G$, Offin et al. JTO 2019), and stromal desmoplasia ($M$, Mori et al. 2015) to prospectively allocate patients into the Phase III SG-ADAURA clinical trial.
+            Weights histological architecture (S), multi-gene co-mutation tier (G, Offin et al. JTO 2019), and stromal desmoplasia (M, Mori et al. 2015) to prospectively allocate patients into the Phase III SG-ADAURA clinical trial.
           </p>
         </div>
       </div>
@@ -690,7 +696,7 @@
         actionTitle.style.color = '#f87171';
         actionTitle.innerHTML = '<span>🚨</span> Mandatory Recommendation: DO NOT DISCONTINUE AT MONTH 36';
         actionBody.innerHTML = `
-          High probability of viable persister cells in the outer perivascular cord shell protected by Bessel $K_0$ decay.
+          High probability of viable persister cells in the outer perivascular cord shell protected by Bessel K₀ decay.
           Planned 3-year cessation will trigger post-ADAURA exponential recurrence surge within 5.4 months.
           <strong>Continuous suppression or microvascular remodeling consolidation required.</strong>
         `;
