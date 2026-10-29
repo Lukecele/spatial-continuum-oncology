@@ -112,6 +112,7 @@ def print_report(res):
     print("=" * 72)
     print("  COMPOSITE RESISTANCE INDEX (CRI) CLINICAL DECISION SUPPORT")
     print("  Spatial-Genomic Precision Oncology Engine for NSCLC (Post-ADAURA)")
+    print("  ⭐ Star on GitHub: https://github.com/Lukecele/spatial-continuum-oncology")
     print("=" * 72)
     print(f"  [1] Spatial Decoupling (S):   {res['S']:.2f}  ({res['desc_S']})")
     print(f"  [2] Genomic Risk Tier (G):    {res['G']:.2f}  ({res['desc_G']})")
