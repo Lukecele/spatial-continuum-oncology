@@ -30,15 +30,10 @@ Despite this profound clinical breakthrough, longitudinal minimal residual disea
 2. **Early hazard spike:** $57.9\%$ of post-cessation recurrences clustered within the first 12 months following drug withdrawal ($36\text{--}48\ \text{months}$);
 3. **ctDNA lead time:** Molecular relapse preceded radiological recurrence by a median lead time of $4.7\ \text{months}$ ($95\%\,\text{CI}$, $2.2\text{--}5.6\ \text{months}$), with an exploratory Cox hazard ratio for recurrence of $11.83$ ($p < 0.0001$).
 
-```
-    Timeline of Adjuvant Osimertinib & The Month 36 Dilemma:
-    |==================== 36 Months Osimertinib ====================>|--- Post-Cessation ---|
-    0                                                                36                    48 mo
-    [ Surgery & R0 Resection ]   [ Cytostatic Growth Suppression ]    [ THE CESSATION DILEMMA ]
-                                                                       * 67.9% of relapses occur here!
-                                                                       * 57.9% in months 36-48
-                                                                       * Stop or Continue?
-```
+> **Clinical Timeline & The Month 36 Dilemma:**  
+> • **Months 0 – 36:** Complete surgical R0 resection followed by 36 months of adjuvant osimertinib (cytostatic growth suppression).  
+> • **Month 36 (The Cessation Crossroads):** Planned drug withdrawal under ADAURA protocol.  
+> • **Months 36 – 48 (The Post-Cessation Hazard Spike):** $67.9\%$ of all recurrence events cluster after treatment discontinuation, with $57.9\%$ occurring within the first 12 months post-cessation.
 
 At the bedside, thoracic oncologists currently face an agonizing, unguided binary choice at month 36:
 - **Discontinue treatment:** Triggering the post-cessation hazard spike, where over two-thirds ($67.9\%$) of all recurrence events cluster after drug removal, accompanied by devastating central nervous system recurrence ($>40\%$ of first recurrence sites);
@@ -77,18 +72,11 @@ Within the interior core of solid tumor cords ($>90\%$ of tumor mass), the dimen
 ### 2.2 Microvascular Cord Reaction-Diffusion Geometry
 Consider a central cylindrical capillary of radius $r_0 = 10.0\ \mu\text{m}$ supplying a surrounding cylindrical sleeve of tumor cells extending to half-intercapillary distance $R_{\text{cord}}$.
 
-```
-          [ Capillary ] <========== Tumor Cord (Diffusion Gap) ==========> [ Necrotic Core ]
-          +-----------+---------------------------------------------------+-----------------+
-          | r = r0    |    r0 < r < rcrit            rcrit < r < rox      | r > rox         |
-          | Capillary | Therapeutic Zone          PHARMACOLOGICAL         | Anoxic Necrosis |
-          | Lumen     | C(r) >= IC50              SANCTUARY               | Hypoxia Death   |
-          | (10 um)   | Cytostasis/Apoptosis      C(r) < IC50 (SURVIVAL)  | (Dead cells)    |
-          +-----------+---------------------------------------------------+-----------------+
-          0          10 um                      ~166 um                 200 um
-                                                <====== Delta r ======>
-                                                   (34.11 um wide)
-```
+> **Anatomical Structure of the Tumor Cord:**  
+> • **$r = 0 \to 10\ \mu\text{m}$ (Capillary Lumen):** Intravascular source.  
+> • **$10\ \mu\text{m} < r \le 165.9\ \mu\text{m}$ (Therapeutic Zone):** $C(r) \ge \text{IC}_{50}$, effective cytostasis and cell clearing.  
+> • **$165.9\ \mu\text{m} < r \le 200.0\ \mu\text{m}$ (Pharmacological Sanctuary):** Sub-therapeutic sleeve ($\Delta r = 34.11\ \mu\text{m}$, $31.28\%$ volume), $C(r) < \text{IC}_{50}$; oxygenated viable persister cells survive in $G_0/G_1$ arrest.  
+> • **$r > 200.0\ \mu\text{m}$ (Anoxic Core):** Thomlinson-Gray anoxic necrosis.
 
 The stationary conservation equation for unbound drug concentration $C(r)$ in radial coordinates is:
 $$D_{\text{eff}} \left( \frac{d^2 C}{dr^2} + \frac{1}{r} \frac{dC}{dr} \right) - k C = 0$$
@@ -124,7 +112,10 @@ $$V_{\text{mol}} = \frac{\text{MW}}{\rho N_A} = \frac{499.6}{1.25 \times 10^6 \t
 Equivalent spherical hydrodynamic radius:
 $$r_H = \left( \frac{3 V_{\text{mol}}}{4\pi} \right)^{1/3} = 5.41 \times 10^{-10}\ \text{m} = 0.541\ \text{nm}$$
 By the Stokes-Einstein relation:
-$$D_0 = \frac{k_B T}{6\pi \eta r_H} = \frac{1.380649 \times 10^{-23} \times 310.15}{6 \pi \times 6.915 \times 10^{-4} \times 5.412 \times 10^{-10}} = 6.071 \times 10^{-10}\ \text{m}^2/\text{s} = 607.11\ \mu\text{m}^2/\text{s}$$
+$$\begin{aligned}
+D_0 &= \frac{k_B T}{6\pi \eta r_H} = \frac{1.380649 \times 10^{-23} \times 310.15}{6 \pi \times 6.915 \times 10^{-4} \times 5.412 \times 10^{-10}} \\
+&= 6.071 \times 10^{-10}\ \text{m}^2/\text{s} = 607.11\ \mu\text{m}^2/\text{s}
+\end{aligned}$$
 
 #### Effective Interstitial Diffusivity ($D_{\text{eff}}$)
 Diffusion through extracellular collagen/glycosaminoglycan matrices is hindered by interstitial porosity ($\varepsilon$) and geometric tortuosity ($\tau$):
@@ -194,18 +185,14 @@ A critical biological question is why cells in the sanctuary do not form overt m
 
 Applying Theorem 2 across oncological agents illustrates why 3rd-generation TKIs revolutionized clinical outcomes while simultaneously setting the stage for post-cessation relapse, and explains the strict biophysical requirement for the bystander effect in antibody-drug conjugates (ADCs):
 
-```
-+--------------------------------------------------------------------------------------------------------------------+
-| Drug Class / Agent        | MW (Da) | fu     | Deff (um2/s) | lambda (um) | theta | rcrit (um) | Vol Sanctuary (%) |
-+---------------------------+---------+--------+--------------+-------------+-------+------------+-------------------+
-| Osimertinib (3rd-gen TKI) | 499.6   | 0.053  | 59.29        | 627.6       | 0.35  | ~166       | 31.28%            |
-| Erlotinib (1st-gen TKI)   | 393.4   | 0.070  | 65.10        | 312.4       | 0.65  | 44.30      | 81.97%            |
-| Dabrafenib (BRAF inh.)    | 519.6   | 0.003  | 58.40        | 420.0       | 0.52  | 78.50      | 72.40%            |
-| Ramucirumab (anti-VEGFR2) | 147,000 | 1.000  | 1.25         | 72.1        | 0.20  | 58.20      | 84.10%            |
-| T-DXd (HER2 ADC intact)   | 152,000 | 1.000  | 1.18         | 74.2        | 0.15  | 71.40      | 78.50%            |
-| DXd (cleaved payload)     | 435.4   | 0.080  | 62.50        | 580.0       | 0.08  | 248.50     | 0.00% (Sterilized)|
-+--------------------------------------------------------------------------------------------------------------------+
-```
+| Drug Class / Agent | MW (Da) | $f_u$ | $D_{\text{eff}}$ ($\mu\text{m}^2/\text{s}$) | $\lambda$ ($\mu\text{m}$) | $\theta$ | $r_{\text{crit}}$ ($\mu\text{m}$) | Sanctuary Vol (%) |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Osimertinib** (3rd-gen TKI) | 499.6 | 0.053 | 59.29 | 627.6 | 0.35 | ~166 | 31.28% |
+| **Erlotinib** (1st-gen TKI) | 393.4 | 0.070 | 65.10 | 312.4 | 0.65 | 44.30 | 81.97% |
+| **Dabrafenib** (BRAF inh.) | 519.6 | 0.003 | 58.40 | 420.0 | 0.52 | 78.50 | 72.40% |
+| **Ramucirumab** (anti-VEGFR2) | 147,000 | 1.000 | 1.25 | 72.1 | 0.20 | 58.20 | 84.10% |
+| **T-DXd** (HER2 ADC intact) | 152,000 | 1.000 | 1.18 | 74.2 | 0.15 | 71.40 | 78.50% |
+| **DXd** (cleaved payload) | 435.4 | 0.080 | 62.50 | 580.0 | 0.08 | 248.50 | 0.00% (Sterilized) |
 
 ### Critical Insights:
 1. **The 1st vs 3rd Generation TKI Chasm:**  
@@ -219,26 +206,15 @@ Applying Theorem 2 across oncological agents illustrates why 3rd-generation TKIs
 
 To guarantee statistical compatibility and eliminate ecological fallacies, data from **6 independent clinical cohorts** were strictly disambiguated and audited:
 
-```
-+----------------------------------------------------------------------------------------------------------------------+
-| Cohort Name & Study              | N     | Clinical Endpoint / Parameter Measured    | Statistical Methodology       |
-+----------------------------------+-------+-------------------------------------------+-------------------------------+
-| 1. ADAURA ctDNA Cohort           | 220   | Recurrence kinetics; lead time (4.7 mo);  | Non-parametric Kaplan-Meier;  |
-|    (Herbst et al., Nat Med 2025) |       | 67.9% post-stop recurrence rate           | Cox regression (HR = 11.83)   |
-| 2. MSKCC Surgical Histology      | 604   | Histological architecture distribution    | Firth penalized likelihood    |
-|    (Master Thoracic Database)    |       | (Solid vs Lepidic recurrence hazard)      | (adjusting rare lepidic events|
-| 3. Survival Validation Cohort    | 854   | Prognostic spatial gene signature         | Multivariate Cox model (df=5, |
-|    (TCGA-LUAD + GSE31210)        |       | in resected lung adenocarcinoma           | stratified cross-validation)  |
-| 4. MSKCC Targeted NGS Cohort     | 863   | Co-mutation prevalence (TP53/RB1 triple   | Fisher's exact test (df=1);   |
-|    (Offin et al., JCO PO 2019)   |       | mutant: 4.98%, TTD = 9.5 months)          | Log-rank survival test        |
-| 5. Human Resected Lung IFP       | 211   | Manometric interstitial fluid pressure    | Continuous Kruskal-Wallis     |
-|    (Mori et al., 2015)           |       | (Mean IFP 8.5 mmHg, Solid 9.8 +/- 6.8)    | across architectural subtypes |
-| 6. RELAY Phase III Trial         | 449   | Vascular normalization benchmark          | Stratified log-rank;          |
-|    (Nakagawa et al., JCO 2024)   |       | (Erlotinib + Ramucirumab PFS HR = 0.59)   | Intention-to-treat Phase III  |
-+----------------------------------+-------+-------------------------------------------+-------------------------------+
-| TOTAL HUMAN PATIENT AUDIT        | 3,201 | Zero un-hedged pooling; independent empirical validation across scales|
-+----------------------------------------------------------------------------------------------------------------------+
-```
+| Cohort Name & Source | $N$ | Clinical Parameter Measured | Statistical Methodology |
+|:---|:---:|:---|:---|
+| **1. ADAURA ctDNA Cohort** *(Herbst et al., Nat Med 2025)* | 220 | Recurrence kinetics; lead time (4.7 mo); 67.9% post-stop recurrence rate | Non-parametric Kaplan-Meier; Cox regression (HR = 11.83) |
+| **2. MSKCC Surgical Histology** *(Master Thoracic Database)* | 604 | Histological architecture distribution (Solid vs Lepidic recurrence hazard) | Firth penalized likelihood (adjusting rare lepidic events) |
+| **3. Survival Validation Cohort** *(TCGA-LUAD + GSE31210)* | 854 | Prognostic spatial gene signature in resected lung adenocarcinoma | Multivariate Cox model (df=5, stratified cross-validation) |
+| **4. MSKCC Targeted NGS Cohort** *(Offin et al., JCO PO 2019)* | 863 | Co-mutation prevalence (*TP53/RB1* triple mutant: 4.98%, TTD = 9.5 months) | Fisher's exact test (df=1); Log-rank survival test |
+| **5. Human Resected Lung IFP** *(Mori et al., 2015)* | 211 | Manometric interstitial fluid pressure (Mean IFP 8.5 mmHg, Solid 9.8 ± 6.8) | Continuous Kruskal-Wallis across architectural subtypes |
+| **6. RELAY Phase III Trial** *(Nakagawa et al., JCO 2024)* | 449 | Vascular normalization benchmark (Erlotinib + Ramucirumab PFS HR = 0.59) | Stratified log-rank; Intention-to-treat Phase III |
+| **TOTAL PATIENT AUDIT** | **3,201** | **Independent empirical validation across molecular and tissue scales** | **Robust multi-cohort calibration** |
 
 ### Statistical Handling of Rare Events (Firth Penalized Likelihood):
 In Cohort 2 ($N = 604$), the lepidic subtype exhibited only 4 recurrence events across 88 patients. Standard unconstrained Cox proportional hazards regression yields an inflated estimate:
@@ -316,63 +292,35 @@ Using global Sobol variance decomposition across the audited cohorts:
 
 $$\mathbf{\text{CRI} = 0.47 \mathcal{S} + 0.33 \mathcal{G} + 0.20 \mathcal{M}}$$
 
-```
-                      CRI Risk Stratification at ADAURA Month 36
-    +-------------------------------------------------------------------------------+
-    |  Tier 1: LOW RISK (CRI < 0.30)        -->  SAFE CESSATION                     |
-    |  * Discontinue Osimertinib at Month 36                                        |
-    |  * Standard surveillance (CT chest/abdomen every 6 months)                   |
-    +-------------------------------------------------------------------------------+
-    |  Tier 2: INTERMEDIATE RISK (0.30 <= CRI < 0.70)  --> INTENSIFIED SURVEILLANCE |
-    |  * Suspend Osimertinib with Close Monitoring                                  |
-    |  * ctDNA liquid biopsy every 2 months                                         |
-    |  * Contrast-enhanced Brain MRI every 6 months (CNS safeguard)                 |
-    |  * Re-challenge Osimertinib at first ctDNA molecular rise (intercept lead time)|
-    +-------------------------------------------------------------------------------+
-    |  Tier 3: HIGH RISK (CRI >= 0.70)      -->  ACTIVE ESCALATION / SG-ADAURA TRIAL |
-    |  * DO NOT STOP OSIMERTINIB                                                    |
-    |  * Randomize into SG-ADAURA: Prolongation to Month 60 vs                      |
-    |    Vascular Decompression (Osimertinib + Ramucirumab) vs Bispecific Switching |
-    +-------------------------------------------------------------------------------+
-```
+> **CRI Risk Stratification & Clinical Guidance at Month 36:**  
+> • **Tier 1: Low Risk ($\text{CRI} < 0.30$) $\to$ Safe Cessation:** Discontinue osimertinib at Month 36; initiate standard surveillance (CT chest/abdomen every 6 months).  
+> • **Tier 2: Intermediate Risk ($0.30 \le \text{CRI} < 0.70$) $\to$ Intensified Molecular Surveillance:** Planned osimertinib suspension with bimonthly ctDNA liquid biopsy and contrast-enhanced brain MRI every 6 months; immediate re-challenge at molecular rise to intercept clinical recurrence.  
+> • **Tier 3: High Risk ($\text{CRI} \ge 0.70$) $\to$ Active Escalation / SG-ADAURA Trial:** High probability of persistent sanctuary micrometastases; patient does NOT stop therapy but transitions into the SG-ADAURA interventional study.
 
 ### 6.2 Bedside Implementation
 The engine is coded in pure Python standard library ([`cri-calc.py`](file:///home/luca/.gemini/antigravity-cli/brain/266ed2e2-762b-4d6e-b0fa-f25c95a35512/scratch/cri-calc.py)), requiring zero dependencies, and executes instantaneously on hospital workstations:
 ```bash
-# Example High-Risk Patient (Solid architecture, TP53 mut, RB1 mut, dense stroma):
+# High-Risk: Solid, TP53 mut, RB1 mut, dense stroma
 python3 cri_calc.py --pattern solid --tp53 mut --rb1 mut --stroma dense
-# Exact Calculation: CRI = 0.47(1.00) + 0.33(1.00) + 0.20(1.00) = 1.000
-# Output: TIER 3 (HIGH RESISTANCE & SANCTUARY RISK) -> MANDATORY EXTENSION / SG-ADAURA TRIAL
+# CRI = 0.47(1.0) + 0.33(1.0) + 0.20(1.0) = 1.000 -> TIER 3 (HIGH RISK)
 
-# Example Intermediate-Risk Patient (Solid, TP53 mut, WT RB1, loose stroma):
+# Intermediate-Risk: Solid, TP53 mut, WT RB1, loose stroma
 python3 cri_calc.py --pattern solid --tp53 mut --rb1 wt --stroma low
-# Exact Calculation: CRI = 0.47(1.00) + 0.33(0.50) + 0.20(0.00) = 0.635 -> TIER 2
+# CRI = 0.47(1.0) + 0.33(0.5) + 0.20(0.0) = 0.635 -> TIER 2 (INTERMEDIATE)
 ```
 
 ---
 
 ## 7. Prospective Phase III Clinical Trial Protocol: SG-ADAURA
 
-```
-                                  SG-ADAURA TRIAL FLOW
-                       Patients completing 36 Months Osimertinib
-                               (ADAURA-eligible, Stage IB-IIIA)
-                                             |
-                                  CRI Evaluation at Month 36
-                                             |
-                 +---------------------------+---------------------------+
-                 |                                                       |
-        CRI < 0.70 (Tier 1 & 2)                                 CRI >= 0.70 (Tier 3)
-         Registry Cohort (N=1600)                                Interventional Phase III
-         Observational Follow-up                                     Randomization (1:1)
-                                                                           (N=800)
-                                                                             |
-                                             +-------------------------------+-------------------------------+
-                                             |                                                               |
-                                      Arm A (Control, N=400)                                     Arm B (Experimental, N=400)
-                                      Osimertinib Cessation                                      Osimertinib Prolongation (to 60 mo)
-                                      (Current Standard of Care)                                 + Interstitial Decompression / ctDNA Intercept
-```
+> **SG-ADAURA Phase III Trial Architecture:**  
+> 1. **Screening & Population:** Patients with resected stage IB–IIIA *EGFR*-mutated NSCLC completing 36 months of adjuvant osimertinib without disease recurrence.  
+> 2. **CRI Stratification at Month 36:**  
+>    - **$\text{CRI} < 0.70$ (Tier 1 & 2):** Observational Registry Cohort ($N = 1,600$), standard observational follow-up.  
+>    - **$\text{CRI} \ge 0.70$ (Tier 3):** Interventional Phase III Randomization ($1:1$, $N = 800$).  
+> 3. **Interventional Arms (Tier 3, $N = 800$):**  
+>    - **Arm A (Standard Cessation Control, $N = 400$):** Osimertinib discontinuation at Month 36, followed by routine surveillance.  
+>    - **Arm B (CRI-Guided Escalation, $N = 400$):** Osimertinib continuation through Month 60, stratified into monotherapy prolongation ($N = 250$) or targeted vascular decompression pulse ($N = 150$, osimertinib + ramucirumab $10\ \text{mg/kg}$ IV q2w for 6 cycles).
 
 ### 7.1 Trial Design and Objectives
 - **Title:** Spatial-Genomic Guided Adjuvant Therapy in Resected *EGFR*-Mutated Non-Small Cell Lung Cancer (SG-ADAURA).
@@ -419,10 +367,10 @@ The true breakthrough is not modifying the ATP-binding pocket indefinitely, but 
 All mathematical derivations, numerical integrations, and clinical algorithms are implemented in **pure Python 3 standard library** (zero external package dependencies, zero container requirements) and are archived for public open-source access under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license:
 - **Permanent Zenodo DOI:** [10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
 - **Public GitHub Repository:** [https://github.com/Lukecele/spatial-continuum-oncology](https://github.com/Lukecele/spatial-continuum-oncology)
-- **Clinical Decision Engine:** [`software_strumenti_calcolo/cri_calc.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/cri_calc.py)
-- **Mathematical & Statistical Audit Engine:** [`software_strumenti_calcolo/audit_matematica_e_statistica.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/audit_matematica_e_statistica.py)
-- **Adversarial Stress-Testing Suite:** [`software_strumenti_calcolo/test_stress_avversi.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/test_stress_avversi.py)
-- **Scientific Figure Generator:** [`software_strumenti_calcolo/generate_scientific_figures.py`](file:///home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/generate_scientific_figures.py)
+- **Clinical Decision Engine:** `cri_calc.py` (located in `software_strumenti_calcolo/`)
+- **Mathematical & Statistical Audit Engine:** `audit_matematica_e_statistica.py`
+- **Adversarial Stress-Testing Suite:** `test_stress_avversi.py`
+- **Scientific Figure Generator:** `generate_scientific_figures.py`
 - **Core Bioinformatic Pipeline:** `insitugame 1.0.7` archived on Anaconda/Bioconda (PR #70893) and nf-core/modules (PR #13471).
 
 ---
