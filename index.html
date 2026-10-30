@@ -2408,9 +2408,11 @@ Preprint DOI: 10.21203/rs.3.rs-11530312/v1 (Springer Nature Indexed)
 
       const activeBtn = document.getElementById('mod-btn-' + modId);
       const activeMod = document.getElementById('module-' + modId);
+      const hubMod = document.getElementById('module-5-hub');
 
       if (activeBtn) activeBtn.classList.add('active');
       if (activeMod) activeMod.style.display = 'block';
+      if (hubMod) hubMod.style.display = (modId === '5' ? 'block' : 'none');
 
       // Trigger targeted canvas rendering upon module reveal
       if (modId === '1') {
