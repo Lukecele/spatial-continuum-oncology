@@ -4,7 +4,7 @@
 [![Live 60 FPS Digital Twin](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Digital%20Twin-60%20FPS%20Sanctuary%20Simulator-0284c7.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
 [![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
 [![GitHub stars](https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold)](https://github.com/Lukecele/spatial-continuum-oncology)
-[![DOI](https://zenodo.org/badge/1437679243.svg)](https://doi.org/10.5281/zenodo.23748046)
+[![DOI](https://zenodo.org/badge/1437679243.svg)](https://doi.org/10.5281/zenodo.23754999)
 [![Research Square DOI](https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg)](https://doi.org/10.21203/rs.3.rs-11530312/v1)
 [![Software License: MIT](https://img.shields.io/badge/Software_License-MIT-blue.svg)](LICENSE-MIT)
 [![License: CC BY 4.0](https://img.shields.io/badge/Monograph_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -204,7 +204,7 @@ node software_strumenti_calcolo/test_live_github_pages.js
 ## 📖 Citation & Scholarly Records
 
 * **Research Square Preprint (Springer Nature):** [https://doi.org/10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)
-* **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
+* **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23754999](https://doi.org/10.5281/zenodo.23754999)
 
 If you use this biophysical model, the computational suite, or the CRI clinical decision engine, please cite:
 
