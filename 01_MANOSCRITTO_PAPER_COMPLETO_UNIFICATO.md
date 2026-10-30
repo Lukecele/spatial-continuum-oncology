@@ -367,6 +367,9 @@ The true breakthrough is not modifying the ATP-binding pocket indefinitely, but 
 All mathematical derivations, numerical integrations, and clinical algorithms are implemented in **pure Python 3 standard library** (zero external package dependencies, zero container requirements) and are archived for public open-source access under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license:
 - **Permanent Zenodo DOI:** [10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
 - **Public GitHub Repository:** [https://github.com/Lukecele/spatial-continuum-oncology](https://github.com/Lukecele/spatial-continuum-oncology)
+- **Live Interactive Decision Support & Simulation Portal:** [https://lukecele.github.io/spatial-continuum-oncology/](https://lukecele.github.io/spatial-continuum-oncology/)
+- **60 FPS In Silico Tumor Sanctuary Digital Twin:** [https://lukecele.github.io/spatial-continuum-oncology/simulator.html](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
+- **Official Bioconda Distribution:** `spatial-continuum` v1.0.2 (`conda install -c bioconda spatial-continuum`)
 - **Clinical Decision Engine:** `cri_calc.py` (located in `software_strumenti_calcolo/`)
 - **Mathematical & Statistical Audit Engine:** `audit_matematica_e_statistica.py`
 - **Adversarial Stress-Testing Suite:** `test_stress_avversi.py`
