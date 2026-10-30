@@ -1,0 +1,72 @@
+[
+  {
+    "protocol": "Arm0_Observation",
+    "name": "Arm 0: Placebo / Historical Observation",
+    "dfs_overall_5yr": 0.0,
+    "dfs_tier1_5yr": 0.0,
+    "dfs_tier3_5yr": 0.0,
+    "hr_vs_soc": 20.75276614029434,
+    "hr_ci": [
+      17.95178556606558,
+      23.99077801418597
+    ],
+    "p_value": 0.0,
+    "dose_pct": 0.0
+  },
+  {
+    "protocol": "Arm1_Standard_ADAURA",
+    "name": "Arm 1: Standard ADAURA (Current SOC)",
+    "dfs_overall_5yr": 42.400000000000006,
+    "dfs_tier1_5yr": 100.0,
+    "dfs_tier3_5yr": 0.0,
+    "hr_vs_soc": 1.0,
+    "hr_ci": [
+      1.0,
+      1.0
+    ],
+    "p_value": 1.0,
+    "dose_pct": 60.05479452054796
+  },
+  {
+    "protocol": "Arm2_Continuous_Indefinite",
+    "name": "Arm 2: Continuous Indefinite Osimertinib (Arm B1)",
+    "dfs_overall_5yr": 100.0,
+    "dfs_tier1_5yr": 100.0,
+    "dfs_tier3_5yr": 100.0,
+    "hr_vs_soc": 0.0,
+    "hr_ci": [
+      1.403803395214031e-06,
+      7.123504640388297e-05
+    ],
+    "p_value": 1.4307319952004639e-30,
+    "dose_pct": 100.38356164383563
+  },
+  {
+    "protocol": "Arm3_InSituGame_Adaptive",
+    "name": "Arm 3: InSituGame Adaptive Pulsed Therapy (Arm B2)",
+    "dfs_overall_5yr": 100.0,
+    "dfs_tier1_5yr": 100.0,
+    "dfs_tier3_5yr": 100.0,
+    "hr_vs_soc": 0.0,
+    "hr_ci": [
+      1.403803395214031e-06,
+      7.123504640388297e-05
+    ],
+    "p_value": 1.4307319952004639e-30,
+    "dose_pct": 70.94619178082193
+  },
+  {
+    "protocol": "Arm4_SG_ADAURA_Stratified",
+    "name": "Arm 4: SG-ADAURA Precision Protocol (Our Complete Strategy)",
+    "dfs_overall_5yr": 100.0,
+    "dfs_tier1_5yr": 100.0,
+    "dfs_tier3_5yr": 100.0,
+    "hr_vs_soc": 0.0,
+    "hr_ci": [
+      1.403803395214031e-06,
+      7.123504640388297e-05
+    ],
+    "p_value": 1.4307319952004639e-30,
+    "dose_pct": 83.28416438356166
+  }
+]
