@@ -4,7 +4,7 @@ Universal biophysical reaction-diffusion transport framework and Bedside Composi
 Pure standard library / zero external dependencies.
 """
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __author__ = "Luca Celebrano"
 __email__ = "l.celebrano@studenti.unina.it"
 
