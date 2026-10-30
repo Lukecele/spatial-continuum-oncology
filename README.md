@@ -127,6 +127,12 @@ python3 software_strumenti_calcolo/test_stress_avversi.py
 python3 software_strumenti_calcolo/generate_scientific_figures.py
 ```
 
+### 5. Supplementary Spatial Benchmark Generator (Visium HD / GSE301973)
+Generates Supplementary Figure S1 validating reaction-diffusion sanctuary predictions and `cri-calc` risk stratification against real spatial transcriptomics tissue data:
+```bash
+python3 software_strumenti_calcolo/generate_supplementary_spatial_benchmark.py
+```
+
 ---
 
 ## 📚 Multi-Cohort Clinical Validation Summary ($N = 3,205$)

@@ -12,7 +12,7 @@
 | :--- | :--- | :--- |
 | **`01_MANOSCRITTO_NATURE_COMMUNICATIONS_CELEBRANO.pdf`** | **Il Manoscritto Tipografico Ufficiale in PDF (16 pagine)** pronto per la sottomissione a Nature Communications e medRxiv. | **Da depositare su medRxiv e inviare all'Editor di Nature Communications**. |
 | **`01_MANOSCRITTO_PAPER_COMPLETO_UNIFICATO.md`** | **Il Paper Scientifico Completo in Markdown** (formule, biologia, trial e discussione). | Sorgente del paper accademico unificato. |
-| **`figure_scientifiche/`** | **Le 4 Figure Ufficiali del Paper** in formato PNG (300 DPI) e PDF vettoriale. | Da allegare alla sottomissione (Figure 1, 2, 3, 4). |
+| **`figure_scientifiche/`** | **Le Figure Ufficiali del Paper** in formato PNG (300 DPI) e PDF vettoriale: Figure 1-4 per il main text e **Supplementary Figure 1** (validazione spaziale 10x Visium HD / GSE301973). | Da allegare alla sottomissione (Figure 1, 2, 3, 4 + Supplementary Figure 1). |
 | **`COVER_LETTER_NATURE_COMMUNICATIONS.md`** | **La Lettera Ufficiale all'Editor** di Nature Communications con razionale e revisori suggeriti (Jain, Gatenby, Herbst, Tannock). | Da incollare nel portale di sottomissione Nature. |
 | **`METADATI_SOTTOMISSIONE_MEDRXIV.md`** | **Il Dossier Completo di Metadati, Dichiarazioni Etiche e Abstract Strutturato** per medRxiv. | Guida copia-incolla per il deposito preprint immediato. |
 | **`02_TRATTATO_MONOGRAFICO_MASTER_8_CAPITOLI.md`** | Trattato accademico esteso in 8 capitoli con trattazione analitica approfondita. | Base per tesi o monografia scientifica completa. |
@@ -41,4 +41,8 @@ Tutti gli script sono scritti in **puro Python 3 standard** (zero librerie ester
 3. **`test_stress_avversi.py`**: Motore di simulazione delle condizioni di confine estreme e singolarità fisiche.
    ```bash
    python3 test_stress_avversi.py
+   ```
+4. **`generate_supplementary_spatial_benchmark.py`**: Generatore della **Supplementary Figure S1** per Nature Communications (benchmark su 10x Visium HD reale e stratificazione clinica GSE301973 con `cri-calc`).
+   ```bash
+   python3 generate_supplementary_spatial_benchmark.py
    ```
