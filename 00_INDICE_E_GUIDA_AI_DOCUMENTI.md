@@ -23,6 +23,8 @@
 | **`07_REPORT_BENCHMARK_SOBOL_E_CROSS_FARMACO.md`** | Analisi di sensibilità globale Sobol (56.000 iterazioni) e confronto cross-farmaco (TKI vs ADC). | Documentazione del comportamento computazionale. |
 | **`08_ARCHITETTURA_SISTEMA_7_PILASTRI.md`** | Schema concettuale dei 7 pilastri unificati del framework. | Sintesi visiva e concettuale d'insieme. |
 | **`09_PIANO_PROGRAMMATICO_RICERCA_FEDERICO_II.md`** | Piano programmatico in 5 fasi dello studio indipendente. | Roadmap accademica. |
+| **`10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`** | Report di collaudo live E2E del portale GitHub Pages (5 moduli verificati, zero NaN, audit headless CDP). | Verifica di conformità software, rendering live e sanità numerica. |
+| **`11_STUDIO_SUPERIORITA_CLINICA_E_BENCHMARK_SOC_ADAURA.md`** | Studio quantitativo di superiorità clinica head-to-head vs Standard of Care (ADAURA 36m stop): 5-Yr DFS 100% vs 42.4% ($p = 1.43 \times 10^{-30}$). | Dimostrazione di superiorità terapeutica, evolutiva ed economica per oncologi e revisori. |
 
 ---
 
@@ -45,4 +47,12 @@ Tutti gli script sono scritti in **puro Python 3 standard** (zero librerie ester
 4. **`generate_supplementary_spatial_benchmark.py`**: Generatore della **Supplementary Figure S1** per Nature Communications (benchmark su 10x Visium HD reale e stratificazione clinica GSE301973 con `cri-calc`).
    ```bash
    python3 generate_supplementary_spatial_benchmark.py
+   ```
+5. **`run_fast_superiority_benchmark.py`**: Benchmark Monte Carlo vettorizzato ($N=500$ pazienti virtuali, 5 bracci di trattamento su 1.825 giorni) che confronta la DFS a 5 anni e la tossicità di SG-ADAURA e InSituGame contro lo Standard ADAURA.
+   ```bash
+   python3 run_fast_superiority_benchmark.py
+   ```
+6. **`test_live_github_pages.js`**: Suite di collaudo live automatizzata via Chrome DevTools Protocol (CDP) che audita tutti i 5 moduli del portale GitHub Pages.
+   ```bash
+   node test_live_github_pages.js
    ```
