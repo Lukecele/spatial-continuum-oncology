@@ -2311,9 +2311,24 @@ Preprint DOI: 10.21203/rs.3.rs-11530312/v1 (Springer Nature Indexed)
     }
 
     // Initialize on load & resize
-    window.addEventListener('load', () => {
-      recalculate();
-    });
+    function handleInitialRoute() {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (hash === 'simulator' || hash === 'module-3' || hash === 'twin') {
+        switchMainModule('3', false);
+      } else if (hash === 'visium' || hash === 'module-2') {
+        switchMainModule('2', false);
+      } else if (hash === 'insitugame' || hash === 'game' || hash === 'module-4') {
+        switchMainModule('4', false);
+      } else if (hash === 'evidence' || hash === 'cohort' || hash === 'module-5') {
+        switchMainModule('5', false);
+      } else {
+        switchMainModule('1', false);
+        recalculate();
+      }
+    }
+
+    window.addEventListener('load', handleInitialRoute);
+    window.addEventListener('hashchange', handleInitialRoute);
     window.addEventListener('resize', () => {
       recalculate();
     });
@@ -2395,7 +2410,7 @@ Preprint DOI: 10.21203/rs.3.rs-11530312/v1 (Springer Nature Indexed)
     let currentModuleId = '1';
     let currentVisiumFilter = 'all';
 
-    function switchMainModule(modId) {
+    function switchMainModule(modId, updateHash = true) {
       currentModuleId = modId;
 
       // Update Nav Buttons
@@ -2413,6 +2428,11 @@ Preprint DOI: 10.21203/rs.3.rs-11530312/v1 (Springer Nature Indexed)
       if (activeBtn) activeBtn.classList.add('active');
       if (activeMod) activeMod.style.display = 'block';
       if (hubMod) hubMod.style.display = (modId === '5' ? 'block' : 'none');
+
+      if (updateHash && window.history && window.history.replaceState) {
+        const hashMap = { '1': 'cri', '2': 'visium', '3': 'simulator', '4': 'insitugame', '5': 'evidence' };
+        window.history.replaceState(null, null, '#' + (hashMap[modId] || 'cri'));
+      }
 
       // Trigger targeted canvas rendering upon module reveal
       if (modId === '1') {
