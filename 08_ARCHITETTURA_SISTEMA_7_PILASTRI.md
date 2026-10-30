@@ -149,7 +149,8 @@ The entire pipeline is engineered into open-source bioinformatic tools maintaine
 
 | Component | Software Name | Channel / Repo | Key Role |
 | :--- | :--- | :--- | :--- |
-| **Pillar 1** | `insitugame` | [Bioconda #70894](https://github.com/bioconda/bioconda-recipes/pull/70894) / [nf-core #13471](https://github.com/nf-core/modules/pull/13471) | Computes $3 \times 3$ subclonal game payoff matrices & Nash equilibria from spatial transcriptomics. |
-| **Pillar 3 & 4** | `spatial-sanctuary` | [Bioconda #70840 (v2.2.2)](https://github.com/bioconda/bioconda-recipes/pull/70840) | Solves Bessel $K_0$ and $I_0$ reaction-diffusion boundaries; CLI: `osimertinib-sanctuary`. |
+| **Pillar 1** | `insitugame` | [Bioconda (v1.0.7)](https://anaconda.org/bioconda/insitugame) / [PR #70893 (Merged)](https://github.com/bioconda/bioconda-recipes/pull/70893) | Computes $3 \times 3$ subclonal game payoff matrices & Nash equilibria from spatial transcriptomics. |
+| **Pillar 3 & 4** | `spatial-sanctuary` | [Bioconda (v2.2.2)](https://anaconda.org/bioconda/spatial-sanctuary) / [PR #70840 (Merged)](https://github.com/bioconda/bioconda-recipes/pull/70840) | Solves Bessel $K_0$ and $I_0$ reaction-diffusion boundaries; CLI: `osimertinib-sanctuary`. |
+| **Unified CDSS** | `spatial-continuum` | [Bioconda (v1.0.2)](https://anaconda.org/bioconda/spatial-continuum) / [PR #70930 (Merged)](https://github.com/bioconda/bioconda-recipes/pull/70930) | Universal biophysical framework & Bedside CRI Decision Engine; CLI: `cri-calc`, `spatial-continuum-audit`. |
 | **Pillar 5** | `insituvision-ai` | [Study 4 Portal](https://lukecele.github.io/spatial-he-vision-study4/) | Attention-MIL computer vision model for whole-slide H&E feature extraction. |
 | **Integrated Engine**| `spatial-oncology-suite` | [`Lukecele/spatial-oncology-master`](https://github.com/Lukecele/spatial-oncology-master) | Unified CLI linking pathology images, spatial coords, and genomic VCF files into the final CRI score. |

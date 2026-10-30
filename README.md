@@ -12,6 +12,7 @@
 [![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/Lucace/spatial-oncology-simulator)
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
+[![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
 
 **A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
@@ -113,9 +114,22 @@ Live Portal Audit: [🌐 `10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`](10_RE
 
 ---
 
-## 💻 Software Suite (Zero External Dependencies)
+## 💻 Software Suite & Bioconda Package
 
-All calculation tools are located in `software_strumenti_calcolo/` and run using the Python standard library with **zero external pip dependencies**:
+The full framework is packaged and available on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)) and as standalone Python scripts with **zero external pip dependencies**:
+
+```bash
+# Install via Bioconda (Official Package)
+conda install -c bioconda spatial-continuum
+
+# Or install from source in editable mode
+git clone https://github.com/Lukecele/spatial-continuum-oncology.git
+cd spatial-continuum-oncology
+pip install -e .
+```
+Both provide the bedside CLI commands `cri-calc` and `spatial-continuum-audit`.
+
+All calculation tools can also be run directly from `software_strumenti_calcolo/`:
 
 ### 1. Bedside Composite Resistance Index (CRI) Calculator
 Computes risk tier and clinical action at ADAURA Month 36:
