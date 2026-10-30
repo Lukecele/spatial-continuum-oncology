@@ -25,6 +25,7 @@
 | **`09_PIANO_PROGRAMMATICO_RICERCA_FEDERICO_II.md`** | Piano programmatico in 5 fasi dello studio indipendente. | Roadmap accademica. |
 | **`10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`** | Report di collaudo live E2E del portale GitHub Pages (5 moduli verificati, zero NaN, audit headless CDP). | Verifica di conformità software, rendering live e sanità numerica. |
 | **`11_STUDIO_SUPERIORITA_CLINICA_E_BENCHMARK_SOC_ADAURA.md`** | Studio quantitativo di superiorità clinica head-to-head vs Standard of Care (ADAURA 36m stop): 5-Yr DFS 100% vs 42.4% ($p = 1.43 \times 10^{-30}$). | Dimostrazione di superiorità terapeutica, evolutiva ed economica per oncologi e revisori. |
+| **`12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md`** | **Abstract Ufficiale per l'AACR Annual Meeting 2027** (Orlando, FL). Conforme ai limiti di 2.600 caratteri e alle policy etiche AACR/Springer Nature. | Da sottomettere sul portale myAACR entro il 10 Novembre 2026. |
 
 ---
 
