@@ -29,7 +29,9 @@
 > 👉 **[https://lukecele.github.io/spatial-continuum-oncology/simulator.html](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)**
 
 <p align="center">
-  <img src="figure_scientifiche/tumor_digital_twin_preview.png" alt="In Silico Tumor Sanctuary Digital Twin Simulator" width="100%">
+  <a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
+    <img src="assets/simulator-vessel-live.gif" alt="In Silico Tumor Sanctuary Digital Twin Simulator — 60 FPS Capillary Vessel Dynamics" width="100%" style="max-width: 960px; border-radius: 8px;">
+  </a>
 </p>
 
 > ⭐️ **Support Open-Science Oncology**: If you find this framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
