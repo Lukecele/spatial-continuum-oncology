@@ -14,6 +14,7 @@
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
 [![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
+[![PyPI](https://img.shields.io/pypi/v/spatial-continuum.svg?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/spatial-continuum/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
 
 **A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
@@ -117,12 +118,15 @@ Live Portal Audit: [🌐 `10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`](10_RE
 
 ---
 
-## 💻 Software Suite & Bioconda Package
+## 💻 Software Suite & Official Packages (PyPI & Bioconda)
 
-The full framework is packaged and available on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)) and as standalone Python scripts with **zero external pip dependencies**:
+The full framework is published on **PyPI** ([`spatial-continuum`](https://pypi.org/project/spatial-continuum/)), on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)), and operates with **zero third-party dependencies**:
 
 ```bash
-# Install via Bioconda (Official Package)
+# Install via PyPI (Official Python Package Index)
+pip install spatial-continuum
+
+# Or install via Bioconda
 conda install -c bioconda spatial-continuum
 
 # Or install from source in editable mode
