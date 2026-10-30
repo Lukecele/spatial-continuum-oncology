@@ -15,6 +15,7 @@
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
 [![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
 [![PyPI](https://img.shields.io/pypi/v/spatial-continuum.svg?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/spatial-continuum/)
+[![bio.tools](https://img.shields.io/badge/bio.tools-spatial--continuum--oncology-003366.svg?style=for-the-badge&logo=elixir&logoColor=white)](https://bio.tools/spatial-continuum-oncology)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
 
 **A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
