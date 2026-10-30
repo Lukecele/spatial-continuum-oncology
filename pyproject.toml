@@ -8,7 +8,7 @@ version = "1.0.1"
 description = "Universal biophysical reaction-diffusion transport framework and Bedside Composite Resistance Index (CRI) for NSCLC."
 readme = "README.md"
 requires-python = ">=3.8"
-license = {text = "CC-BY-4.0"}
+license = {text = "MIT"}
 authors = [
   {name = "Luca Celebrano", email = "l.celebrano@studenti.unina.it"}
 ]
@@ -22,6 +22,7 @@ keywords = [
   "adaura"
 ]
 classifiers = [
+  "License :: OSI Approved :: MIT License",
   "Intended Audience :: Science/Research",
   "Topic :: Scientific/Engineering :: Bio-Informatics",
   "Topic :: Scientific/Engineering :: Medical Science Apps.",
