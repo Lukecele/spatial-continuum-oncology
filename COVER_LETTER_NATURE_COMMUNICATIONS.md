@@ -33,7 +33,7 @@ To bridge theoretical physics and clinical practice, we introduce the **Composit
 ### Declarations
 - **Independence:** This work was conceived, designed, and executed independently by the author as part of an independent medical student research program at the Department of Clinical Medicine and Surgery, Università degli Studi di Napoli Federico II.
 - **Exclusivity:** This manuscript is original, is not under consideration by any other journal, and will not be submitted elsewhere while under evaluation at *Nature Communications*.
-- **Preprint:** A preprint will be deposited on *medRxiv* in accordance with Nature Portfolio open-access sharing policies.
+- **Preprint:** A preprint has been deposited on *Research Square* (DOI: `10.21203/rs.3.rs-11530312`) in accordance with Nature Portfolio open-access sharing policies.
 - **Competing Interests:** The author declares no competing financial or non-financial interests.
 
 ### Suggested Independent Reviewers

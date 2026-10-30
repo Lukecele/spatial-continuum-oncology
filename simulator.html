@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPATIAL-CONTINUUM | In Silico Tumor Sanctuary & SG-ADAURA Digital Twin</title>
+  <style>
+    :root {
+      --bg-base: #070a12;
+      --bg-card: #0f1523;
+      --bg-card-hover: #161e31;
+      --bg-input: #0a0f1a;
+      --border: #1e293b;
+      --border-accent: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.25);
+      --amber: #fbbf24;
+      --amber-glow: rgba(251, 191, 36, 0.25);
+      --rose: #f43f5e;
+      --rose-glow: rgba(244, 63, 94, 0.25);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --purple: #a855f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(180deg, #111827 0%, #0b1120 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
+      border: 1px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .badge-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: #38bdf8;
+      fill: none;
+    }
+
+    .title-group h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag-nature {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .title-group p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    }
+
+    /* Key Metrics HUD */
+    .hud-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 20px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .hud-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .metric-label {
+      font-size: 10px;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: -0.5px;
+    }
+
+    .val-cyan { color: var(--cyan); }
+    .val-amber { color: var(--amber); }
+    .val-rose { color: var(--rose); }
+    .val-emerald { color: var(--emerald); }
+
+    /* Main Container */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+      padding: 12px 20px;
+      flex: 1;
+    }
+
+    @media (max-width: 1200px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-header {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 21, 35, 0.7);
+    }
+
+    .card-header h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-body {
+      padding: 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Spatial Canvas Container */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      background: #040711;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    .canvas-container canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .canvas-overlay-hud {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(10, 15, 26, 0.92);
+      border: 1px solid var(--border-accent);
+      border-radius: 5px;
+      padding: 6px 10px;
+      font-size: 10px;
+      pointer-events: none;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      z-index: 10;
+      line-height: 1.4;
+    }
+
+    .canvas-legend {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      background: rgba(10, 15, 26, 0.92);
+      border: 1px solid var(--border-accent);
+      border-radius: 5px;
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(6px);
+      font-size: 10px;
+      z-index: 10;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dot-cyan { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
+    .dot-amber { background: var(--amber); box-shadow: 0 0 5px var(--amber); }
+    .dot-rose { background: var(--rose); box-shadow: 0 0 5px var(--rose); }
+
+    /* Right Column: Instrument Cards */
+    .instrument-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .mini-chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      height: 154px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .mini-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      height: 18px;
+    }
+
+    .mini-chart-header h3 {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .chart-container {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-container canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Controls Deck */
+    .control-deck {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: grid;
+      grid-template-columns: 260px 1.2fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 1050px) {
+      .control-deck {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .protocol-select-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .protocol-card {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .protocol-card:hover {
+      border-color: var(--border-accent);
+      background: #111728;
+    }
+
+    .protocol-card.active {
+      border-color: var(--cyan);
+      background: rgba(56, 189, 248, 0.08);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+    }
+
+    .protocol-card.active-adaura {
+      border-color: var(--rose);
+      background: rgba(244, 63, 94, 0.08);
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.15);
+    }
+
+    .proto-title {
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .proto-desc {
+      font-size: 9.5px;
+      color: var(--text-dim);
+      line-height: 1.3;
+    }
+
+    .slider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+    }
+
+    .slider-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .slider-val {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--border);
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 5px var(--cyan);
+      transition: all 0.15s ease;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .preset-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .btn-preset {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      padding: 5px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+
+    .btn-preset:hover {
+      border-color: var(--cyan);
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke-width="2"/>
+          <path d="M12 3v18M3 12h18" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <circle cx="12" cy="12" r="4" fill="rgba(56, 189, 248, 0.4)"/>
+        </svg>
+      </div>
+      <div class="title-group">
+        <h1>
+          SPATIAL-CONTINUUM: The In Silico Sanctuary Digital Twin
+          <span class="tag-nature">Nature Comms Companion</span>
+        </h1>
+        <p>Biophysical Reaction-Diffusion & Evolutionary Game Engine for Post-ADAURA Sanctuary Dynamics • Luca Celebrano</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" id="btnPlayPause">
+        <span id="playIcon">⏸</span> <span id="playText">Pause Simulation</span>
+      </button>
+      <button class="btn" id="btnFastFwd">⏩ 2x Speed</button>
+      <button class="btn" id="btnReset">🔄 Reset</button>
+      <button class="btn" id="btnExportCSV">📊 Export Cohort CSV</button>
+      <button class="btn" id="btnSnapshot">📸 Snapshot</button>
+    </div>
+  </header>
+
+  <!-- Live Clinical HUD Bar -->
+  <div class="hud-bar">
+    <div class="metric-item">
+      <div class="metric-label">Simulated Timeline</div>
+      <div class="metric-value val-cyan" id="metricTime">Day 0 (0.0 Yrs)</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label">Tumor Burden V(t)</div>
+      <div class="metric-value" id="metricVolume">100.0% <span style="font-size:11px; color:var(--text-dim)">(1000 mm³)</span></div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label">Continuum Resistance Index (CRI)</div>
+      <div class="metric-value val-amber" id="metricCRI">0.12 <span style="font-size:10px; font-weight:normal; color:var(--text-muted)">[Low Risk]</span></div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label">Sanctuary Surface Area</div>
+      <div class="metric-value val-rose" id="metricSanctuary">34.2% <span style="font-size:10px; font-weight:normal; color:var(--text-dim)">(Sub-therapeutic)</span></div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label">Phenotype Ratio (S : P : R)</div>
+      <div class="metric-value" id="metricRatio" style="font-size: 15px; line-height: 22px;">
+        <span style="color:var(--cyan)">88%</span> : <span style="color:var(--amber)">10%</span> : <span style="color:var(--rose)">2%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workspace: Canvas & Instrumentation -->
+  <div class="workspace">
+    <!-- Left: Spatial Tumor Microenvironment Canvas -->
+    <div class="card">
+      <div class="card-header">
+        <h2>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>
+          </svg>
+          2D Radial Reaction-Diffusion & Cellular Architecture (500 μm Cord)
+        </h2>
+        <div style="display:flex; gap:6px;">
+          <button class="btn" style="padding:2px 7px; font-size:9.5px;" id="toggleOverlay">View: Drug Heatmap</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="canvas-container" id="canvasContainer">
+          <canvas id="spatialCanvas"></canvas>
+          
+          <div class="canvas-overlay-hud" id="spatialHud">
+            <div style="font-weight:700; color:var(--text-main); margin-bottom:2px;">Microenvironment Probe:</div>
+            <div id="hudProbeDetails">Hover mouse over cord to inspect local microenvironment...</div>
+          </div>
+
+          <div class="canvas-legend">
+            <div class="legend-item"><span class="dot dot-cyan"></span> <strong>Sensitive (S)</strong> [EGFRmut, Osimertinib-Killable]</div>
+            <div class="legend-item"><span class="dot dot-amber"></span> <strong>Plastic (P)</strong> [DTP, AXL/ZEB1 Niche]</div>
+            <div class="legend-item"><span class="dot dot-rose"></span> <strong>Resistant (R)</strong> [C797S / MET amp]</div>
+            <div class="legend-item" style="color:var(--rose); font-weight:700;">⚡ Capillary Core (r=0)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Three Scientific Instruments -->
+    <div class="instrument-grid">
+      <!-- Instrument 1: Reaction-Diffusion Radial Gradient -->
+      <div class="mini-chart-card">
+        <div class="mini-chart-header">
+          <h3>PDE Radial Drug Gradient C(r) vs Sanctuary Window</h3>
+          <span style="font-size:9px; color:var(--text-dim)">D = 85 μm²/s • IFP = 18 mmHg</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="gradientChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Instrument 2: Longitudinal Head-to-Head Protocol Trial -->
+      <div class="mini-chart-card">
+        <div class="mini-chart-header">
+          <h3>5-Year Longitudinal Recurrence Trial V(t)</h3>
+          <div style="font-size:9px; display:flex; gap:8px;">
+            <span style="color:var(--rose)">● ADAURA (Stop Yr 3)</span>
+            <span style="color:var(--cyan)">● SG-ADAURA (Adaptive)</span>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="trialChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Instrument 3: Ternary Evolutionary Game Simplex (S-P-R) -->
+      <div class="mini-chart-card">
+        <div class="mini-chart-header">
+          <h3>Evolutionary Replicator Phase Simplex (S-P-R Attractor)</h3>
+          <span style="font-size:9px; color:var(--text-dim)">3x3 Game Payoff Trajectory</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="simplexChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Control & Protocol Deck -->
+  <div class="control-deck">
+    <!-- Protocol Selection Cards -->
+    <div class="protocol-select-group">
+      <div style="font-size:10px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+        Select Therapeutic Regimen:
+      </div>
+      
+      <div class="protocol-card active-adaura" id="protoADAURA" onclick="setProtocol('ADAURA')">
+        <div class="proto-title">
+          <span>Standard ADAURA</span>
+          <span style="color:var(--rose); font-size:9px;">Continuous 80mg</span>
+        </div>
+        <div class="proto-desc">
+          Daily Osimertinib 36 months &rarr; Cessation &rarr; Sanctuary-driven explosive recurrence flare.
+        </div>
+      </div>
+
+      <div class="protocol-card" id="protoSG" onclick="setProtocol('SG_ADAURA')">
+        <div class="proto-title">
+          <span style="color:var(--cyan)">SG-ADAURA Protocol</span>
+          <span style="color:var(--cyan); font-size:9px;">Adaptive (CRI-Guided)</span>
+        </div>
+        <div class="proto-desc">
+          CRI-monitored pulsed dosing: preserves sensitive competitors, suppressing resistant expansion.
+        </div>
+      </div>
+
+      <div class="protocol-card" id="protoMetronomic" onclick="setProtocol('METRONOMIC')">
+        <div class="proto-title">
+          <span>Metronomic Maintenance</span>
+          <span style="color:var(--amber); font-size:9px;">Low-Dose 40mg</span>
+        </div>
+        <div class="proto-desc">
+          Continuous sub-maximal dosing. Flattens vascular peak but risks intermediate sanctuary niche.
+        </div>
+      </div>
+    </div>
+
+    <!-- Biophysical Sliders -->
+    <div class="slider-grid">
+      <div class="slider-item">
+        <div class="slider-label">
+          <span>Drug Diffusivity (D<sub>eff</sub>)</span>
+          <span class="slider-val" id="valDiff">85 μm²/s</span>
+        </div>
+        <input type="range" id="paramDiff" min="20" max="200" value="85" step="5">
+      </div>
+
+      <div class="slider-item">
+        <div class="slider-label">
+          <span>Capillary Permeability (P<sub>v</sub>)</span>
+          <span class="slider-val" id="valPerm">1.00</span>
+        </div>
+        <input type="range" id="paramPerm" min="0.2" max="2.5" value="1.0" step="0.1">
+      </div>
+
+      <div class="slider-item">
+        <div class="slider-label">
+          <span>Tumor Interstitial Pressure (IFP)</span>
+          <span class="slider-val" id="valIFP">18 mmHg</span>
+        </div>
+        <input type="range" id="paramIFP" min="0" max="40" value="18" step="1">
+      </div>
+
+      <div class="slider-item">
+        <div class="slider-label">
+          <span>Plasticity Transition (μ<sub>S&rarr;P</sub>)</span>
+          <span class="slider-val" id="valPlasticity">0.035 /day</span>
+        </div>
+        <input type="range" id="paramPlasticity" min="0.005" max="0.100" value="0.035" step="0.005">
+      </div>
+
+      <div class="slider-item">
+        <div class="slider-label">
+          <span>Cost of Resistance (c<sub>R</sub>)</span>
+          <span class="slider-val" id="valCostR">15% penalty</span>
+        </div>
+        <input type="range" id="paramCostR" min="0" max="35" value="15" step="1">
+      </div>
+
+      <div class="slider-item">
+        <div class="slider-label">
+          <span>Planned ADAURA Cessation</span>
+          <span class="slider-val" id="valDuration">36 Months</span>
+        </div>
+        <input type="range" id="paramDuration" min="12" max="60" value="36" step="6">
+      </div>
+    </div>
+
+    <!-- Presets & Quick Exploration -->
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div style="font-size:10px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+        Clinical Benchmark Scenarios:
+      </div>
+      <div class="preset-buttons">
+        <button class="btn-preset" onclick="applyPreset('standard_nsclc')">🎯 Baseline ADAURA NSCLC</button>
+        <button class="btn-preset" onclick="applyPreset('brain_met')">🧠 Brain / CNS Sanctuary</button>
+        <button class="btn-preset" onclick="applyPreset('high_plastic')">🧬 High AXL/ZEB1 Plasticity</button>
+        <button class="btn-preset" onclick="applyPreset('anti_vegf')">💉 Normalization (+Anti-VEGF)</button>
+      </div>
+
+      <div style="margin-top:auto; padding:8px 10px; background:var(--bg-input); border-radius:5px; border:1px solid var(--border); font-size:10px; color:var(--text-dim); line-height:1.35;">
+        <strong style="color:var(--text-muted)">The Spatial Invariant:</strong>
+        Whenever high interstitial fluid pressure impedes convective penetration, sub-lethal concentrations (<span style="color:var(--amber)">0.15 &ndash; 0.65 C₀</span>) create an inevitable evolutionary sanctuary breeding genetic resistance.
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Script Engine -->
+  <script>
+    /* =========================================================================
+     * SPATIAL-CONTINUUM: Bio-physical Reaction-Diffusion & Replicator Engine
+     * Author: Luca Celebrano, MD Candidate, Università di Napoli Federico II
+     * ========================================================================= */
+
+    const STATE = {
+      running: true,
+      speed: 1,
+      protocol: 'ADAURA', // 'ADAURA', 'SG_ADAURA', 'METRONOMIC'
+      overlayMode: 'HEATMAP',
+      
+      day: 0,
+      maxDays: 1825, // 5 Years (365.25 * 5)
+      dt: 0.5, // 0.5 days per step
+
+      Nr: 120, // radial bins
+      R_max: 500, // 500 microns
+      dr: 500 / 120,
+
+      // Biophysical Literature Parameters
+      D_eff: 85, // um^2/s (Jain et al.)
+      Pv: 1.0,
+      IFP: 18, // mmHg (Boucher & Jain)
+      k_clear: 0.12, // clearance /day
+      V_max: 0.8,
+      Km: 40, // nM
+      
+      // Osimertinib PK/PD Constants
+      C_plasma_nominal: 100, // nM steady-state unbound active
+      C_sub: 18, // nM (lower boundary of sanctuary)
+      C_kill: 65, // nM (upper boundary of sanctuary)
+      
+      // Evolutionary Parameters
+      r_S: 0.045, // /day intrinsic proliferation
+      r_P: 0.038,
+      r_R: 0.040,
+      c_R: 0.15, // 15% fitness penalty for resistance (Gatenby et al.)
+      mu_SP: 0.035, // plasticity rate in sanctuary
+      mu_PR: 0.002, // genetic lock-in mutation rate
+      
+      cessationDay: 36 * 30.43, // 36 months ~ 1095 days
+
+      C: new Float32Array(120),
+      S: new Float32Array(120),
+      P: new Float32Array(120),
+      R: new Float32Array(120),
+
+      history: {
+        days: [],
+        vol_current: [],
+        vol_adaura_ref: [],
+        vol_sg_ref: [],
+        cri: [],
+        ratio_S: [],
+        ratio_P: [],
+        ratio_R: [],
+        sanctuary_pct: []
+      },
+
+      cells: []
+    };
+
+    let precomputedTrials = {
+      adaura: [],
+      sg_adaura: []
+    };
+
+    const canvasSpatial = document.getElementById('spatialCanvas');
+    const ctxSpatial = canvasSpatial.getContext('2d');
+
+    const canvasGradient = document.getElementById('gradientChart');
+    const ctxGradient = canvasGradient.getContext('2d');
+
+    const canvasTrial = document.getElementById('trialChart');
+    const ctxTrial = canvasTrial.getContext('2d');
+
+    const canvasSimplex = document.getElementById('simplexChart');
+    const ctxSimplex = canvasSimplex.getContext('2d');
+
+    let dims = {
+      spatial: { w: 0, h: 0 },
+      gradient: { w: 0, h: 0 },
+      trial: { w: 0, h: 0 },
+      simplex: { w: 0, h: 0 }
+    };
+
+    function resizeCanvas(canvas, key) {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.floor(rect.width);
+      const h = Math.floor(rect.height);
+      
+      if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        const ctx = canvas.getContext('2d');
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+      }
+      dims[key] = { w, h };
+    }
+
+    function resizeAllCanvases() {
+      resizeCanvas(canvasSpatial, 'spatial');
+      resizeCanvas(canvasGradient, 'gradient');
+      resizeCanvas(canvasTrial, 'trial');
+      resizeCanvas(canvasSimplex, 'simplex');
+    }
+
+    function initSimulation() {
+      STATE.day = 0;
+      window._baselineVolume = undefined;
+      window._sg_active = true;
+
+      STATE.history = {
+        days: [],
+        vol_current: [],
+        vol_adaura_ref: [],
+        vol_sg_ref: [],
+        cri: [],
+        ratio_S: [],
+        ratio_P: [],
+        ratio_R: [],
+        sanctuary_pct: []
+      };
+
+      // Initialize steady-state drug concentration profile at Day 0
+      const c_init = (STATE.protocol === 'METRONOMIC') ? 40 : 100;
+      for (let i = 0; i < STATE.Nr; i++) {
+        const r_ratio = i / STATE.Nr;
+        const r_um = i * STATE.dr;
+        // Exponential decay governed by D_eff and IFP
+        const decayLength = Math.max(80, Math.sqrt(STATE.D_eff * 100) / (1.0 + STATE.IFP / 20));
+        STATE.C[i] = c_init * Math.exp(-r_um / decayLength);
+        
+        STATE.S[i] = 0.88 * (1.0 - 0.15 * r_ratio);
+        STATE.P[i] = 0.10 * (1.0 - 0.10 * r_ratio);
+        STATE.R[i] = 0.02; // 2% baseline resistant subclone
+      }
+
+      // Generate 2D visual cell particles
+      STATE.cells = [];
+      const numParticles = 2200;
+      for (let n = 0; n < numParticles; n++) {
+        const theta = Math.random() * 2 * Math.PI;
+        const r = Math.sqrt(Math.random()) * 210;
+        const bin = Math.min(STATE.Nr - 1, Math.floor((r / 210) * STATE.Nr));
+        STATE.cells.push({
+          r: r,
+          theta: theta,
+          bin: bin,
+          phenotype: Math.random() < 0.88 ? 'S' : (Math.random() < 0.85 ? 'P' : 'R'),
+          alive: true
+        });
+      }
+
+      precalculateCohortTrials();
+      resizeAllCanvases();
+    }
+
+    function precalculateCohortTrials() {
+      precomputedTrials.adaura = [];
+      precomputedTrials.sg_adaura = [];
+
+      let s_arr = new Float32Array(STATE.Nr).fill(0.88);
+      let p_arr = new Float32Array(STATE.Nr).fill(0.10);
+      let r_arr = new Float32Array(STATE.Nr).fill(0.02);
+      
+      const totalSteps = Math.floor(STATE.maxDays / 2.0);
+      let initVol = 0;
+      for (let i = 0; i < STATE.Nr; i++) {
+        initVol += (s_arr[i] + p_arr[i] + r_arr[i]) * (i + 0.5) * STATE.dr;
+      }
+
+      // 1. ADAURA 36-Month Cessation Arm
+      for (let step = 0; step <= totalSteps; step++) {
+        const t = step * 2.0;
+        const inTreatment = (t <= (36 * 30.43));
+        const c_plasma = inTreatment ? 100 : 0;
+        
+        let currentVol = 0;
+        for (let i = 0; i < STATE.Nr; i++) {
+          const r = (i + 0.5) * STATE.dr;
+          const conc = c_plasma * Math.exp(-r / 135);
+          
+          const kill_s = 0.08 * (conc*conc) / (28*28 + conc*conc);
+          const kill_p = 0.02 * (conc*conc) / (80*80 + conc*conc);
+          const is_sanc = (conc >= STATE.C_sub && conc <= STATE.C_kill);
+          const mu_sp = is_sanc ? 0.035 : 0.001;
+          const mu_pr = is_sanc ? 0.0025 : 0.0003;
+
+          const rho = s_arr[i] + p_arr[i] + r_arr[i];
+          const lim = Math.max(0, 1.0 - rho);
+
+          s_arr[i] += ((0.045 * lim - kill_s - mu_sp) * s_arr[i]) * 2.0;
+          p_arr[i] += ((0.038 * 0.95 * lim - kill_p - mu_pr) * p_arr[i] + mu_sp * s_arr[i]) * 2.0;
+          r_arr[i] += ((0.040 * (1.0 - 0.15) * lim) * r_arr[i] + mu_pr * p_arr[i]) * 2.0;
+
+          s_arr[i] = Math.max(0, Math.min(1.0, s_arr[i]));
+          p_arr[i] = Math.max(0, Math.min(1.0, p_arr[i]));
+          r_arr[i] = Math.max(0, Math.min(1.0, r_arr[i]));
+
+          currentVol += (s_arr[i] + p_arr[i] + r_arr[i]) * r;
+        }
+        precomputedTrials.adaura.push({ day: t, vol: (currentVol / initVol) * 100 });
+      }
+
+      // 2. SG-ADAURA Adaptive Arm
+      s_arr.fill(0.88);
+      p_arr.fill(0.10);
+      r_arr.fill(0.02);
+      let sg_active = true;
+
+      for (let step = 0; step <= totalSteps; step++) {
+        const t = step * 2.0;
+        let currentVol = 0;
+        let s_tot = 0, p_sanc = 0;
+
+        for (let i = 0; i < STATE.Nr; i++) {
+          const r = (i + 0.5) * STATE.dr;
+          const vol_i = (s_arr[i] + p_arr[i] + r_arr[i]) * r;
+          currentVol += vol_i;
+          s_tot += s_arr[i] * r;
+          if (i >= 20 && i <= 80) p_sanc += p_arr[i] * r;
+        }
+        const cri = (currentVol > 0) ? (p_sanc / currentVol) : 0;
+        const volPct = (currentVol / initVol) * 100;
+
+        // Adaptive controller: stop drug when tumor < 18%, resume when tumor > 45% or CRI high
+        if (sg_active && volPct < 18) sg_active = false;
+        else if (!sg_active && (volPct > 45 || cri > 0.16)) sg_active = true;
+
+        const c_plasma = sg_active ? 100 : 0;
+        for (let i = 0; i < STATE.Nr; i++) {
+          const r = (i + 0.5) * STATE.dr;
+          const conc = c_plasma * Math.exp(-r / 135);
+          
+          const kill_s = 0.08 * (conc*conc) / (28*28 + conc*conc);
+          const kill_p = 0.02 * (conc*conc) / (80*80 + conc*conc);
+          const is_sanc = (conc >= STATE.C_sub && conc <= STATE.C_kill);
+          const mu_sp = is_sanc ? 0.035 : 0.001;
+          const mu_pr = is_sanc ? 0.0025 : 0.0003;
+
+          const rho = s_arr[i] + p_arr[i] + r_arr[i];
+          const lim = Math.max(0, 1.0 - rho);
+
+          s_arr[i] += ((0.045 * lim - kill_s - mu_sp) * s_arr[i]) * 2.0;
+          p_arr[i] += ((0.038 * 0.95 * lim - kill_p - mu_pr) * p_arr[i] + mu_sp * s_arr[i]) * 2.0;
+          r_arr[i] += ((0.040 * (1.0 - 0.15) * lim) * r_arr[i] + mu_pr * p_arr[i]) * 2.0;
+
+          s_arr[i] = Math.max(0, Math.min(1.0, s_arr[i]));
+          p_arr[i] = Math.max(0, Math.min(1.0, p_arr[i]));
+          r_arr[i] = Math.max(0, Math.min(1.0, r_arr[i]));
+        }
+        precomputedTrials.sg_adaura.push({ day: t, vol: volPct });
+      }
+    }
+
+    function stepSimulation() {
+      const dt = STATE.dt;
+      STATE.day += dt;
+
+      let C_plasma = 0;
+      if (STATE.protocol === 'ADAURA') {
+        C_plasma = (STATE.day <= STATE.cessationDay) ? STATE.C_plasma_nominal : 0;
+      } else if (STATE.protocol === 'SG_ADAURA') {
+        const lastVol = (STATE.history.vol_current.length > 0) ? 
+          STATE.history.vol_current[STATE.history.vol_current.length - 1] : 100;
+        const lastCRI = (STATE.history.cri.length > 0) ? 
+          STATE.history.cri[STATE.history.cri.length - 1] : 0.12;
+
+        if (window._sg_active && lastVol < 18) {
+          window._sg_active = false;
+        } else if (!window._sg_active && (lastVol > 45 || lastCRI > 0.16)) {
+          window._sg_active = true;
+        }
+        C_plasma = window._sg_active ? STATE.C_plasma_nominal : 0;
+      } else if (STATE.protocol === 'METRONOMIC') {
+        C_plasma = STATE.C_plasma_nominal * 0.40;
+      }
+
+      // Reaction-Diffusion-Convection PDE
+      const D = STATE.D_eff * 0.0864;
+      const v_ifp = (STATE.IFP / 20.0) * 0.05;
+      
+      STATE.C[0] = C_plasma * STATE.Pv;
+      for (let i = 1; i < STATE.Nr - 1; i++) {
+        const r = (i + 0.5) * STATE.dr;
+        const d2C = (STATE.C[i + 1] - 2 * STATE.C[i] + STATE.C[i - 1]) / (STATE.dr * STATE.dr);
+        const dC_dr = (STATE.C[i + 1] - STATE.C[i - 1]) / (2 * STATE.dr);
+        const Laplacian = d2C + (1 / r) * dC_dr;
+        const convection = v_ifp * dC_dr;
+
+        const totalCellDensity = STATE.S[i] + STATE.P[i] + STATE.R[i];
+        const uptake = (STATE.V_max * STATE.C[i]) / (STATE.Km + STATE.C[i]) * totalCellDensity;
+        const clear = STATE.k_clear * STATE.C[i];
+
+        const dC_dt = D * Laplacian - convection - uptake - clear;
+        STATE.C[i] += dC_dt * dt;
+        if (STATE.C[i] < 0) STATE.C[i] = 0;
+      }
+      STATE.C[STATE.Nr - 1] = STATE.C[STATE.Nr - 2];
+
+      // Replicator Updates
+      let totalS = 0, totalP = 0, totalR = 0;
+      let sanctuaryVolume = 0;
+      let totalVolumeWeight = 0;
+      let sanctuaryPersisters = 0;
+
+      for (let i = 0; i < STATE.Nr; i++) {
+        const r = (i + 0.5) * STATE.dr;
+        const shellWeight = 2 * Math.PI * r * STATE.dr;
+        const conc = STATE.C[i];
+        const rho = STATE.S[i] + STATE.P[i] + STATE.R[i];
+        const spaceLimitation = Math.max(0, 1.0 - rho);
+
+        const isSanctuary = (conc >= STATE.C_sub && conc <= STATE.C_kill);
+        if (isSanctuary) {
+          sanctuaryVolume += shellWeight;
+          sanctuaryPersisters += STATE.P[i] * shellWeight;
+        }
+        totalVolumeWeight += shellWeight;
+
+        const kill_S = 0.08 * Math.pow(conc, 2) / (Math.pow(28, 2) + Math.pow(conc, 2));
+        const kill_P = 0.02 * Math.pow(conc, 2) / (Math.pow(80, 2) + Math.pow(conc, 2));
+
+        const mu_sp_local = isSanctuary ? STATE.mu_SP : 0.001;
+        const mu_pr_local = isSanctuary ? STATE.mu_PR : 0.0003;
+
+        const dS = (STATE.r_S * spaceLimitation * STATE.S[i]) - (kill_S * STATE.S[i]) - (mu_sp_local * STATE.S[i]);
+        const dP = (STATE.r_P * 0.95 * spaceLimitation * STATE.P[i]) - (kill_P * STATE.P[i]) + (mu_sp_local * STATE.S[i]) - (mu_pr_local * STATE.P[i]);
+        const dR = (STATE.r_R * (1.0 - STATE.c_R) * spaceLimitation * STATE.R[i]) + (mu_pr_local * STATE.P[i]);
+
+        STATE.S[i] = Math.max(0, Math.min(1.0, STATE.S[i] + dS * dt));
+        STATE.P[i] = Math.max(0, Math.min(1.0, STATE.P[i] + dP * dt));
+        STATE.R[i] = Math.max(0, Math.min(1.0, STATE.R[i] + dR * dt));
+
+        totalS += STATE.S[i] * shellWeight;
+        totalP += STATE.P[i] * shellWeight;
+        totalR += STATE.R[i] * shellWeight;
+      }
+
+      const totalTumorWeight = totalS + totalP + totalR;
+      if (window._baselineVolume === undefined || STATE.day <= dt) {
+        window._baselineVolume = totalTumorWeight;
+      }
+      const volPct = (totalTumorWeight / window._baselineVolume) * 100.0;
+      const CRI = (totalTumorWeight > 0) ? (sanctuaryPersisters / totalTumorWeight) : 0;
+      const sancPct = (sanctuaryVolume / totalVolumeWeight) * 100.0;
+
+      if (Math.floor(STATE.day) > (STATE.history.days[STATE.history.days.length - 1] || -1)) {
+        STATE.history.days.push(Math.floor(STATE.day));
+        STATE.history.vol_current.push(volPct);
+        STATE.history.cri.push(CRI);
+        STATE.history.sanctuary_pct.push(sancPct);
+        STATE.history.ratio_S.push((totalS / totalTumorWeight) * 100);
+        STATE.history.ratio_P.push((totalP / totalTumorWeight) * 100);
+        STATE.history.ratio_R.push((totalR / totalTumorWeight) * 100);
+      }
+
+      updateCellParticles();
+      updateHUD(volPct, CRI, sancPct, totalS, totalP, totalR);
+
+      if (STATE.day >= STATE.maxDays) {
+        STATE.running = false;
+        document.getElementById('playText').innerText = 'Simulation Complete';
+        document.getElementById('playIcon').innerText = '✅';
+      }
+    }
+
+    function updateCellParticles() {
+      for (let cell of STATE.cells) {
+        const bin = Math.min(STATE.Nr - 1, Math.floor((cell.r / 210) * STATE.Nr));
+        const s_p = STATE.S[bin];
+        const p_p = STATE.P[bin];
+        const r_p = STATE.R[bin];
+        const total = s_p + p_p + r_p;
+
+        if (total < 0.05) {
+          cell.alive = false;
+        } else {
+          cell.alive = true;
+          const rand = Math.random() * total;
+          if (rand < s_p) cell.phenotype = 'S';
+          else if (rand < s_p + p_p) cell.phenotype = 'P';
+          else cell.phenotype = 'R';
+        }
+      }
+    }
+
+    function updateHUD(volPct, CRI, sancPct, totalS, totalP, totalR) {
+      const year = (STATE.day / 365.25).toFixed(1);
+      document.getElementById('metricTime').innerText = `Day ${Math.floor(STATE.day)} (${year} Yrs)`;
+      
+      const mm3 = (1000 * (volPct / 100)).toFixed(0);
+      document.getElementById('metricVolume').innerHTML = `${volPct.toFixed(1)}% <span style="font-size:11px; color:var(--text-dim)">(${mm3} mm³)</span>`;
+
+      const criRisk = CRI < 0.08 ? '[Low Risk]' : (CRI < 0.20 ? '[Medium Sanctuary]' : '[High Recurrence Risk]');
+      const criClass = CRI < 0.08 ? 'val-emerald' : (CRI < 0.20 ? 'val-amber' : 'val-rose');
+      document.getElementById('metricCRI').className = `metric-value ${criClass}`;
+      document.getElementById('metricCRI').innerHTML = `${CRI.toFixed(3)} <span style="font-size:10px; font-weight:normal; color:var(--text-muted)">${criRisk}</span>`;
+
+      document.getElementById('metricSanctuary').innerText = `${sancPct.toFixed(1)}%`;
+
+      const tot = totalS + totalP + totalR || 1;
+      const pctS = Math.round((totalS / tot) * 100);
+      const pctP = Math.round((totalP / tot) * 100);
+      const pctR = Math.round((totalR / tot) * 100);
+      document.getElementById('metricRatio').innerHTML = `
+        <span style="color:var(--cyan)">${pctS}%</span> : 
+        <span style="color:var(--amber)">${pctP}%</span> : 
+        <span style="color:var(--rose)">${pctR}%</span>
+      `;
+    }
+
+    // --- Render Spatial Canvas ---
+    function renderSpatialCanvas() {
+      const w = dims.spatial.w;
+      const h = dims.spatial.h;
+      if (!w || !h) return;
+
+      const cx = w / 2;
+      const cy = h / 2;
+      const maxRadius = Math.min(cx, cy) - 20;
+
+      ctxSpatial.clearRect(0, 0, w, h);
+
+      // Heatmap Rings
+      const numRings = STATE.Nr;
+      for (let i = numRings - 1; i >= 0; i--) {
+        const r_outer = ((i + 1) / numRings) * maxRadius;
+        const conc = STATE.C[i];
+
+        ctxSpatial.beginPath();
+        ctxSpatial.arc(cx, cy, r_outer, 0, 2 * Math.PI);
+
+        if (STATE.overlayMode === 'HEATMAP') {
+          if (conc < STATE.C_sub) {
+            const alpha = 0.12 + (conc / STATE.C_sub) * 0.20;
+            ctxSpatial.fillStyle = `rgba(14, 28, 54, ${alpha})`;
+          } else if (conc <= STATE.C_kill) {
+            const frac = (conc - STATE.C_sub) / (STATE.C_kill - STATE.C_sub);
+            ctxSpatial.fillStyle = `rgba(251, 191, 36, ${0.16 + 0.22 * frac})`;
+          } else {
+            const frac = Math.min(1.0, (conc - STATE.C_kill) / 35.0);
+            ctxSpatial.fillStyle = `rgba(16, 185, 129, ${0.12 + 0.28 * frac})`;
+          }
+        } else {
+          ctxSpatial.fillStyle = '#060911';
+        }
+        ctxSpatial.fill();
+      }
+
+      // Sanctuary Boundary Rings
+      for (let i = 0; i < STATE.Nr - 1; i++) {
+        if ((STATE.C[i] >= STATE.C_sub && STATE.C[i+1] < STATE.C_sub) || 
+            (STATE.C[i] >= STATE.C_kill && STATE.C[i+1] < STATE.C_kill)) {
+          const r = (i / STATE.Nr) * maxRadius;
+          ctxSpatial.beginPath();
+          ctxSpatial.arc(cx, cy, r, 0, 2 * Math.PI);
+          ctxSpatial.strokeStyle = 'rgba(251, 191, 36, 0.45)';
+          ctxSpatial.lineWidth = 1.2;
+          ctxSpatial.setLineDash([4, 4]);
+          ctxSpatial.stroke();
+          ctxSpatial.setLineDash([]);
+        }
+      }
+
+      // Cellular Agents
+      for (let cell of STATE.cells) {
+        if (!cell.alive) continue;
+        const screenR = (cell.r / 210) * maxRadius;
+        const px = cx + screenR * Math.cos(cell.theta);
+        const py = cy + screenR * Math.sin(cell.theta);
+
+        ctxSpatial.beginPath();
+        ctxSpatial.arc(px, py, 2.2, 0, 2 * Math.PI);
+
+        if (cell.phenotype === 'S') ctxSpatial.fillStyle = '#38bdf8';
+        else if (cell.phenotype === 'P') ctxSpatial.fillStyle = '#fbbf24';
+        else ctxSpatial.fillStyle = '#f43f5e';
+        ctxSpatial.fill();
+      }
+
+      // Capillary Center
+      const pulse = 1.0 + 0.08 * Math.sin(Date.now() / 250);
+      const vRadius = 13 * pulse;
+
+      ctxSpatial.beginPath();
+      ctxSpatial.arc(cx, cy, vRadius + 6, 0, 2 * Math.PI);
+      ctxSpatial.fillStyle = 'rgba(244, 63, 94, 0.15)';
+      ctxSpatial.fill();
+
+      ctxSpatial.beginPath();
+      ctxSpatial.arc(cx, cy, vRadius, 0, 2 * Math.PI);
+      ctxSpatial.fillStyle = '#be123c';
+      ctxSpatial.strokeStyle = '#f43f5e';
+      ctxSpatial.lineWidth = 1.5;
+      ctxSpatial.fill();
+      ctxSpatial.stroke();
+
+      ctxSpatial.fillStyle = '#ffffff';
+      ctxSpatial.font = '8px monospace';
+      ctxSpatial.textAlign = 'center';
+      ctxSpatial.textBaseline = 'middle';
+      ctxSpatial.fillText('RBC', cx, cy);
+    }
+
+    // --- Render Gradient Chart C(r) ---
+    function renderGradientChart() {
+      const w = dims.gradient.w;
+      const h = dims.gradient.h;
+      if (!w || !h) return;
+
+      ctxGradient.clearRect(0, 0, w, h);
+
+      const padL = 34, padR = 14, padT = 8, padB = 22;
+      const plotW = w - padL - padR;
+      const plotH = h - padT - padB;
+
+      // Sanctuary Band
+      const sancY_top = padT + plotH * (1.0 - STATE.C_kill / 100);
+      const sancY_bot = padT + plotH * (1.0 - STATE.C_sub / 100);
+
+      ctxGradient.fillStyle = 'rgba(251, 191, 36, 0.12)';
+      ctxGradient.fillRect(padL, sancY_top, plotW, sancY_bot - sancY_top);
+
+      ctxGradient.strokeStyle = 'rgba(251, 191, 36, 0.35)';
+      ctxGradient.setLineDash([2, 2]);
+      ctxGradient.beginPath();
+      ctxGradient.moveTo(padL, sancY_top); ctxGradient.lineTo(padL + plotW, sancY_top);
+      ctxGradient.moveTo(padL, sancY_bot); ctxGradient.lineTo(padL + plotW, sancY_bot);
+      ctxGradient.stroke();
+      ctxGradient.setLineDash([]);
+
+      ctxGradient.fillStyle = '#fbbf24';
+      ctxGradient.font = '8.5px sans-serif';
+      ctxGradient.textAlign = 'left';
+      ctxGradient.fillText('Sanctuary Window (18 - 65 nM)', padL + 8, sancY_top + 11);
+
+      // Axes
+      ctxGradient.strokeStyle = '#334155';
+      ctxGradient.lineWidth = 1;
+      ctxGradient.beginPath();
+      ctxGradient.moveTo(padL, padT); ctxGradient.lineTo(padL, padT + plotH);
+      ctxGradient.lineTo(padL + plotW, padT + plotH);
+      ctxGradient.stroke();
+
+      // Labels
+      ctxGradient.fillStyle = '#64748b';
+      ctxGradient.font = '8px monospace';
+      ctxGradient.textAlign = 'right';
+      ctxGradient.fillText('100', padL - 4, padT + 6);
+      ctxGradient.fillText('0', padL - 4, padT + plotH);
+      ctxGradient.textAlign = 'center';
+      ctxGradient.fillText('r=0', padL, padT + plotH + 13);
+      ctxGradient.fillText('250 μm', padL + plotW * 0.5, padT + plotH + 13);
+      ctxGradient.fillText('500 μm', padL + plotW - 12, padT + plotH + 13);
+
+      // C(r) Curve
+      ctxGradient.beginPath();
+      ctxGradient.strokeStyle = '#38bdf8';
+      ctxGradient.lineWidth = 2.0;
+
+      for (let i = 0; i < STATE.Nr; i++) {
+        const x = padL + (i / (STATE.Nr - 1)) * plotW;
+        const y = padT + plotH * (1.0 - Math.min(1.0, STATE.C[i] / 100));
+        if (i === 0) ctxGradient.moveTo(x, y);
+        else ctxGradient.lineTo(x, y);
+      }
+      ctxGradient.stroke();
+    }
+
+    // --- Render Trial Chart V(t) ---
+    function renderTrialChart() {
+      const w = dims.trial.w;
+      const h = dims.trial.h;
+      if (!w || !h) return;
+
+      ctxTrial.clearRect(0, 0, w, h);
+
+      const padL = 34, padR = 14, padT = 8, padB = 22;
+      const plotW = w - padL - padR;
+      const plotH = h - padT - padB;
+
+      // 36-Month Cessation Marker
+      const cessX = padL + ((36 * 30.43) / STATE.maxDays) * plotW;
+      ctxTrial.strokeStyle = 'rgba(244, 63, 94, 0.4)';
+      ctxTrial.setLineDash([3, 3]);
+      ctxTrial.beginPath();
+      ctxTrial.moveTo(cessX, padT); ctxTrial.lineTo(cessX, padT + plotH);
+      ctxTrial.stroke();
+      ctxTrial.setLineDash([]);
+
+      ctxTrial.fillStyle = '#f43f5e';
+      ctxTrial.font = '8px sans-serif';
+      ctxTrial.textAlign = 'center';
+      ctxTrial.fillText('Yr 3 Cessation', cessX, padT + 8);
+
+      // Axes
+      ctxTrial.strokeStyle = '#334155';
+      ctxTrial.lineWidth = 1;
+      ctxTrial.beginPath();
+      ctxTrial.moveTo(padL, padT); ctxTrial.lineTo(padL, padT + plotH);
+      ctxTrial.lineTo(padL + plotW, padT + plotH);
+      ctxTrial.stroke();
+
+      // Benchmark ADAURA (Red dashed)
+      ctxTrial.strokeStyle = '#f43f5e';
+      ctxTrial.lineWidth = 1.5;
+      ctxTrial.setLineDash([2, 2]);
+      ctxTrial.beginPath();
+      precomputedTrials.adaura.forEach((pt, idx) => {
+        const x = padL + (pt.day / STATE.maxDays) * plotW;
+        const y = padT + plotH * (1.0 - Math.min(1.2, pt.vol / 115));
+        if (idx === 0) ctxTrial.moveTo(x, y);
+        else ctxTrial.lineTo(x, y);
+      });
+      ctxTrial.stroke();
+      ctxTrial.setLineDash([]);
+
+      // Benchmark SG-ADAURA (Cyan dashed)
+      ctxTrial.strokeStyle = '#38bdf8';
+      ctxTrial.lineWidth = 1.5;
+      ctxTrial.setLineDash([2, 2]);
+      ctxTrial.beginPath();
+      precomputedTrials.sg_adaura.forEach((pt, idx) => {
+        const x = padL + (pt.day / STATE.maxDays) * plotW;
+        const y = padT + plotH * (1.0 - Math.min(1.2, pt.vol / 115));
+        if (idx === 0) ctxTrial.moveTo(x, y);
+        else ctxTrial.lineTo(x, y);
+      });
+      ctxTrial.stroke();
+      ctxTrial.setLineDash([]);
+
+      // Active Real-Time Simulation Run
+      if (STATE.history.days.length > 1) {
+        ctxTrial.beginPath();
+        ctxTrial.strokeStyle = (STATE.protocol === 'ADAURA') ? '#f43f5e' : '#10b981';
+        ctxTrial.lineWidth = 2.4;
+        for (let idx = 0; idx < STATE.history.days.length; idx++) {
+          const d = STATE.history.days[idx];
+          const v = STATE.history.vol_current[idx];
+          const x = padL + (d / STATE.maxDays) * plotW;
+          const y = padT + plotH * (1.0 - Math.min(1.2, v / 115));
+          if (idx === 0) ctxTrial.moveTo(x, y);
+          else ctxTrial.lineTo(x, y);
+        }
+        ctxTrial.stroke();
+      }
+
+      // Labels
+      ctxTrial.fillStyle = '#64748b';
+      ctxTrial.font = '8px monospace';
+      ctxTrial.textAlign = 'right';
+      ctxTrial.fillText('100%', padL - 4, padT + plotH * 0.15);
+      ctxTrial.fillText('0%', padL - 4, padT + plotH);
+      ctxTrial.textAlign = 'center';
+      ctxTrial.fillText('Yr 0', padL, padT + plotH + 13);
+      ctxTrial.fillText('Yr 1', padL + (1/5)*plotW, padT + plotH + 13);
+      ctxTrial.fillText('Yr 3', padL + (3/5)*plotW, padT + plotH + 13);
+      ctxTrial.fillText('Yr 5', padL + plotW - 10, padT + plotH + 13);
+    }
+
+    // --- Render Simplex Chart ---
+    function renderSimplexChart() {
+      const w = dims.simplex.w;
+      const h = dims.simplex.h;
+      if (!w || !h) return;
+
+      ctxSimplex.clearRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const cy = h / 2 + 5;
+      const size = Math.min(w, h) * 0.34;
+
+      const vR = { x: cx, y: cy - size };
+      const vS = { x: cx - size * 0.95, y: cy + size * 0.60 };
+      const vP = { x: cx + size * 0.95, y: cy + size * 0.60 };
+
+      // Triangle Background
+      ctxSimplex.beginPath();
+      ctxSimplex.moveTo(vR.x, vR.y);
+      ctxSimplex.lineTo(vS.x, vS.y);
+      ctxSimplex.lineTo(vP.x, vP.y);
+      ctxSimplex.closePath();
+      ctxSimplex.fillStyle = 'rgba(11, 16, 29, 0.7)';
+      ctxSimplex.fill();
+      ctxSimplex.strokeStyle = '#334155';
+      ctxSimplex.lineWidth = 1.2;
+      ctxSimplex.stroke();
+
+      // Vertex Labels
+      ctxSimplex.font = '8.5px monospace';
+      ctxSimplex.fillStyle = '#f43f5e';
+      ctxSimplex.textAlign = 'center';
+      ctxSimplex.fillText('R (Resistant)', vR.x, vR.y - 5);
+
+      ctxSimplex.fillStyle = '#38bdf8';
+      ctxSimplex.textAlign = 'right';
+      ctxSimplex.fillText('S (Sensitive)', vS.x - 4, vS.y + 11);
+
+      ctxSimplex.fillStyle = '#fbbf24';
+      ctxSimplex.textAlign = 'left';
+      ctxSimplex.fillText('P (Plastic)', vP.x + 4, vP.y + 11);
+
+      function toCartesian(s, p, r) {
+        const tot = s + p + r || 1;
+        const normS = s / tot;
+        const normP = p / tot;
+        const normR = r / tot;
+        return {
+          x: normS * vS.x + normP * vP.x + normR * vR.x,
+          y: normS * vS.y + normP * vP.y + normR * vR.y
+        };
+      }
+
+      // Draw Trajectory
+      if (STATE.history.ratio_S.length > 1) {
+        ctxSimplex.beginPath();
+        ctxSimplex.strokeStyle = '#38bdf8';
+        ctxSimplex.lineWidth = 1.8;
+
+        for (let i = 0; i < STATE.history.ratio_S.length; i++) {
+          const pt = toCartesian(
+            STATE.history.ratio_S[i],
+            STATE.history.ratio_P[i],
+            STATE.history.ratio_R[i]
+          );
+          if (i === 0) ctxSimplex.moveTo(pt.x, pt.y);
+          else ctxSimplex.lineTo(pt.x, pt.y);
+        }
+        ctxSimplex.stroke();
+
+        const lastIdx = STATE.history.ratio_S.length - 1;
+        const curr = toCartesian(
+          STATE.history.ratio_S[lastIdx],
+          STATE.history.ratio_P[lastIdx],
+          STATE.history.ratio_R[lastIdx]
+        );
+        ctxSimplex.beginPath();
+        ctxSimplex.arc(curr.x, curr.y, 4, 0, 2 * Math.PI);
+        ctxSimplex.fillStyle = '#ffffff';
+        ctxSimplex.shadowColor = '#38bdf8';
+        ctxSimplex.shadowBlur = 6;
+        ctxSimplex.fill();
+        ctxSimplex.shadowBlur = 0;
+      }
+    }
+
+    // --- Mouse Probe ---
+    canvasSpatial.addEventListener('mousemove', (e) => {
+      const rect = canvasSpatial.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+
+      const distPx = Math.sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
+      const maxR = Math.min(cx, cy) - 20;
+      const r_um = Math.min(500, (distPx / maxR) * 500);
+      const bin = Math.min(STATE.Nr - 1, Math.floor((r_um / 500) * STATE.Nr));
+
+      const conc = STATE.C[bin].toFixed(1);
+      const s_pct = Math.round(STATE.S[bin] * 100);
+      const p_pct = Math.round(STATE.P[bin] * 100);
+      const r_pct = Math.round(STATE.R[bin] * 100);
+
+      let status = 'Therapeutic Kill Zone';
+      let statusColor = 'var(--emerald)';
+      if (STATE.C[bin] < STATE.C_sub) {
+        status = 'Untreated Core Niche';
+        statusColor = 'var(--cyan)';
+      } else if (STATE.C[bin] <= STATE.C_kill) {
+        status = 'Pharmacological Sanctuary (High Risk)';
+        statusColor = 'var(--amber)';
+      }
+
+      document.getElementById('hudProbeDetails').innerHTML = `
+        Radius: <strong>${r_um.toFixed(0)} μm</strong> from capillary core<br>
+        Osimertinib: <strong>${conc} nM</strong> (<span style="color:${statusColor}">${status}</span>)<br>
+        Phenotypes: <span style="color:var(--cyan)">S:${s_pct}%</span> | 
+        <span style="color:var(--amber)">P:${p_pct}%</span> | 
+        <span style="color:var(--rose)">R:${r_pct}%</span>
+      `;
+    });
+
+    // --- Animation Loop ---
+    let lastRenderTime = 0;
+    function mainLoop(timestamp) {
+      if (STATE.running) {
+        const steps = STATE.speed;
+        for (let s = 0; s < steps; s++) {
+          stepSimulation();
+        }
+      }
+
+      if (timestamp - lastRenderTime > 20) {
+        renderSpatialCanvas();
+        renderGradientChart();
+        renderTrialChart();
+        renderSimplexChart();
+        lastRenderTime = timestamp;
+      }
+
+      requestAnimationFrame(mainLoop);
+    }
+
+    // --- Protocol & Presets ---
+    function setProtocol(proto) {
+      STATE.protocol = proto;
+      document.querySelectorAll('.protocol-card').forEach(c => {
+        c.classList.remove('active', 'active-adaura');
+      });
+
+      if (proto === 'ADAURA') {
+        document.getElementById('protoADAURA').classList.add('active-adaura');
+      } else if (proto === 'SG_ADAURA') {
+        document.getElementById('protoSG').classList.add('active');
+      } else {
+        document.getElementById('protoMetronomic').classList.add('active');
+      }
+    }
+
+    function applyPreset(type) {
+      if (type === 'standard_nsclc') {
+        document.getElementById('paramDiff').value = 85;
+        document.getElementById('paramIFP').value = 18;
+        document.getElementById('paramPlasticity').value = 0.035;
+        document.getElementById('paramCostR').value = 15;
+      } else if (type === 'brain_met') {
+        document.getElementById('paramDiff').value = 35;
+        document.getElementById('paramIFP').value = 30;
+        document.getElementById('paramPlasticity').value = 0.055;
+        document.getElementById('paramCostR').value = 10;
+      } else if (type === 'high_plastic') {
+        document.getElementById('paramDiff').value = 90;
+        document.getElementById('paramIFP').value = 15;
+        document.getElementById('paramPlasticity').value = 0.080;
+        document.getElementById('paramCostR').value = 18;
+      } else if (type === 'anti_vegf') {
+        document.getElementById('paramDiff').value = 150;
+        document.getElementById('paramIFP').value = 5;
+        document.getElementById('paramPlasticity').value = 0.020;
+        document.getElementById('paramCostR').value = 20;
+      }
+      syncInputs();
+      initSimulation();
+    }
+
+    function syncInputs() {
+      STATE.D_eff = parseFloat(document.getElementById('paramDiff').value);
+      STATE.Pv = parseFloat(document.getElementById('paramPerm').value);
+      STATE.IFP = parseFloat(document.getElementById('paramIFP').value);
+      STATE.mu_SP = parseFloat(document.getElementById('paramPlasticity').value);
+      STATE.c_R = parseFloat(document.getElementById('paramCostR').value) / 100;
+      STATE.cessationDay = parseFloat(document.getElementById('paramDuration').value) * 30.43;
+
+      document.getElementById('valDiff').innerText = `${STATE.D_eff} μm²/s`;
+      document.getElementById('valPerm').innerText = `${STATE.Pv.toFixed(2)}`;
+      document.getElementById('valIFP').innerText = `${STATE.IFP} mmHg`;
+      document.getElementById('valPlasticity').innerText = `${STATE.mu_SP.toFixed(3)} /day`;
+      document.getElementById('valCostR').innerText = `${(STATE.c_R * 100).toFixed(0)}% penalty`;
+      document.getElementById('valDuration').innerText = `${document.getElementById('paramDuration').value} Months`;
+    }
+
+    ['paramDiff', 'paramPerm', 'paramIFP', 'paramPlasticity', 'paramCostR', 'paramDuration'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        syncInputs();
+      });
+    });
+
+    document.getElementById('btnPlayPause').addEventListener('click', () => {
+      STATE.running = !STATE.running;
+      document.getElementById('playText').innerText = STATE.running ? 'Pause Simulation' : 'Resume Simulation';
+      document.getElementById('playIcon').innerText = STATE.running ? '⏸' : '▶';
+    });
+
+    document.getElementById('btnFastFwd').addEventListener('click', () => {
+      STATE.speed = (STATE.speed === 1) ? 2 : (STATE.speed === 2 ? 5 : 1);
+      document.getElementById('btnFastFwd').innerText = `⏩ ${STATE.speed}x Speed`;
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+      initSimulation();
+    });
+
+    document.getElementById('toggleOverlay').addEventListener('click', () => {
+      STATE.overlayMode = (STATE.overlayMode === 'HEATMAP') ? 'CELLS' : 'HEATMAP';
+      document.getElementById('toggleOverlay').innerText = `View: ${STATE.overlayMode}`;
+    });
+
+    document.getElementById('btnExportCSV').addEventListener('click', () => {
+      let csv = 'Day,Year,TumorVolume_pct,CRI_Index,Sanctuary_pct,Sensitive_pct,Plastic_pct,Resistant_pct\n';
+      for (let i = 0; i < STATE.history.days.length; i++) {
+        const d = STATE.history.days[i];
+        const yr = (d / 365.25).toFixed(2);
+        csv += `${d},${yr},${STATE.history.vol_current[i].toFixed(2)},${STATE.history.cri[i].toFixed(4)},${STATE.history.sanctuary_pct[i].toFixed(2)},${STATE.history.ratio_S[i].toFixed(1)},${STATE.history.ratio_P[i].toFixed(1)},${STATE.history.ratio_R[i].toFixed(1)}\n`;
+      }
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `SPATIAL_CONTINUUM_SIMULATION_${STATE.protocol}.csv`;
+      a.click();
+    });
+
+    document.getElementById('btnSnapshot').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = canvasSpatial.toDataURL('image/png');
+      a.download = `SPATIAL_CONTINUUM_SANCTUARY_DAY_${Math.floor(STATE.day)}.png`;
+      a.click();
+    });
+
+    window.addEventListener('resize', () => {
+      resizeAllCanvases();
+    });
+
+    // Bootstrapping
+    syncInputs();
+    initSimulation();
+    requestAnimationFrame(mainLoop);
+  </script>
+</body>
+</html>
