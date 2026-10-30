@@ -5,6 +5,7 @@
 
 const { spawn } = require('child_process');
 const http = require('http');
+const path = require('path');
 
 async function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -77,12 +78,13 @@ async function runTests() {
   console.log('--- STARTING COMPREHENSIVE DIGITAL TWIN VALIDATION ---');
   
   // 1. Launch Chrome Headless with Remote Debugging
+  const simPath = path.resolve(__dirname, '../simulator.html');
   const chromeProcess = spawn('google-chrome', [
     '--headless=new',
     '--disable-gpu',
     '--remote-debugging-port=9222',
     '--window-size=1600,1100',
-    '/home/luca/Scrivania/TUMOR_DIGITAL_TWIN/index.html'
+    simPath
   ]);
 
   let cdpPage = null;

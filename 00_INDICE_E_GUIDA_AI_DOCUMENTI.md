@@ -56,3 +56,23 @@ Tutti gli script sono scritti in **puro Python 3 standard** (zero librerie ester
    ```bash
    node test_live_github_pages.js
    ```
+7. **`test_digital_twin_engine.js`**: Suite di collaudo automatizzato via CDP del simulatore interattivo 60 FPS (`simulator.html`).
+   ```bash
+   node test_digital_twin_engine.js
+   ```
+8. **`test_portal_e2e.js`**: Suite di collaudo end-to-end locale via CDP dei 5 moduli di `index.html`.
+   ```bash
+   node test_portal_e2e.js
+   ```
+
+---
+
+### Libreria Python Installabile (`src/`)
+
+Il repository include il pacchetto Python standard installabile via `pip`:
+```bash
+pip install -e .
+```
+Comandi CLI forniti:
+- `cri-calc`: Calcolatore a riga di comando del Composite Resistance Index.
+- `spatial-continuum-audit`: Motore di audit analitico e verifica dimensionale.
