@@ -1,5 +1,6 @@
 # The Spatial-Genomic Oncology Continuum
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb)
 [![Read Full Manuscript PDF](https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](01_MANOSCRITTO_FINALE_CON_FIGURE.pdf)
 [![Plain-Language Summary](https://img.shields.io/badge/%F0%9F%A7%A0%20Plain--Language%20Summary-Gist.Science%20(Author--Reviewed)-2563eb.svg?style=for-the-badge)](https://gist.science/paper/rs/rs-11530312)
 [![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Clinical%20Decision%20App-blue.svg?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app)
@@ -12,8 +13,8 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/Monograph_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
-[![Hugging Face Space Legacy](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/Lucace/spatial-oncology-simulator)
-[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app)
+[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/spatial-continuum-lab/mskcc-lung-adenocarcinoma-spatial-cohort)
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
 [![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
 [![BioContainers](https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?style=for-the-badge&logo=docker&logoColor=white)](https://quay.io/repository/biocontainers/spatial-continuum)
@@ -31,6 +32,10 @@
 
 ---
 
+> ⚡ **Run in 1-Click with Google Colab (Zero Installation Required)**:  
+> [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb)  
+> *Explore the Bessel $K_0$ concentration gradient solver, the interactive Bedside CRI patient form, and the 500-patient in silico trial simulator directly in your browser.*
+>
 > 🚀 **Interactive Clinical Web App Available**: Test the real-time Bedside CRI Decision Engine and Bessel $K_0$ reaction-diffusion sanctuary simulator directly in your browser:  
 > 👉 **[https://lukecele.github.io/spatial-continuum-oncology/](https://lukecele.github.io/spatial-continuum-oncology/)**  
 > 🎮 **60 FPS Live Digital Twin & 5-Year Trial Simulator**:  

@@ -1,0 +1,27 @@
+Dear Professor Herbst,
+
+I am writing to share a translational computational oncology study addressing the clinical trajectory of resected stage IB–IIIA EGFR-mutated NSCLC following adjuvant osimertinib cessation, as observed in the long-term updates of the landmark ADAURA trial.
+
+While ADAURA has unequivocally transformed clinical practice, the emergence of late recurrences following treatment cessation at Month 36 remains a pressing clinical puzzle. Through a spatially resolved reaction-diffusion biomechanical model cross-validated against human spatial transcriptomics (Visium HD) and a clinical resection cohort (MSKCC, N = 604), we have characterized the biophysical mechanism underlying this phenomenon:
+
+1. Microvascular Decoupling: In tumors displaying solid and micropapillary architectural predominance, inter-capillary diffusion distances exceed critical thresholds (Δr > 34 μm). Concomitant interstitial hypertension (P_ifp > 20 mmHg) abolishes convective fluid exchange, creating sub-therapeutic perivascular pharmacological sanctuaries (C_eff < IC_90).
+2. Minimal Residual Disease Persisters: Rather than de novo gatekeeper mutations, post-ADAURA relapses are predominantly driven by dormant drug-tolerant persister cells preserved within these physical sanctuaries, whose survival is further fortified by co-occurring TP53/RB1 alterations.
+3. Bedside Decision Support: We have formalized these findings into an open-source clinical metric, the Composite Resistance Index (CRI = 0.47·S + 0.33·G + 0.20·M; C-index 0.84 on MSKCC cohort), and designed a biomarker-directed trial concept ("SG-ADAURA") evaluating vascular normalization consolidation (Osimertinib + anti-VEGFR2) to eradicate residual sanctuaries.
+
+Our complete manuscript is currently Under Consideration at Nature Communications (Tracking: NCOMMS-26-091227) and accessible on Research Square (DOI: 10.21203/rs.3.rs-11530312/v1). Attached please find our 1-page Executive Clinical Memorandum.
+
+Given your leadership as the Global Principal Investigator of ADAURA, I would be deeply honored for any thoughts you might have on this framework, and would welcome the opportunity to discuss potential translational collaborations.
+
+Thank you very much for your time, vision, and pioneering contributions to thoracic oncology.
+
+Respectfully yours,
+
+Luca Celebrano
+MD Candidate & Computational Oncology Researcher
+Department of Clinical Medicine and Surgery | School of Medicine and Surgery
+Università degli Studi di Napoli Federico II, Naples, Italy
+ORCID: 0009-0007-0931-3555
+Institutional Email: l.celebrano@studenti.unina.it | Alternate: luca.celebrano@gmail.com
+Preprint: https://doi.org/10.21203/rs.3.rs-11530312/v1
+Interactive Portal: https://lukecele.github.io/spatial-continuum-oncology/
+Code Repository: https://github.com/Lukecele/spatial-continuum-oncology
