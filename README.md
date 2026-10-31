@@ -194,13 +194,18 @@ Computes risk tier and clinical action at ADAURA Month 36:
 $$\text{CRI} = 0.47 \mathcal{S} + 0.33 \mathcal{G} + 0.20 \mathcal{M}$$
 
 ```bash
-python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --rb1 mutated --stroma dense
+# Run via installed package entrypoint:
+cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+
+# Or run standalone directly from source:
+python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --rb1 loss --stroma dense
 ```
-**Output:**
+**Decision Output:**
 ```
 ========================================================================
   COMPOSITE RESISTANCE INDEX (CRI): 1.000 / 1.000
   CLINICAL RISK STRATIFICATION:    TIER 3 (HIGH RESISTANCE & SANCTUARY RISK)
+  EXPECTED 5-YEAR RELAPSE-FREE:    < 25 %
   RECOMMENDATION: DO NOT DISCONTINUE OSIMERTINIB AT MONTH 36!
   Mandatory ongoing treatment: Extended Osimertinib or SG-ADAURA Arm B3
 ========================================================================
@@ -283,6 +288,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 | Document | Description | Target & Purpose |
 | :--- | :--- | :--- |
+| [📁 `00_INDICE_E_GUIDA_AI_DOCUMENTI.md`](00_INDICE_E_GUIDA_AI_DOCUMENTI.md) | **Master Index & Complete Architectural Map** | Comprehensive cross-referenced index organizing all 17 clinical monographs, biophysical derivations, and congress dossiers. |
 | [📄 `14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md`](14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md) | **Clinical Executive One-Pager & Strategic Trial Brief** | Addressed to Prof. Roy S. Herbst (Yale Cancer Center), AstraZeneca Oncology R&D, and Clinical Oncology Centers (IRCCS Pascale, AIOM). Details the in silico Phase III trial SG-ADAURA and Arm B3 consolidation. |
 | [📄 `15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md`](15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md) | **Pre-Emptive Reviewer Response Matrix** | Prepared for *Nature Communications* (tracking `NCOMMS-26-091227`). Formulates pre-computed mathematical proofs and empirical answers to 12 referee objections across biophysics, clinical oncology, and spatial pathology. |
 | [📄 `12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md`](12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md) | **Official AACR 2027 Abstract** | Calibrated to 2,423 characters (strictly under the 2,600 character ceiling) for the AACR Annual Meeting in Orlando, FL. |
