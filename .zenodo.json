@@ -1,14 +1,16 @@
 {
   "title": "The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol",
   "description": "Computational and biophysical software suite resolving the post-adjuvant osimertinib cessation dilemma via microvascular reaction-diffusion sanctuaries, Starling-Darcy convective shutdown, and the bedside Composite Resistance Index (CRI).",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
   "creators": [
     {
       "name": "Celebrano, Luca",
-      "affiliation": "Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy"
+      "affiliation": "Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy",
+      "orcid": "0009-0007-0931-3555"
     }
   ],
-  "license": "CC-BY-4.0",
-  "upload_type": "software",
   "keywords": [
     "mathematical oncology",
     "biophysics",
@@ -18,5 +20,10 @@
     "pharmacological sanctuary",
     "NSCLC",
     "Composite Resistance Index"
+  ],
+  "communities": [
+    {
+      "identifier": "zenodo"
+    }
   ]
 }
