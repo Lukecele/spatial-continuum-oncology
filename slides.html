@@ -23,6 +23,53 @@
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        @page {
+            size: 297mm 167.06mm;
+            margin: 0;
+        }
+
+        @media print {
+            header, footer, #speakerNotes, .no-print { display: none !important; }
+            body, html {
+                background: #020617 !important;
+                color: #f1f5f9 !important;
+                width: 297mm !important;
+                height: auto !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            main {
+                display: block !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 297mm !important;
+            }
+            .slide {
+                display: flex !important;
+                opacity: 1 !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                width: 297mm !important;
+                height: 167.06mm !important;
+                min-height: 167.06mm !important;
+                max-height: 167.06mm !important;
+                box-sizing: border-box !important;
+                padding: 12mm 18mm !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background: radial-gradient(circle at 20% 20%, #0f172a 0%, #020617 100%) !important;
+                position: relative !important;
+                overflow: hidden !important;
+            }
+            .glass-box {
+                background: rgba(15, 23, 42, 0.95) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between overflow-hidden select-none">
@@ -42,6 +89,10 @@
         <div class="flex items-center space-x-4">
             <a href="poster.html" class="hover:text-pink-400 transition" title="View 120x90cm Poster">
                 <i class="fa-solid fa-image mr-1"></i> Poster (120×90)
+            </a>
+            <a href="slides_master_deck.pdf" download class="hover:text-cyan-400 text-slate-300 transition flex items-center space-x-1" title="Download Full 12-Slide PDF (16:9 Widescreen)">
+                <i class="fa-solid fa-file-pdf text-pink-400 mr-1"></i>
+                <span>Download PDF</span>
             </a>
             <button onclick="toggleFullscreen()" class="hover:text-cyan-400 transition" title="Toggle Fullscreen (F)">
                 <i class="fa-solid fa-expand mr-1"></i> Fullscreen
