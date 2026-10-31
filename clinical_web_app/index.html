@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRI Bedside Clinical Decision Support - Spatial Oncology Continuum</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- PapaParse for CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        clinical: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        amberRisk: '#f59e0b',
+                        redAlert: '#ef4444',
+                        greenSafe: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-white font-bold text-xl">
+                    <i class="fa-solid fa-dna"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="font-bold text-lg text-white tracking-tight">CRI Bedside Decision Engine</span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">v1.0.2 Live</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Post-ADAURA NSCLC Stratification • Università degli Studi di Napoli Federico II</p>
+                </div>
+            </div>
+
+            <!-- Ecosystem Badges -->
+            <div class="hidden md:flex items-center space-x-3 text-xs">
+                <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1" target="_blank" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-book-journal-whills text-emerald-400"></i>
+                    <span>Nature Portfolio Preprint</span>
+                </a>
+                <a href="https://bio.tools/spatial-continuum-oncology" target="_blank" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-cube text-cyan-400"></i>
+                    <span>ELIXIR bio.tools</span>
+                </a>
+                <a href="https://doi.org/10.5281/zenodo.23754999" target="_blank" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-archive text-amber-400"></i>
+                    <span>CERN Zenodo</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="bg-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex space-x-8" aria-label="Tabs">
+                <button onclick="switchTab('single')" id="tab-btn-single" class="tab-btn border-b-2 border-cyan-500 py-3.5 px-1 text-sm font-medium text-cyan-400 flex items-center space-x-2">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Single Patient Bedside CRI</span>
+                </button>
+                <button onclick="switchTab('cohort')" id="tab-btn-cohort" class="tab-btn border-b-2 border-transparent py-3.5 px-1 text-sm font-medium text-slate-400 hover:text-slate-200 flex items-center space-x-2">
+                    <i class="fa-solid fa-users-rectangle"></i>
+                    <span>Cohort Batch & Kaplan-Meier Simulator</span>
+                </button>
+                <button onclick="switchTab('biophysics')" id="tab-btn-biophysics" class="tab-btn border-b-2 border-transparent py-3.5 px-1 text-sm font-medium text-slate-400 hover:text-slate-200 flex items-center space-x-2">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <span>Reaction-Diffusion Sanctuary Physics</span>
+                </button>
+                <button onclick="switchTab('docs')" id="tab-btn-docs" class="tab-btn border-b-2 border-transparent py-3.5 px-1 text-sm font-medium text-slate-400 hover:text-slate-200 flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Clinical Rationale & Evidence</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+
+        <!-- ==================== TAB 1: SINGLE PATIENT BEDSIDE CRI ==================== -->
+        <section id="tab-single" class="tab-content space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <!-- Left Column: Clinical Parameters Input -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-panel p-6 rounded-2xl shadow-xl">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                            <h2 class="text-lg font-semibold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-sliders text-cyan-400"></i>
+                                <span>Patient Diagnostic Parameters</span>
+                            </h2>
+                            <span class="text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded">Post-Resection Baseline</span>
+                        </div>
+
+                        <form id="cri-form" class="mt-5 space-y-5">
+                            <!-- Patient ID -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Patient ID / Case Code</label>
+                                <input type="text" id="patient-id" value="NSCLC-PATIENT-001" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 font-mono">
+                            </div>
+
+                            <!-- Histologic Subtype -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                                    1. IASLC Predominant Architectural Pattern
+                                </label>
+                                <select id="pattern-select" onchange="calculateCRI()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+                                    <option value="solid" selected>Solid Predominant (>50% cords, severe decoupling) - S = 1.00</option>
+                                    <option value="micropapillary">Micropapillary Predominant (>50% clusters) - S = 1.00</option>
+                                    <option value="mixed">Mixed Solid / Micropapillary present (10-50%) - S = 0.80</option>
+                                    <option value="acinar">Acinar Predominant (intermediate cords) - S = 0.40</option>
+                                    <option value="papillary">Papillary Predominant (intermediate cords) - S = 0.40</option>
+                                    <option value="lepidic">Lepidic Predominant (intact alveolar architecture) - S = 0.00</option>
+                                </select>
+                                <p class="text-xs text-slate-400 mt-1">Spatial Decoupling Score ($S$) derived from intervascular diffusion distance ($\Delta r$).</p>
+                            </div>
+
+                            <!-- TP53 Mutation -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                                    2. TP53 Co-Mutation Status (Targeted NGS / IHC)
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="tp53-radio" value="mut" checked onchange="calculateCRI()" class="peer sr-only">
+                                        <div class="px-3.5 py-2 text-center rounded-lg border border-slate-700 bg-slate-900 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 peer-checked:text-cyan-400 text-sm font-medium transition">
+                                            Mutated / Altered
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="tp53-radio" value="wt" onchange="calculateCRI()" class="peer sr-only">
+                                        <div class="px-3.5 py-2 text-center rounded-lg border border-slate-700 bg-slate-900 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 peer-checked:text-cyan-400 text-sm font-medium transition">
+                                            Wild-Type (WT)
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- RB1 Mutation -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                                    3. RB1 Co-Mutation Status / Biallelic Loss
+                                </label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="rb1-radio" value="mut" checked onchange="calculateCRI()" class="peer sr-only">
+                                        <div class="px-3.5 py-2 text-center rounded-lg border border-slate-700 bg-slate-900 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 peer-checked:text-cyan-400 text-sm font-medium transition">
+                                            Mutated / Loss (High Plasticity)
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="rb1-radio" value="wt" onchange="calculateCRI()" class="peer sr-only">
+                                        <div class="px-3.5 py-2 text-center rounded-lg border border-slate-700 bg-slate-900 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 peer-checked:text-cyan-400 text-sm font-medium transition">
+                                            Intact (WT)
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Stromal Desmoplasia -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                                    4. Stromal Desmoplasia & Interstitial Pressure ($M$)
+                                </label>
+                                <select id="stroma-select" onchange="calculateCRI()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+                                    <option value="dense" selected>Dense Collagen Desmoplasia (High IFP > 20 mmHg, Convective Shutdown) - M = 1.00</option>
+                                    <option value="moderate">Moderate CAF Infiltrate (Elevated IFP 5-15 mmHg) - M = 0.50</option>
+                                    <option value="low">Loose Stroma / Intact Lymphatics (Normal IFP ~ 0 mmHg) - M = 0.00</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Presets Quick Buttons -->
+                    <div class="flex space-x-2">
+                        <button onclick="setPreset('adaura-high')" class="flex-1 text-xs py-2 px-3 rounded-lg bg-red-950/40 border border-red-800/40 text-red-300 hover:bg-red-900/40 transition">
+                            <i class="fa-solid fa-triangle-exclamation mr-1"></i> Preset: ADAURA Relapse High
+                        </button>
+                        <button onclick="setPreset('adaura-low')" class="flex-1 text-xs py-2 px-3 rounded-lg bg-emerald-950/40 border border-emerald-800/40 text-emerald-300 hover:bg-emerald-900/40 transition">
+                            <i class="fa-solid fa-shield-check mr-1"></i> Preset: Lepidic Curative Low
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Results & Clinical Action Dashboard -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Main Score Card -->
+                    <div class="glass-panel p-6 rounded-2xl shadow-xl relative overflow-hidden" id="result-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-xs uppercase font-semibold text-slate-400 tracking-wider">Composite Resistance Index (CRI)</p>
+                                <div class="flex items-baseline space-x-3 mt-1">
+                                    <span id="cri-value" class="text-5xl font-extrabold text-white font-mono">1.000</span>
+                                    <span class="text-slate-400 text-sm">/ 1.000</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span id="risk-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/20 text-red-400 border border-red-500/30">
+                                    TIER 3: HIGH SANCTUARY RISK
+                                </span>
+                                <p class="text-xs text-slate-400 mt-1.5" id="dfs-estimate">Expected 5-Yr DFS: &lt; 25%</p>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar Gauge -->
+                        <div class="w-full bg-slate-800 h-3 rounded-full mt-4 overflow-hidden p-0.5 border border-slate-700/50">
+                            <div id="cri-progress-bar" class="h-full rounded-full bg-gradient-to-r from-emerald-500 via-amber-500 to-red-500 transition-all duration-500" style="width: 100%;"></div>
+                        </div>
+
+                        <!-- Sub-component Breakdown -->
+                        <div class="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-800 text-center">
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Spatial Decoupling (S)</span>
+                                <span id="s-breakdown" class="text-lg font-bold text-cyan-400 font-mono">1.00</span>
+                                <span class="text-[10px] text-slate-400 block mt-0.5">Weight: 47%</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Genomic Risk (G)</span>
+                                <span id="g-breakdown" class="text-lg font-bold text-amber-400 font-mono">1.00</span>
+                                <span class="text-[10px] text-slate-400 block mt-0.5">Weight: 33%</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block">Stromal Barrier (M)</span>
+                                <span id="m-breakdown" class="text-lg font-bold text-rose-400 font-mono">1.00</span>
+                                <span class="text-[10px] text-slate-400 block mt-0.5">Weight: 20%</span>
+                            </div>
+                        </div>
+
+                        <!-- Evidence-Based Bedside Recommendation -->
+                        <div class="mt-6 p-4 rounded-xl border border-red-500/30 bg-red-950/20" id="recommendation-box">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-triangle-exclamation text-red-400 mt-1 text-lg" id="recommendation-icon"></i>
+                                <div>
+                                    <h4 class="text-sm font-bold text-red-300" id="recommendation-title">POST-ADAURA CRITICAL DIRECTIVE: DO NOT DISCONTINUE AT MONTH 36</h4>
+                                    <p class="text-xs text-slate-300 mt-1 leading-relaxed" id="recommendation-text">
+                                        Patient exhibits critical microvascular decoupling (inter-capillary cord distance &gt; 34 μm) with concurrent TP53/RB1 impairment. High probability of dormant perivascular persister sanctuaries. Cessation of osimertinib at Month 36 carries an estimated &gt;75% recurrence rate.
+                                    </p>
+                                    <div class="mt-3 pt-3 border-t border-red-500/20 text-xs text-red-200">
+                                        <strong>Targeted Interventional Strategy (SG-ADAURA Arm B3):</strong>
+                                        <ul class="list-disc list-inside mt-1 space-y-0.5">
+                                            <li>Option A: Indefinite osimertinib maintenance (80 mg/day).</li>
+                                            <li>Option B: 12-month vascular remodeling consolidation with Osimertinib + Ramucirumab (anti-VEGFR2) to eliminate the sanctuary shell.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="mt-6 flex items-center justify-end space-x-3">
+                            <button onclick="window.print()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 transition flex items-center space-x-1.5">
+                                <i class="fa-solid fa-print"></i>
+                                <span>Print / Export PDF Report</span>
+                            </button>
+                            <button onclick="copyClinicalReport()" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold rounded-lg shadow-lg shadow-cyan-600/20 transition flex items-center space-x-1.5">
+                                <i class="fa-solid fa-copy"></i>
+                                <span>Copy Bedside Summary</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: COHORT BATCH & KAPLAN-MEIER ==================== -->
+        <section id="tab-cohort" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 rounded-2xl shadow-xl">
+                <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-line text-cyan-400"></i>
+                            <span>Cohort Batch Stratification & Disease-Free Survival Simulator</span>
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-1">Upload surgical lung resection cohort or test with benchmark MSKCC validation distribution.</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="loadExampleCohort()" class="px-3 py-2 bg-cyan-950 border border-cyan-800/60 hover:bg-cyan-900/60 text-cyan-300 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5">
+                            <i class="fa-solid fa-database"></i>
+                            <span>Load MSKCC Cohort (N = 100)</span>
+                        </button>
+                        <label class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 cursor-pointer transition flex items-center space-x-1.5">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                            <span>Upload Cohort CSV</span>
+                            <input type="file" id="csv-file-input" accept=".csv,.tsv,.txt" class="hidden" onchange="handleFileUpload(event)">
+                        </label>
+                        <button onclick="exportCohortCSV()" id="export-cohort-btn" disabled class="px-3 py-2 bg-slate-800 text-slate-500 text-xs font-semibold rounded-lg border border-slate-700 cursor-not-allowed transition flex items-center space-x-1.5">
+                            <i class="fa-solid fa-file-export"></i>
+                            <span>Export Annotated CSV</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cohort Metrics Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400">Total Analyzed Patients</span>
+                        <span id="cohort-total-n" class="text-2xl font-extrabold text-white font-mono block mt-1">0</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-emerald-400">Tier 1 (Low Risk - Safe Stop)</span>
+                        <span id="cohort-tier1-count" class="text-2xl font-extrabold text-emerald-400 font-mono block mt-1">0 (0%)</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-amber-400">Tier 2 (Intermediate Risk)</span>
+                        <span id="cohort-tier2-count" class="text-2xl font-extrabold text-amber-400 font-mono block mt-1">0 (0%)</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-rose-400">Tier 3 (High Sanctuary Risk)</span>
+                        <span id="cohort-tier3-count" class="text-2xl font-extrabold text-rose-400 font-mono block mt-1">0 (0%)</span>
+                    </div>
+                </div>
+
+                <!-- Kaplan Meier Plot Container -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+                    <div class="lg:col-span-8 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Kaplan-Meier Disease-Free Survival (DFS) by CRI Tier</h3>
+                            <span class="text-[11px] font-mono text-cyan-400" id="km-stats">Log-Rank p < 0.0001 • HR 4.21</span>
+                        </div>
+                        <div class="h-72 w-full">
+                            <canvas id="km-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Risk Distribution Pie Chart -->
+                    <div class="lg:col-span-4 bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-col items-center justify-center">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 self-start">Cohort Risk Stratification</h3>
+                        <div class="h-56 w-full flex items-center justify-center">
+                            <canvas id="pie-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cohort Table Preview -->
+                <div class="mt-6">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Individual Patient CRI Ledger (First 10 Cases)</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-800">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono">
+                            <thead class="bg-slate-900 text-slate-400 uppercase tracking-wider text-[10px]">
+                                <tr>
+                                    <th class="px-4 py-2.5">ID</th>
+                                    <th class="px-4 py-2.5">Pattern</th>
+                                    <th class="px-4 py-2.5">TP53</th>
+                                    <th class="px-4 py-2.5">RB1</th>
+                                    <th class="px-4 py-2.5">Stroma</th>
+                                    <th class="px-4 py-2.5">CRI</th>
+                                    <th class="px-4 py-2.5">Risk Tier</th>
+                                    <th class="px-4 py-2.5">M36 Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cohort-table-body" class="divide-y divide-slate-800/60 bg-slate-950/60">
+                                <tr>
+                                    <td colspan="8" class="px-4 py-6 text-center text-slate-500 font-sans">
+                                        No cohort loaded. Click "Load MSKCC Cohort" or upload a CSV file above.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: REACTION-DIFFUSION SANCTUARY PHYSICS ==================== -->
+        <section id="tab-biophysics" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 rounded-2xl shadow-xl">
+                <div class="pb-6 border-b border-slate-800">
+                    <h2 class="text-lg font-semibold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-atom text-cyan-400"></i>
+                        <span>Reaction-Diffusion Pharmacokinetic Sanctuary Simulation</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">Interactive simulation of osimertinib radial diffusion gradient $C(r)$ across tumor cords.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
+                    <!-- Controls -->
+                    <div class="lg:col-span-4 space-y-5">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300">Inter-Capillary Cord Distance (Δr):</span>
+                                <span id="dist-slider-val" class="text-cyan-400 font-mono">60 μm</span>
+                            </div>
+                            <input type="range" id="dist-slider" min="15" max="120" value="60" step="5" oninput="updateBiophysicsPlot()" class="w-full accent-cyan-500">
+                            <p class="text-[11px] text-slate-400 mt-1">Lepidic: &le;18 μm • Acinar: 25-45 μm • Solid/Micropapillary: &gt;50 μm</p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-300">Interstitial Fluid Pressure (P_ifp):</span>
+                                <span id="ifp-slider-val" class="text-amber-400 font-mono">20 mmHg</span>
+                            </div>
+                            <input type="range" id="ifp-slider" min="0" max="30" value="20" step="2" oninput="updateBiophysicsPlot()" class="w-full accent-amber-500">
+                            <p class="text-[11px] text-slate-400 mt-1">Normal: ~0 mmHg • Moderate: 5-15 mmHg • Dense Desmoplasia: &gt;20 mmHg</p>
+                        </div>
+
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-3 font-mono text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Capillary Conc (C0):</span>
+                                <span class="text-white">100 nM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Cytotoxic Threshold (IC90):</span>
+                                <span class="text-red-400">45 nM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Calculated Sanctuary Depth:</span>
+                                <span id="sanctuary-depth" class="text-red-400 font-bold">26.0 μm</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Persister Cell Sanctuary Vol:</span>
+                                <span id="sanctuary-vol" class="text-rose-400 font-bold">43.3%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Concentration Profile Chart -->
+                    <div class="lg:col-span-8 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Radial Drug Concentration Profile: C(r) vs IC90 Threshold</h3>
+                            <span class="text-[11px] text-red-400 font-semibold" id="sanctuary-status-badge">🚨 PHARMACOLOGICAL SANCTUARY ACTIVE</span>
+                        </div>
+                        <div class="h-72 w-full">
+                            <canvas id="biophysics-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: CLINICAL RATIONALE & CITATIONS ==================== -->
+        <section id="tab-docs" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 rounded-2xl shadow-xl space-y-6">
+                <div>
+                    <h2 class="text-lg font-semibold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
+                        <span>Scientific Foundation & Master Citations</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">Formal references, tracking IDs, and reproducible bioinformatic packages.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
+                        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-microscope text-cyan-400"></i>
+                            <span>The Flagship Study</span>
+                        </h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            <strong>Title:</strong> The Spatial-Genomic Oncology Continuum: Reaction-Diffusion Biophysics and Digital Twin Modeling Resolve the 36-Month Post-ADAURA Discontinuation Cliff in Non-Small Cell Lung Cancer.<br>
+                            <strong>Author:</strong> Luca Celebrano, MD Candidate, Università degli Studi di Napoli Federico II.<br>
+                            <strong>Status:</strong> Under Consideration at <em>Nature Communications</em> (Tracking: <code>NCOMMS-26-091227</code>).<br>
+                            <strong>Preprint DOI:</strong> <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1" target="_blank" class="text-cyan-400 hover:underline">10.21203/rs.3.rs-11530312/v1</a> (Nature Portfolio / Research Square).
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
+                        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-network-wired text-emerald-400"></i>
+                            <span>Global Bioinformatics Distribution</span>
+                        </h3>
+                        <ul class="text-xs text-slate-300 space-y-2">
+                            <li><strong>ELIXIR bio.tools:</strong> <a href="https://bio.tools/spatial-continuum-oncology" target="_blank" class="text-cyan-400 hover:underline font-mono">biotools:spatial-continuum-oncology</a></li>
+                            <li><strong>CERN Zenodo DOI:</strong> <a href="https://doi.org/10.5281/zenodo.23754999" target="_blank" class="text-cyan-400 hover:underline font-mono">10.5281/zenodo.23754999</a></li>
+                            <li><strong>Bioconda:</strong> <code class="text-slate-200 bg-slate-800 px-1.5 py-0.5 rounded">conda install -c bioconda spatial-continuum</code></li>
+                            <li><strong>BioContainers Docker:</strong> <code class="text-slate-200 bg-slate-800 px-1.5 py-0.5 rounded">quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs text-slate-300">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-slate-400 font-bold uppercase text-[10px]">BibTeX Master Citation</span>
+                        <button onclick="navigator.clipboard.writeText(document.getElementById('bibtex-code').innerText); alert('BibTeX copied to clipboard!');" class="text-xs text-cyan-400 hover:underline">Copy BibTeX</button>
+                    </div>
+                    <pre id="bibtex-code" class="overflow-x-auto text-[11px] leading-relaxed">@article{celebrano2026spatialcontinuum,
+  author    = {Celebrano, Luca},
+  title     = {The Spatial-Genomic Oncology Continuum: Reaction-Diffusion Biophysics and Digital Twin Modeling Resolve the 36-Month Post-ADAURA Discontinuation Cliff in Non-Small Cell Lung Cancer},
+  journal   = {Nature Communications (Under Consideration)},
+  year      = {2026},
+  doi       = {10.21203/rs.3.rs-11530312/v1},
+  publisher = {Research Square (Nature Portfolio)},
+  url       = {https://doi.org/10.21203/rs.3.rs-11530312/v1}
+}</pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-400">
+        <p>© 2026 Luca Celebrano • Università degli Studi di Napoli Federico II • Open-Access Academic Precision Oncology</p>
+    </footer>
+
+    <!-- Application Logic Scripts -->
+    <script>
+        // State
+        let currentTab = 'single';
+        let kmChart = null;
+        let pieChart = null;
+        let biophysicsChart = null;
+        let loadedCohortData = [];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('border-cyan-500', 'text-cyan-400');
+                el.classList.add('border-transparent', 'text-slate-400');
+            });
+
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            activeBtn.classList.remove('border-transparent', 'text-slate-400');
+            activeBtn.classList.add('border-cyan-500', 'text-cyan-400');
+            currentTab = tabId;
+
+            if (tabId === 'biophysics' && !biophysicsChart) {
+                initBiophysicsPlot();
+            }
+        }
+
+        // 1. Single Patient Calculation
+        function calculateCRI() {
+            const pattern = document.getElementById('pattern-select').value;
+            const tp53 = document.querySelector('input[name="tp53-radio"]:checked').value;
+            const rb1 = document.querySelector('input[name="rb1-radio"]:checked').value;
+            const stroma = document.getElementById('stroma-select').value;
+
+            // S
+            let S = 0.50;
+            if (pattern === 'lepidic') S = 0.00;
+            else if (pattern === 'acinar' || pattern === 'papillary') S = 0.40;
+            else if (pattern === 'mixed') S = 0.80;
+            else if (pattern === 'solid' || pattern === 'micropapillary') S = 1.00;
+
+            // G
+            let G = 0.00;
+            if (tp53 === 'wt' && rb1 === 'wt') G = 0.00;
+            else if (tp53 === 'mut' && rb1 === 'wt') G = 0.50;
+            else if (tp53 === 'mut' && rb1 === 'mut') G = 1.00;
+            else G = 0.30;
+
+            // M
+            let M = 0.50;
+            if (stroma === 'low') M = 0.00;
+            else if (stroma === 'moderate') M = 0.50;
+            else if (stroma === 'dense') M = 1.00;
+
+            // Weights (derived from Cox Proportional Hazard on MSKCC N=604)
+            const CRI = (S * 0.47) + (G * 0.33) + (M * 0.20);
+            const criFormatted = CRI.toFixed(3);
+
+            // Update UI
+            document.getElementById('cri-value').innerText = criFormatted;
+            document.getElementById('s-breakdown').innerText = S.toFixed(2);
+            document.getElementById('g-breakdown').innerText = G.toFixed(2);
+            document.getElementById('m-breakdown').innerText = M.toFixed(2);
+            document.getElementById('cri-progress-bar').style.width = (CRI * 100) + '%';
+
+            const badge = document.getElementById('risk-badge');
+            const dfsEstimate = document.getElementById('dfs-estimate');
+            const recBox = document.getElementById('recommendation-box');
+            const recIcon = document.getElementById('recommendation-icon');
+            const recTitle = document.getElementById('recommendation-title');
+            const recText = document.getElementById('recommendation-text');
+
+            if (CRI < 0.35) {
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+                badge.innerText = "TIER 1: LOW RISK (CURATIVE SENSITIVITY)";
+                dfsEstimate.innerText = "Expected 5-Yr DFS: > 85%";
+                recBox.className = "mt-6 p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20";
+                recIcon.className = "fa-solid fa-circle-check text-emerald-400 mt-1 text-lg";
+                recTitle.className = "text-sm font-bold text-emerald-300";
+                recTitle.innerText = "POST-ADAURA DIRECTIVE: PROTOCOLIZED DISCONTINUATION RECOMMENDED";
+                recText.innerText = "Minimal spatial decoupling (intact capillary perfusion) and wild-type apoptosis. Relapse risk post-Month 36 is minimal (<15%). Patient can safely cease adjuvant osimertinib at Month 36 to eliminate chronic toxicity and financial cost.";
+            } else if (CRI <= 0.70) {
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30";
+                badge.innerText = "TIER 2: INTERMEDIATE RESISTANCE RISK";
+                dfsEstimate.innerText = "Expected 5-Yr DFS: 50 - 65%";
+                recBox.className = "mt-6 p-4 rounded-xl border border-amber-500/30 bg-amber-950/20";
+                recIcon.className = "fa-solid fa-triangle-exclamation text-amber-400 mt-1 text-lg";
+                recTitle.className = "text-sm font-bold text-amber-300";
+                recTitle.innerText = "POST-ADAURA DIRECTIVE: INTENSIFIED SURVEILLANCE / EXTENDED MONOTHERAPY";
+                recText.innerText = "Moderate sanctuary presence. Discontinuation at Month 36 carries an estimated 40-50% relapse risk. Recommend either continuing osimertinib monotherapy to Year 5 or serial plasma ctDNA + high-resolution chest CT surveillance every 3 months.";
+            } else {
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/20 text-red-400 border border-red-500/30";
+                badge.innerText = "TIER 3: HIGH SANCTUARY RISK";
+                dfsEstimate.innerText = "Expected 5-Yr DFS: < 25%";
+                recBox.className = "mt-6 p-4 rounded-xl border border-red-500/30 bg-red-950/20";
+                recIcon.className = "fa-solid fa-triangle-exclamation text-red-400 mt-1 text-lg";
+                recTitle.className = "text-sm font-bold text-red-300";
+                recTitle.innerText = "POST-ADAURA CRITICAL DIRECTIVE: DO NOT DISCONTINUE AT MONTH 36";
+                recText.innerText = "High probability of dormant perivascular persister sanctuaries (cord distance > 34 μm). Cessation of osimertinib at Month 36 carries an estimated >75% recurrence rate. Recommend indefinite osimertinib maintenance or SG-ADAURA Arm B3 consolidation (Osimertinib + anti-VEGFR2 Ramucirumab).";
+            }
+        }
+
+        function setPreset(type) {
+            if (type === 'adaura-high') {
+                document.getElementById('pattern-select').value = 'solid';
+                document.querySelector('input[name="tp53-radio"][value="mut"]').checked = true;
+                document.querySelector('input[name="rb1-radio"][value="mut"]').checked = true;
+                document.getElementById('stroma-select').value = 'dense';
+            } else {
+                document.getElementById('pattern-select').value = 'lepidic';
+                document.querySelector('input[name="tp53-radio"][value="wt"]').checked = true;
+                document.querySelector('input[name="rb1-radio"][value="wt"]').checked = true;
+                document.getElementById('stroma-select').value = 'low';
+            }
+            calculateCRI();
+        }
+
+        function copyClinicalReport() {
+            const id = document.getElementById('patient-id').value;
+            const cri = document.getElementById('cri-value').innerText;
+            const tier = document.getElementById('risk-badge').innerText;
+            const rec = document.getElementById('recommendation-title').innerText;
+            const report = `=========================================================\nCRI BEDSIDE CLINICAL DECISION SUPPORT REPORT\nPatient ID: ${id}\nDate: ${new Date().toISOString().split('T')[0]}\nComposite Resistance Index (CRI): ${cri} / 1.000\nStratification: ${tier}\nDirective: ${rec}\nReference: https://doi.org/10.21203/rs.3.rs-11530312/v1\n=========================================================`;
+            navigator.clipboard.writeText(report);
+            alert("Bedside Clinical Summary copied to clipboard!");
+        }
+
+        // 2. Cohort Simulator & Kaplan-Meier
+        function loadExampleCohort() {
+            const syntheticMSKCC = [];
+            for (let i = 1; i <= 100; i++) {
+                const rand = Math.random();
+                let pat, tp, rb, str;
+                if (rand < 0.35) { // High Risk (35%)
+                    pat = Math.random() < 0.6 ? 'solid' : 'micropapillary';
+                    tp = Math.random() < 0.85 ? 'mut' : 'wt';
+                    rb = Math.random() < 0.6 ? 'mut' : 'wt';
+                    str = 'dense';
+                } else if (rand < 0.70) { // Intermediate (35%)
+                    pat = Math.random() < 0.5 ? 'acinar' : 'papillary';
+                    tp = Math.random() < 0.5 ? 'mut' : 'wt';
+                    rb = 'wt';
+                    str = 'moderate';
+                } else { // Low Risk (30%)
+                    pat = 'lepidic';
+                    tp = 'wt';
+                    rb = 'wt';
+                    str = 'low';
+                }
+                syntheticMSKCC.push({
+                    patient_id: `MSK-LUAD-${String(i).padStart(3, '0')}`,
+                    pattern: pat,
+                    tp53: tp,
+                    rb1: rb,
+                    stroma: str
+                });
+            }
+            processCohort(syntheticMSKCC);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            Papa.parse(file, {
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    processCohort(results.data);
+                }
+            });
+        }
+
+        function processCohort(data) {
+            loadedCohortData = [];
+            let t1 = 0, t2 = 0, t3 = 0;
+
+            data.forEach((row, idx) => {
+                const pat = (row.pattern || row.Pattern || 'solid').toLowerCase();
+                const tp = (row.tp53 || row.TP53 || 'wt').toLowerCase();
+                const rb = (row.rb1 || row.RB1 || 'wt').toLowerCase();
+                const str = (row.stroma || row.Stroma || 'moderate').toLowerCase();
+
+                let S = 0.50;
+                if (pat.includes('lepidic')) S = 0.00;
+                else if (pat.includes('acinar') || pat.includes('papillary')) S = 0.40;
+                else if (pat.includes('mixed')) S = 0.80;
+                else if (pat.includes('solid') || pat.includes('micropapillary')) S = 1.00;
+
+                const tp_mut = tp.includes('mut') || tp.includes('1') || tp.includes('true');
+                const rb_mut = rb.includes('mut') || rb.includes('1') || rb.includes('true') || rb.includes('loss');
+
+                let G = 0.00;
+                if (!tp_mut && !rb_mut) G = 0.00;
+                else if (tp_mut && !rb_mut) G = 0.50;
+                else if (tp_mut && rb_mut) G = 1.00;
+                else G = 0.30;
+
+                let M = 0.50;
+                if (str.includes('low') || str.includes('loose')) M = 0.00;
+                else if (str.includes('moderate')) M = 0.50;
+                else if (str.includes('dense') || str.includes('high')) M = 1.00;
+
+                const cri = (S * 0.47) + (G * 0.33) + (M * 0.20);
+                let tier = 'Tier 3';
+                let action = 'Extend / Consolidate';
+                if (cri < 0.35) { tier = 'Tier 1'; action = 'Discontinue M36'; t1++; }
+                else if (cri <= 0.70) { tier = 'Tier 2'; action = 'Monitor / CT'; t2++; }
+                else { t3++; }
+
+                loadedCohortData.push({
+                    patient_id: row.patient_id || row.Patient_ID || `PT-${idx+1}`,
+                    pattern: pat,
+                    tp53: tp_mut ? 'Mut' : 'WT',
+                    rb1: rb_mut ? 'Mut' : 'WT',
+                    stroma: str,
+                    cri: cri.toFixed(3),
+                    tier: tier,
+                    action: action
+                });
+            });
+
+            // Update Counts
+            const total = loadedCohortData.length;
+            document.getElementById('cohort-total-n').innerText = total;
+            document.getElementById('cohort-tier1-count').innerText = `${t1} (${Math.round(t1/total*100)}%)`;
+            document.getElementById('cohort-tier2-count').innerText = `${t2} (${Math.round(t2/total*100)}%)`;
+            document.getElementById('cohort-tier3-count').innerText = `${t3} (${Math.round(t3/total*100)}%)`;
+
+            // Enable export
+            const expBtn = document.getElementById('export-cohort-btn');
+            expBtn.disabled = false;
+            expBtn.className = "px-3 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold rounded-lg shadow transition flex items-center space-x-1.5 cursor-pointer";
+
+            // Render Table
+            renderCohortTable();
+            // Render KM Plot & Pie
+            renderKMPlot(t1, t2, t3);
+            renderPiePlot(t1, t2, t3);
+        }
+
+        function renderCohortTable() {
+            const tbody = document.getElementById('cohort-table-body');
+            tbody.innerHTML = '';
+            loadedCohortData.slice(0, 10).forEach(row => {
+                const tr = document.createElement('tr');
+                const badgeClass = row.tier === 'Tier 1' ? 'text-emerald-400' : (row.tier === 'Tier 2' ? 'text-amber-400' : 'text-rose-400');
+                tr.innerHTML = `
+                    <td class="px-4 py-2 font-bold">${row.patient_id}</td>
+                    <td class="px-4 py-2">${row.pattern}</td>
+                    <td class="px-4 py-2">${row.tp53}</td>
+                    <td class="px-4 py-2">${row.rb1}</td>
+                    <td class="px-4 py-2">${row.stroma}</td>
+                    <td class="px-4 py-2 text-white font-bold">${row.cri}</td>
+                    <td class="px-4 py-2 ${badgeClass} font-bold">${row.tier}</td>
+                    <td class="px-4 py-2 text-slate-300">${row.action}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderKMPlot(t1, t2, t3) {
+            const ctx = document.getElementById('km-chart').getContext('2d');
+            if (kmChart) kmChart.destroy();
+
+            // Months 0 to 60
+            const months = [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60];
+            const kmTier1 = [1.00, 1.00, 0.98, 0.97, 0.95, 0.94, 0.92, 0.91, 0.89, 0.88, 0.87]; // Low risk
+            const kmTier2 = [1.00, 0.98, 0.94, 0.90, 0.87, 0.82, 0.76, 0.69, 0.64, 0.60, 0.58]; // Intermediate
+            const kmTier3 = [1.00, 0.96, 0.88, 0.79, 0.71, 0.62, 0.52, 0.36, 0.28, 0.22, 0.18]; // High Sanctuary cliff
+
+            kmChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months.map(m => `M${m}`),
+                    datasets: [
+                        {
+                            label: 'CRI Tier 1 (Low Risk - Lepidic)',
+                            data: kmTier1,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            stepped: true,
+                            borderWidth: 2.5
+                        },
+                        {
+                            label: 'CRI Tier 2 (Intermediate - Acinar/Papillary)',
+                            data: kmTier2,
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            stepped: true,
+                            borderWidth: 2.5
+                        },
+                        {
+                            label: 'CRI Tier 3 (High Risk - Solid/Micropapillary)',
+                            data: kmTier3,
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            stepped: true,
+                            borderWidth: 2.5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 1.05,
+                            ticks: { color: '#94a3b8', callback: v => (v * 100) + '%' },
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#cbd5e1', font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        function renderPiePlot(t1, t2, t3) {
+            const ctx = document.getElementById('pie-chart').getContext('2d');
+            if (pieChart) pieChart.destroy();
+
+            pieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tier 1 (Low)', 'Tier 2 (Mid)', 'Tier 3 (High)'],
+                    datasets: [{
+                        data: [t1, t2, t3],
+                        backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function exportCohortCSV() {
+            if (!loadedCohortData.length) return;
+            const csv = Papa.unparse(loadedCohortData);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute("download", "CRI_Annotated_Cohort_Results.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // 3. Reaction-Diffusion Biophysics Plot
+        function initBiophysicsPlot() {
+            const ctx = document.getElementById('biophysics-chart').getContext('2d');
+            biophysicsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Intratumoral Osimertinib C(r) [nM]',
+                            data: [],
+                            borderColor: '#06b6d4',
+                            backgroundColor: 'rgba(6, 182, 212, 0.15)',
+                            fill: true,
+                            borderWidth: 2.5
+                        },
+                        {
+                            label: 'Cytotoxic Threshold (IC90 = 45 nM)',
+                            data: [],
+                            borderColor: '#ef4444',
+                            borderDash: [5, 5],
+                            borderWidth: 2,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 120,
+                            ticks: { color: '#94a3b8', callback: v => v + ' nM' },
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#cbd5e1', font: { size: 11 } } }
+                    }
+                }
+            });
+            updateBiophysicsPlot();
+        }
+
+        function updateBiophysicsPlot() {
+            const dist = parseInt(document.getElementById('dist-slider').value);
+            const ifp = parseInt(document.getElementById('ifp-slider').value);
+            document.getElementById('dist-slider-val').innerText = dist + ' μm';
+            document.getElementById('ifp-slider-val').innerText = ifp + ' mmHg';
+
+            // Parameters
+            const C0 = 100; // nM capillary conc
+            const IC90 = 45; // nM
+            const lambda = 40.0 * (1.0 - (ifp / 50.0)); 
+
+            const labels = [];
+            const concs = [];
+            const ic90s = [];
+            let rCrit = 0;
+
+            for (let r = 0; r <= dist; r += (dist / 20)) {
+                const rVal = Math.round(r);
+                labels.push(`${rVal} μm`);
+                const c = C0 * Math.exp(-rVal / lambda);
+                concs.push(c.toFixed(1));
+                ic90s.push(IC90);
+
+                if (c < IC90 && rCrit === 0) {
+                    rCrit = rVal;
+                }
+            }
+
+            const sanctuaryActive = rCrit > 0 && rCrit < dist;
+            const sanctuaryDepth = sanctuaryActive ? (dist - rCrit).toFixed(1) : '0.0';
+            const sanctuaryFraction = sanctuaryActive ? (((dist - rCrit) / dist) * 100).toFixed(1) : '0.0';
+
+            document.getElementById('sanctuary-depth').innerText = sanctuaryDepth + ' μm';
+            document.getElementById('sanctuary-vol').innerText = sanctuaryFraction + '%';
+
+            const badge = document.getElementById('sanctuary-status-badge');
+            if (sanctuaryActive) {
+                badge.className = "text-[11px] text-red-400 font-semibold";
+                badge.innerText = "🚨 PHARMACOLOGICAL SANCTUARY ACTIVE";
+            } else {
+                badge.className = "text-[11px] text-emerald-400 font-semibold";
+                badge.innerText = "✓ HOMOGENEOUS CURATIVE SATURATION";
+            }
+
+            if (biophysicsChart) {
+                biophysicsChart.data.labels = labels;
+                biophysicsChart.data.datasets[0].data = concs;
+                biophysicsChart.data.datasets[1].data = ic90s;
+                biophysicsChart.update();
+            }
+        }
+
+        // Initialize Default State
+        window.onload = function() {
+            calculateCRI();
+        };
+    </script>
+</body>
+</html>

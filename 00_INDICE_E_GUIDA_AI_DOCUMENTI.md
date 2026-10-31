@@ -71,6 +71,14 @@ Tutti gli script sono scritti in **puro Python 3 standard** (zero librerie ester
 
 ---
 
+### Applicazione Clinica Web (`clinical_web_app/`)
+
+Contiene l'architettura completa della Web App ospitata live su Hugging Face Spaces:
+- **`index.html`**: Applicazione clinica interattiva (calcolatore bedside CRI, simulatore di coorte in batch CSV, plotting curve di Kaplan-Meier a 5 anni con Chart.js ed esportazione referti).
+- **`deploy_to_huggingface.sh`**: Script automatico a un clic per sincronizzare e pubblicare gli aggiornamenti direttamente su [Hugging Face Spaces (`Lucace/spatial-continuum-clinical-app`)](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app).
+
+---
+
 ### Libreria Python Installabile (`src/`)
 
 Il repository include il pacchetto Python standard installabile via `pip`:
