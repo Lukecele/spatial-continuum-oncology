@@ -28,6 +28,7 @@
 | **`12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md`** | **Abstract Ufficiale per l'AACR Annual Meeting 2027** (Orlando, FL). Conforme ai limiti di 2.600 caratteri e alle policy etiche AACR/Springer Nature. | Da sottomettere sul portale myAACR entro il 10 Novembre 2026. |
 | **`13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md`** | **Dossier Completo per i 3 Grandi Congressi Mondiali (AACR, ASCO, ESMO)** con abstract calibrati per track biologico, clinico e traslazionale, audit di prior publication e checklist scadenze. | Da utilizzare per le sottomissioni ufficiali AACR, ASCO ed ESMO. |
 | **`14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md`** | **Executive Clinical Brief & Strategic Dossier** per i massimi decisori mondiali: Prof. Roy S. Herbst (Yale, Lead PI ADAURA), AstraZeneca Global Oncology R&D e Primari di Oncologia (IRCCS Pascale, AIOM). Include protocollo trial SG-ADAURA e lettere di trasmissione. | Da utilizzare per outreach accademico, partnership clinico-industriali e Tumor Board. |
+| **`15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md`** | **Pre-Emptive Reviewer Response Matrix & Rebuttal Dossier per Nature Communications (NCOMMS-26-091227)**. Contro-deduzioni matematiche, cliniche e spaziali a 12 obiezioni critiche dei referee (geometria 2D vs 3D, Péclet, Sobol, ctDNA vs CRI, inter-observer kappa). | Da utilizzare immediatamente all'arrivo dei report dei revisori di Nature. |
 
 ---
 
