@@ -15,7 +15,7 @@
   <a href="https://lukecele.github.io/spatial-continuum-oncology/">
     <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
   </a>
-  <a href="https://anaconda.org/bioconda/spatial-continuum">
+  <a href="https://github.com/bioconda/bioconda-recipes/pull/70930">
     <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
   </a>
   <a href="https://github.com/Lukecele/spatial-continuum-oncology">
