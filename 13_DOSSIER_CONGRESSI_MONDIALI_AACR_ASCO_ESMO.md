@@ -47,7 +47,10 @@ Tutte e tre le maggiori società oncologiche mondiali (AACR, ASCO, ESMO) e l'edi
 
 ### Abstract Ufficiale ASCO (2.292 caratteri - Conforme 100% al Limite ASCO/ScholarOne)
 
-**Title:** Clinical Superiority of Bedside Composite Resistance Index (CRI) Stratification and Vascular Normalization over Fixed 36-Month Adjuvant Osimertinib in Resected EGFR-Mutant NSCLC: An In Silico Benchmark and the Phase III SG-ADAURA Trial Design
+**Title (Short Title Conforme al Limite ASCO di 120 caratteri — 99 caratteri):**  
+`Reaction-Diffusion Biophysics Resolves the Post-ADAURA Cessation Cliff in Resected EGFR-Mutant NSCLC`
+
+*(Titolo Esteso di Studio / Presentation Title: Clinical Superiority of Bedside Composite Resistance Index Stratification and Vascular Normalization over Fixed 36-Month Adjuvant Osimertinib in Resected EGFR-Mutant NSCLC: The Phase III SG-ADAURA Trial Design)*
 
 **Authors:** Luca Celebrano
 
