@@ -1,53 +1,81 @@
-# The Spatial-Genomic Oncology Continuum
+<div align="center">
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb)
-[![Read Full Manuscript PDF](https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](01_MANOSCRITTO_FINALE_CON_FIGURE.pdf)
-[![Plain-Language Summary](https://img.shields.io/badge/%F0%9F%A7%A0%20Plain--Language%20Summary-Gist.Science%20(Author--Reviewed)-2563eb.svg?style=for-the-badge)](https://gist.science/paper/rs/rs-11530312)
-[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Clinical%20Decision%20App-blue.svg?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app)
-[![Live 60 FPS Digital Twin](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Digital%20Twin-60%20FPS%20Sanctuary%20Simulator-0284c7.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
-[![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
-[![GitHub stars](https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold)](https://github.com/Lukecele/spatial-continuum-oncology)
-[![DOI](https://zenodo.org/badge/1437679243.svg)](https://doi.org/10.5281/zenodo.23754999)
-[![Research Square DOI](https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg)](https://doi.org/10.21203/rs.3.rs-11530312/v1)
-[![Software License: MIT](https://img.shields.io/badge/Software_License-MIT-blue.svg)](LICENSE-MIT)
-[![License: CC BY 4.0](https://img.shields.io/badge/Monograph_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
-[![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
-[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app)
-[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/spatial-continuum-lab/mskcc-lung-adenocarcinoma-spatial-cohort)
-[![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
-[![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
-[![BioContainers](https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?style=for-the-badge&logo=docker&logoColor=white)](https://quay.io/repository/biocontainers/spatial-continuum)
-[![Galaxy Tool](https://img.shields.io/badge/Galaxy-cri__calc%20(IUC)-27317c.svg?style=for-the-badge)](https://github.com/galaxyproject/tools-iuc/pull/8838)
-[![Snakemake Wrapper](https://img.shields.io/badge/Snakemake-Wrapper%20(bio)-439397.svg?style=for-the-badge)](https://github.com/snakemake/snakemake-wrappers/pull/6233)
-[![PyPI](https://img.shields.io/pypi/v/spatial-continuum.svg?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/spatial-continuum/)
-[![bio.tools](https://img.shields.io/badge/bio.tools-spatial--continuum--oncology-003366.svg?style=for-the-badge&logo=elixir&logoColor=white)](https://bio.tools/spatial-continuum-oncology)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
+# 🔬 The Spatial-Genomic Oncology Continuum
+### Resolving the Post-ADAURA Cessation Paradox with First-Principles Biophysics
 
-**A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
-
-*Author:* **Luca Celebrano**, MD Candidate  
-*Affiliation:* Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy  
-*Correspondence:* `l.celebrano@studenti.unina.it`  
-
----
-
-> ⚡ **Run in 1-Click with Google Colab (Zero Installation Required)**:  
-> [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb)  
-> *Explore the Bessel $K_0$ concentration gradient solver, the interactive Bedside CRI patient form, and the 500-patient in silico trial simulator directly in your browser.*
->
-> 🚀 **Interactive Clinical Web App Available**: Test the real-time Bedside CRI Decision Engine and Bessel $K_0$ reaction-diffusion sanctuary simulator directly in your browser:  
-> 👉 **[https://lukecele.github.io/spatial-continuum-oncology/](https://lukecele.github.io/spatial-continuum-oncology/)**  
-> 🎮 **60 FPS Live Digital Twin & 5-Year Trial Simulator**:  
-> 👉 **[https://lukecele.github.io/spatial-continuum-oncology/simulator.html](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)**
+**An open-source reaction-diffusion transport solver, 60 FPS tumor digital twin, and bedside clinical decision engine (`cri-calc`) for targeted lung oncology.**
 
 <p align="center">
+  <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" height="28" alt="Open in Colab">
+  </a>
   <a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
-    <img src="assets/simulator-vessel-live.gif" alt="In Silico Tumor Sanctuary Digital Twin Simulator — 60 FPS Capillary Vessel Dynamics" width="100%" style="max-width: 960px; border-radius: 8px;">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Simulator-60%20FPS%20Digital%20Twin-0284c7.svg?style=for-the-badge" height="28" alt="Live Simulator">
+  </a>
+  <a href="https://lukecele.github.io/spatial-continuum-oncology/">
+    <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
+  </a>
+  <a href="https://anaconda.org/bioconda/spatial-continuum">
+    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
+  </a>
+  <a href="https://github.com/Lukecele/spatial-continuum-oncology">
+    <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
   </a>
 </p>
 
-> ⭐️ **Support Open-Science Oncology**: If you find this framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
+<p align="center">
+  <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
+  <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
+  <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
+  <a href="https://www.nature.com/ncomms/"><img src="https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg" alt="Target Nature Communications"></a>
+  <a href="https://pypi.org/project/spatial-continuum/"><img src="https://img.shields.io/pypi/v/spatial-continuum.svg?logo=pypi&logoColor=white" alt="PyPI"></a>
+  <a href="https://quay.io/repository/biocontainers/spatial-continuum"><img src="https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?logo=docker&logoColor=white" alt="BioContainers"></a>
+  <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python 3.9+">
+  <img src="https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg" alt="Zero Dependencies">
+</p>
+
+*Author:* **Luca Celebrano**, MD Candidate · Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II · `l.celebrano@studenti.unina.it`
+
+---
+
+### ⚡ 10-Second Interactive Quickstart (Zero Install Required)
+
+| 🚀 **1-Click Google Colab** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
+| :---: | :---: | :---: |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
+| Run Bessel $K_0$ diffusion & in silico trials in 10s | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
+
+```bash
+# Or run locally from your terminal in 3 seconds:
+pip install spatial-continuum
+cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+```
+
+---
+
+<a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
+  <img src="assets/simulator-vessel-live.gif" alt="In Silico Tumor Sanctuary Digital Twin Simulator — 60 FPS Capillary Vessel Dynamics" width="100%" style="max-width: 900px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+</a>
+
+<p align="center">
+  <i><b>Live 60 FPS Digital Twin:</b> Capillary microvessel ($r_0=10\,\mu\text{m}$) diffusing osimertinib. Drug concentration drops below cytocidal $\text{IC}_{50}$ ($10\,\text{nM}$) at $r_{\text{crit}}=165.9\,\mu\text{m}$, creating a <b>34.1 $\mu$m cytostatic sanctuary sleeve (31.3% of viable tumor cord volume)</b> where dormant persister cells survive until drug discontinuation at Month 36.</i>
+</p>
+
+</div>
+
+---
+
+## ⚡ The Project in 30 Seconds: Why This Matters
+
+<div align="center">
+
+| 🎯 The Clinical Paradox (ADAURA) | 🔬 The Biophysical Discovery | 💡 The Precision Solution (SG-ADAURA) |
+| :--- | :--- | :--- |
+| **67.9% of relapses occur AFTER planned 36-month stop** (*Herbst et al., Nature Medicine 2025*), and **75–80% harbor NO resistant mutations** (e.g. *EGFR* C797S). Why do drug-sensitive cells recur? | Elevated Interstitial Fluid Pressure shuts down convection ($Pe < 0.1$). Cylindrical Bessel $K_0$ diffusion leaves an **unperfused 34.1 $\mu$m sanctuary sleeve** where cells arrest cytostatically in $G_0/G_1$. | Bedside **Composite Resistance Index (`cri-calc`)**: safe cessation for Lepidic cords (saves €60k/yr & toxicity) vs **anti-VEGFR2 vascular normalization** for Solid cords ($\text{HR} < 0.05, p < 10^{-15}$). |
+
+</div>
+
+> ⭐️ **Support Open-Science Oncology**: If you find this mathematical framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
 
 ---
 
