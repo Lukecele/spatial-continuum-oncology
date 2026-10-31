@@ -4,7 +4,7 @@
 **Author & Principal Investigator:** Luca Celebrano, MD Candidate  
 **Affiliation:** School of Medicine & Surgery, Università degli Studi di Napoli Federico II, Naples, Italy  
 **Institutional Contact:** `l.celebrano@studenti.unina.it` | `luca.celebrano@gmail.com`  
-**ORCID:** `0009-0004-8977-2856`  
+**ORCID:** [0009-0007-0931-3555](https://orcid.org/0009-0007-0931-3555)  
 **Flagship Tracking:** Nature Portfolio Preprint (*Research Square* DOI: [`10.21203/rs.3.rs-11530312/v1`](https://doi.org/10.21203/rs.3.rs-11530312/v1)) | *Nature Communications* (Tracking: `NCOMMS-26-091227`, Under Consideration)  
 **ELIXIR bio.tools:** [`biotools:spatial-continuum-oncology`](https://bio.tools/spatial-continuum-oncology)  
 **CERN Zenodo Archive:** DOI [`10.5281/zenodo.23754999`](https://doi.org/10.5281/zenodo.23754999)  
