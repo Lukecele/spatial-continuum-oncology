@@ -6,7 +6,7 @@ authors:
     affiliation: "Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy"
     email: "l.celebrano@studenti.unina.it"
 title: "The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol"
-version: 1.0.0
+version: 1.0.2
 doi: "10.5281/zenodo.23754999"
 date-released: 2026-10-28
 url: "https://github.com/Lukecele/spatial-continuum-oncology"
