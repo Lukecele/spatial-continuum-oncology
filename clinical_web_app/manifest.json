@@ -1,0 +1,70 @@
+{
+  "name": "Bedside CRI — Spatial Oncology Decision Engine",
+  "short_name": "Bedside CRI",
+  "id": "/spatial-continuum-oncology/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "orientation": "any",
+  "background_color": "#090d16",
+  "theme_color": "#06b6d4",
+  "description": "Bedside Composite Resistance Index (CRI) and biophysical reaction-diffusion clinical decision engine for EGFR-mutant lung adenocarcinoma.",
+  "categories": ["medical", "health", "education"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Calcola Bedside CRI",
+      "short_name": "Calcola CRI",
+      "description": "Valutazione rischio santuario farmacologico e score CRI post-ADAURA",
+      "url": "./index.html#cri",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Simulatore 60 FPS",
+      "short_name": "Digital Twin",
+      "description": "Simulatore numerico 60 FPS di trasporto perivascolare capillare",
+      "url": "./simulator.html",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
