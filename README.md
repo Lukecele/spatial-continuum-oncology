@@ -111,6 +111,11 @@ Because the empirical oxygen viability boundary in human lung carcinoma extends 
 $$\Delta r = r_{\text{ox}} - r_{\text{crit}} = 200.0 - 165.89 = \mathbf{34.11\ \mu\text{m}}$$
 $$f_{\text{vol}} = \frac{r_{\text{ox}}^2 - r_{\text{crit}}^2}{r_{\text{ox}}^2 - r_0^2} = \frac{200^2 - 165.89^2}{200^2 - 10^2} = \mathbf{31.28\%}$$
 
+<div align="center">
+  <img src="figure_scientifiche/notebook_fig1_bessel_gradient.png" alt="Radial Concentration Gradient & Pharmacological Sanctuary (Bessel K0)" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 1: Exact Cylindrical Bessel $K_0$ Radial Concentration Gradient:</b> Unbound osimertinib concentration drops below the cytocidal $\text{IC}_{50}$ threshold (10.0 nM, red dashed line) at $r_{\text{crit}} = 166.4\,\mu\text{m}$, creating a <b>$34.1\,\mu\text{m}$ sub-therapeutic pharmacological sanctuary cuff ($31.3\%$ viable tumor cord volume)</b> where persister cells are arrested cytostatically in $G_0/G_1$ prior to drug cessation.</i></p>
+</div>
+
 ---
 
 ## 📊 Longitudinal ctDNA Mathematical Lead Time Identity
@@ -143,6 +148,11 @@ Live Portal Audit: [🌐 `10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`](10_RE
 2. **Personalized De-escalation (Tier 1):** Patients with thin, well-perfused lepidic cords have zero sanctuary ($\Delta r = 0$) and achieve 100% 5-year DFS with planned cessation at month 36. Sparing 2 years of continuous treatment saves ~$120,000 per patient and completely avoids unnecessary chronic toxicity (diarrhea, cardiotoxicity, paronychia).
 3. **Biophysical Intensification (Tier 3):** Under SG-ADAURA Arm B3, transient vascular normalization (anti-VEGFR2 Ramucirumab) collapses interstitial fluid pressure, eradicating the sanctuary shell ($\Delta r \to 0$) and transforming a 0% survival into 100% 5-year DFS ($\text{HR} < 0.05$, $p = 1.43 \times 10^{-30}$).
 4. **Adaptive Game-Theoretic Pulsing (InSituGame):** Exploits the stable Nash attractor ($x^* = 61.3\%$) to maintain identical 100% 5-year disease control while reducing cumulative drug exposure by **$29.5\%$**, protecting against the competitive release of resistant *EGFR* C797S mutants.
+
+<div align="center">
+  <img src="figure_scientifiche/notebook_fig3_kaplan_meier_500patients.png" alt="5-Year Disease-Free Survival Kaplan-Meier Curves (N = 500 Virtual Cohort)" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 2: In Silico Trial 5-Year Disease-Free Survival Benchmark ($N = 500$ Virtual Patients):</b> Reconciling the clinical post-cessation cliff. Standard ADAURA fixed 36-month stop (red dashed line) leads to clustered relapses with 5-year DFS dropping to $42.4\%$. The biophysically-stratified SG-ADAURA protocol (blue solid line) maintains <b>$99.0\%$ 5-year DFS</b> ($\text{HR} < 0.05, p = 1.43 \times 10^{-30}$), completely eliminating the post-discontinuation recurrence surge.</i></p>
+</div>
 
 ---
 
@@ -196,6 +206,11 @@ python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --
 ========================================================================
 ```
 
+<div align="center">
+  <img src="figure_scientifiche/notebook_fig2_cri_dashboard.png" alt="Bedside CRI Clinical Decision Support Dashboard" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 3: Bedside CRI Clinical Decision Engine Output:</b> Automated patient risk stratification (Tier 1 safe cessation vs. Tier 3 mandatory continued treatment/remodeling) with component decomposition of Spatial Architecture ($\mathcal{S}$), Genomic Co-Mutations ($\mathcal{G}$), and Interstitial Desmoplasia ($\mathcal{M}$).</i></p>
+</div>
+
 ### 2. Analytical & Statistical Audit Suite
 Verifies dimensional consistency, Bessel $K_0$ root, and 6-cohort compatibility ($N = 3,205$):
 ```bash
@@ -230,6 +245,24 @@ Audits all 5 live portal modules with zero dependencies using headless Chrome:
 ```bash
 node software_strumenti_calcolo/test_live_github_pages.js
 ```
+
+---
+
+## 📓 Interactive Google Colab & Jupyter Demonstration
+
+To enable immediate, hands-on replication of all biophysical derivations, numerical root-finding algorithms, and survival simulations without local installation:
+
+<div align="center">
+  <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" height="32" alt="Open In Colab">
+  </a>
+</div>
+
+The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.ipynb) is fully self-contained and pre-computed with all execution outputs:
+* **Cell 1:** Zero-configuration environment setup (automatic local `src/` detection or Google Colab `pip` installation).
+* **Cell 2:** Exact Bessel $K_0$ radial diffusion solver, calculating $r_{\text{crit}}$ and the $34.1\,\mu\text{m}$ sanctuary shell.
+* **Cell 3:** Interactive Bedside CRI patient profiler with dynamic Colab form controls and visual risk gauge visualization.
+* **Cell 4:** 500-patient Monte Carlo clinical trial simulation producing publication-grade Kaplan-Meier survival curves.
 
 ---
 
@@ -281,6 +314,12 @@ If you use this biophysical model, the computational suite, or the CRI clinical 
 }
 ```
 
-## ⚖️ License
+## ⚖️ Dual-Licensing Framework (Software & Scholarly Monograph)
 
-This project is licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** License — see the [LICENSE](LICENSE) file for details.
+To preserve academic priority for medical journal peer-review while ensuring 100% permissive open-source distribution across scientific package managers (Bioconda, nf-core, Galaxy, PyPI), this repository is governed by an explicit **dual-license architecture**:
+
+* 💻 **Computational Software, CLI (`cri-calc`), Algorithms & Pipeline Code:**  
+  Licensed under the permissive **[MIT License](LICENSE-MIT)** (`LICENSE-MIT`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.
+
+* 📄 **Monograph, Clinical Trial Protocols, Figures & Manuscript Texts:**  
+  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE)** (`LICENSE`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Nature Communications* (`NCOMMS-26-091227`) and *Cancer Research Communications* / AACR (`CRC-26-0804`), while permitting global educational and scholarly citation with attribution.
