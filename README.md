@@ -1,6 +1,7 @@
 # The Spatial-Genomic Oncology Continuum
 
 [![Read Full Manuscript PDF](https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](01_MANOSCRITTO_FINALE_CON_FIGURE.pdf)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Clinical%20Decision%20App-blue.svg?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app)
 [![Live 60 FPS Digital Twin](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Digital%20Twin-60%20FPS%20Sanctuary%20Simulator-0284c7.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
 [![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
 [![GitHub stars](https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold)](https://github.com/Lukecele/spatial-continuum-oncology)
@@ -10,7 +11,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/Monograph_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
-[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/Lucace/spatial-oncology-simulator)
+[![Hugging Face Space Legacy](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/Lucace/spatial-oncology-simulator)
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
 [![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
@@ -219,6 +220,18 @@ node software_strumenti_calcolo/test_live_github_pages.js
 | **MSKCC Targeted Genomics** | 863 | *EGFR*/*TP53*/*RB1* triple mutant TTD 9.5 mo, SCLC 18–25% | Offin et al., *J Thorac Oncol* 2019 (PMID: [31228622](https://pubmed.ncbi.nlm.nih.gov/31228622/)) |
 | **Human Lung Cancer IFP** | 211 | Mean IFP 8.5 mmHg, Solid 9.8 mmHg (independent RFS predictor) | Mori et al., *Ann Thorac Cardiovasc Surg* 2015 (PMID: [25641031](https://pubmed.ncbi.nlm.nih.gov/25641031/)) |
 | **RELAY Phase III Trial** | 449 | Ramucirumab (anti-VEGFR2) + TKI PFS HR = 0.59 ($p < 0.0001$) | Nakagawa et al., *J Thorac Oncol* 2025 (PMID: [39622410](https://pubmed.ncbi.nlm.nih.gov/39622410/)) |
+
+---
+
+## 🏛 Strategic Clinical, Congress & Editorial Dossiers
+
+| Document | Description | Target & Purpose |
+| :--- | :--- | :--- |
+| [📄 `14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md`](14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md) | **Clinical Executive One-Pager & Strategic Trial Brief** | Addressed to Prof. Roy S. Herbst (Yale Cancer Center), AstraZeneca Oncology R&D, and Clinical Oncology Centers (IRCCS Pascale, AIOM). Details the in silico Phase III trial SG-ADAURA and Arm B3 consolidation. |
+| [📄 `15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md`](15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md) | **Pre-Emptive Reviewer Response Matrix** | Prepared for *Nature Communications* (tracking `NCOMMS-26-091227`). Formulates pre-computed mathematical proofs and empirical answers to 12 referee objections across biophysics, clinical oncology, and spatial pathology. |
+| [📄 `12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md`](12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md) | **Official AACR 2027 Abstract** | Calibrated to 2,423 characters (strictly under the 2,600 character ceiling) for the AACR Annual Meeting in Orlando, FL. |
+| [📄 `13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md`](13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md) | **Tri-Congress Strategy Dossier (AACR, ASCO, ESMO)** | Tailored abstracts and submission calendar across biological, clinical, and translational tracks for the 3 major worldwide oncology congresses. |
+| [🌐 `Hugging Face Clinical Decision App`](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app) | **Live Clinical Decision Web Application** | Interactive clinical tool on Hugging Face Spaces for real-time Bedside CRI calculation, patient cohort CSV batch analysis, and dynamic Kaplan-Meier survival curve plotting. |
 
 ---
 
