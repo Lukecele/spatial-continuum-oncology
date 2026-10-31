@@ -20,6 +20,10 @@
             margin: 0;
         }
 
+        @media print {
+            .no-print { display: none !important; }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0b0f19;
@@ -110,7 +114,23 @@
         }
     </style>
 </head>
-<body class="flex justify-center items-center bg-slate-900">
+<body class="flex justify-center items-center bg-slate-900 relative">
+
+    <!-- Floating Navigation for Screen -->
+    <div class="no-print fixed top-4 left-4 z-50 flex items-center space-x-3">
+        <a href="index.html" class="px-4 py-2 bg-slate-800/90 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg text-sm font-semibold shadow-xl backdrop-blur flex items-center space-x-2 transition">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Main Portal</span>
+        </a>
+        <a href="slides.html" class="px-4 py-2 bg-slate-800/90 hover:bg-slate-700 text-purple-400 border border-slate-700 rounded-lg text-sm font-semibold shadow-xl backdrop-blur flex items-center space-x-2 transition">
+            <i class="fa-solid fa-presentation-screen"></i>
+            <span>Master Slides (12)</span>
+        </a>
+        <a href="poster_120x90.pdf" download class="px-4 py-2 bg-pink-600 hover:bg-pink-500 text-white rounded-lg text-sm font-semibold shadow-xl flex items-center space-x-2 transition">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Download 300 DPI PDF</span>
+        </a>
+    </div>
 
     <div class="poster-container shadow-2xl overflow-hidden">
 
