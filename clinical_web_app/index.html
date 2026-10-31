@@ -44,6 +44,37 @@
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+            header, nav, footer, .tab-btn, button, input[type="file"], .no-print {
+                display: none !important;
+            }
+            .glass-panel {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                color: #0f172a !important;
+            }
+            .text-white { color: #0f172a !important; }
+            .text-slate-300, .text-slate-400 { color: #334155 !important; }
+            .bg-slate-900, .bg-slate-950, .bg-slate-900\/80, .bg-slate-900\/50 {
+                background: #f8fafc !important;
+                border-color: #cbd5e1 !important;
+            }
+            .border-slate-800, .border-slate-700 {
+                border-color: #cbd5e1 !important;
+            }
+            .print-header {
+                display: block !important;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid #0891b2;
+            }
+        }
+        .print-header { display: none; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
@@ -65,18 +96,26 @@
             </div>
 
             <!-- Ecosystem Badges -->
-            <div class="hidden md:flex items-center space-x-3 text-xs">
-                <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1" target="_blank" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1.5">
+            <div class="hidden md:flex items-center space-x-2 text-xs">
+                <a href="https://lukecele.github.io/spatial-continuum-oncology/slides.html" target="_blank" class="px-2.5 py-1 rounded-md bg-purple-950/80 hover:bg-purple-900 text-purple-200 border border-purple-500/50 shadow-sm transition flex items-center space-x-1.5 font-semibold" title="Master Oral Presentation Deck for Congresses & Grand Rounds">
+                    <i class="fa-solid fa-presentation-screen text-purple-400"></i>
+                    <span>Master Slides</span>
+                </a>
+                <a href="https://lukecele.github.io/spatial-continuum-oncology/poster.html" target="_blank" class="px-2.5 py-1 rounded-md bg-pink-950/80 hover:bg-pink-900 text-pink-200 border border-pink-500/50 shadow-sm transition flex items-center space-x-1.5 font-semibold" title="Official 120x90cm Congress Poster">
+                    <i class="fa-solid fa-image text-pink-400"></i>
+                    <span>Congress Poster</span>
+                </a>
+                <a href="https://lukecele.github.io/spatial-continuum-oncology/" target="_blank" class="px-2.5 py-1 rounded-md bg-cyan-950/80 hover:bg-cyan-900 text-cyan-200 border border-cyan-500/50 shadow-sm transition flex items-center space-x-1.5 font-semibold" title="Interactive 6-Module Scientific Portal">
+                    <i class="fa-solid fa-globe text-cyan-400"></i>
+                    <span>Main Portal</span>
+                </a>
+                <a href="https://gist.science/it/paper/rs/rs-11530312" target="_blank" class="px-2.5 py-1 rounded-md bg-amber-950/80 hover:bg-amber-900 text-amber-200 border border-amber-500/50 shadow-sm transition flex items-center space-x-1.5 font-semibold" title="Author-Reviewed Plain-Language Digest by Dr. Luc Hendriks, PhD">
+                    <i class="fa-solid fa-brain text-amber-400"></i>
+                    <span>Gist Digest</span>
+                </a>
+                <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1" target="_blank" class="px-2 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1">
                     <i class="fa-solid fa-book-journal-whills text-emerald-400"></i>
-                    <span>Nature Portfolio Preprint</span>
-                </a>
-                <a href="https://bio.tools/spatial-continuum-oncology" target="_blank" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1.5">
-                    <i class="fa-solid fa-cube text-cyan-400"></i>
-                    <span>ELIXIR bio.tools</span>
-                </a>
-                <a href="https://doi.org/10.5281/zenodo.23754999" target="_blank" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center space-x-1.5">
-                    <i class="fa-solid fa-archive text-amber-400"></i>
-                    <span>CERN Zenodo</span>
+                    <span>Preprint</span>
                 </a>
             </div>
         </div>
@@ -108,6 +147,25 @@
 
     <!-- Main Content Area -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+
+        <!-- Printable Hospital Consultation Header (Visible ONLY on Print/PDF Export) -->
+        <div class="print-header">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-xl font-black text-slate-900 uppercase tracking-tight">Università degli Studi di Napoli Federico II</h1>
+                    <p class="text-xs text-slate-700 font-semibold mt-0.5">Dipartimento di Medicina Clinica e Chirurgia • Scuola di Medicina e Chirurgia</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Translational Mathematical Oncology • Bedside Composite Resistance Index (CRI)</p>
+                </div>
+                <div class="text-right text-xs text-slate-700">
+                    <div><strong>Model:</strong> Celebrano et al. (2026)</div>
+                    <div><strong>Preprint DOI:</strong> 10.21203/rs.3.rs-11530312/v1</div>
+                    <div><strong>Tracking:</strong> Nature Comms (NCOMMS-26-091227)</div>
+                </div>
+            </div>
+            <div class="mt-3 p-2 bg-slate-100 border-l-4 border-cyan-600 text-xs text-slate-800">
+                <strong>Clinical Objective:</strong> Evaluation of Perivascular Pharmacological Sanctuary Burden and Risk-Stratified Adjuvant Osimertinib Cessation Dilemma (Post-ADAURA Protocol Allocation).
+            </div>
+        </div>
 
         <!-- ==================== TAB 1: SINGLE PATIENT BEDSIDE CRI ==================== -->
         <section id="tab-single" class="tab-content space-y-6">
@@ -144,7 +202,7 @@
                                     <option value="papillary">Papillary Predominant (intermediate cords) - S = 0.40</option>
                                     <option value="lepidic">Lepidic Predominant (intact alveolar architecture) - S = 0.00</option>
                                 </select>
-                                <p class="text-xs text-slate-400 mt-1">Spatial Decoupling Score ($S$) derived from intervascular diffusion distance ($\Delta r$).</p>
+                                <p class="text-xs text-slate-400 mt-1">Spatial Decoupling Score (S) derived from intervascular diffusion distance (Δr).</p>
                             </div>
 
                             <!-- TP53 Mutation -->
@@ -192,7 +250,7 @@
                             <!-- Stromal Desmoplasia -->
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                                    4. Stromal Desmoplasia & Interstitial Pressure ($M$)
+                                    4. Stromal Desmoplasia & Interstitial Pressure (M)
                                 </label>
                                 <select id="stroma-select" onchange="calculateCRI()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
                                     <option value="dense" selected>Dense Collagen Desmoplasia (High IFP > 20 mmHg, Convective Shutdown) - M = 1.00</option>
@@ -401,7 +459,7 @@
                         <i class="fa-solid fa-atom text-cyan-400"></i>
                         <span>Reaction-Diffusion Pharmacokinetic Sanctuary Simulation</span>
                     </h2>
-                    <p class="text-xs text-slate-400 mt-1">Interactive simulation of osimertinib radial diffusion gradient $C(r)$ across tumor cords.</p>
+                    <p class="text-xs text-slate-400 mt-1">Interactive simulation of osimertinib radial diffusion gradient C(r) across tumor cords.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
@@ -495,6 +553,62 @@
                             <li><strong>Bioconda:</strong> <code class="text-slate-200 bg-slate-800 px-1.5 py-0.5 rounded">conda install -c bioconda spatial-continuum</code></li>
                             <li><strong>BioContainers Docker:</strong> <code class="text-slate-200 bg-slate-800 px-1.5 py-0.5 rounded">quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0</code></li>
                         </ul>
+                    </div>
+                </div>
+
+                <!-- Mathematical & Clinical Tiers Formulation -->
+                <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3">
+                    <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-calculator text-cyan-400"></i>
+                        <span>CRI Mathematical Formulation &amp; Stratification Tiers</span>
+                    </h3>
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-cyan-300">
+                        CRI = 0.47 · S + 0.33 · G + 0.20 · M
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300 mt-2">
+                        <div class="p-3 rounded-lg bg-emerald-950/30 border border-emerald-800/40">
+                            <strong class="text-emerald-400 block mb-1">Tier 1: CRI &lt; 0.25 (Low Risk)</strong>
+                            Lepidic predominant, WT TP53/RB1, low stroma. Curative sensitivity. Protocolized discontinuation at 36 months safe.
+                        </div>
+                        <div class="p-3 rounded-lg bg-amber-950/30 border border-amber-800/40">
+                            <strong class="text-amber-400 block mb-1">Tier 2: 0.25 &le; CRI &lt; 0.65 (Intermediate)</strong>
+                            Acinar/papillary or single co-mutation. Intensive longitudinal ctDNA MRD surveillance (every 3 months).
+                        </div>
+                        <div class="p-3 rounded-lg bg-red-950/30 border border-red-800/40">
+                            <strong class="text-red-400 block mb-1">Tier 3: CRI &ge; 0.65 (High Risk)</strong>
+                            Solid/micropapillary cords, dual TP53+RB1 loss, dense desmoplasia. Obligate pharmacological sanctuary. DO NOT DISCONTINUE. Indefinite maintenance or SG-ADAURA Arm B3 (Ramucirumab consolidation).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grand Rounds, Slides, & Poster Ecosystem Links -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-pink-950/40 border border-purple-800/40 text-xs">
+                    <h3 class="text-sm font-bold text-white mb-2 flex items-center space-x-2">
+                        <i class="fa-solid fa-compass text-purple-400"></i>
+                        <span>Congress &amp; Presentation Ecosystem</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+                        <a href="https://lukecele.github.io/spatial-continuum-oncology/slides.html" target="_blank" class="p-3 rounded-lg bg-purple-900/30 border border-purple-500/40 hover:bg-purple-800/40 transition flex items-center space-x-2 text-purple-200 font-semibold">
+                            <span class="text-base">📊</span>
+                            <div>
+                                <div>Master Slide Deck (12 Slides)</div>
+                                <div class="text-[10px] text-purple-300 font-normal">Oral Presentation &amp; Speaker Notes</div>
+                            </div>
+                        </a>
+                        <a href="https://lukecele.github.io/spatial-continuum-oncology/poster.html" target="_blank" class="p-3 rounded-lg bg-pink-900/30 border border-pink-500/40 hover:bg-pink-800/40 transition flex items-center space-x-2 text-pink-200 font-semibold">
+                            <span class="text-base">🖼</span>
+                            <div>
+                                <div>Congress Poster (120×90 cm)</div>
+                                <div class="text-[10px] text-pink-300 font-normal">AACR / ASCO Vector Standard</div>
+                            </div>
+                        </a>
+                        <a href="https://gist.science/it/paper/rs/rs-11530312" target="_blank" class="p-3 rounded-lg bg-amber-900/30 border border-amber-500/40 hover:bg-amber-800/40 transition flex items-center space-x-2 text-amber-200 font-semibold">
+                            <span class="text-base">🧠</span>
+                            <div>
+                                <div>Gist.Science Plain Digest</div>
+                                <div class="text-[10px] text-amber-300 font-normal">Dr. Luc Hendriks, PhD Synthesis</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
