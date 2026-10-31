@@ -6,6 +6,9 @@
   <title>Bedside CRI Decision Engine — Spatial Oncology Continuum</title>
   <meta name="description" content="Interactive Bedside Composite Resistance Index (CRI) and Biophysical Reaction-Diffusion Sanctuary Simulator for EGFR-Mutant Lung Adenocarcinoma.">
   <meta name="author" content="Luca Celebrano">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Bedside CRI Decision Engine — Spatial Oncology Continuum">
@@ -505,7 +508,7 @@
     /* PRIMARY MULTI-MODULE SCIENTIFIC PORTAL NAVIGATION */
     .module-nav {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 0.65rem;
       margin-top: 1.25rem;
       margin-bottom: 1.5rem;
@@ -788,12 +791,26 @@
         </span>
       </button>
       <button id="mod-btn-5" class="mod-nav-btn" onclick="switchMainModule('5')">
-        <span class="mod-icon">📊</span>
+        <span class="mod-icon">📈</span>
         <span class="mod-text">
           <strong>Module 5: MSKCC 604 &amp; Evidence Hub</strong>
           <small>Kaplan-Meier Survival · Zenodo · Bioconda · Containers</small>
         </span>
       </button>
+      <a href="slides.html" class="mod-nav-btn" style="text-decoration: none; border-color: #8b5cf6; background: rgba(139, 92, 246, 0.12);">
+        <span class="mod-icon">📊</span>
+        <span class="mod-text">
+          <strong style="color: #c084fc;">Module 6: Master Slide Deck (12 Slides)</strong>
+          <small>Oral Presentation · Speaker Notes · Fullscreen (F)</small>
+        </span>
+      </a>
+      <a href="poster.html" class="mod-nav-btn" style="text-decoration: none; border-color: #ec4899; background: rgba(236, 72, 153, 0.12);">
+        <span class="mod-icon">🖼</span>
+        <span class="mod-text">
+          <strong style="color: #f472b6;">Module 7: Congress Poster (120×90)</strong>
+          <small>AACR / ASCO Standard · 300 DPI · 4 QR-Codes</small>
+        </span>
+      </a>
     </nav>
   </div>
 
