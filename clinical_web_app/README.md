@@ -50,8 +50,8 @@ $$\text{CRI} = w_S \cdot S + w_G \cdot G + w_M \cdot M$$
 
 ### Decision Stratification:
 * **Tier 1 (CRI < 0.35):** Low Sanctuary Risk (5-Yr DFS > 85%). Protocolized safe discontinuation at Month 36.
-* **Tier 2 (0.35 &le; CRI &le; 0.70):** Intermediate Risk (5-Yr DFS 50–65%). Intensified imaging & ctDNA surveillance or extended monotherapy.
-* **Tier 3 (CRI > 0.70):** High Sanctuary Risk (5-Yr DFS < 25%). Mandatory maintenance extension or SG-ADAURA Arm B3 consolidation (Osimertinib + anti-VEGFR2 Ramucirumab).
+* **Tier 2 (0.35 &le; CRI &le; 0.65):** Intermediate Risk (5-Yr DFS 50–65%). Intensified imaging & ctDNA surveillance or extended monotherapy.
+* **Tier 3 (CRI > 0.65):** High Sanctuary Risk (5-Yr DFS < 25%). Mandatory maintenance extension or SG-ADAURA Arm B3 consolidation (Osimertinib + anti-VEGFR2 Ramucirumab).
 
 ---
 
