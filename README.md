@@ -65,28 +65,15 @@ cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
 
 ---
 
-## ⚡ The Project in 30 Seconds: Why This Matters
+## 📌 Executive Summary: The Post-ADAURA Cessation Paradox
 
 <div align="center">
 
 | 🎯 The Clinical Paradox (ADAURA) | 🔬 The Biophysical Discovery | 💡 The Precision Solution (SG-ADAURA) |
 | :--- | :--- | :--- |
-| **67.9% of relapses occur AFTER planned 36-month stop** (*Herbst et al., Nature Medicine 2025*), and **75–80% harbor NO resistant mutations** (e.g. *EGFR* C797S). Why do drug-sensitive cells recur? | Elevated Interstitial Fluid Pressure shuts down convection ($Pe < 0.1$). Cylindrical Bessel $K_0$ diffusion leaves an **unperfused 34.1 $\mu$m sanctuary sleeve** where cells arrest cytostatically in $G_0/G_1$. | Bedside **Composite Resistance Index (`cri-calc`)**: safe cessation for Lepidic cords (saves €60k/yr & toxicity) vs **anti-VEGFR2 vascular normalization** for Solid cords ($\text{HR} < 0.05, p < 10^{-15}$). |
+| **67.9% of all relapses cluster AFTER planned 36-month stop** (*Herbst et al., Nature Medicine 2025*), with **57.9% occurring within 12 months**, and **75–80% harboring NO resistant mutations** (e.g. *EGFR* C797S). Why do drug-sensitive cells recur? | Elevated Interstitial Fluid Pressure shuts down convection ($Pe < 0.1$). Cylindrical Bessel $K_0$ diffusion leaves an **unperfused 34.1 $\mu$m sanctuary sleeve** where cells arrest cytostatically in $G_0/G_1$. | Bedside **Composite Resistance Index (`cri-calc`)**: safe cessation for Lepidic cords (saves €60k/yr & toxicity) vs **anti-VEGFR2 vascular normalization** for Solid cords ($\text{HR} < 0.05, p < 10^{-15}$). |
 
 </div>
-
-> ⭐️ **Support Open-Science Oncology**: If you find this mathematical framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
-
----
-
-## 📌 Executive Summary
-
-In early-stage *EGFR*-mutated non-small cell lung cancer (NSCLC), 36 months of adjuvant osimertinib significantly extends disease-free survival (ADAURA trial). However, longitudinal molecular residual disease (MRD) monitoring (*Herbst et al., Nature Medicine 2025*) reveals an alarming paradox:
-* **$67.9\%$ of all recurrence events occur after the planned 36-month discontinuation.**
-* **$57.9\%$ of post-cessation relapses cluster within the first 12 months** post-discontinuation.
-* **$75\text{--}80\%$ of relapsing patients do NOT harbor secondary pocket mutations** (such as *EGFR* C797S), and 4th-generation allosteric inhibitors fail to prevent relapse.
-
-This repository provides the complete, mathematically closed, and empirical literature-validated computational framework resolving this dilemma from **first physical principles**.
 
 ```
     Microvascular Reaction-Diffusion Cord & Pharmacological Sanctuary:
@@ -94,6 +81,8 @@ This repository provides the complete, mathematically closed, and empirical lite
     [ C0 = 28.6 nM ] ======> [ C(r) > IC50 (10 nM) ] ======> [ 2 nM < C(r) < 10 nM (G0/G1) ] ======> [ Hypoxia / Necrosis ]
     |------------------------ 0 to 165.9 um ----------------|--- 165.9 um to 200.0 um (31.3% Vol) ---|---- r > 200 um ----|
 ```
+
+> ⭐️ **Support Open-Science Oncology**: If you find this mathematical framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
 
 ---
 
