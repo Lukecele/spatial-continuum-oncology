@@ -1,0 +1,60 @@
+=== THREAD TWITTER / X (INGLESE) ===
+
+--- TWEET 1 (253/280) ---
+1/6 Why do 68% of relapses in the ADAURA lung cancer trial happen AFTER stopping 3-yr osimertinib, with NO resistant mutations?
+We resolved this paradox via biophysical reaction-diffusion transport:
+https://lukecele.github.io/spatial-continuum-oncology/
+
+--- TWEET 2 (239/280) ---
+2/6 In solid lung adenocarcinoma, high interstitial pressure (~10 mmHg) matches microvascular pressure: fluid filtration collapses (Pe < 0.1).
+Drug transport becomes 100% diffusion-limited, governed by the modified Bessel function K₀(r/λ).
+
+--- TWEET 3 (234/280) ---
+3/6 Unbound osimertinib drops below IC50 (10 nM) at r=165.9 µm, but oxygen sustains cell viability to 200 µm.
+This leaves a 34.1 µm perivascular sanctuary (31.3% cord vol) protecting dormant persister cells in cytostatic G0/G1 arrest!
+
+--- TWEET 4 (240/280) ---
+4/6 When osimertinib is stopped at Month 36, protected persisters awaken into exponential regrowth.
+Using volume doubling (Ts=24.6 d), mathematical identity predicts Δt = Ts·log₂(100) = 5.4 mo ctDNA surge, exactly matching human trial data.
+
+--- TWEET 5 (236/280) ---
+5/6 To assist oncologists, we built the Bedside CRI Decision Engine.
+Runs 100% offline as an installable PWA on iOS/Android with 0 ms latency, even in shielded radiotherapy bunkers:
+https://lukecele.github.io/spatial-continuum-oncology/
+
+--- TWEET 6 (204/280) ---
+6/6 Open science & reproducible:
+Preprint: https://doi.org/10.21203/rs.3.rs-11530312/v1
+Bioconda: conda install -c bioconda spatial-continuum
+GitHub: https://github.com/Lukecele/spatial-continuum-oncology
+
+=== THREAD TWITTER / X (ITALIANO) ===
+
+--- TWEET 1 (262/280) ---
+1/6 Perché nel trial ADAURA il 68% delle recidive avviene DOPO la sospensione dei 3 anni di osimertinib, senza mutazioni resistenti?
+Abbiamo risolto il paradosso con la biofisica del trasporto perivascolare:
+https://lukecele.github.io/spatial-continuum-oncology/
+
+--- TWEET 2 (218/280) ---
+2/6 Nei tumori polmonari solidi l'alta pressione interstiziale annulla la convezione (Pe < 0.1).
+Il trasporto del farmaco è solo diffusivo e segue la funzione cilindrica di Bessel K₀(r/λ) con decadimento perivascolare.
+
+--- TWEET 3 (241/280) ---
+3/6 Osimertinib scende sotto IC50 a 165.9 µm dal capillare, ma l'ossigeno tiene vive le cellule fino a 200 µm.
+Si crea un manicotto santuario di 34.1 µm (31.3% del volume) dove i persister restano dormienti fino alla sospensione del farmaco.
+
+--- TWEET 4 (217/280) ---
+4/6 Alla sospensione al mese 36 i persister dormienti si risvegliano.
+L'identità cinetica Δt = Ts·log₂(100) predice esattamente i 5.4 mesi di finestra molecolare ctDNA osservati nei trial clinici (Herbst et al. 2025).
+
+--- TWEET 5 (235/280) ---
+5/6 Per i clinici abbiamo creato il Bedside CRI:
+PWA offline per smartphone (iOS/Android) a zero millisecondi, utilizzabile anche nei bunker di radioterapia o in corsia senza rete:
+https://lukecele.github.io/spatial-continuum-oncology/
+
+--- TWEET 6 (206/280) ---
+6/6 Ricerca aperta e verificabile:
+Preprint: https://doi.org/10.21203/rs.3.rs-11530312/v1
+Bioconda: conda install -c bioconda spatial-continuum
+GitHub: https://github.com/Lukecele/spatial-continuum-oncology
+
