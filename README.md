@@ -1,6 +1,7 @@
 # The Spatial-Genomic Oncology Continuum
 
 [![Read Full Manuscript PDF](https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](01_MANOSCRITTO_FINALE_CON_FIGURE.pdf)
+[![Plain-Language Summary](https://img.shields.io/badge/%F0%9F%A7%A0%20Plain--Language%20Summary-Gist.Science%20(Author--Reviewed)-2563eb.svg?style=for-the-badge)](https://gist.science/paper/rs/rs-11530312)
 [![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Clinical%20Decision%20App-blue.svg?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app)
 [![Live 60 FPS Digital Twin](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Digital%20Twin-60%20FPS%20Sanctuary%20Simulator-0284c7.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
 [![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
@@ -238,6 +239,7 @@ node software_strumenti_calcolo/test_live_github_pages.js
 ## 📖 Citation & Scholarly Records
 
 * **Research Square Preprint (Springer Nature):** [https://doi.org/10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)
+* **Gist.Science Plain-Language Explanation (Author-Reviewed):** [https://gist.science/paper/rs/rs-11530312](https://gist.science/paper/rs/rs-11530312)
 * **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23754999](https://doi.org/10.5281/zenodo.23754999)
 
 If you use this biophysical model, the computational suite, or the CRI clinical decision engine, please cite:
