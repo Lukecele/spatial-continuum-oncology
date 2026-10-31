@@ -2,7 +2,7 @@
 
 [![Read Full Manuscript PDF](https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](01_MANOSCRITTO_FINALE_CON_FIGURE.pdf)
 [![Plain-Language Summary](https://img.shields.io/badge/%F0%9F%A7%A0%20Plain--Language%20Summary-Gist.Science%20(Author--Reviewed)-2563eb.svg?style=for-the-badge)](https://gist.science/paper/rs/rs-11530312)
-[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Clinical%20Decision%20App-blue.svg?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Clinical%20Decision%20App-blue.svg?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app)
 [![Live 60 FPS Digital Twin](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Digital%20Twin-60%20FPS%20Sanctuary%20Simulator-0284c7.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
 [![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
 [![GitHub stars](https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold)](https://github.com/Lukecele/spatial-continuum-oncology)
@@ -234,7 +234,7 @@ node software_strumenti_calcolo/test_live_github_pages.js
 | [📄 `13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md`](13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md) | **Tri-Congress Strategy Dossier (AACR, ASCO, ESMO)** | Tailored abstracts and submission calendar across biological, clinical, and translational tracks for the 3 major worldwide oncology congresses. |
 | [📊 `16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md`](16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md) | **Master Slide Deck (12 Slides)** | Oral presentation deck for oncology congresses and department grand rounds. Includes companion interactive deck: [`slide_deck_interattivo.html`](slide_deck_interattivo.html). |
 | [🖼 `17_POSTER_CONGRESSUALE_AACR_ASCO_120x90.md`](17_POSTER_CONGRESSUALE_AACR_ASCO_120x90.md) | **Official Congress Poster (120 × 90 cm)** | Print-ready scientific poster layout with 300 DPI figures and offline QR codes: [`poster_congressuale_120x90.html`](poster_congressuale_120x90.html). |
-| [🌐 `Hugging Face Clinical Decision App`](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app) | **Live Clinical Decision Web Application** | Interactive clinical tool on Hugging Face Spaces for real-time Bedside CRI calculation, patient cohort CSV batch analysis, and dynamic Kaplan-Meier survival curve plotting. |
+| [🌐 `Hugging Face Clinical Decision App`](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app) | **Live Clinical Decision Web Application** | Interactive clinical tool on Hugging Face Spaces for real-time Bedside CRI calculation, patient cohort CSV batch analysis, and dynamic Kaplan-Meier survival curve plotting. |
 
 ---
 
