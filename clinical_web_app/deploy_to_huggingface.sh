@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Deploy Clinical Web App to Hugging Face Spaces (Lucace/spatial-continuum-clinical-app)
+# Deploy Clinical Web App to Hugging Face Spaces (spatial-continuum-lab/spatial-continuum-clinical-app)
 # ==============================================================================
 set -euo pipefail
 
@@ -29,5 +29,5 @@ else
     git commit -m "$COMMIT_MSG"
     echo "📡 Pushing updates to Hugging Face Spaces remote..."
     git push origin main
-    echo "🎉 Successfully deployed to: https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app"
+    echo "🎉 Successfully deployed to: https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app"
 fi
