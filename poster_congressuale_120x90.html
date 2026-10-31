@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster 120x90 cm — The Spatial-Genomic Oncology Continuum (AACR / ASCO)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+        
+        @page {
+            size: 1200mm 900mm;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .poster-container {
+            width: 1200mm;
+            height: 900mm;
+            min-width: 1200mm;
+            min-height: 900mm;
+            max-width: 1200mm;
+            max-height: 900mm;
+            box-sizing: border-box;
+            padding: 24mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            background: radial-gradient(circle at top left, #111827 0%, #090d16 100%);
+        }
+
+        .column-card {
+            background: rgba(17, 24, 39, 0.85);
+            border: 2px solid rgba(56, 189, 248, 0.2);
+            border-radius: 14mm;
+            padding: 10mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .section-header {
+            font-size: 8.5mm;
+            font-weight: 800;
+            color: #38bdf8;
+            border-bottom: 1.5mm solid #0284c7;
+            padding-bottom: 3mm;
+            margin-bottom: 5mm;
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+        }
+
+        .figure-card {
+            background: #030712;
+            border: 1mm solid #1e293b;
+            border-radius: 8mm;
+            padding: 4mm;
+            margin-top: 4mm;
+            margin-bottom: 4mm;
+        }
+
+        .figure-caption {
+            font-size: 3.8mm;
+            color: #94a3b8;
+            line-height: 1.4;
+            margin-top: 2.5mm;
+        }
+
+        .callout-box {
+            background: rgba(15, 23, 42, 0.95);
+            border-left: 2.5mm solid #38bdf8;
+            border-radius: 4mm;
+            padding: 4mm 5mm;
+            font-size: 4.2mm;
+            line-height: 1.45;
+            margin-top: 3.5mm;
+            margin-bottom: 3.5mm;
+        }
+
+        .callout-alert {
+            border-left-color: #ef4444;
+            background: rgba(69, 10, 10, 0.35);
+        }
+
+        .callout-success {
+            border-left-color: #10b981;
+            background: rgba(6, 78, 59, 0.35);
+        }
+
+        .font-mono-custom {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="flex justify-center items-center bg-slate-900">
+
+    <div class="poster-container shadow-2xl overflow-hidden">
+
+        <!-- ==================== POSTER HEADER BANNER ==================== -->
+        <header class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-2 border-slate-700/80 rounded-[12mm] p-[10mm] flex items-center justify-between shadow-xl">
+            <div class="flex items-center space-x-[8mm] max-w-[85%]">
+                <div class="w-[32mm] h-[32mm] rounded-[8mm] bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center text-white text-[16mm] shadow-lg shadow-cyan-500/30">
+                    <i class="fa-solid fa-dna"></i>
+                </div>
+                <div>
+                    <h1 class="text-[14mm] font-black tracking-tight text-white leading-tight">
+                        The Spatial-Genomic Oncology Continuum
+                    </h1>
+                    <p class="text-[8mm] font-semibold text-cyan-400 mt-[1mm] leading-snug">
+                        Reaction-Diffusion Biophysics Resolves the 36-Month Post-ADAURA Discontinuation Cliff in Resected EGFR-Mutant NSCLC
+                    </p>
+                    <div class="flex items-center space-x-[6mm] mt-[2.5mm] text-[5.2mm] text-slate-300">
+                        <span class="font-bold text-white">Luca Celebrano, MD Candidate</span>
+                        <span>•</span>
+                        <span>Università degli Studi di Napoli Federico II</span>
+                        <span>•</span>
+                        <span>Telethon Institute of Genetics and Medicine (TIGEM)</span>
+                        <span>•</span>
+                        <span class="font-mono text-cyan-300">l.celebrano@studenti.unina.it</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ecosystem & Tracking Badges -->
+            <div class="flex flex-col items-end space-y-[2.5mm] text-[4.5mm] text-right font-mono">
+                <div class="px-[4mm] py-[1.5mm] rounded-[3mm] bg-red-950/80 border border-red-500/50 text-red-300 font-bold">
+                    Nature Communications: NCOMMS-26-091227
+                </div>
+                <div class="px-[4mm] py-[1.5mm] rounded-[3mm] bg-slate-800 border border-slate-700 text-cyan-300">
+                    Research Square DOI: 10.21203/rs.3.rs-11530312/v1
+                </div>
+                <div class="px-[4mm] py-[1.5mm] rounded-[3mm] bg-emerald-950/80 border border-emerald-500/50 text-emerald-300">
+                    Bioconda: spatial-continuum v1.0.2
+                </div>
+            </div>
+        </header>
+
+        <!-- ==================== MAIN 4-COLUMN BODY ==================== -->
+        <main class="grid grid-cols-4 gap-[8mm] flex-1 my-[8mm]">
+
+            <!-- COLUMN 1: THE CLINICAL PARADOX & STARLING-DARCY BIOPHYSICS -->
+            <section class="column-card">
+                <div>
+                    <div class="section-header">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+                        <span>1. The ADAURA Dilemma</span>
+                    </div>
+                    <div class="callout-box callout-alert text-[4.5mm]">
+                        <strong>The Clinical Enigma (Herbst et al., <em>Nat Med</em> 2025):</strong><br>
+                        • In resected Stage IB–IIIA EGFR-mutant NSCLC, 36 months of adjuvant osimertinib is SOC.<br>
+                        • <strong>67.9%</strong> of all relapses occur <strong>after Month-36 cessation</strong>.<br>
+                        • <strong>57.9%</strong> cluster within 12 months off-drug (median lead time: 4.7 mo).<br>
+                        • <strong>&gt;75% lack secondary mutations</strong> (C797S, MET amp). Why do tumors recur without genetic resistance?
+                    </div>
+
+                    <div class="section-header mt-[6mm]">
+                        <i class="fa-solid fa-water text-cyan-400"></i>
+                        <span>2. Convective Shutdown</span>
+                    </div>
+                    <p class="text-[4.4mm] text-slate-300 leading-relaxed">
+                        Solid tumor cords exhibit severe lymphatic dysfunction. Interstitial Fluid Pressure manometry (\(N=211\), Mori et al.) demonstrates:
+                    </p>
+                    <div class="bg-slate-950 p-[3.5mm] rounded-[3mm] border border-slate-800 text-[4.5mm] font-mono text-center my-[2.5mm]">
+                        \(\text{IFP} = 9.8 \pm 6.8\ \text{mmHg} \implies \Delta P = P_v - \text{IFP} \le 10\ \text{mmHg}\)
+                    </div>
+                    <div class="callout-box callout-success text-[4.4mm]">
+                        <strong>Péclet Breakdown:</strong> Convective velocity drops to \(v_{\text{fluid}} < 0.05\ \mu\text{m/s}\).
+                        $$Pe = \frac{v_{\text{fluid}} \cdot L}{D_{\text{eff}}} < 0.1 \ll 1.0$$
+                        Mass transport is <strong>100% diffusion-dominated</strong>.
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <img src="figure_scientifiche/Figure1_reaction_diffusion_sanctuary.png" alt="Figure 1" class="w-full rounded-[4mm]">
+                    <p class="figure-caption">
+                        <strong>Figure 1 | Cylindrical Modified Bessel \(K_0\) Transport & Sanctuary Shell.</strong> Free osimertinib decays beneath \(\text{IC}_{50}\) at \(r_{\text{crit}} = 165.89\ \mu\text{m}\), while oxygen supports viability to \(r_{\text{ox}} = 200.0\ \mu\text{m}\), producing an obligate sanctuary shell (\(\Delta r = 34.11\ \mu\text{m}\), 31.3% cord volume).
+                    </p>
+                </div>
+            </section>
+
+            <!-- COLUMN 2: REPOPULATION KINETICS & 10x VISIUM HD VALIDATION -->
+            <section class="column-card">
+                <div>
+                    <div class="section-header">
+                        <i class="fa-solid fa-clock text-cyan-400"></i>
+                        <span>3. Recurrence Lead Time</span>
+                    </div>
+                    <p class="text-[4.4mm] text-slate-300 leading-relaxed">
+                        Persisters in the sanctuary shell hover at sub-lethal concentrations (2–8 nM), trapped in cytostatic \(G_0/G_1\) arrest. Cessation at Month 36 triggers unconstrained exponential clonal expansion:
+                    </p>
+                    <div class="bg-slate-950 p-[3.5mm] rounded-[3mm] border border-slate-800 text-[4.8mm] font-mono text-center my-[3mm] text-cyan-300">
+                        \(\Delta t_{\text{lead}} = T_d \cdot \log_2\left(\frac{10^9\ [\text{CT}]}{10^7\ [\text{ctDNA}]}\right) = \mathbf{5.37\ \text{months}}\)
+                    </div>
+                    <div class="callout-box callout-success text-[4.3mm]">
+                        <strong>Empirical Concordance:</strong> The derived lead time of 5.37 months falls strictly inside the observed clinical 95% CI (4.7 months, 95% CI: 2.2–5.6; Herbst et al.).
+                    </div>
+
+                    <div class="section-header mt-[6mm]">
+                        <i class="fa-solid fa-microscope text-cyan-400"></i>
+                        <span>4. Visium HD Spatial Proof</span>
+                    </div>
+                    <p class="text-[4.4mm] text-slate-300 leading-relaxed">
+                        Spatial transcriptomics at \(2\ \mu\text{m}\) resolution (10x Visium HD, GSE301973, 3,858 spots) confirms that dense solid cords frequently exceed the \(166\ \mu\text{m}\) diffusion limit, physically isolating persisters from vascular delivery.
+                    </p>
+                </div>
+
+                <div class="figure-card">
+                    <img src="figure_scientifiche/Figure2_adaura_dynamics_and_leadtime.png" alt="Figure 2" class="w-full rounded-[4mm]">
+                    <p class="figure-caption">
+                        <strong>Figure 2 | Longitudinal ctDNA Lead Time Dynamics & Recurrence Timing.</strong> Concordance between analytical repopulation kinetics and multi-center clinical surveillance.
+                    </p>
+                </div>
+            </section>
+
+            <!-- COLUMN 3: MULTI-COHORT EVIDENCE & BEDSIDE CRI ENGINE -->
+            <section class="column-card">
+                <div>
+                    <div class="section-header">
+                        <i class="fa-solid fa-layer-group text-cyan-400"></i>
+                        <span>5. Multi-Cohort (\(N = 3,205\))</span>
+                    </div>
+                    <p class="text-[4.2mm] text-slate-300 leading-relaxed">
+                        Cross-scale evidence across 6 independent cohorts:
+                    </p>
+                    <ul class="text-[4.1mm] text-slate-300 space-y-[1.5mm] my-[2.5mm] font-mono">
+                        <li>• <strong>ADAURA ctDNA (\(N=220\)):</strong> 67.9% post-stop relapses.</li>
+                        <li>• <strong>MSKCC Surgical (\(N=604\)):</strong> Solid HR 6.75 (Firth 2.6–3.4).</li>
+                        <li>• <strong>TCGA + GSE31210 (\(N=854\)):</strong> Fibrosis = 4x worse DFS.</li>
+                        <li>• <strong>MSKCC NGS (\(N=863\)):</strong> <em>TP53/RB1</em> TTD 9.5 mo (SCLC risk).</li>
+                        <li>• <strong>RELAY Phase III (\(N=449\)):</strong> Ramucirumab PFS HR 0.59.</li>
+                    </ul>
+
+                    <div class="section-header mt-[5mm]">
+                        <i class="fa-solid fa-stethoscope text-cyan-400"></i>
+                        <span>6. The Bedside CRI Engine</span>
+                    </div>
+                    <div class="bg-gradient-to-r from-slate-950 to-slate-900 p-[4mm] rounded-[4mm] border border-cyan-500/40 text-center my-[2mm]">
+                        <div class="text-[6.5mm] font-extrabold font-mono text-white">
+                            \(\text{CRI} = \mathbf{0.47}\,\mathcal{S} + \mathbf{0.33}\,\mathcal{G} + \mathbf{0.20}\,\mathcal{M}\)
+                        </div>
+                        <span class="text-[3.8mm] text-cyan-300 block mt-[1mm]">
+                            \(\mathcal{S}\): Histology • \(\mathcal{G}\): <em>TP53/RB1</em> NGS • \(\mathcal{M}\): Desmoplasia
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-[2mm] text-[3.6mm] text-center my-[2mm]">
+                        <div class="p-[2mm] rounded bg-emerald-950/60 border border-emerald-500/40 text-emerald-300">
+                            <strong>Tier 1 (&lt; 0.35)</strong><br>Stop at M36 (Cured)
+                        </div>
+                        <div class="p-[2mm] rounded bg-amber-950/60 border border-amber-500/40 text-amber-300">
+                            <strong>Tier 2 (0.35–0.65)</strong><br>ctDNA Surveillance
+                        </div>
+                        <div class="p-[2mm] rounded bg-red-950/60 border border-red-500/40 text-red-300">
+                            <strong>Tier 3 (&gt; 0.65)</strong><br>DO NOT STOP!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <img src="figure_scientifiche/Figure3_cross_drug_and_cohort_evidence.png" alt="Figure 3" class="w-full rounded-[4mm]">
+                    <p class="figure-caption">
+                        <strong>Figure 3 | Cross-Drug Diffusivity, Sobol Sensitivity & Histologic Risk Stratification.</strong> Global parameter space mapping across small-molecule TKIs and macromolecular ADCs.
+                    </p>
+                </div>
+            </section>
+
+            <!-- COLUMN 4: TRIAL SG-ADAURA, 5-YEAR DFS & LIVE APPS -->
+            <section class="column-card">
+                <div>
+                    <div class="section-header">
+                        <i class="fa-solid fa-hospital-user text-cyan-400"></i>
+                        <span>7. SG-ADAURA Phase III</span>
+                    </div>
+                    <p class="text-[4.3mm] text-slate-300 leading-relaxed">
+                        In head-to-head 5-year randomized testing (\(N=500\) virtual patients across 1,825 days):
+                    </p>
+                    <div class="bg-slate-950 p-[3mm] rounded-[3mm] border border-slate-800 text-[4.1mm] space-y-[1.5mm] my-[2mm]">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">Standard ADAURA:</span>
+                            <span class="font-mono text-red-400 font-bold">5-Yr DFS 42.4% (Tier 3: 0.0%)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">Continuous 60 Mo:</span>
+                            <span class="font-mono text-amber-400">100.0% (+67% excess toxicity)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-cyan-300 font-bold">SG-ADAURA Stratified:</span>
+                            <span class="font-mono text-cyan-400 font-extrabold">100.0% (Toxicity: 83.3%)</span>
+                        </div>
+                    </div>
+                    <div class="callout-box callout-success text-[4.2mm]">
+                        <strong>Consolidation Arm B3:</strong> In Tier 3, transient anti-VEGFR2 Ramucirumab collapses IFP, eradicates the sanctuary (\(\Delta r \to 0\)), preventing post-cessation relapse (\(p = 1.43 \times 10^{-30}\)).
+                    </div>
+                </div>
+
+                <div class="figure-card">
+                    <img src="figure_scientifiche/Figure4_cri_engine_and_sg_adaura_trial.png" alt="Figure 4" class="w-full rounded-[4mm]">
+                    <p class="figure-caption">
+                        <strong>Figure 4 | Bedside CRI Nomogram, 5-Year Kaplan-Meier Curves & Phase III SG-ADAURA Protocol.</strong>
+                    </p>
+                </div>
+
+                <!-- QR CODES PANEL -->
+                <div class="bg-slate-950 p-[3.5mm] rounded-[4mm] border border-slate-800 mt-[2mm]">
+                    <span class="text-[3.8mm] font-bold text-slate-300 block text-center mb-[2mm] uppercase tracking-wider">
+                        Scan to Explore Research Suite & Live Interactive Web Apps
+                    </span>
+                    <div class="grid grid-cols-4 gap-[2mm] text-center">
+                        <div>
+                            <img src="assets/qr_research_square.png" alt="Preprint QR" class="w-full p-[1mm] bg-white rounded-[2mm]">
+                            <span class="text-[3mm] text-slate-400 font-mono mt-[1mm] block">Preprint</span>
+                        </div>
+                        <div>
+                            <img src="assets/qr_clinical_app.png" alt="App QR" class="w-full p-[1mm] bg-white rounded-[2mm]">
+                            <span class="text-[3mm] text-cyan-400 font-mono mt-[1mm] block">HF Web App</span>
+                        </div>
+                        <div>
+                            <img src="assets/qr_github_repo.png" alt="GitHub QR" class="w-full p-[1mm] bg-white rounded-[2mm]">
+                            <span class="text-[3mm] text-slate-400 font-mono mt-[1mm] block">GitHub Suite</span>
+                        </div>
+                        <div>
+                            <img src="assets/qr_gist_science.png" alt="Gist QR" class="w-full p-[1mm] bg-white rounded-[2mm]">
+                            <span class="text-[3mm] text-amber-400 font-mono mt-[1mm] block">Gist Digest</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ==================== POSTER FOOTER BAR ==================== -->
+        <footer class="bg-slate-900/90 border border-slate-800 rounded-[8mm] px-[8mm] py-[3.5mm] flex items-center justify-between text-[4.2mm] text-slate-400">
+            <div>
+                <strong>Disclosures &amp; Ethics:</strong> Independent academic research program. Zero commercial conflicts of interest. Full code and parameters deposited on CERN Zenodo (DOI: 10.5281/zenodo.23754999).
+            </div>
+            <div class="flex items-center space-x-[4mm] text-slate-300">
+                <span>AACR 2027 (Orlando, FL)</span>
+                <span>•</span>
+                <span>ASCO 2027 (Chicago, IL)</span>
+                <span>•</span>
+                <span>ESMO 2027 (Europe)</span>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
