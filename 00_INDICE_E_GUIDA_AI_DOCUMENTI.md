@@ -10,6 +10,7 @@
 
 | Nome File | Descrizione e Scopo | A Chi Inviarlo / Come Usarlo |
 | :--- | :--- | :--- |
+| **`01_PREPRINT_RESEARCH_SQUARE_OFFICIAL_rs-11530312.pdf`** | **Il Preprint Ufficiale Pubblicato su Research Square (Springer Nature)** (16 pagine, DOI: `10.21203/rs.3.rs-11530312/v1`). | **Documento ufficiale pubblico con cover sheet Springer Nature e DOI attivo**. |
 | **`01_MANOSCRITTO_NATURE_COMMUNICATIONS_CELEBRANO.pdf`** | **Il Manoscritto Tipografico Ufficiale in PDF (16 pagine)** pronto per la sottomissione a Nature Communications e medRxiv. | **Da depositare su medRxiv e inviare all'Editor di Nature Communications**. |
 | **`01_MANOSCRITTO_PAPER_COMPLETO_UNIFICATO.md`** | **Il Paper Scientifico Completo in Markdown** (formule, biologia, trial e discussione). | Sorgente del paper accademico unificato. |
 | **`figure_scientifiche/`** | **Le Figure Ufficiali del Paper** in formato PNG (300 DPI) e PDF vettoriale: Figure 1-4 per il main text e **Supplementary Figure 1** (validazione spaziale 10x Visium HD / GSE301973). | Da allegare alla sottomissione (Figure 1, 2, 3, 4 + Supplementary Figure 1). |
