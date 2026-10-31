@@ -1,6 +1,6 @@
 // Bedside CRI — Spatial Oncology Service Worker
-// Version: 1.0.2
-const CACHE_NAME = 'bedside-cri-pwa-v1.0.2';
+// Version: 1.0.3
+const CACHE_NAME = 'bedside-cri-pwa-v1.0.3';
 
 const PRECACHE_ASSETS = [
   './',
@@ -13,7 +13,8 @@ const PRECACHE_ASSETS = [
   './assets/icons/icon-512.png',
   './assets/icons/apple-touch-icon.png',
   './assets/icons/icon-maskable.png',
-  './assets/simulator-vessel-live.gif'
+  './assets/simulator-vessel-live.gif',
+  './assets/social-preview.png'
 ];
 
 // Install Event: Pre-cache core shell & assets
