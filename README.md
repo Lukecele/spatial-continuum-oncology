@@ -14,6 +14,7 @@
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
 [![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
 [![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
+[![BioContainers](https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?style=for-the-badge&logo=docker&logoColor=white)](https://quay.io/repository/biocontainers/spatial-continuum)
 [![PyPI](https://img.shields.io/pypi/v/spatial-continuum.svg?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/spatial-continuum/)
 [![bio.tools](https://img.shields.io/badge/bio.tools-spatial--continuum--oncology-003366.svg?style=for-the-badge&logo=elixir&logoColor=white)](https://bio.tools/spatial-continuum-oncology)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
@@ -119,18 +120,25 @@ Live Portal Audit: [🌐 `10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`](10_RE
 
 ---
 
-## 💻 Software Suite & Official Packages (PyPI & Bioconda)
+## 💻 Software Suite & Official Packages (PyPI, Bioconda & BioContainers)
 
-The full framework is published on **PyPI** ([`spatial-continuum`](https://pypi.org/project/spatial-continuum/)), on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)), and operates with **zero third-party dependencies**:
+The full framework is published on **PyPI** ([`spatial-continuum`](https://pypi.org/project/spatial-continuum/)), on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)), and as official **BioContainers** (Docker & Singularity), operating with **zero third-party dependencies**:
 
 ```bash
-# Install via PyPI (Official Python Package Index)
+# 1. Install via PyPI (Official Python Package Index)
 pip install spatial-continuum
 
-# Or install via Bioconda
+# 2. Or install via Bioconda
 conda install -c bioconda spatial-continuum
 
-# Or install from source in editable mode
+# 3. Or run directly with Docker (BioContainers)
+docker pull quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0
+docker run --rm quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+
+# 4. Or run on HPC / Clusters with Singularity / Apptainer (Zero root required)
+singularity exec https://depot.galaxyproject.org/singularity/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+
+# 5. Or install from source in editable mode
 git clone https://github.com/Lukecele/spatial-continuum-oncology.git
 cd spatial-continuum-oncology
 pip install -e .
