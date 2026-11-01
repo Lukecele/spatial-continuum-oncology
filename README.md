@@ -9,6 +9,9 @@
   <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" height="28" alt="Open in Colab">
   </a>
+  <a href="https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-3D%20Tumor%20Sanctuary-blue.svg?style=for-the-badge" height="28" alt="Hugging Face 3D Space">
+  </a>
   <a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
     <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Simulator-60%20FPS%20Digital%20Twin-0284c7.svg?style=for-the-badge" height="28" alt="Live Simulator">
   </a>
@@ -43,10 +46,10 @@
 
 ### ⚡ 10-Second Interactive Quickstart (Zero Install Required)
 
-| 🚀 **1-Click Google Colab** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
-| :---: | :---: | :---: |
-| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
-| Run Bessel $K_0$ diffusion & in silico trials in 10s | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
+| 🚀 **1-Click Google Colab** | 🌐 **3D WebGL Digital Twin (HF)** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
+| :---: | :---: | :---: | :---: |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 3D Sanctuary Twin**](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
+| Run Bessel $K_0$ diffusion & in silico trials in 10s | Full 360° perivascular santuary & Month 36 washout | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
 
 ```bash
 # Or run locally from your terminal in 3 seconds:

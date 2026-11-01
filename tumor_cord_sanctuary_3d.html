@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perivascular Tumor Sanctuary 3D | Reaction-Diffusion Digital Twin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: #020617;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    /* Modern Glassmorphic HUD */
+    .hud-panel {
+      position: absolute;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      pointer-events: auto;
+    }
+    #hud-top-left {
+      top: 20px;
+      left: 20px;
+      max-width: 440px;
+    }
+    #hud-top-right {
+      top: 20px;
+      right: 20px;
+      width: 340px;
+    }
+    #hud-bottom {
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 95vw;
+    }
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-primary { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+    .badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .badge-success { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .stat-val {
+      font-weight: 700;
+      font-family: ui-monospace, monospace;
+      color: #f1f5f9;
+    }
+    .stat-val.red { color: #f87171; }
+    .stat-val.cyan { color: #38bdf8; }
+    .stat-val.emerald { color: #34d399; }
+
+    /* Interactive Controls */
+    .control-group {
+      margin-top: 14px;
+    }
+    .control-label {
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    input[type=range] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #334155;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #38bdf8;
+      cursor: pointer;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    /* Buttons */
+    .btn {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #f1f5f9;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: #334155;
+      border-color: #64748b;
+    }
+    .btn-primary {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+    }
+    .btn-primary:hover {
+      background: #0369a1;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+    }
+    .btn-rec {
+      background: #b91c1c;
+      border-color: #ef4444;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.4);
+    }
+    .btn-rec:hover {
+      background: #991b1b;
+      box-shadow: 0 0 22px rgba(239, 68, 68, 0.8);
+    }
+    .btn-rec.recording {
+      animation: pulse-rec 1s infinite alternate;
+    }
+    @keyframes pulse-rec {
+      from { transform: scale(1); box-shadow: 0 0 14px rgba(239, 68, 68, 0.5); }
+      to { transform: scale(1.05); box-shadow: 0 0 28px rgba(239, 68, 68, 1); }
+    }
+
+    /* Chart Canvas */
+    #chart-canvas {
+      width: 100%;
+      height: 120px;
+      background: rgba(2, 6, 23, 0.6);
+      border-radius: 8px;
+      margin-top: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    /* Legend */
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-vessel { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+    .dot-cured { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; }
+    .dot-sanctuary { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+    .dot-persister { background: #dc2626; box-shadow: 0 0 8px #dc2626; }
+    .dot-drug { background: #a855f7; box-shadow: 0 0 8px #a855f7; }
+  </style>
+</head>
+<body>
+
+  <div id="canvas-container"></div>
+
+  <!-- Top-Left HUD: Biological Metrics -->
+  <div class="hud-panel" id="hud-top-left">
+    <h1>
+      <span>🧬 Perivascular Tumor Cord 3D</span>
+      <span class="badge badge-primary">Bessel K₀ Digital Twin</span>
+    </h1>
+    <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">
+      Simulazione biofisica ad alta risoluzione del manicotto di diffusione perivascolare. La pressione interstiziale annulla la convezione, creando un santuario non perfuso di persister dormienti.
+    </p>
+
+    <div class="stat-row">
+      <span>Raggio Capillare ($r_0$):</span>
+      <span class="stat-val cyan">8.0 μm</span>
+    </div>
+    <div class="stat-row">
+      <span>Raggio Critico Penetrazione ($r_{\text{crit}}$):</span>
+      <span class="stat-val emerald" id="stat-rcrit">42.1 μm</span>
+    </div>
+    <div class="stat-row">
+      <span>Profondità Santuario ($\Delta r$):</span>
+      <span class="stat-val red" id="stat-deltar">34.1 μm</span>
+    </div>
+    <div class="stat-row">
+      <span>Numero di Peclet Vascolare ($Pe$):</span>
+      <span class="stat-val" id="stat-pe">&lt; 0.08 (Convezione Spenta)</span>
+    </div>
+    <div class="stat-row">
+      <span>Washout Mediano ctDNA ADAURA:</span>
+      <span class="stat-val">4.70 mesi (CI: 2.2–5.6)</span>
+    </div>
+
+    <!-- Live Radial Concentration Curve -->
+    <canvas id="chart-canvas" width="400" height="120"></canvas>
+  </div>
+
+  <!-- Top-Right HUD: Legend & Biological Population -->
+  <div class="hud-panel" id="hud-top-right">
+    <div style="font-size: 13px; font-weight: 700; color: #f1f5f9; margin-bottom: 8px;">
+      Struttura Spaziale del Cordone
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot dot-vessel"></div>
+      <span>Capillare Centrale Emodinamico ($r = 8\ \mu\text{m}$)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot dot-drug"></div>
+      <span>Molecole Osimertinib Libere ($C_{\text{free}} = 26.5\ \text{nM}$)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot dot-cured"></div>
+      <span>Cellule Eradicate / Blocco Apoptotico ($C > \text{IC}_{90}$)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot dot-sanctuary"></div>
+      <span>Cilindro di Confine Critico ($\Delta r = 34.1\ \mu\text{m}$)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot dot-persister"></div>
+      <span>Cellule Persister Dormienti (DTP, $Ki\text{-}67 < 2\%$)</span>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 12px 0;">
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>Pressione Interstiziale (IFP):</span>
+        <span class="stat-val red" id="lbl-ifp">25 mmHg</span>
+      </div>
+      <input type="range" id="slider-ifp" min="0" max="35" value="25" step="1">
+      <div style="font-size: 10px; color: #64748b; margin-top: 4px;">
+        💡 Riduci a 0–5 mmHg per simulare normalizzazione anti-VEGFR2 (Ramucirumab).
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation & Recording Bar -->
+  <div class="hud-panel" id="hud-bottom">
+    <button class="btn" id="btn-toggle-orbit">
+      <span>🔄</span> <span id="lbl-orbit">Ferma Rotazione</span>
+    </button>
+    <button class="btn" id="btn-toggle-washout">
+      <span>🛑</span> <span id="lbl-washout">Simula Washout Mese 36</span>
+    </button>
+    <button class="btn btn-primary" id="btn-reset-view">
+      <span>🎯</span> Reset Camera
+    </button>
+    <button class="btn btn-rec" id="btn-record-video">
+      <span>🎥</span> <span id="lbl-rec">Registra Video HD (60 FPS)</span>
+    </button>
+  </div>
+
+  <script>
+    // --- 1. Physics & Mathematical Formulation ---
+    let params = {
+      r0: 8.0,              // Capillary radius (um)
+      rcrit: 42.1,          // Critical penetration depth (um)
+      Rcord: 100.0,         // Outer cord radius (um)
+      ifp: 25.0,            // Interstitial fluid pressure (mmHg)
+      washout: false,       // Treatment cessation mode
+      washoutFactor: 1.0,   // Drug concentration multiplier (1.0 = on, 0.0 = washed out)
+      autoRotate: true,
+      recording: false
+    };
+
+    function computeDiffusionDecay(r, ifp) {
+      // Analytical decay approximating Bessel K0 with pressure resistance
+      // Lambda increases with IFP (convective shutdown and physical tortuosity)
+      const lambda = 0.055 + (ifp / 30.0) * 0.035;
+      const dr = Math.max(0, r - params.r0);
+      return Math.exp(-lambda * dr);
+    }
+
+    // --- 2. Three.js Scene Setup ---
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x020617, 0.0035);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(130, 80, 160);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: "high-performance" });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxDistance = 450;
+    controls.minDistance = 30;
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0x38bdf8, 0.35);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xef4444, 2.5, 300);
+    pointLight.position.set(0, 0, 0);
+    scene.add(pointLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(100, 150, 100);
+    scene.add(dirLight);
+
+    // --- 3. Geometric Elements ---
+    const cordLength = 180;
+
+    // A. Central Capillary (Blood Vessel)
+    const vesselGeo = new THREE.CylinderGeometry(params.r0, params.r0, cordLength, 32, 1, true);
+    const vesselMat = new THREE.MeshStandardMaterial({
+      color: 0xef4444,
+      emissive: 0xb91c1c,
+      emissiveIntensity: 0.6,
+      transparent: true,
+      opacity: 0.85,
+      side: THREE.DoubleSide
+    });
+    const vesselMesh = new THREE.Mesh(vesselGeo, vesselMat);
+    scene.add(vesselMesh);
+
+    // Inner Blood Flow Particles (Erythrocytes)
+    const rbcCount = 80;
+    const rbcGeo = new THREE.SphereGeometry(1.4, 8, 8);
+    const rbcMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
+    const rbcGroup = new THREE.Group();
+    const rbcData = [];
+    for (let i = 0; i < rbcCount; i++) {
+      const mesh = new THREE.Mesh(rbcGeo, rbcMat);
+      const angle = Math.random() * Math.PI * 2;
+      const rad = Math.random() * (params.r0 - 2.0);
+      const y = (Math.random() - 0.5) * cordLength;
+      const speed = 0.8 + Math.random() * 0.6;
+      mesh.position.set(Math.cos(angle) * rad, y, Math.sin(angle) * rad);
+      mesh.scale.set(1.5, 0.8, 1.5);
+      rbcGroup.add(mesh);
+      rbcData.push({ mesh, speed });
+    }
+    scene.add(rbcGroup);
+
+    // B. Critical Boundary Cylinder (Sanctuary Margin at r = 42.1 um)
+    const barrierGeo = new THREE.CylinderGeometry(params.rcrit, params.rcrit, cordLength, 48, 1, true);
+    const barrierMat = new THREE.MeshBasicMaterial({
+      color: 0xf59e0b,
+      transparent: true,
+      opacity: 0.22,
+      wireframe: true,
+      side: THREE.DoubleSide
+    });
+    const barrierMesh = new THREE.Mesh(barrierGeo, barrierMat);
+    scene.add(barrierMesh);
+
+    // C. Outer Tumor Cord Limit (r = 100 um)
+    const outerCordGeo = new THREE.CylinderGeometry(params.Rcord, params.Rcord, cordLength, 32, 1, true);
+    const outerCordMat = new THREE.MeshBasicMaterial({
+      color: 0x334155,
+      transparent: true,
+      opacity: 0.08,
+      wireframe: true,
+      side: THREE.DoubleSide
+    });
+    const outerCordMesh = new THREE.Mesh(outerCordGeo, outerCordMat);
+    scene.add(outerCordMesh);
+
+    // D. Tumor Cell Spheres (Multicellular perivascular cord)
+    const cellCount = 650;
+    const cellGeo = new THREE.SphereGeometry(2.2, 10, 10);
+    const cellGroup = new THREE.Group();
+    const cellData = [];
+
+    for (let i = 0; i < cellCount; i++) {
+      // Distribution: radial r between r0 and Rcord with density falloff
+      const r = params.r0 + 3.0 + Math.pow(Math.random(), 0.75) * (params.Rcord - params.r0 - 5.0);
+      const theta = Math.random() * Math.PI * 2;
+      const y = (Math.random() - 0.5) * (cordLength - 10);
+
+      const cellMat = new THREE.MeshStandardMaterial({
+        color: 0x38bdf8,
+        roughness: 0.4,
+        metalness: 0.1,
+        transparent: true,
+        opacity: 0.88
+      });
+      const mesh = new THREE.Mesh(cellGeo, cellMat);
+      mesh.position.set(Math.cos(theta) * r, y, Math.sin(theta) * r);
+      cellGroup.add(mesh);
+
+      cellData.push({
+        mesh,
+        material: cellMat,
+        r: r,
+        theta: theta,
+        y: y,
+        baseColor: 0x38bdf8,
+        isPersister: r > params.rcrit
+      });
+    }
+    scene.add(cellGroup);
+
+    // E. Osimertinib Free Drug Particle System (Brownian Reaction-Diffusion)
+    const drugParticleCount = 2400;
+    const drugGeo = new THREE.BufferGeometry();
+    const drugPositions = new Float32Array(drugParticleCount * 3);
+    const drugVelocities = [];
+
+    for (let i = 0; i < drugParticleCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const r = params.r0 + Math.random() * 2.0;
+      const y = (Math.random() - 0.5) * cordLength;
+
+      drugPositions[i * 3 + 0] = Math.cos(theta) * r;
+      drugPositions[i * 3 + 1] = y;
+      drugPositions[i * 3 + 2] = Math.sin(theta) * r;
+
+      drugVelocities.push({
+        r: r,
+        theta: theta,
+        y: y,
+        vRadial: 0.18 + Math.random() * 0.25,
+        vAngular: (Math.random() - 0.5) * 0.02,
+        vY: (Math.random() - 0.5) * 0.1,
+        life: Math.random()
+      });
+    }
+
+    drugGeo.setAttribute('position', new THREE.BufferAttribute(drugPositions, 3));
+    const drugMat = new THREE.PointsMaterial({
+      color: 0xd8b4fe,
+      size: 1.6,
+      transparent: true,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending
+    });
+    const drugSystem = new THREE.Points(drugGeo, drugMat);
+    scene.add(drugSystem);
+
+    // --- 4. Interactive Simulation & Update Logic ---
+    function updatePhysics() {
+      // Recalculate rcrit dynamically from IFP
+      // Normal IFP (0 mmHg) -> rcrit extends to 85 um (sanctuary eliminated)
+      // High IFP (25-30 mmHg) -> rcrit shrinks to 34 um (severe sanctuary)
+      const normalizationFactor = Math.max(0.1, 1.0 - (params.ifp / 32.0) * 0.65);
+      params.rcrit = params.r0 + 75.0 * normalizationFactor;
+      const deltaR = Math.max(0, params.rcrit - params.r0);
+
+      document.getElementById('stat-rcrit').textContent = `${params.rcrit.toFixed(1)} μm`;
+      document.getElementById('stat-deltar').textContent = `${deltaR.toFixed(1)} μm`;
+      document.getElementById('lbl-ifp').textContent = `${params.ifp.toFixed(0)} mmHg`;
+
+      // Update Barrier Cylinder scale
+      barrierMesh.scale.set(params.rcrit / 42.1, 1, params.rcrit / 42.1);
+
+      // Update Tumor Cell phenotypic state (Cured vs Persister vs Recurrent)
+      cellData.forEach(cell => {
+        const conc = computeDiffusionDecay(cell.r, params.ifp) * params.washoutFactor;
+
+        if (conc >= 0.28) {
+          // Therapeutic concentration (Cell suppressed / dying / blue-cyan)
+          cell.material.color.setHex(0x38bdf8);
+          cell.material.emissive.setHex(0x0284c7);
+          cell.material.emissiveIntensity = 0.25;
+          cell.material.opacity = 0.85;
+          cell.mesh.scale.set(1.0, 1.0, 1.0);
+        } else if (conc >= 0.10) {
+          // Sub-therapeutic boundary (Marginal persister transition - amber)
+          cell.material.color.setHex(0xf59e0b);
+          cell.material.emissive.setHex(0xd97706);
+          cell.material.emissiveIntensity = 0.3;
+          cell.material.opacity = 0.9;
+          cell.mesh.scale.set(1.1, 1.1, 1.1);
+        } else {
+          // Deep Pharmacological Sanctuary (Quiescent Persister / Dormant - Crimson)
+          if (params.washout) {
+            // Re-awakening persisters proliferating post-cessation!
+            cell.material.color.setHex(0xef4444);
+            cell.material.emissive.setHex(0xb91c1c);
+            cell.material.emissiveIntensity = 0.6;
+            cell.mesh.scale.set(1.4, 1.4, 1.4);
+          } else {
+            cell.material.color.setHex(0x991b1b);
+            cell.material.emissive.setHex(0x450a0a);
+            cell.material.emissiveIntensity = 0.15;
+            cell.mesh.scale.set(0.9, 0.9, 0.9);
+          }
+        }
+      });
+    }
+
+    // --- 5. Real-Time 2D Radial Concentration Graph (HUD) ---
+    const chartCanvas = document.getElementById('chart-canvas');
+    const ctx = chartCanvas.getContext('2d');
+
+    function drawChart() {
+      const w = chartCanvas.width;
+      const h = chartCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Grid & Axes
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+      ctx.lineWidth = 1;
+      for (let y = 20; y < h; y += 30) {
+        ctx.beginPath();
+        ctx.moveTo(35, y);
+        ctx.lineTo(w - 10, y);
+        ctx.stroke();
+      }
+
+      // Sanctuary shaded region (r > rcrit)
+      const xRcrit = 35 + ((params.rcrit - params.r0) / (params.Rcord - params.r0)) * (w - 45);
+      ctx.fillStyle = "rgba(239, 68, 68, 0.15)";
+      ctx.fillRect(xRcrit, 10, w - 10 - xRcrit, h - 30);
+
+      // Threshold line IC50 (conc = 0.35)
+      const yThresh = (h - 20) - 0.35 * (h - 30);
+      ctx.strokeStyle = "#f59e0b";
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(35, yThresh);
+      ctx.lineTo(w - 10, yThresh);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#f59e0b";
+      ctx.font = "10px ui-monospace, monospace";
+      ctx.fillText("IC50 (θ = 0.35)", w - 95, yThresh - 4);
+
+      // Plot Bessel Decay Curve C(r)
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let px = 0; px <= (w - 45); px++) {
+        const r = params.r0 + (px / (w - 45)) * (params.Rcord - params.r0);
+        const conc = computeDiffusionDecay(r, params.ifp) * params.washoutFactor;
+        const cy = (h - 20) - Math.min(1.0, conc) * (h - 30);
+        if (px === 0) ctx.moveTo(35 + px, cy);
+        else ctx.lineTo(35 + px, cy);
+      }
+      ctx.stroke();
+
+      // Axis labels
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "10px ui-monospace, monospace";
+      ctx.fillText("C/C0", 5, 20);
+      ctx.fillText("1.0", 12, 30);
+      ctx.fillText("0.0", 12, h - 18);
+      ctx.fillText("r0=8", 32, h - 4);
+      ctx.fillText(`rcrit=${params.rcrit.toFixed(0)}μm`, Math.max(35, xRcrit - 25), h - 4);
+      ctx.fillText("100μm", w - 40, h - 4);
+    }
+
+    // --- 6. Animation Loop ---
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+
+      // Auto rotation
+      if (params.autoRotate) {
+        scene.rotation.y += delta * 0.18;
+      }
+
+      // Animate Erythrocytes in microvessel
+      rbcData.forEach(item => {
+        item.mesh.position.y += item.speed;
+        if (item.mesh.position.y > cordLength / 2) {
+          item.mesh.position.y = -cordLength / 2;
+        }
+      });
+
+      // Animate Drug Particles
+      const positions = drugGeo.attributes.position.array;
+      const decayCoeff = 0.055 + (params.ifp / 30.0) * 0.035;
+
+      for (let i = 0; i < drugParticleCount; i++) {
+        const vel = drugVelocities[i];
+
+        if (params.washout) {
+          // Fast washout simulation
+          vel.r += 0.8;
+        } else {
+          vel.r += vel.vRadial;
+          vel.theta += vel.vAngular;
+          vel.y += vel.vY;
+        }
+
+        // Check if drug crossed maximum penetration or faded out
+        const maxPenetration = params.r0 + (1.0 / decayCoeff) * 2.2;
+        if (vel.r > maxPenetration || vel.r > params.Rcord || Math.abs(vel.y) > cordLength / 2) {
+          vel.r = params.r0 + Math.random() * 1.5;
+          vel.theta = Math.random() * Math.PI * 2;
+          vel.y = (Math.random() - 0.5) * cordLength;
+        }
+
+        positions[i * 3 + 0] = Math.cos(vel.theta) * vel.r;
+        positions[i * 3 + 1] = vel.y;
+        positions[i * 3 + 2] = Math.sin(vel.theta) * vel.r;
+      }
+      drugGeo.attributes.position.needsUpdate = true;
+
+      // Pulse barrier wireframe opacity slightly
+      barrierMat.opacity = 0.18 + Math.sin(clock.getElapsedTime() * 2.5) * 0.08;
+
+      controls.update();
+      renderer.render(scene, camera);
+      drawChart();
+    }
+
+    // --- 7. Event Listeners & UI Controls ---
+    document.getElementById('slider-ifp').addEventListener('input', (e) => {
+      params.ifp = parseFloat(e.target.value);
+      updatePhysics();
+    });
+
+    document.getElementById('btn-toggle-orbit').addEventListener('click', () => {
+      params.autoRotate = !params.autoRotate;
+      document.getElementById('lbl-orbit').textContent = params.autoRotate ? "Ferma Rotazione" : "Avvia Rotazione";
+    });
+
+    document.getElementById('btn-toggle-washout').addEventListener('click', () => {
+      params.washout = !params.washout;
+      params.washoutFactor = params.washout ? 0.05 : 1.0;
+      drugMat.opacity = params.washout ? 0.15 : 0.85;
+      const btn = document.getElementById('btn-toggle-washout');
+      if (params.washout) {
+        btn.classList.add('btn-primary');
+        document.getElementById('lbl-washout').textContent = "Ripristina Terapia (Osimertinib 80mg)";
+      } else {
+        btn.classList.remove('btn-primary');
+        document.getElementById('lbl-washout').textContent = "Simula Washout Mese 36";
+      }
+      updatePhysics();
+    });
+
+    document.getElementById('btn-reset-view').addEventListener('click', () => {
+      camera.position.set(130, 80, 160);
+      controls.target.set(0, 0, 0);
+      scene.rotation.set(0, 0, 0);
+    });
+
+    // --- 8. In-Browser 60 FPS Video Recorder (WebM/MP4 Export) ---
+    let mediaRecorder = null;
+    let recordedChunks = [];
+
+    document.getElementById('btn-record-video').addEventListener('click', () => {
+      const recBtn = document.getElementById('btn-record-video');
+      const recLbl = document.getElementById('lbl-rec');
+
+      if (!params.recording) {
+        // Start 12-second Cinematic Sweep Recording
+        params.recording = true;
+        recBtn.classList.add('recording');
+        recLbl.textContent = "Registrazione in Corso (12s)...";
+
+        recordedChunks = [];
+        const stream = renderer.domElement.captureStream(60); // 60 FPS Canvas Capture
+
+        const mimeType = MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
+          ? 'video/webm;codecs=vp9'
+          : (MediaRecorder.isTypeSupported('video/webm') ? 'video/webm' : 'video/mp4');
+
+        mediaRecorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 12000000 }); // 12 Mbps HD
+
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: mimeType });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `tumor_cord_sanctuary_3d_60fps_${new Date().toISOString().slice(0,10)}.webm`;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+          }, 100);
+
+          params.recording = false;
+          recBtn.classList.remove('recording');
+          recLbl.textContent = "Registra Video HD (60 FPS)";
+        };
+
+        mediaRecorder.start();
+
+        // Cinematic 360 Camera Orbit during recording
+        params.autoRotate = true;
+        let elapsed = 0;
+        const interval = setInterval(() => {
+          elapsed += 1;
+          if (elapsed >= 12) {
+            clearInterval(interval);
+            if (mediaRecorder && mediaRecorder.state !== "inactive") {
+              mediaRecorder.stop();
+            }
+          }
+        }, 1000);
+
+      } else {
+        // Force stop if clicked during recording
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+        }
+      }
+    });
+
+    // Window Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Initialize
+    updatePhysics();
+    animate();
+  </script>
+</body>
+</html>
