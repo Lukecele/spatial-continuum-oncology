@@ -32,12 +32,15 @@ def calculate_cri(pattern, tp53="wt", rb1="wt", stroma="moderate"):
         S = 0.50
         desc_S = f"Custom architectural pattern: {pattern}"
 
-    # 2. Genomic Risk Tier (G)
+    # 2. Genomic Risk Tier (G) - Robust to real-world EHR annotations
     tp53_str = str(tp53 or "").strip().lower()
     rb1_str = str(rb1 or "").strip().lower()
 
-    tp53_mut = tp53_str in ["mut", "mutated", "true", "yes", "positive", "1", "alteration"]
-    rb1_mut = rb1_str in ["mut", "mutated", "true", "yes", "positive", "loss", "deleted", "1", "alteration"]
+    tp53_is_wt = any(x in tp53_str for x in ["wt", "wild", "neg", "normal"]) and not any(x in tp53_str for x in ["mut", "alter", "loss", "del", "pos"])
+    rb1_is_wt = any(x in rb1_str for x in ["wt", "wild", "neg", "normal"]) and not any(x in rb1_str for x in ["mut", "alter", "loss", "del", "pos"])
+
+    tp53_mut = not tp53_is_wt and any(x in tp53_str for x in ["mut", "alter", "pos", "1", "true", "yes", "p."])
+    rb1_mut = not rb1_is_wt and any(x in rb1_str for x in ["mut", "alter", "loss", "del", "pos", "1", "true", "yes"])
 
     if not tp53_mut and not rb1_mut:
         G = 0.00
@@ -54,15 +57,15 @@ def calculate_cri(pattern, tp53="wt", rb1="wt", stroma="moderate"):
 
     # 3. Microenvironment & Stromal Desmoplasia (M)
     stroma_str = str(stroma or "").strip().lower()
-    if "low" in stroma_str or "loose" in stroma_str or "minimal" in stroma_str:
+    if any(x in stroma_str for x in ["low", "loose", "minimal", "normal"]):
         M = 0.00
         desc_M = "Loose stroma, intact lymphatics, normal IFP (~0 mmHg)"
-    elif "moderate" in stroma_str or "intermediate" in stroma_str:
-        M = 0.50
-        desc_M = "Moderate CAF infiltrate, elevated IFP (5-15 mmHg)"
-    elif "dense" in stroma_str or "severe" in stroma_str or "high" in stroma_str:
+    elif any(x in stroma_str for x in ["dense", "severe", "high", "sclerot", "fibrot"]):
         M = 1.00
         desc_M = "Dense collagen desmoplasia, high IFP (>20 mmHg), convective shutdown"
+    elif any(x in stroma_str for x in ["moderate", "intermediate", "mod"]):
+        M = 0.50
+        desc_M = "Moderate CAF infiltrate, elevated IFP (5-15 mmHg)"
     else:
         M = 0.50
         desc_M = f"Custom stroma: {stroma}"
@@ -148,7 +151,6 @@ def _find_column(fieldnames, candidate_names):
         c_low = cand.lower()
         if c_low in normalized:
             return normalized[c_low]
-    # Substring search fallback
     for cand in candidate_names:
         c_low = cand.lower()
         for k, orig in normalized.items():
@@ -162,7 +164,6 @@ def process_batch(input_path, output_path=None, delimiter=None):
         sys.stderr.write(f"Error: Input batch file not found: {input_path}\n")
         sys.exit(1)
 
-    # Determine delimiter
     if delimiter is None:
         if input_path.endswith(".csv"):
             delimiter = ","
@@ -170,7 +171,6 @@ def process_batch(input_path, output_path=None, delimiter=None):
             delimiter = "\t"
 
     with open(input_path, mode="r", encoding="utf-8-sig") as infile:
-        # Sniff delimiter if uncertain
         sample = infile.read(4096)
         infile.seek(0)
         if sample and delimiter == "\t" and "\t" not in sample and "," in sample:
@@ -183,7 +183,6 @@ def process_batch(input_path, output_path=None, delimiter=None):
 
         fieldnames = list(reader.fieldnames)
 
-        # Map required columns
         col_pattern = _find_column(fieldnames, ["pattern", "histology", "subtype", "growth_pattern", "histologic_subtype"])
         if not col_pattern:
             sys.stderr.write("Error: Could not identify histologic pattern column (expected 'pattern', 'histology', etc.).\n")
@@ -193,7 +192,6 @@ def process_batch(input_path, output_path=None, delimiter=None):
         col_rb1 = _find_column(fieldnames, ["rb1", "rb1_status", "rb1_mut"])
         col_stroma = _find_column(fieldnames, ["stroma", "stromal_density", "desmoplasia", "ifp"])
 
-        # Output columns to append
         output_fields = fieldnames + [
             "S_score",
             "G_score",
@@ -238,7 +236,6 @@ def process_batch(input_path, output_path=None, delimiter=None):
         if output_path:
             out_handle.close()
 
-        # Summary log to stderr
         sys.stderr.write(f"\n[cri-calc batch] Successfully processed {total} patients.\n")
         for tier, cnt in tier_counts.items():
             pct = (cnt / total * 100) if total > 0 else 0
@@ -250,12 +247,10 @@ def main():
     parser = argparse.ArgumentParser(
         description="Calculate Composite Resistance Index (CRI) for NSCLC Targeted Therapy (ADAURA setting)."
     )
-    # Batch options
     parser.add_argument("--batch", "-b", help="Path to input patient cohort file (TSV or CSV) for batch processing.")
     parser.add_argument("--out", "-o", help="Path to output file for batch results (default: stdout).")
     parser.add_argument("--delimiter", "-d", choices=["\t", ","], help="Delimiter for batch file (default: auto-detected).")
 
-    # Single-patient options
     parser.add_argument("--pattern", help="Histologic pattern: lepidic, acinar, papillary, solid, micropapillary")
     parser.add_argument("--tp53", default="wt", help="TP53 status: wt or mutated (default: wt)")
     parser.add_argument("--rb1", default="wt", help="RB1 status: wt or mutated/deleted (default: wt)")
