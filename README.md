@@ -26,7 +26,10 @@
 <p align="center">
   <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
   <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
+  <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
+  <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
   <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
+  <a href="https://orcid.org/0009-0007-0931-3555"><img src="https://img.shields.io/badge/ORCID-0009--0007--0931--3555-a6ce39.svg?logo=orcid&logoColor=white" alt="ORCID"></a>
   <a href="https://www.nature.com/ncomms/"><img src="https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg" alt="Target Nature Communications"></a>
   <a href="https://pypi.org/project/spatial-continuum/"><img src="https://img.shields.io/pypi/v/spatial-continuum.svg?logo=pypi&logoColor=white" alt="PyPI"></a>
   <a href="https://quay.io/repository/biocontainers/spatial-continuum"><img src="https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?logo=docker&logoColor=white" alt="BioContainers"></a>
@@ -48,7 +51,12 @@
 ```bash
 # Or run locally from your terminal in 3 seconds:
 pip install spatial-continuum
+
+# 1. Single-patient bedside consultation:
 cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+
+# 2. High-throughput batch cohort analysis (TSV or CSV):
+cri-calc --batch examples/patient_cohort_demo.tsv --out annotated_cohort.tsv
 ```
 
 ---
@@ -194,8 +202,11 @@ Computes risk tier and clinical action at ADAURA Month 36:
 $$\text{CRI} = 0.47 \mathcal{S} + 0.33 \mathcal{G} + 0.20 \mathcal{M}$$
 
 ```bash
-# Run via installed package entrypoint:
+# Mode A: Single-patient bedside consultation
 cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+
+# Mode B: High-throughput batch cohort processing (TSV / CSV)
+cri-calc --batch examples/patient_cohort_demo.tsv --out results.tsv
 
 # Or run standalone directly from source:
 python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --rb1 loss --stroma dense

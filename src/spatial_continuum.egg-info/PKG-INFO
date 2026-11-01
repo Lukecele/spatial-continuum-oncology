@@ -25,55 +25,90 @@ License-File: LICENSE
 License-File: LICENSE-MIT
 Dynamic: license-file
 
-# The Spatial-Genomic Oncology Continuum
+<div align="center">
 
-[![Read Full Manuscript PDF](https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](01_MANOSCRITTO_FINALE_CON_FIGURE.pdf)
-[![Live 60 FPS Digital Twin](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Digital%20Twin-60%20FPS%20Sanctuary%20Simulator-0284c7.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)
-[![Live Web App: Bedside CRI](https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge)](https://lukecele.github.io/spatial-continuum-oncology/)
-[![GitHub stars](https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold)](https://github.com/Lukecele/spatial-continuum-oncology)
-[![DOI](https://zenodo.org/badge/1437679243.svg)](https://doi.org/10.5281/zenodo.23754999)
-[![Research Square DOI](https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg)](https://doi.org/10.21203/rs.3.rs-11530312/v1)
-[![Software License: MIT](https://img.shields.io/badge/Software_License-MIT-blue.svg)](LICENSE-MIT)
-[![License: CC BY 4.0](https://img.shields.io/badge/Monograph_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Python: 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
-[![Target: Nature Communications](https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg)](https://www.nature.com/ncomms/)
-[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Simulator%20%26%20Bedside%20CRI-blue)](https://huggingface.co/spaces/Lucace/spatial-oncology-simulator)
-[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset%20(N%3D604)-ffd21e)](https://huggingface.co/datasets/Lucace/mskcc-lung-adenocarcinoma-spatial-cohort)
-[![Biophysical Base](https://img.shields.io/badge/Biophysical%20Base-spatial--oncology--master-007acc.svg)](https://github.com/Lukecele/spatial-oncology-master)
-[![Bioconda](https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda)](https://anaconda.org/bioconda/spatial-continuum)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg)]()
+# 🔬 The Spatial-Genomic Oncology Continuum
+### Resolving the Post-ADAURA Cessation Paradox with First-Principles Biophysics
 
-**A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the Bedside Composite Resistance Index (CRI)**
-
-*Author:* **Luca Celebrano**, MD Candidate  
-*Affiliation:* Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy  
-*Correspondence:* `l.celebrano@studenti.unina.it`  
-
----
-
-> 🚀 **Interactive Clinical Web App Available**: Test the real-time Bedside CRI Decision Engine and Bessel $K_0$ reaction-diffusion sanctuary simulator directly in your browser:  
-> 👉 **[https://lukecele.github.io/spatial-continuum-oncology/](https://lukecele.github.io/spatial-continuum-oncology/)**  
-> 🎮 **60 FPS Live Digital Twin & 5-Year Trial Simulator**:  
-> 👉 **[https://lukecele.github.io/spatial-continuum-oncology/simulator.html](https://lukecele.github.io/spatial-continuum-oncology/simulator.html)**
+**An open-source reaction-diffusion transport solver, 60 FPS tumor digital twin, and bedside clinical decision engine (`cri-calc`) for targeted lung oncology.**
 
 <p align="center">
+  <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" height="28" alt="Open in Colab">
+  </a>
   <a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
-    <img src="assets/simulator-vessel-live.gif" alt="In Silico Tumor Sanctuary Digital Twin Simulator — 60 FPS Capillary Vessel Dynamics" width="100%" style="max-width: 960px; border-radius: 8px;">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Simulator-60%20FPS%20Digital%20Twin-0284c7.svg?style=for-the-badge" height="28" alt="Live Simulator">
+  </a>
+  <a href="https://lukecele.github.io/spatial-continuum-oncology/">
+    <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
+  </a>
+  <a href="https://github.com/bioconda/bioconda-recipes/pull/70930">
+    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
+  </a>
+  <a href="https://github.com/Lukecele/spatial-continuum-oncology">
+    <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
   </a>
 </p>
 
-> ⭐️ **Support Open-Science Oncology**: If you find this framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
+<p align="center">
+  <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
+  <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
+  <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
+  <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
+  <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
+  <a href="https://orcid.org/0009-0007-0931-3555"><img src="https://img.shields.io/badge/ORCID-0009--0007--0931--3555-a6ce39.svg?logo=orcid&logoColor=white" alt="ORCID"></a>
+  <a href="https://www.nature.com/ncomms/"><img src="https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg" alt="Target Nature Communications"></a>
+  <a href="https://pypi.org/project/spatial-continuum/"><img src="https://img.shields.io/pypi/v/spatial-continuum.svg?logo=pypi&logoColor=white" alt="PyPI"></a>
+  <a href="https://quay.io/repository/biocontainers/spatial-continuum"><img src="https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?logo=docker&logoColor=white" alt="BioContainers"></a>
+  <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python 3.9+">
+  <img src="https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg" alt="Zero Dependencies">
+</p>
+
+*Author:* **Luca Celebrano**, MD Candidate · Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II · `l.celebrano@studenti.unina.it`
 
 ---
 
-## 📌 Executive Summary
+### ⚡ 10-Second Interactive Quickstart (Zero Install Required)
 
-In early-stage *EGFR*-mutated non-small cell lung cancer (NSCLC), 36 months of adjuvant osimertinib significantly extends disease-free survival (ADAURA trial). However, longitudinal molecular residual disease (MRD) monitoring (*Herbst et al., Nature Medicine 2025*) reveals an alarming paradox:
-* **$67.9\%$ of all recurrence events occur after the planned 36-month discontinuation.**
-* **$57.9\%$ of post-cessation relapses cluster within the first 12 months** post-discontinuation.
-* **$75\text{--}80\%$ of relapsing patients do NOT harbor secondary pocket mutations** (such as *EGFR* C797S), and 4th-generation allosteric inhibitors fail to prevent relapse.
+| 🚀 **1-Click Google Colab** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
+| :---: | :---: | :---: |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
+| Run Bessel $K_0$ diffusion & in silico trials in 10s | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
 
-This repository provides the complete, mathematically closed, and empirical literature-validated computational framework resolving this dilemma from **first physical principles**.
+```bash
+# Or run locally from your terminal in 3 seconds:
+pip install spatial-continuum
+
+# 1. Single-patient bedside consultation:
+cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+
+# 2. High-throughput batch cohort analysis (TSV or CSV):
+cri-calc --batch examples/patient_cohort_demo.tsv --out annotated_cohort.tsv
+```
+
+---
+
+<a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
+  <img src="assets/simulator-vessel-live.gif" alt="In Silico Tumor Sanctuary Digital Twin Simulator — 60 FPS Capillary Vessel Dynamics" width="100%" style="max-width: 900px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+</a>
+
+<p align="center">
+  <i><b>Live 60 FPS Digital Twin:</b> Capillary microvessel ($r_0=10\,\mu\text{m}$) diffusing osimertinib. Drug concentration drops below cytocidal $\text{IC}_{50}$ ($10\,\text{nM}$) at $r_{\text{crit}}=165.9\,\mu\text{m}$, creating a <b>34.1 $\mu$m cytostatic sanctuary sleeve (31.3% of viable tumor cord volume)</b> where dormant persister cells survive until drug discontinuation at Month 36.</i>
+</p>
+
+</div>
+
+---
+
+## 📌 Executive Summary: The Post-ADAURA Cessation Paradox
+
+<div align="center">
+
+| 🎯 The Clinical Paradox (ADAURA) | 🔬 The Biophysical Discovery | 💡 The Precision Solution (SG-ADAURA) |
+| :--- | :--- | :--- |
+| **67.9% of all relapses cluster AFTER planned 36-month stop** (*Herbst et al., Nature Medicine 2025*), with **57.9% occurring within 12 months**, and **75–80% harboring NO resistant mutations** (e.g. *EGFR* C797S). Why do drug-sensitive cells recur? | Elevated Interstitial Fluid Pressure shuts down convection ($Pe < 0.1$). Cylindrical Bessel $K_0$ diffusion leaves an **unperfused 34.1 $\mu$m sanctuary sleeve** where cells arrest cytostatically in $G_0/G_1$. | Bedside **Composite Resistance Index (`cri-calc`)**: safe cessation for Lepidic cords (saves €60k/yr & toxicity) vs **anti-VEGFR2 vascular normalization** for Solid cords ($\text{HR} < 0.05, p < 10^{-15}$). |
+
+</div>
 
 ```
     Microvascular Reaction-Diffusion Cord & Pharmacological Sanctuary:
@@ -81,6 +116,8 @@ This repository provides the complete, mathematically closed, and empirical lite
     [ C0 = 28.6 nM ] ======> [ C(r) > IC50 (10 nM) ] ======> [ 2 nM < C(r) < 10 nM (G0/G1) ] ======> [ Hypoxia / Necrosis ]
     |------------------------ 0 to 165.9 um ----------------|--- 165.9 um to 200.0 um (31.3% Vol) ---|---- r > 200 um ----|
 ```
+
+> ⭐️ **Support Open-Science Oncology**: If you find this mathematical framework, biophysical model, or web simulator useful, please consider giving the repository a star on GitHub — it directly aids community discovery and open-science adoption!
 
 ---
 
@@ -108,6 +145,11 @@ $$r_{\text{crit}} = \mathbf{165.89\ \mu\text{m}}$$
 Because the empirical oxygen viability boundary in human lung carcinoma extends to $r_{\text{ox}} = 200.0\ \mu\text{m}$ (*Thomlinson & Gray, Br J Cancer 1955*), a **mandatory sub-therapeutic pharmacological sanctuary** exists:
 $$\Delta r = r_{\text{ox}} - r_{\text{crit}} = 200.0 - 165.89 = \mathbf{34.11\ \mu\text{m}}$$
 $$f_{\text{vol}} = \frac{r_{\text{ox}}^2 - r_{\text{crit}}^2}{r_{\text{ox}}^2 - r_0^2} = \frac{200^2 - 165.89^2}{200^2 - 10^2} = \mathbf{31.28\%}$$
+
+<div align="center">
+  <img src="figure_scientifiche/notebook_fig1_bessel_gradient.png" alt="Radial Concentration Gradient & Pharmacological Sanctuary (Bessel K0)" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 1: Exact Cylindrical Bessel $K_0$ Radial Concentration Gradient:</b> Unbound osimertinib concentration drops below the cytocidal $\text{IC}_{50}$ threshold (10.0 nM, red dashed line) at $r_{\text{crit}} = 166.4\,\mu\text{m}$, creating a <b>$34.1\,\mu\text{m}$ sub-therapeutic pharmacological sanctuary cuff ($31.3\%$ viable tumor cord volume)</b> where persister cells are arrested cytostatically in $G_0/G_1$ prior to drug cessation.</i></p>
+</div>
 
 ---
 
@@ -142,17 +184,38 @@ Live Portal Audit: [🌐 `10_REPORT_COLLAUDO_LIVE_PORTALE_E_AUDIT_E2E.md`](10_RE
 3. **Biophysical Intensification (Tier 3):** Under SG-ADAURA Arm B3, transient vascular normalization (anti-VEGFR2 Ramucirumab) collapses interstitial fluid pressure, eradicating the sanctuary shell ($\Delta r \to 0$) and transforming a 0% survival into 100% 5-year DFS ($\text{HR} < 0.05$, $p = 1.43 \times 10^{-30}$).
 4. **Adaptive Game-Theoretic Pulsing (InSituGame):** Exploits the stable Nash attractor ($x^* = 61.3\%$) to maintain identical 100% 5-year disease control while reducing cumulative drug exposure by **$29.5\%$**, protecting against the competitive release of resistant *EGFR* C797S mutants.
 
+<div align="center">
+  <img src="figure_scientifiche/notebook_fig3_kaplan_meier_500patients.png" alt="5-Year Disease-Free Survival Kaplan-Meier Curves (N = 500 Virtual Cohort)" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 2: In Silico Trial 5-Year Disease-Free Survival Benchmark ($N = 500$ Virtual Patients):</b> Reconciling the clinical post-cessation cliff. Standard ADAURA fixed 36-month stop (red dashed line) leads to clustered relapses with 5-year DFS dropping to $42.4\%$. The biophysically-stratified SG-ADAURA protocol (blue solid line) maintains <b>$99.0\%$ 5-year DFS</b> ($\text{HR} < 0.05, p = 1.43 \times 10^{-30}$), completely eliminating the post-discontinuation recurrence surge.</i></p>
+</div>
+
 ---
 
-## 💻 Software Suite & Bioconda Package
+## 💻 Software Suite & Official Packages (PyPI, Bioconda, BioContainers, Galaxy & Snakemake)
 
-The full framework is packaged and available on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)) and as standalone Python scripts with **zero external pip dependencies**:
+The full framework is published on **PyPI** ([`spatial-continuum`](https://pypi.org/project/spatial-continuum/)), on **Bioconda** ([`bioconda/spatial-continuum`](https://anaconda.org/bioconda/spatial-continuum)), and supported across all major scientific workflow environments:
 
 ```bash
-# Install via Bioconda (Official Package)
+# 1. Install via PyPI (Official Python Package Index)
+pip install spatial-continuum
+
+# 2. Or install via Bioconda
 conda install -c bioconda spatial-continuum
 
-# Or install from source in editable mode
+# 3. Or run directly with Docker (BioContainers)
+docker pull quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0
+docker run --rm quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+
+# 4. Or run on HPC / Clusters with Singularity / Apptainer (Zero root required)
+singularity exec https://depot.galaxyproject.org/singularity/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+
+# 5. Or execute in Galaxy (Point-and-click GUI for clinicians)
+# Tool ID: cri_calc (galaxyproject/tools-iuc PR #8838)
+
+# 6. Or run inside Snakemake pipelines
+# Wrapper: master/bio/spatialcontinuum (snakemake-wrappers PR #6233)
+
+# 7. Or install from source in editable mode
 git clone https://github.com/Lukecele/spatial-continuum-oncology.git
 cd spatial-continuum-oncology
 pip install -e .
@@ -166,17 +229,30 @@ Computes risk tier and clinical action at ADAURA Month 36:
 $$\text{CRI} = 0.47 \mathcal{S} + 0.33 \mathcal{G} + 0.20 \mathcal{M}$$
 
 ```bash
-python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --rb1 mutated --stroma dense
+# Mode A: Single-patient bedside consultation
+cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+
+# Mode B: High-throughput batch cohort processing (TSV / CSV)
+cri-calc --batch examples/patient_cohort_demo.tsv --out results.tsv
+
+# Or run standalone directly from source:
+python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --rb1 loss --stroma dense
 ```
-**Output:**
+**Decision Output:**
 ```
 ========================================================================
   COMPOSITE RESISTANCE INDEX (CRI): 1.000 / 1.000
   CLINICAL RISK STRATIFICATION:    TIER 3 (HIGH RESISTANCE & SANCTUARY RISK)
+  EXPECTED 5-YEAR RELAPSE-FREE:    < 25 %
   RECOMMENDATION: DO NOT DISCONTINUE OSIMERTINIB AT MONTH 36!
   Mandatory ongoing treatment: Extended Osimertinib or SG-ADAURA Arm B3
 ========================================================================
 ```
+
+<div align="center">
+  <img src="figure_scientifiche/notebook_fig2_cri_dashboard.png" alt="Bedside CRI Clinical Decision Support Dashboard" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 3: Bedside CRI Clinical Decision Engine Output:</b> Automated patient risk stratification (Tier 1 safe cessation vs. Tier 3 mandatory continued treatment/remodeling) with component decomposition of Spatial Architecture ($\mathcal{S}$), Genomic Co-Mutations ($\mathcal{G}$), and Interstitial Desmoplasia ($\mathcal{M}$).</i></p>
+</div>
 
 ### 2. Analytical & Statistical Audit Suite
 Verifies dimensional consistency, Bessel $K_0$ root, and 6-cohort compatibility ($N = 3,205$):
@@ -215,6 +291,24 @@ node software_strumenti_calcolo/test_live_github_pages.js
 
 ---
 
+## 📓 Interactive Google Colab & Jupyter Demonstration
+
+To enable immediate, hands-on replication of all biophysical derivations, numerical root-finding algorithms, and survival simulations without local installation:
+
+<div align="center">
+  <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" height="32" alt="Open In Colab">
+  </a>
+</div>
+
+The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.ipynb) is fully self-contained and pre-computed with all execution outputs:
+* **Cell 1:** Zero-configuration environment setup (automatic local `src/` detection or Google Colab `pip` installation).
+* **Cell 2:** Exact Bessel $K_0$ radial diffusion solver, calculating $r_{\text{crit}}$ and the $34.1\,\mu\text{m}$ sanctuary shell.
+* **Cell 3:** Interactive Bedside CRI patient profiler with dynamic Colab form controls and visual risk gauge visualization.
+* **Cell 4:** 500-patient Monte Carlo clinical trial simulation producing publication-grade Kaplan-Meier survival curves.
+
+---
+
 ## 📚 Multi-Cohort Clinical Validation Summary ($N = 3,205$)
 
 | Cohort | N | Primary Endpoint Verified | Reference |
@@ -228,9 +322,25 @@ node software_strumenti_calcolo/test_live_github_pages.js
 
 ---
 
+## 🏛 Strategic Clinical, Congress & Editorial Dossiers
+
+| Document | Description | Target & Purpose |
+| :--- | :--- | :--- |
+| [📁 `00_INDICE_E_GUIDA_AI_DOCUMENTI.md`](00_INDICE_E_GUIDA_AI_DOCUMENTI.md) | **Master Index & Complete Architectural Map** | Comprehensive cross-referenced index organizing all 17 clinical monographs, biophysical derivations, and congress dossiers. |
+| [📄 `14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md`](14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md) | **Clinical Executive One-Pager & Strategic Trial Brief** | Addressed to Prof. Roy S. Herbst (Yale Cancer Center), AstraZeneca Oncology R&D, and Clinical Oncology Centers (IRCCS Pascale, AIOM). Details the in silico Phase III trial SG-ADAURA and Arm B3 consolidation. |
+| [📄 `15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md`](15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md) | **Pre-Emptive Reviewer Response Matrix** | Prepared for *Nature Communications* (tracking `NCOMMS-26-091227`). Formulates pre-computed mathematical proofs and empirical answers to 12 referee objections across biophysics, clinical oncology, and spatial pathology. |
+| [📄 `12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md`](12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md) | **Official AACR 2027 Abstract** | Calibrated to 2,423 characters (strictly under the 2,600 character ceiling) for the AACR Annual Meeting in Orlando, FL. |
+| [📄 `13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md`](13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md) | **Tri-Congress Strategy Dossier (AACR, ASCO, ESMO)** | Tailored abstracts and submission calendar across biological, clinical, and translational tracks for the 3 major worldwide oncology congresses. |
+| [📊 `16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md`](16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md) | **Master Slide Deck (12 Slides)** | Oral presentation deck for oncology congresses and department grand rounds. Includes companion interactive deck: [`slide_deck_interattivo.html`](slide_deck_interattivo.html). |
+| [🖼 `17_POSTER_CONGRESSUALE_AACR_ASCO_120x90.md`](17_POSTER_CONGRESSUALE_AACR_ASCO_120x90.md) | **Official Congress Poster (120 × 90 cm)** | Print-ready scientific poster layout with 300 DPI figures and offline QR codes: [`poster_congressuale_120x90.html`](poster_congressuale_120x90.html). |
+| [🌐 `Hugging Face Clinical Decision App`](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app) | **Live Clinical Decision Web Application** | Interactive clinical tool on Hugging Face Spaces for real-time Bedside CRI calculation, patient cohort CSV batch analysis, and dynamic Kaplan-Meier survival curve plotting. |
+
+---
+
 ## 📖 Citation & Scholarly Records
 
 * **Research Square Preprint (Springer Nature):** [https://doi.org/10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)
+* **Gist.Science Plain-Language Explanation (Author-Reviewed):** [https://gist.science/paper/rs/rs-11530312](https://gist.science/paper/rs/rs-11530312)
 * **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23754999](https://doi.org/10.5281/zenodo.23754999)
 
 If you use this biophysical model, the computational suite, or the CRI clinical decision engine, please cite:
@@ -248,6 +358,12 @@ If you use this biophysical model, the computational suite, or the CRI clinical 
 }
 ```
 
-## ⚖️ License
+## ⚖️ Dual-Licensing Framework (Software & Scholarly Monograph)
 
-This project is licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** License — see the [LICENSE](LICENSE) file for details.
+To preserve academic priority for medical journal peer-review while ensuring 100% permissive open-source distribution across scientific package managers (Bioconda, nf-core, Galaxy, PyPI), this repository is governed by an explicit **dual-license architecture**:
+
+* 💻 **Computational Software, CLI (`cri-calc`), Algorithms & Pipeline Code:**  
+  Licensed under the permissive **[MIT License](LICENSE-MIT)** (`LICENSE-MIT`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.
+
+* 📄 **Monograph, Clinical Trial Protocols, Figures & Manuscript Texts:**  
+  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE)** (`LICENSE`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Nature Communications* (`NCOMMS-26-091227`) and *Cancer Research Communications* / AACR (`CRC-26-0804`), while permitting global educational and scholarly citation with attribution.
