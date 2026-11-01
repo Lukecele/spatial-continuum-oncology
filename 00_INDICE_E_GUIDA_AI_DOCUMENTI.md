@@ -74,11 +74,11 @@ Tutti gli script sono scritti in **puro Python 3 standard** (zero librerie ester
 
 ---
 
-### Applicazione Clinica Web (`clinical_web_app/`)
+### Suite Web & Modelli Interattivi (`clinical_web_app/` e Root)
 
-Contiene l'architettura completa della Web App ospitata live su Hugging Face Spaces:
-- **`index.html`**: Applicazione clinica interattiva (calcolatore bedside CRI, simulatore di coorte in batch CSV, plotting curve di Kaplan-Meier a 5 anni con Chart.js ed esportazione referti).
-- **`deploy_to_huggingface.sh`**: Script automatico a un clic per sincronizzare e pubblicare gli aggiornamenti direttamente su [Hugging Face Spaces (`Lucace/spatial-continuum-clinical-app`)](https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app).
+L'ecosistema web distribuisce in modo separato e complementare le due interfacce per evitare duplicazioni:
+- **Portale Clinico Decisionale (GitHub Pages)**: [lukecele.github.io/spatial-continuum-oncology](https://lukecele.github.io/spatial-continuum-oncology/) — Applicazione clinica interattiva (calcolatore bedside CRI, benchmark 10x Visium HD 2 µm, simulatore di coorte CSV, curve di Kaplan-Meier a 5 anni con Chart.js, Digital Twin 60 FPS, InSituGame ed esportazione referti Federico II).
+- **Modello 3D Digital Twin (Hugging Face Spaces)**: [spatial-continuum-lab/tumor-cord-sanctuary-3d](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d) — Simulatore interattivo tridimensionale WebGL/Three.js del gradiente di penetrazione radiale e washout perivascolare nel cordone tumorale.
 
 ---
 

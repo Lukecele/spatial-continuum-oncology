@@ -331,7 +331,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 | [📄 `13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md`](13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md) | **Tri-Congress Strategy Dossier (AACR, ASCO, ESMO)** | Tailored abstracts and submission calendar across biological, clinical, and translational tracks for the 3 major worldwide oncology congresses. |
 | [📊 `16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md`](16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md) | **Master Slide Deck (12 Slides)** | Oral presentation deck for oncology congresses and department grand rounds. Includes companion interactive deck: [`slide_deck_interattivo.html`](slide_deck_interattivo.html). |
 | [🖼 `17_POSTER_CONGRESSUALE_AACR_ASCO_120x90.md`](17_POSTER_CONGRESSUALE_AACR_ASCO_120x90.md) | **Official Congress Poster (120 × 90 cm)** | Print-ready scientific poster layout with 300 DPI figures and offline QR codes: [`poster_congressuale_120x90.html`](poster_congressuale_120x90.html). |
-| [🌐 `Hugging Face Clinical Decision App`](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app) | **Live Clinical Decision Web Application** | Interactive clinical tool on Hugging Face Spaces for real-time Bedside CRI calculation, patient cohort CSV batch analysis, and dynamic Kaplan-Meier survival curve plotting. |
+| [🧊 `Hugging Face 3D Sanctuary Twin`](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d) | **Interactive 3D Tumor Cord Digital Twin** | Full 360° WebGL interactive simulator on Hugging Face Spaces for real-time perivascular drug washout, fluid pressure dynamics, and 3D tumor cord architecture. |
 
 ---
 
