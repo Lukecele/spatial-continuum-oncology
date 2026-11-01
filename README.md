@@ -18,8 +18,8 @@
   <a href="https://lukecele.github.io/spatial-continuum-oncology/">
     <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
   </a>
-  <a href="https://github.com/bioconda/bioconda-recipes/pull/70930">
-    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
+  <a href="https://anaconda.org/bioconda/spatial-continuum">
+    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.3-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
   </a>
   <a href="https://github.com/Lukecele/spatial-continuum-oncology">
     <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
@@ -181,11 +181,11 @@ pip install spatial-continuum
 conda install -c bioconda spatial-continuum
 
 # 3. Or run directly with Docker (BioContainers)
-docker pull quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0
-docker run --rm quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+docker pull quay.io/biocontainers/spatial-continuum:1.0.3--pyhdfd78af_0
+docker run --rm quay.io/biocontainers/spatial-continuum:1.0.3--pyhdfd78af_0 cri-calc --help
 
 # 4. Or run on HPC / Clusters with Singularity / Apptainer (Zero root required)
-singularity exec https://depot.galaxyproject.org/singularity/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+singularity exec https://depot.galaxyproject.org/singularity/spatial-continuum:1.0.3--pyhdfd78af_0 cri-calc --help
 
 # 5. Or execute in Galaxy (Point-and-click GUI for clinicians)
 # Tool ID: cri_calc (galaxyproject/tools-iuc PR #8838)
