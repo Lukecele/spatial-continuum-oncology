@@ -312,9 +312,17 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 ## 📖 Citation & Scholarly Records
 
-* **Research Square Preprint (Springer Nature):** [https://doi.org/10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)
+### 📚 Permanent Scholarly Records & DOIs (ORCID: [0009-0007-0931-3555](https://orcid.org/0009-0007-0931-3555))
+
+| Identifier / DOI | Platform / Repository | Scholarly Asset & Description |
+| :--- | :--- | :--- |
+| [`10.21203/rs.3.rs-11530312/v1`](https://doi.org/10.21203/rs.3.rs-11530312/v1) | **Research Square (Springer Nature)** | Scientific Preprint (*Nature Communications* Tracking: `NCOMMS-26-091227`) |
+| [`10.5281/zenodo.23754999`](https://doi.org/10.5281/zenodo.23754999) | **Zenodo (CERN / OpenAIRE)** | Master Codebase, Reaction-Diffusion Solvers & MSKCC Resection Cohort |
+| [`10.5281/zenodo.23623653`](https://doi.org/10.5281/zenodo.23623653) | **Zenodo (CERN / OpenAIRE)** | Digital Pathology AI Suite (Subcellular Microvascular Decoupling) |
+| [`10.5281/zenodo.23585216`](https://doi.org/10.5281/zenodo.23585216) | **Zenodo (CERN / OpenAIRE)** | InSituGame Package (Spatial Evolutionary Game Assay) |
+
 * **Gist.Science Plain-Language Explanation (Author-Reviewed):** [https://gist.science/paper/rs/rs-11530312](https://gist.science/paper/rs/rs-11530312)
-* **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23754999](https://doi.org/10.5281/zenodo.23754999)
+* **Biostars Community Discussion (Top Rank):** [https://www.biostars.org/p/9623490/](https://www.biostars.org/p/9623490/)
 
 If you use this biophysical model, the computational suite, or the CRI clinical decision engine, please cite:
 
