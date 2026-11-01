@@ -232,8 +232,8 @@ All algorithms are fully open-source, reproducible, and ready for immediate clin
 * **Bioconda Package:** `conda install -c bioconda spatial-continuum` (v1.0.2)
 * **BioContainers Docker:** `quay.io/biocontainers/spatial-continuum:1.0.2`
 * **European Registry:** ELIXIR bio.tools (`biotools:spatial-continuum-oncology`)
-* **Live Hugging Face Clinical Web App:**  
-  👉 `https://huggingface.co/spaces/Lucace/spatial-continuum-clinical-app`
+* **Live Hugging Face 3D Digital Twin:**  
+  👉 `https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d`
 * **60 FPS Live Digital Twin Simulator:**  
   👉 `https://lukecele.github.io/spatial-continuum-oncology/simulator.html`
 * **Gist.Science Plain-Language Digest (12 Languages):**  

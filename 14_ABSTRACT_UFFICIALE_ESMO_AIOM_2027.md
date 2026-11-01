@@ -6,7 +6,7 @@
 **Contatto:** `l.celebrano@studenti.unina.it` · [ORCID: 0009-0007-0931-3555](https://orcid.org/0009-0007-0931-3555)  
 **Preprint Ufficiale:** [Research Square (Springer Nature) DOI: 10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)  
 **Archivio Aperto:** [CERN Zenodo DOI: 10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)  
-**Software Ufficiale:** [Bioconda](https://anaconda.org/bioconda/spatial-continuum) · [Galaxy IUC](https://toolshed.g2.bx.psu.edu/view/iuc/cri_calc) · [Hugging Face Space](https://huggingface.co/spaces/spatial-continuum-lab/spatial-continuum-clinical-app)
+**Software Ufficiale:** [Bioconda](https://anaconda.org/bioconda/spatial-continuum) · [Galaxy IUC](https://toolshed.g2.bx.psu.edu/view/iuc/cri_calc) · [Hugging Face 3D Space](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d)
 
 ---
 
