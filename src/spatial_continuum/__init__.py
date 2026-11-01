@@ -14,6 +14,7 @@ from .anndata_adapter import (
     to_anndata,
     annotate_anndata,
     from_anndata,
+    compute_spatial_bessel_sanctuary,
     BESSEL_TRANSPORT_METRICS,
     SCIENTIFIC_ANCHORS,
 )
@@ -25,6 +26,7 @@ __all__ = [
     "to_anndata",
     "annotate_anndata",
     "from_anndata",
+    "compute_spatial_bessel_sanctuary",
     "BESSEL_TRANSPORT_METRICS",
     "SCIENTIFIC_ANCHORS",
     "__version__",

@@ -4,6 +4,7 @@ README.md
 pyproject.toml
 setup.py
 src/spatial_continuum/__init__.py
+src/spatial_continuum/anndata_adapter.py
 src/spatial_continuum/audit.py
 src/spatial_continuum/cri_calc.py
 src/spatial_continuum.egg-info/PKG-INFO
@@ -11,4 +12,6 @@ src/spatial_continuum.egg-info/SOURCES.txt
 src/spatial_continuum.egg-info/dependency_links.txt
 src/spatial_continuum.egg-info/entry_points.txt
 src/spatial_continuum.egg-info/top_level.txt
+tests/test_adversarial_fuzzing.py
+tests/test_anndata_adapter.py
 tests/test_cri_calc.py

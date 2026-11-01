@@ -380,3 +380,198 @@ def from_anndata(
     if to_dataframe:
         return df
     return df.to_dict(orient="records")
+
+
+def _check_scipy():
+    """Verify that scipy is available for spatial and Bessel computations."""
+    try:
+        from scipy.spatial import cKDTree
+        from scipy.special import k0
+        return cKDTree, k0
+    except ImportError as e:
+        raise ImportError(
+            "Spatial sanctuary and distance computations require 'scipy'. "
+            "Please install it via: pip install scipy"
+        ) from e
+
+
+def compute_spatial_bessel_sanctuary(
+    adata: Any,
+    spatial_key: str = "spatial",
+    vessel_mask: Optional[Any] = None,
+    vessel_gene: str = "PECAM1",
+    tumor_mask: Optional[Any] = None,
+    tumor_gene: str = "EPCAM",
+    vessel_threshold: float = 1.0,
+    tumor_threshold: float = 1.0,
+    spot_pitch_um: float = 2.0,
+    lambda_um: float = 25.5,
+    r0_um: float = 8.0,
+    rcrit_um: float = 165.9,
+    copy: bool = False,
+) -> Any:
+    """
+    Compute biophysical Bessel reaction-diffusion drug penetration and identify
+    perivascular pharmacological sanctuary zones in spatial transcriptomics / Visium HD data.
+
+    Maps physical distances from functional microvessels (CD31+/PECAM1+) using KD-Tree,
+    solves the cylindrical Bessel K0 transport equation C(r)/C0, and annotates:
+      - adata.obs['distance_to_nearest_capillary_um']: Euclidean distance in micrometers
+      - adata.obs['bessel_drug_concentration_ratio']: C(r)/C0 normalized concentration (0.0 to 1.0)
+      - adata.obs['sanctuary_class']: 'Capillary', 'Effective Penetration (<100 um)',
+                                    'Attenuated Zone (100-166 um)', 'Pharmacological Sanctuary (>166 um)'
+      - adata.obs['is_sanctuary_spot']: Boolean flag for spots in pharmacological sanctuary (> rcrit_um)
+      - adata.uns['spatial_bessel_sanctuary']: Summary dictionary with tissue sanctuary burden statistics.
+
+    Parameters:
+      adata: anndata.AnnData instance with spatial coordinates.
+      spatial_key: Key in adata.obsm storing (x, y) coordinates (default: 'spatial').
+      vessel_mask: Optional boolean array identifying endothelial/capillary spots.
+      vessel_gene: Gene name to identify vessels if vessel_mask is None (default: 'PECAM1').
+      tumor_mask: Optional boolean array identifying tumor spots.
+      tumor_gene: Gene name to identify tumor spots if tumor_mask is None (default: 'EPCAM').
+      vessel_threshold: Expression cutoff for vessel detection (default: 1.0).
+      tumor_threshold: Expression cutoff for tumor detection (default: 1.0).
+      spot_pitch_um: Conversion factor from coordinate units to micrometers (default: 2.0 um).
+      lambda_um: Biophysical mean penetration depth lambda in micrometers (default: 25.5 um).
+      r0_um: Capillary radius in micrometers (default: 8.0 um).
+      rcrit_um: Critical therapeutic penetration cutoff in micrometers (default: 165.9 um).
+      copy: If True, returns a copy of adata; otherwise annotates in place.
+
+    Returns:
+      anndata.AnnData: Annotated spatial AnnData object.
+    """
+    anndata, pd, np = _check_dependencies()
+    cKDTree, k0 = _check_scipy()
+
+    if not isinstance(adata, anndata.AnnData):
+        raise TypeError(f"Expected anndata.AnnData instance, got {type(adata)}")
+
+    target = adata.copy() if copy else adata
+    n_obs = target.n_obs
+
+    # 1. Resolve 2D spatial coordinates
+    if spatial_key in target.obsm and hasattr(target.obsm[spatial_key], "shape") and target.obsm[spatial_key].shape[1] >= 2:
+        coords = np.asarray(target.obsm[spatial_key][:, :2], dtype=float)
+    elif "spatial_x" in target.obs and "spatial_y" in target.obs:
+        coords = target.obs[["spatial_x", "spatial_y"]].to_numpy(dtype=float)
+    elif "x" in target.obs and "y" in target.obs:
+        coords = target.obs[["x", "y"]].to_numpy(dtype=float)
+    else:
+        raise KeyError(
+            f"Spatial coordinates not found. Checked target.obsm['{spatial_key}'] "
+            "and target.obs['spatial_x'/'spatial_y']."
+        )
+
+    # Helper to extract gene expression array
+    def _get_expr(gene: str) -> Optional[np.ndarray]:
+        if gene in target.var_names:
+            idx = target.var_names.get_loc(gene)
+            col = target.X[:, idx]
+            if hasattr(col, "toarray"):
+                col = col.toarray()
+            return np.asarray(col).flatten()
+        if gene in target.obs:
+            return target.obs[gene].to_numpy(dtype=float)
+        # Case insensitive lookup in obs
+        for c in target.obs.columns:
+            if c.lower() == gene.lower():
+                return target.obs[c].to_numpy(dtype=float)
+        return None
+
+    # 2. Resolve vessel mask
+    if vessel_mask is not None:
+        is_vessel = np.asarray(vessel_mask, dtype=bool)
+    else:
+        v_expr = _get_expr(vessel_gene)
+        if v_expr is not None:
+            is_vessel = v_expr > vessel_threshold
+        elif "is_vessel" in target.obs:
+            is_vessel = target.obs["is_vessel"].to_numpy(dtype=bool)
+        elif "is_endo" in target.obs:
+            is_vessel = target.obs["is_endo"].to_numpy(dtype=bool)
+        else:
+            raise ValueError(
+                f"Cannot identify vessel spots: '{vessel_gene}' not found in var_names or obs."
+            )
+
+    if np.sum(is_vessel) == 0:
+        raise ValueError("No vessel/capillary spots detected to compute diffusion distances.")
+
+    # 3. Resolve tumor mask
+    if tumor_mask is not None:
+        is_tumor = np.asarray(tumor_mask, dtype=bool) & ~is_vessel
+    else:
+        t_expr = _get_expr(tumor_gene)
+        if t_expr is not None:
+            is_tumor = (t_expr > tumor_threshold) & ~is_vessel
+        elif "is_tumor" in target.obs:
+            is_tumor = target.obs["is_tumor"].to_numpy(dtype=bool) & ~is_vessel
+        else:
+            # Default: all non-vessel spots considered part of the parenchymal mass
+            is_tumor = ~is_vessel
+
+    # 4. KD-Tree distance calculation
+    vessel_coords = coords[is_vessel]
+    tree = cKDTree(vessel_coords)
+    dists_raw, _ = tree.query(coords)
+    dists_um = dists_raw * spot_pitch_um
+
+    # 5. Modified Bessel K0 reaction-diffusion concentration ratio
+    k0_r0 = k0(r0_um / lambda_um)
+    bessel_ratio = np.ones(n_obs, dtype=float)
+    beyond_r0 = dists_um > r0_um
+    bessel_ratio[beyond_r0] = k0(dists_um[beyond_r0] / lambda_um) / k0_r0
+    bessel_ratio = np.clip(bessel_ratio, 0.0, 1.0)
+
+    # 6. Spot-by-spot sanctuary classification
+    classes = []
+    is_sanctuary = np.zeros(n_obs, dtype=bool)
+
+    for i in range(n_obs):
+        if is_vessel[i]:
+            classes.append("Capillary (Endothelial)")
+        elif is_tumor[i]:
+            d = dists_um[i]
+            if d <= 100.0:
+                classes.append("Effective Penetration (<100 um)")
+            elif d <= rcrit_um:
+                classes.append("Attenuated Zone (100-166 um)")
+            else:
+                classes.append("Pharmacological Sanctuary (>166 um)")
+                is_sanctuary[i] = True
+        else:
+            classes.append("Stroma / Normal Parenchyma")
+
+    # 7. Write to obs
+    target.obs["distance_to_nearest_capillary_um"] = dists_um
+    target.obs["bessel_drug_concentration_ratio"] = bessel_ratio
+    target.obs["sanctuary_class"] = classes
+    target.obs["is_sanctuary_spot"] = is_sanctuary
+
+    # 8. Compute tissue-level sanctuary burden
+    n_tumor = int(np.sum(is_tumor))
+    n_sanctuary = int(np.sum(is_sanctuary))
+    sanctuary_fraction = round((n_sanctuary / max(n_tumor, 1)) * 100.0, 2)
+
+    tumor_dists = dists_um[is_tumor] if n_tumor > 0 else np.array([0.0])
+
+    if "spatial_continuum" not in target.uns:
+        target.uns["spatial_continuum"] = {}
+
+    target.uns["spatial_bessel_sanctuary"] = {
+        "total_spots": n_obs,
+        "vessel_spots": int(np.sum(is_vessel)),
+        "tumor_spots": n_tumor,
+        "sanctuary_spots": n_sanctuary,
+        "sanctuary_fraction_pct": sanctuary_fraction,
+        "mean_tumor_vessel_distance_um": round(float(np.mean(tumor_dists)), 2),
+        "median_tumor_vessel_distance_um": round(float(np.median(tumor_dists)), 2),
+        "lambda_penetration_depth_um": lambda_um,
+        "r0_capillary_radius_um": r0_um,
+        "rcrit_sanctuary_threshold_um": rcrit_um,
+        "spot_pitch_um": spot_pitch_um,
+    }
+
+    return target
+

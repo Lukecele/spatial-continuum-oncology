@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: spatial-continuum
-Version: 1.0.2
+Version: 1.0.3
 Summary: Universal biophysical reaction-diffusion transport framework and Bedside Composite Resistance Index (CRI) for NSCLC.
 Author-email: Luca Celebrano <l.celebrano@studenti.unina.it>
 License: MIT
@@ -36,14 +36,17 @@ Dynamic: license-file
   <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" height="28" alt="Open in Colab">
   </a>
+  <a href="https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-3D%20Tumor%20Sanctuary-blue.svg?style=for-the-badge" height="28" alt="Hugging Face 3D Space">
+  </a>
   <a href="https://lukecele.github.io/spatial-continuum-oncology/simulator.html">
     <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Simulator-60%20FPS%20Digital%20Twin-0284c7.svg?style=for-the-badge" height="28" alt="Live Simulator">
   </a>
   <a href="https://lukecele.github.io/spatial-continuum-oncology/">
     <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
   </a>
-  <a href="https://github.com/bioconda/bioconda-recipes/pull/70930">
-    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.2-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
+  <a href="https://anaconda.org/bioconda/spatial-continuum">
+    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.3-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
   </a>
   <a href="https://github.com/Lukecele/spatial-continuum-oncology">
     <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
@@ -51,8 +54,10 @@ Dynamic: license-file
 </p>
 
 <p align="center">
+  <a href="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml"><img src="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
   <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
+  <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
   <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
   <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
   <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
@@ -70,10 +75,10 @@ Dynamic: license-file
 
 ### ⚡ 10-Second Interactive Quickstart (Zero Install Required)
 
-| 🚀 **1-Click Google Colab** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
-| :---: | :---: | :---: |
-| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
-| Run Bessel $K_0$ diffusion & in silico trials in 10s | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
+| 🚀 **1-Click Google Colab** | 🌐 **3D WebGL Digital Twin (HF)** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
+| :---: | :---: | :---: | :---: |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 3D Sanctuary Twin**](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
+| Run Bessel $K_0$ diffusion & in silico trials in 10s | Full 360° perivascular santuary & Month 36 washout | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
 
 ```bash
 # Or run locally from your terminal in 3 seconds:
@@ -203,11 +208,11 @@ pip install spatial-continuum
 conda install -c bioconda spatial-continuum
 
 # 3. Or run directly with Docker (BioContainers)
-docker pull quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0
-docker run --rm quay.io/biocontainers/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+docker pull quay.io/biocontainers/spatial-continuum:1.0.3--pyhdfd78af_0
+docker run --rm quay.io/biocontainers/spatial-continuum:1.0.3--pyhdfd78af_0 cri-calc --help
 
 # 4. Or run on HPC / Clusters with Singularity / Apptainer (Zero root required)
-singularity exec https://depot.galaxyproject.org/singularity/spatial-continuum:1.0.2--pyhdfd78af_0 cri-calc --help
+singularity exec https://depot.galaxyproject.org/singularity/spatial-continuum:1.0.3--pyhdfd78af_0 cri-calc --help
 
 # 5. Or execute in Galaxy (Point-and-click GUI for clinicians)
 # Tool ID: cri_calc (galaxyproject/tools-iuc PR #8838)
@@ -289,6 +294,26 @@ Audits all 5 live portal modules with zero dependencies using headless Chrome:
 node software_strumenti_calcolo/test_live_github_pages.js
 ```
 
+### 8. Native scverse Interoperability (AnnData / SpatialData)
+For seamless integration into spatial biology and single-cell ecosystems ([scverse](https://scverse.org), Scanpy, Squidpy, SpatialData):
+```python
+import spatial_continuum as sc
+
+# 1. Convert any clinical or spatial cohort into a fully structured AnnData object:
+adata = sc.to_anndata("examples/patient_cohort_demo.tsv")
+# • Clinical risk stratification in adata.obs['Risk_Tier']
+# • Expected 5-year DFS in adata.obs['Expected_5yr_DFS']
+# • Feature scores [S, G, M, CRI] in adata.X (shape: n_obs, 4)
+# • 2D coordinates in adata.obsm['spatial']
+# • Bessel biophysical constants and DOI in adata.uns['spatial_continuum']
+
+# 2. Or annotate an existing spatial transcriptomics / single-cell AnnData in-place:
+sc.annotate_anndata(adata, pattern_key="histology", tp53_key="tp53", stroma_key="stroma")
+
+# 3. Export annotated cohort back to tabular DataFrame or records:
+df_results = sc.from_anndata(adata)
+```
+
 ---
 
 ## 📓 Interactive Google Colab & Jupyter Demonstration
@@ -339,9 +364,17 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 ## 📖 Citation & Scholarly Records
 
-* **Research Square Preprint (Springer Nature):** [https://doi.org/10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)
+### 📚 Permanent Scholarly Records & DOIs (ORCID: [0009-0007-0931-3555](https://orcid.org/0009-0007-0931-3555))
+
+| Identifier / DOI | Platform / Repository | Scholarly Asset & Description |
+| :--- | :--- | :--- |
+| [`10.21203/rs.3.rs-11530312/v1`](https://doi.org/10.21203/rs.3.rs-11530312/v1) | **Research Square (Springer Nature)** | Scientific Preprint (*Nature Communications* Tracking: `NCOMMS-26-091227`) |
+| [`10.5281/zenodo.23754999`](https://doi.org/10.5281/zenodo.23754999) | **Zenodo (CERN / OpenAIRE)** | Master Codebase, Reaction-Diffusion Solvers & MSKCC Resection Cohort |
+| [`10.5281/zenodo.23623653`](https://doi.org/10.5281/zenodo.23623653) | **Zenodo (CERN / OpenAIRE)** | Digital Pathology AI Suite (Subcellular Microvascular Decoupling) |
+| [`10.5281/zenodo.23585216`](https://doi.org/10.5281/zenodo.23585216) | **Zenodo (CERN / OpenAIRE)** | InSituGame Package (Spatial Evolutionary Game Assay) |
+
 * **Gist.Science Plain-Language Explanation (Author-Reviewed):** [https://gist.science/paper/rs/rs-11530312](https://gist.science/paper/rs/rs-11530312)
-* **Permanent Zenodo Software Archive:** [https://doi.org/10.5281/zenodo.23754999](https://doi.org/10.5281/zenodo.23754999)
+* **Biostars Community Discussion (Top Rank):** [https://www.biostars.org/p/9623490/](https://www.biostars.org/p/9623490/)
 
 If you use this biophysical model, the computational suite, or the CRI clinical decision engine, please cite:
 

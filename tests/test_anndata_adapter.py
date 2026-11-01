@@ -178,6 +178,86 @@ class TestAnnDataAdapter(unittest.TestCase):
         self.assertEqual(len(records_out), 1)
         self.assertEqual(records_out[0]["Risk_Tier"], adata.obs.loc["P_RT1", "Risk_Tier"])
 
+    def test_compute_spatial_bessel_sanctuary(self):
+        import anndata
+        import pandas as pd
+        import numpy as np
+        from spatial_continuum import compute_spatial_bessel_sanctuary
+
+        # Create a synthetic spatial AnnData with 5 spots:
+        # Spot 0: Capillary at (0, 0)
+        # Spot 1: Close tumor spot at (50, 0) -> distance = 50 um (effective zone <100 um)
+        # Spot 2: Intermediate tumor spot at (120, 0) -> distance = 120 um (attenuated zone 100-166 um)
+        # Spot 3: Distant sanctuary tumor spot at (250, 0) -> distance = 250 um (sanctuary >166 um)
+        # Spot 4: Non-tumor stroma spot at (300, 0)
+        coords = np.array([
+            [0.0, 0.0],
+            [50.0, 0.0],
+            [120.0, 0.0],
+            [250.0, 0.0],
+            [300.0, 0.0],
+        ])
+        obs_df = pd.DataFrame(
+            {
+                "PECAM1": [5.0, 0.1, 0.0, 0.0, 0.0],
+                "EPCAM": [0.0, 4.5, 4.0, 3.8, 0.2],
+            },
+            index=[f"spot_{i}" for i in range(5)],
+        )
+        adata = anndata.AnnData(
+            X=obs_df.to_numpy(),
+            obs=obs_df,
+            obsm={"spatial": coords},
+        )
+
+        res = compute_spatial_bessel_sanctuary(
+            adata,
+            vessel_gene="PECAM1",
+            tumor_gene="EPCAM",
+            vessel_threshold=1.0,
+            tumor_threshold=1.0,
+            spot_pitch_um=1.0,  # 1 unit = 1 um
+            lambda_um=25.5,
+            r0_um=8.0,
+            rcrit_um=165.9,
+            copy=True,
+        )
+
+        # Distances
+        self.assertAlmostEqual(res.obs.loc["spot_0", "distance_to_nearest_capillary_um"], 0.0, places=2)
+        self.assertAlmostEqual(res.obs.loc["spot_1", "distance_to_nearest_capillary_um"], 50.0, places=2)
+        self.assertAlmostEqual(res.obs.loc["spot_2", "distance_to_nearest_capillary_um"], 120.0, places=2)
+        self.assertAlmostEqual(res.obs.loc["spot_3", "distance_to_nearest_capillary_um"], 250.0, places=2)
+
+        # Bessel concentrations: C(0)=1.0, C(50) > C(120) > C(250)
+        c0 = res.obs.loc["spot_0", "bessel_drug_concentration_ratio"]
+        c1 = res.obs.loc["spot_1", "bessel_drug_concentration_ratio"]
+        c2 = res.obs.loc["spot_2", "bessel_drug_concentration_ratio"]
+        c3 = res.obs.loc["spot_3", "bessel_drug_concentration_ratio"]
+        self.assertEqual(c0, 1.0)
+        self.assertTrue(c1 > c2 > c3)
+
+        # Sanctuary classifications
+        self.assertEqual(res.obs.loc["spot_0", "sanctuary_class"], "Capillary (Endothelial)")
+        self.assertEqual(res.obs.loc["spot_1", "sanctuary_class"], "Effective Penetration (<100 um)")
+        self.assertEqual(res.obs.loc["spot_2", "sanctuary_class"], "Attenuated Zone (100-166 um)")
+        self.assertEqual(res.obs.loc["spot_3", "sanctuary_class"], "Pharmacological Sanctuary (>166 um)")
+        self.assertEqual(res.obs.loc["spot_4", "sanctuary_class"], "Stroma / Normal Parenchyma")
+
+        # Sanctuary boolean
+        self.assertFalse(res.obs.loc["spot_1", "is_sanctuary_spot"])
+        self.assertFalse(res.obs.loc["spot_2", "is_sanctuary_spot"])
+        self.assertTrue(res.obs.loc["spot_3", "is_sanctuary_spot"])
+
+        # Summary statistics in uns
+        stats = res.uns["spatial_bessel_sanctuary"]
+        self.assertEqual(stats["total_spots"], 5)
+        self.assertEqual(stats["vessel_spots"], 1)
+        self.assertEqual(stats["tumor_spots"], 3)
+        self.assertEqual(stats["sanctuary_spots"], 1)
+        self.assertAlmostEqual(stats["sanctuary_fraction_pct"], 33.33, places=1)
+
+
 
 if __name__ == "__main__":
     unittest.main()
