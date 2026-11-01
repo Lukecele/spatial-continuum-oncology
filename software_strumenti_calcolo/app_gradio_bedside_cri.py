@@ -169,7 +169,7 @@ if __name__ == "__main__":
             # 🩺 Bedside Composite Resistance Index (CRI) Clinical Decision Engine
             ### *The Spatial-Genomic Oncology Continuum (ADAURA Post-Cessation Management)*
             **Author:** Luca Celebrano, MD Candidate • Università degli Studi di Napoli Federico II  
-            *Peer-reviewed Preprint:* [Research Square (Springer Nature)](https://doi.org/10.21203/rs.3.rs-11530312/v1) • *DOI:* `10.5281/zenodo.23754999`
+            *Preprint:* [Research Square (Springer Nature)](https://doi.org/10.21203/rs.3.rs-11530312/v1) • *Zenodo DOI:* [10.5281/zenodo.17511110](https://doi.org/10.5281/zenodo.17511110)
             """
         )
         
