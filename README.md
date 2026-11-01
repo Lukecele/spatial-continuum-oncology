@@ -27,6 +27,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml"><img src="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
   <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
   <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
@@ -264,6 +265,26 @@ python3 software_strumenti_calcolo/run_fast_superiority_benchmark.py
 Audits all 5 live portal modules with zero dependencies using headless Chrome:
 ```bash
 node software_strumenti_calcolo/test_live_github_pages.js
+```
+
+### 8. Native scverse Interoperability (AnnData / SpatialData)
+For seamless integration into spatial biology and single-cell ecosystems ([scverse](https://scverse.org), Scanpy, Squidpy, SpatialData):
+```python
+import spatial_continuum as sc
+
+# 1. Convert any clinical or spatial cohort into a fully structured AnnData object:
+adata = sc.to_anndata("examples/patient_cohort_demo.tsv")
+# • Clinical risk stratification in adata.obs['Risk_Tier']
+# • Expected 5-year DFS in adata.obs['Expected_5yr_DFS']
+# • Feature scores [S, G, M, CRI] in adata.X (shape: n_obs, 4)
+# • 2D coordinates in adata.obsm['spatial']
+# • Bessel biophysical constants and DOI in adata.uns['spatial_continuum']
+
+# 2. Or annotate an existing spatial transcriptomics / single-cell AnnData in-place:
+sc.annotate_anndata(adata, pattern_key="histology", tp53_key="tp53", stroma_key="stroma")
+
+# 3. Export annotated cohort back to tabular DataFrame or records:
+df_results = sc.from_anndata(adata)
 ```
 
 ---
