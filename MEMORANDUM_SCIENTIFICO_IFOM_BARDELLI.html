@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <title>I 5 Grandi Dilemmi della Biopsia Liquida - Luca Celebrano per IFOM</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
   @page {
     size: A4 portrait;
-    margin: 12mm 14mm 12mm 14mm;
+    margin: 14mm 16mm 14mm 16mm;
   }
 
   * {
@@ -17,197 +17,193 @@
     print-color-adjust: exact !important;
   }
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #0f172a;
+  html, body {
+    font-family: 'Calibri', 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+    color: #1e293b;
     background-color: #ffffff;
-    line-height: 1.40;
-    font-size: 8.8pt;
+    line-height: 1.32;
+    font-size: 9pt;
     margin: 0;
     padding: 0;
   }
 
   .page {
     page-break-after: always;
-    height: 100%;
+    height: 268mm;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    box-sizing: border-box;
   }
 
   .page:last-child {
     page-break-after: avoid;
   }
 
-  /* Header Card */
-  .header-card {
-    border-bottom: 2.5px solid #0284c7;
-    padding-bottom: 7px;
+  /* Document Title & Header (Word Style) */
+  .doc-header {
+    border-bottom: 2px solid #1e3a8a;
+    padding-bottom: 6px;
     margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
   }
 
-  .title-group h1 {
-    font-size: 13.5pt;
+  .doc-title {
+    font-size: 14pt;
     font-weight: 800;
-    color: #0f172a;
+    color: #1e3a8a;
     margin: 0 0 2px 0;
-    letter-spacing: -0.3px;
-    line-height: 1.18;
+    letter-spacing: -0.2px;
   }
 
-  .title-group .subtitle {
-    font-size: 8.8pt;
+  .doc-subtitle {
+    font-size: 9pt;
     font-weight: 600;
     color: #0284c7;
-    margin: 0;
-    line-height: 1.25;
+    margin: 0 0 6px 0;
   }
 
-  .meta-box {
-    text-align: right;
-    font-size: 7.2pt;
-    color: #475569;
-    line-height: 1.35;
+  .meta-table {
+    width: 100%;
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 5px 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 7.8pt;
+    margin-bottom: 8px;
   }
 
-  .meta-box strong {
-    color: #0f172a;
+  .meta-table td {
+    padding: 4px 8px;
+    border: none;
+    vertical-align: top;
   }
 
-  /* Dilemma Header */
-  .dilemma-header {
-    background: #0f172a;
+  /* Section / Dilemma Bar (Word Style Header) */
+  .dilemma-bar {
+    background: #1e3a8a;
     color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 5px 8px;
     font-size: 9.5pt;
     font-weight: 700;
-    margin: 8px 0 6px 0;
+    margin: 10px 0 6px 0;
+    border-radius: 3px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .dilemma-header .number {
-    color: #38bdf8;
-    font-weight: 800;
-    margin-right: 6px;
-  }
-
-  .dilemma-header .badge-tag {
-    background: #0284c7;
+  .dilemma-bar .tag {
+    background: #3b82f6;
     color: #ffffff;
     font-size: 6.8pt;
-    padding: 1.5px 6px;
-    border-radius: 3px;
+    padding: 1px 5px;
+    border-radius: 2px;
     text-transform: uppercase;
     font-weight: 600;
   }
 
-  /* Question & Simple Box */
-  .question-box {
-    background: #fff1f2;
-    border: 1px solid #fecdd3;
-    border-left: 3.5px solid #e11d48;
-    border-radius: 5px;
-    padding: 6px 10px;
-    margin-bottom: 6px;
+  /* Executive Callout Boxes (Word Style) */
+  .box-question {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #dc2626;
+    padding: 6px 9px;
+    margin: 6px 0;
     font-size: 8.5pt;
-    color: #881337;
+    color: #991b1b;
   }
 
-  .question-box strong {
-    color: #9f1239;
-  }
-
-  .simple-box {
+  .box-solution {
     background: #f0fdf4;
     border: 1px solid #bbf7d0;
-    border-left: 3.5px solid #16a34a;
-    border-radius: 5px;
-    padding: 7px 10px;
+    border-left: 4px solid #16a34a;
+    padding: 6px 9px;
     margin: 6px 0;
-    font-size: 8.4pt;
+    font-size: 8.5pt;
     color: #14532d;
   }
 
-  .simple-box strong {
-    color: #166534;
+  .box-premise {
+    background: #f0f7ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    padding: 6px 9px;
+    margin: 6px 0 10px 0;
+    font-size: 8.3pt;
+    color: #1e40af;
   }
 
-  .formula-box {
-    background: #f1f5f9;
+  /* Formula Box (Word Style equation display) */
+  .formula-display {
+    background: #f8fafc;
     border: 1px solid #cbd5e1;
-    border-radius: 5px;
+    border-left: 3px solid #0284c7;
     padding: 5px 10px;
-    margin: 5px 0;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 8.8pt;
+    margin: 6px 0;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 8.5pt;
     font-weight: 600;
     color: #0f172a;
+    text-align: center;
   }
 
-  .formula-box .note {
-    font-family: 'Inter', sans-serif;
+  .formula-display .subnote {
+    font-family: 'Calibri', 'Source Sans 3', sans-serif;
     font-size: 7.2pt;
-    font-weight: 400;
-    color: #475569;
+    font-weight: normal;
+    color: #64748b;
     margin-top: 2px;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 7.8pt;
-    margin: 6px 0;
-  }
-
-  th {
-    background: #1e293b;
-    color: #ffffff;
-    font-weight: 600;
-    text-align: left;
-    padding: 4px 6px;
-    border: 1px solid #1e293b;
-  }
-
-  td {
-    padding: 4px 6px;
-    border: 1px solid #e2e8f0;
-    vertical-align: middle;
-  }
-
-  tr:nth-child(even) td {
-    background: #f8fafc;
-  }
-
+  /* Compact Comparison Grid */
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 9px;
+    gap: 8px;
     margin: 6px 0;
   }
 
-  .card {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 5px;
-    padding: 7px 9px;
+  .card-compare {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #3b82f6;
+    padding: 6px 8px;
+    font-size: 8pt;
   }
 
-  .card h3 {
-    margin: 0 0 3px 0;
-    font-size: 8.2pt;
+  .card-compare.danger {
+    border-top-color: #ef4444;
+    background: #fffafa;
+  }
+
+  .card-compare strong {
+    color: #0f172a;
+  }
+
+  /* Native Word-Style Table */
+  table.word-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    margin: 7px 0;
+  }
+
+  table.word-table th {
+    background: #1e3a8a;
+    color: #ffffff;
     font-weight: 700;
-    color: #1e293b;
+    text-align: left;
+    padding: 4px 6px;
+    border: 1px solid #1e3a8a;
+  }
+
+  table.word-table td {
+    padding: 4px 6px;
+    border: 1px solid #cbd5e1;
+    vertical-align: middle;
+  }
+
+  table.word-table tr:nth-child(even) td {
+    background: #f8fafc;
   }
 
   p {
@@ -215,14 +211,24 @@
     text-align: justify;
   }
 
-  .footer-strip {
+  ul, ol {
+    margin: 3px 0 5px 18px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  /* Page Footer (Word Style) */
+  .page-footer {
+    margin-top: auto;
     border-top: 1px solid #cbd5e1;
     padding-top: 5px;
-    font-size: 7pt;
+    font-size: 7.2pt;
     color: #64748b;
     display: flex;
     justify-content: space-between;
-    font-weight: 500;
   }
 </style>
 </head>
@@ -230,77 +236,78 @@
 
 <!-- ========================================== PAGINA 1 ========================================== -->
 <div class="page">
-  <div>
-    <div class="header-card">
-      <div class="title-group">
-        <h1>I 5 GRANDI DILEMMI DELLA BIOPSIA LIQUIDA</h1>
-        <div class="subtitle">Risoluzione Biofisica dei Falsi Negativi, Cinetica del ctDNA e Dinamiche di Recidiva</div>
-      </div>
-      <div class="meta-box">
-        <strong>Autore:</strong> Luca Celebrano, MD Cand. (Federico II)<br>
-        <strong>Destinatari:</strong> Prof. A. Bardelli, Dott. G. Crisafulli,<br>
-        Dott. G. Patelli, Dott.ssa F. Baessato (IFOM ETS / UniTo)<br>
-        <strong>Data:</strong> Novembre 2026 | <strong>Documento:</strong> Executive Working Paper
-      </div>
-    </div>
-
-    <div style="background: #e0f2fe; border: 1px solid #bae6fd; border-radius: 5px; padding: 6px 9px; margin-bottom: 8px; font-size: 8.2pt; color: #0369a1;">
-      <strong>Premessa Operativa per il Team IFOM:</strong> Questo memorandum affronta direttamente i <em>nodi biologici e clinici irrisolti</em> nell'uso del ctDNA plasmatico per il monitoraggio della Malattia Residua Minima (MRD) e la de-escalation terapeutica post-chirurgica. I 5 dilemmi sono illustrati mediante <strong>evidenze patologiche, concetti biofisici semplici e derivazioni in forma chiusa</strong>.
-    </div>
-
-    <!-- DILEMMA 1 -->
-    <div class="dilemma-header">
-      <span><span class="number">DILEMMA 1</span>Il Paradosso del Falso Negativo Biologico del ctDNA</span>
-      <span class="badge-tag">Sensibilità vs Biologia</span>
-    </div>
-
-    <div class="question-box">
-      <strong>La Domanda Clinica:</strong> <em>"Perché un paziente con milioni di cellule tumorali residue dormienti può risultare sistematicamente 'ctDNA NEGATIVO' anche con i sequenziatori NGS più sensibili al mondo (LOD &le; 0.02% VAF)?"</em>
-    </div>
-
-    <div class="simple-box">
-      <strong>La Spiegazione Semplice (Cosa Succede Davvero nel Tessuto):</strong><br>
-      La biopsia liquida non misura quante cellule sono vive nel tumore, ma <strong>il DNA di quelle che muoiono e i cui frammenti riescono a entrare nel torrente circolatorio</strong>.<br>
-      Nei modelli teorici storici (es. Avanzini et al., <em>Science Advances</em> 2020), il tumore è trattato come una "sacca di cellule omogenea" dove ogni cellula versa liberamente frammenti di DNA nel plasma. Nella realtà microambientale di un tumore solido in terapia target o adiuvante:
-      <ol style="margin: 3px 0 0 16px; padding: 0;">
-        <li><strong>Le cellule persister dormono:</strong> Nel loro rifugio non muoiono per apoptosi citotossica, ma entrano in arresto G0/G1; il loro turnover apoptotico crolla da 0.136 die⁻¹ a <strong>d_sanc &approx; 0.015 die⁻¹</strong> (riduzione di ~9 volte).</li>
-        <li><strong>Il DNA resta intrappolato nello stroma:</strong> I frammenti rilasciati devono percorrere decine di micron di matrice desmoplastica densa contro gradiente pressorio, subendo la degradazione delle DNasi tissutali prima di raggiungere i capillari (&kappa;_vasc &approx; 0.18).</li>
-      </ol>
-      <strong>Risultato:</strong> Lo shedding di DNA per singola cellula <strong>crolla di 50.4 volte</strong>!
-    </div>
-
-    <div class="grid-2" style="margin-top: 8px;">
-      <div class="card" style="border-left: 3px solid #3b82f6;">
-        <h3>Tumore Proliferante Non Trattato</h3>
-        <p style="font-size: 7.8pt; margin: 0;">
-          &bull; Massa: 10 milioni di cellule (10⁷ cell.)<br>
-          &bull; Apoptosi normale: d = 0.136 die⁻¹<br>
-          &bull; Vasi pervi e drenanti: &kappa;_vasc = 1.0<br>
-          &bull; <strong>Segnale: VAF &approx; 0.022% (&gt; LOD: POSITIVO)</strong>
-        </p>
-      </div>
-      <div class="card" style="border-left: 3px solid #dc2626;">
-        <h3>Cellule Persister nel Santuario (DTPs)</h3>
-        <p style="font-size: 7.8pt; margin: 0;">
-          &bull; Massa: 10 milioni di cellule (10⁷ cell.)<br>
-          &bull; Apoptosi soppressa: d_sanc = 0.015 die⁻¹ (-90%)<br>
-          &bull; Filtro stromale desmoplastico: &kappa;_vasc = 0.18<br>
-          &bull; <strong>Segnale: VAF &approx; 0.0004% (&ll; LOD: FALSO NEGATIVO)</strong>
-        </p>
-      </div>
-    </div>
-
-    <div class="formula-box" style="margin-top: 8px;">
-      C_plasma = [ M &middot; d &middot; &kappa;_vasc &middot; q_d ] / &epsilon; &nbsp;&rArr;&nbsp; VAF_santuario = 0.022% / 50.4 = <strong style="color: #dc2626;">0.00044%</strong>
-      <div class="note">Il segnale &egrave; 45 volte inferiore alla soglia tecnologica dell'NGS (LOD 0.02%): il paziente appare guarito ma non lo &egrave;.</div>
-    </div>
-
-    <p style="font-size: 8.2pt; color: #475569; margin-top: 6px;">
-      <strong>La Conclusione per la Clinica:</strong> Il paziente non è "guarito"; è semplicemente in una fase in cui la malattia residua è biologicamente silente e fisicamente isolata dal torrente circolatorio.
-    </p>
+  <div class="doc-header">
+    <div class="doc-title">I 5 GRANDI DILEMMI DELLA BIOPSIA LIQUIDA</div>
+    <div class="doc-subtitle">Risoluzione Biofisica dei Falsi Negativi, Cinetica del ctDNA e Dinamiche di Recidiva Post-Adiuvante</div>
   </div>
 
-  <div class="footer-strip">
+  <table class="meta-table">
+    <tr>
+      <td style="width: 50%;">
+        <strong>Autore:</strong> Luca Celebrano, MD Candidate<br>
+        Scuola di Medicina e Chirurgia, Università di Napoli Federico II<br>
+        <strong>Contatti:</strong> Tel: 349 0626697 | l.celebrano@studenti.unina.it
+      </td>
+      <td style="width: 50%;">
+        <strong>Destinatari Scientifici (IFOM ETS Milano / UniTO):</strong><br>
+        Prof. Alberto Bardelli, Dott. Giovanni Crisafulli,<br>
+        Dott. Giorgio Patelli, Dott.ssa Francesca Baessato
+      </td>
+    </tr>
+  </table>
+
+  <div class="box-premise">
+    <strong>Premessa Operativa per il Team di IFOM:</strong> Questo memorandum affronta direttamente i <em>nodi biologici e clinici irrisolti</em> nell'uso del ctDNA plasmatico per il monitoraggio della Malattia Residua Minima (MRD) e la de-escalation terapeutica post-chirurgica. I 5 dilemmi sono illustrati mediante <strong>evidenze patologiche, concetti biofisici semplici e derivazioni in forma chiusa</strong>.
+  </div>
+
+  <!-- DILEMMA 1 -->
+  <div class="dilemma-bar">
+    <span>DILEMMA 1 &bull; Il Paradosso del Falso Negativo Biologico del ctDNA</span>
+    <span class="tag">Sensibilità vs Biologia</span>
+  </div>
+
+  <div class="box-question">
+    <strong>La Domanda Clinica:</strong> <em>"Perché un paziente con milioni di cellule tumorali residue dormienti può risultare sistematicamente 'ctDNA NEGATIVO' anche con i sequenziatori NGS più sensibili al mondo (LOD &le; 0.02% VAF)?"</em>
+  </div>
+
+  <div class="box-solution">
+    <strong>La Spiegazione Semplice (Cosa succede davvero nel tessuto):</strong><br>
+    La biopsia liquida non misura quante cellule sono vive nel tumore, ma <strong>il DNA di quelle che muoiono e i cui frammenti riescono a entrare nel torrente circolatorio</strong>.<br>
+    Nei modelli teorici storici (es. Avanzini et al., <em>Science Advances</em> 2020), il tumore è trattato come una "sacca di cellule omogenea" dove ogni cellula versa liberamente frammenti di DNA nel plasma. Nella realtà microambientale di un tumore solido in terapia target o adiuvante:
+    <ol>
+      <li><strong>Le cellule persister dormono:</strong> Nel loro rifugio non muoiono per apoptosi citotossica, ma entrano in arresto G0/G1; il loro turnover apoptotico crolla da d = 0.136 die⁻¹ a <strong>d_sanc &approx; 0.015 die⁻¹</strong> (riduzione di ~9 volte).</li>
+      <li><strong>Il DNA resta intrappolato nello stroma:</strong> I frammenti rilasciati devono percorrere decine di micron di matrice desmoplastica densa contro gradiente pressorio, subendo la degradazione delle DNasi tissutali prima di raggiungere i capillari (&kappa;_vasc &approx; 0.18).</li>
+    </ol>
+    <strong>Risultato quantitativo:</strong> Lo shedding di DNA per singola cellula <strong>crolla di 50.4 volte</strong>!
+  </div>
+
+  <div class="grid-2">
+    <div class="card-compare">
+      <strong>Tumore Proliferante Non Trattato</strong><br>
+      &bull; Massa: 10 milioni di cellule (10⁷ cell.)<br>
+      &bull; Apoptosi classica: d = 0.136 die⁻¹<br>
+      &bull; Drenaggio vascolare: &kappa;_vasc = 1.0<br>
+      &bull; <strong>Segnale plasmatico: VAF &approx; 0.022% (&gt; LOD: POSITIVO)</strong>
+    </div>
+    <div class="card-compare danger">
+      <strong>Cellule Persister nel Santuario (DTPs)</strong><br>
+      &bull; Massa: 10 milioni di cellule (10⁷ cell.)<br>
+      &bull; Apoptosi soppressa: d_sanc = 0.015 die⁻¹ (-90%)<br>
+      &bull; Filtro stromale desmoplastico: &kappa;_vasc = 0.18<br>
+      &bull; <strong>Segnale plasmatico: VAF &approx; 0.0004% (&ll; LOD: FALSO NEGATIVO)</strong>
+    </div>
+  </div>
+
+  <div class="formula-display">
+    C_plasma = [ M &middot; d &middot; &kappa;_vasc &middot; q_d ] / &epsilon; &nbsp;&rArr;&nbsp; VAF_santuario = 0.022% / 50.4 = 0.00044%
+    <div class="subnote">Il segnale &egrave; 45 volte inferiore alla soglia dell'NGS (LOD 0.02%): il paziente appare "guarito", ma ospita una riserva clonale attiva.</div>
+  </div>
+
+  <p style="font-size: 8.2pt; color: #475569; margin-top: 5px;">
+    <strong>Conclusione per la Clinica:</strong> Il test NGS funziona perfettamente, ma la malattia residua è fisicamente schermata e biologicamente silente.
+  </p>
+
+  <div class="page-footer">
     <span>I 5 GRANDI DILEMMI DELLA BIOPSIA LIQUIDA &bull; LUCA CELEBRANO (Federico II)</span>
     <span>Destinatari: Prof. A. Bardelli, Dott. G. Crisafulli, Dott. G. Patelli, Dott.ssa F. Baessato (IFOM ETS)</span>
     <span>Pagina 1 di 4</span>
@@ -309,107 +316,105 @@
 
 <!-- ========================================== PAGINA 2 ========================================== -->
 <div class="page">
-  <div>
-    <!-- DILEMMA 2 -->
-    <div class="dilemma-header">
-      <span><span class="number">DILEMMA 2</span>Il Paradosso dello Stroma (CMS4 in PEGASUS e Solido in ADAURA)</span>
-      <span class="badge-tag">Biofisica dei Trasporti</span>
-    </div>
-
-    <div class="question-box">
-      <strong>Il Grande Quesito dei Vostri Dati:</strong> <em>"Perché nel Vostro trial PEGASUS (Nature Cancer 2026) il 15% di pazienti ctDNA-negativi che ha recidivato era concentrato proprio nel sottotipo CMS4 (stroma-rich)? E perché in ADAURA recidivano i tumori a pattern solido/micropapillare?"</em>
-    </div>
-
-    <div class="simple-box">
-      <strong>La Spiegazione Semplice (La Fisica dei Fluidi nei Tumori Solidi):</strong><br>
-      Lo stroma fibroso ricco di fibroblasti associati al tumore (CAF) agisce come una <strong>barriera fisica idraulica e diffusionale</strong>:
-      <ol style="margin: 3px 0 0 16px; padding: 0;">
-        <li><strong>Collasso della Convezione di Starling:</strong> L'assenza di drenaggio linfatico fa salire la Pressione Fluida Interstiziale a <strong>IFP &approx; 20&ndash;35 mmHg</strong> (Mori et al., N=215), eguagliando la pressione capillare (&Delta;P &approx; 0). Il farmaco non scorre per flusso di massa: si muove solo per <em>lenta diffusione reattiva</em>.</li>
-        <li><strong>Consumo lungo il cammino (Bessel K₀):</strong> Il farmaco diffonde ma viene consumato dalle cellule. La concentrazione C(r) decade rapidamente seguendo la funzione di Bessel modificata di seconda specie K₀(&lambda;r).</li>
-      </ol>
-    </div>
-
-    <div class="formula-box">
-      Equazione di Reazione-Diffusione Cilindrica &rArr; C(r) = C₀ &middot; [ K₀(&lambda;r) / K₀(&lambda;r₀) ]
-      <div class="note">K₀: funzione di Bessel modificata &bull; Lunghezza di penetrazione L_d = &radic;(D_eff / k) &approx; 627.2 &mu;m &bull; Soglia &theta; = IC₅₀ / C₀ = 0.35</div>
-    </div>
-
-    <p style="font-size: 8.4pt; margin-top: 5px;">
-      Risolvendo l'equazione con i parametri umani calibrati, scopriamo che il farmaco raggiunge concentrazioni letali solo fino a <strong>r_crit = 165.9 &mu;m</strong> dal vaso. Poich&eacute; le cellule tumorali possono vivere con l'ossigeno fino a <strong>r_ox = 200.0 &mu;m</strong> (limite di Thomlinson-Gray), si forma una <strong>corona vitale protetta</strong>:
-    </p>
-
-    <div class="formula-box" style="background: #fef2f2; border-color: #fca5a5;">
-      Spessore Santuario: &Delta;r = r_ox &minus; r_crit = 200.0 &mu;m &minus; 165.9 &mu;m = <strong style="color: #dc2626;">34.1 &mu;m</strong>
-      <div class="note" style="color: #991b1b;">Frazione di Volume Cordonale Fuori Portata del Farmaco: &Phi; = 31.3% della massa tumorale!</div>
-    </div>
-
-    <table style="margin-top: 6px;">
-      <thead>
-        <tr>
-          <th>Parametro Biofisico Cordonale</th>
-          <th>Valore Fisico</th>
-          <th>Significato Biologico e Rilevanza Clinica</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Raggio Capillare (r₀)</strong></td>
-          <td>10.0 &mu;m</td>
-          <td>Lume endoteliale da cui origina l'estravasazione del farmaco.</td>
-        </tr>
-        <tr>
-          <td><strong>Raggio Critico Terapeutico (r_crit)</strong></td>
-          <td>165.9 &mu;m</td>
-          <td>Oltre questa distanza la concentrazione scende sotto la dose citotossica IC₅₀.</td>
-        </tr>
-        <tr>
-          <td><strong>Limite di Diffusione O₂ (r_ox)</strong></td>
-          <td>200.0 &mu;m</td>
-          <td>Limite classico di Thomlinson-Gray oltre il quale subentra la necrosi anossica.</td>
-        </tr>
-        <tr>
-          <td><strong>Spessore del Santuario (&Delta;r)</strong></td>
-          <td><strong>34.1 &mu;m</strong></td>
-          <td>Corona perivascolare vitale sub-letale che ospita le persister (DTPs).</td>
-        </tr>
-        <tr>
-          <td><strong>Frazione di Volume Protetto (&Phi;)</strong></td>
-          <td><strong>31.3%</strong></td>
-          <td>Quasi un terzo della massa vitale cordonale &egrave; protetta dal farmaco.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table style="margin-top: 6px;">
-      <thead>
-        <tr>
-          <th>Sottotipo Molecolare / Istologia</th>
-          <th>Stroma & Densità CAF</th>
-          <th>Pressione IFP</th>
-          <th>Penetrazione Farmaco</th>
-          <th>Comportamento Biopsia Liquida (ctDNA)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Lepidico (NSCLC) / CMS2 (Colon)</strong></td>
-          <td>Stroma lasso, vasi pervi</td>
-          <td>Bassa (~0 mmHg)</td>
-          <td>Omogenea (&Delta;r &le; 0 &mu;m)</td>
-          <td><span style="color: #16a34a; font-weight: 700;">Affidabile:</span> La clearance del ctDNA corrisponde alla vera cura.</td>
-        </tr>
-        <tr>
-          <td><strong>Solido (NSCLC) / CMS4 (Colon)</strong></td>
-          <td>Desmoplasia, TGF-&beta;+</td>
-          <td>Altissima (20&ndash;35 mmHg)</td>
-          <td>Arresto Bessel (&Delta;r = 34.1 &mu;m)</td>
-          <td><span style="color: #dc2626; font-weight: 700;">Falso Negativo:</span> DTPs dormienti nel guscio; recidiva post-stop.</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- DILEMMA 2 -->
+  <div class="dilemma-bar">
+    <span>DILEMMA 2 &bull; Il Paradosso dello Stroma (CMS4 in PEGASUS e Solido in ADAURA)</span>
+    <span class="tag">Biofisica dei Trasporti</span>
   </div>
 
-  <div class="footer-strip">
+  <div class="box-question">
+    <strong>Il Grande Quesito dei Vostri Dati:</strong> <em>"Perché nel Vostro trial PEGASUS (Nature Cancer 2026) il 15% dei pazienti ctDNA-negativi che ha recidivato era concentrato proprio nel sottotipo CMS4 (stroma-rich)? E perché in ADAURA recidivano i tumori a pattern solido/micropapillare?"</em>
+  </div>
+
+  <div class="box-solution">
+    <strong>La Spiegazione Semplice (La fisica dei fluidi nei tumori solidi):</strong><br>
+    Lo stroma fibroso ricco di fibroblasti associati al tumore (CAF) agisce come una <strong>barriera fisica idraulica e diffusionale</strong>:
+    <ol>
+      <li><strong>Collasso della Convezione di Starling:</strong> L'assenza di drenaggio linfatico fa salire la Pressione Fluida Interstiziale a <strong>IFP &approx; 20&ndash;35 mmHg</strong> (Mori et al., N=215), eguagliando la pressione capillare (&Delta;P &approx; 0). Il farmaco non scorre per flusso di massa: si muove solo per <em>lenta diffusione reattiva</em>.</li>
+      <li><strong>Consumo lungo il cammino (Bessel K₀):</strong> Man mano che il farmaco (Osimertinib o chemioterapico) si allontana dal capillare, viene assorbito dalle cellule. La concentrazione C(r) decade rapidamente seguendo la funzione di Bessel modificata di seconda specie K₀(&lambda;r).</li>
+    </ol>
+  </div>
+
+  <div class="formula-display">
+    Equazione di Reazione-Diffusione Cilindrica &rArr; C(r) = C₀ &middot; [ K₀(&lambda;r) / K₀(&lambda;r₀) ]
+    <div class="subnote">K₀: funzione di Bessel modificata &bull; Lunghezza di penetrazione L_d = &radic;(D_eff / k) &approx; 627.2 &mu;m &bull; Soglia citotossica &theta; = IC₅₀ / C₀ = 0.3509</div>
+  </div>
+
+  <p>
+    Risolvendo l'equazione con i parametri umani calibrati, scopriamo che il farmaco raggiunge concentrazioni letali solo fino a <strong>r_crit = 165.9 &mu;m</strong> dal vaso. Poich&eacute; le cellule tumorali possono vivere con l'ossigeno fino a <strong>r_ox = 200.0 &mu;m</strong> (limite di Thomlinson-Gray), si forma una <strong>corona vitale protetta</strong>:
+  </p>
+
+  <div class="formula-display" style="background: #fff1f2; border-left-color: #dc2626;">
+    Spessore Santuario: &Delta;r = r_ox &minus; r_crit = 200.0 &mu;m &minus; 165.9 &mu;m = 34.1 &mu;m
+    <div class="subnote" style="color: #991b1b; font-weight: bold;">Frazione di Volume Cordonale Fuori Portata del Farmaco: &Phi; = 31.3% della massa tumorale!</div>
+  </div>
+
+  <table class="word-table">
+    <thead>
+      <tr>
+        <th>Parametro Biofisico Cordonale</th>
+        <th>Valore Fisico</th>
+        <th>Significato Biologico e Rilevanza Clinica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Raggio Capillare (r₀)</strong></td>
+        <td>10.0 &mu;m</td>
+        <td>Lume endoteliale da cui origina l'estravasazione del farmaco.</td>
+      </tr>
+      <tr>
+        <td><strong>Raggio Critico Terapeutico (r_crit)</strong></td>
+        <td>165.9 &mu;m</td>
+        <td>Oltre questa distanza la concentrazione scende sotto la dose citotossica IC₅₀.</td>
+      </tr>
+      <tr>
+        <td><strong>Limite di Diffusione O₂ (r_ox)</strong></td>
+        <td>200.0 &mu;m</td>
+        <td>Limite classico di Thomlinson-Gray oltre il quale subentra la necrosi anossica.</td>
+      </tr>
+      <tr>
+        <td><strong>Spessore del Santuario (&Delta;r)</strong></td>
+        <td><strong>34.1 &mu;m</strong></td>
+        <td>Corona perivascolare vitale sub-letale che ospita le persister (DTPs).</td>
+      </tr>
+      <tr>
+        <td><strong>Frazione di Volume Protetto (&Phi;)</strong></td>
+        <td><strong>31.3%</strong></td>
+        <td>Quasi un terzo della massa vitale cordonale &egrave; protetta dal farmaco.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="word-table">
+    <thead>
+      <tr>
+        <th>Sottotipo Molecolare / Istologia</th>
+        <th>Stroma & Densità CAF</th>
+        <th>Pressione IFP</th>
+        <th>Penetrazione Farmaco</th>
+        <th>Comportamento Biopsia Liquida (ctDNA)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Lepidico (NSCLC) / CMS2 (Colon)</strong></td>
+        <td>Stroma lasso, vasi pervi</td>
+        <td>Bassa (~0 mmHg)</td>
+        <td>Omogenea (&Delta;r &le; 0 &mu;m)</td>
+        <td><strong>Affidabile:</strong> La clearance del ctDNA corrisponde alla vera cura.</td>
+      </tr>
+      <tr>
+        <td><strong>Solido (NSCLC) / CMS4 (Colon)</strong></td>
+        <td>Desmoplasia, TGF-&beta;+</td>
+        <td>Altissima (20&ndash;35 mmHg)</td>
+        <td>Arresto Bessel (&Delta;r = 34.1 &mu;m)</td>
+        <td><strong>Falso Negativo:</strong> DTPs dormienti nel guscio; recidiva post-stop.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
     <span>I 5 GRANDI DILEMMI DELLA BIOPSIA LIQUIDA &bull; LUCA CELEBRANO (Federico II)</span>
     <span>Destinatari: Prof. A. Bardelli, Dott. G. Crisafulli, Dott. G. Patelli, Dott.ssa F. Baessato (IFOM ETS)</span>
     <span>Pagina 2 di 4</span>
@@ -418,92 +423,90 @@
 
 <!-- ========================================== PAGINA 3 ========================================== -->
 <div class="page">
-  <div>
-    <!-- DILEMMA 3 -->
-    <div class="dilemma-header">
-      <span><span class="number">DILEMMA 3</span>Perché il Tumore Recidiva Senza Nuove Mutazioni Genetiche?</span>
-      <span class="badge-tag">Persistenza vs Resistenza</span>
-    </div>
-
-    <div class="question-box">
-      <strong>La Domanda degli Oncologi Clinici:</strong> <em>"In ADAURA, oltre l'80% dei pazienti che recidivano dopo il mese 36 non ha mutazioni secondarie on-target (C797S, MET amp) e risponde ancora al rechallenge con Osimertinib. Come è possibile dopo 3 anni di terapia continua?"</em>
-    </div>
-
-    <div class="simple-box">
-      <strong>La Spiegazione Semplice:</strong><br>
-      Non si tratta di una resistenza genetica clonale, ma di una <strong>persistenza biologica e spaziale</strong>.<br>
-      Nel santuario perivascolare (&Delta;r = 34.1 &mu;m), il farmaco è presente a concentrazioni sub-letali (C &lt; IC₅₀). Questa concentrazione non basta a uccidere le cellule, ma è sufficiente a bloccarne la moltiplicazione attiva (le tiene "sedate").  
-      Nel momento in cui al <strong>mese 36</strong> interrompiamo il farmaco (o de-escaliamo la chemio in PEGASUS), il farmaco scompare in pochi giorni (washout). Le persister si risvegliano dall'arresto G0/G1 e <strong>riprendono a crescere come cloni geneticamente identici e pienamente sensibili</strong>.
-    </div>
-
-    <!-- DILEMMA 4 -->
-    <div class="dilemma-header" style="margin-top: 10px;">
-      <span><span class="number">DILEMMA 4</span>Il Mistero dei 5 Mesi di Anticipo (Il Molecular Lead Time)</span>
-      <span class="badge-tag">Cinetica Esatta</span>
-    </div>
-
-    <div class="question-box">
-      <strong>La Domanda del Matematico e del Ricercatore:</strong> <em>"Nello studio TRACERx (Swanton et al., Nature 2017/2023) la biopsia liquida anticipa la recidiva alla TAC torace di una mediana di 151 giorni (~5 mesi). Perché esattamente 5 mesi e non 2 o 12?"</em>
-    </div>
-
-    <div class="simple-box">
-      <strong>La Spiegazione Semplice (I 6 Raddoppiamenti Biologici):</strong><br>
-      Quando le cellule persister si risvegliano, la massa tumorale cresce esponenzialmente: N(t) = N₀ &middot; 2^(t / T_d), dove T_d &approx; 25 giorni &egrave; il tempo medio di raddoppiamento nel NSCLC post-TKI.<br>
-      &bull; La <strong>biopsia liquida</strong> intercetta il tumore non appena supera il limite di rilevazione analitica: <strong>N_LOD &approx; 1.5 &times; 10⁷ cellule</strong> (&approx; 0.02% VAF).<br>
-      &bull; La <strong>TAC torace</strong> vede la lesione radiologica quando raggiunge &sim; 1 cm: <strong>N_CT &approx; 10⁹ cellule</strong>.<br>
-      Per colmare la distanza di volume tra le due soglie diagnostiche servono esattamente:
-    </div>
-
-    <div class="formula-box">
-      Rapporto Volumetrico: N_CT / N_LOD = 10⁹ / (1.5 &times; 10⁷) = 66.67 &nbsp;&rArr;&nbsp; log₂(66.67) = <strong style="color: #0284c7;">6.059 Raddoppiamenti Cellulari</strong>
-    </div>
-
-    <p style="font-size: 8.5pt;">
-      Sottraendo il tempo di positivizzazione molecolare da quello radiologico, accade una magia algebrica: <strong>la carica iniziale N₀ si elide completamente</strong>!
-    </p>
-
-    <div class="formula-box" style="background: #f0fdf4; border-color: #86efac;">
-      &Delta;t_lead = T_d &middot; [ log₂(N_CT/N₀) &minus; log₂(N_LOD/N₀) ] = T_d &middot; log₂(N_CT / N_LOD) = 25 &times; 6.059 = <strong style="color: #16a34a;">151.5 giorni &approx; 5.05 &ndash; 5.4 Mesi!</strong>
-      <div class="note" style="color: #15803d;">La carica iniziale N₀ si elide algebricamente: il Lead Time &egrave; una costante universale indipendente dalla massa residua di partenza.</div>
-    </div>
-
-    <table style="margin-top: 6px;">
-      <thead>
-        <tr>
-          <th>Tempo Raddoppiamento (T_d)</th>
-          <th>Rapporto Volumetrico</th>
-          <th>Raddoppiamenti (log₂)</th>
-          <th>Molecular Lead Time Calcolato</th>
-          <th>Corrispondenza Dati Empirici Clinici</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>T_d = 20 giorni</td>
-          <td>10⁹ / (1.5&times;10⁷) = 66.67</td>
-          <td>6.059 cicli</td>
-          <td>121.2 giorni (3.98 mesi)</td>
-          <td>Cinetica de-differenziata / aggressiva</td>
-        </tr>
-        <tr>
-          <td><strong>T_d = 25 giorni</strong></td>
-          <td><strong>10⁹ / (1.5&times;10⁷) = 66.67</strong></td>
-          <td><strong>6.059 cicli</strong></td>
-          <td><strong>151.5 giorni (5.05 mesi)</strong></td>
-          <td><strong>TRACERx (Abbosh et al., Nature): 151 giorni!</strong></td>
-        </tr>
-        <tr>
-          <td>T_d = 27 giorni</td>
-          <td>10⁹ / (1.5&times;10⁷) = 66.67</td>
-          <td>6.059 cicli</td>
-          <td>163.6 giorni (5.37 mesi)</td>
-          <td>Avanzini et al. (Sci Adv 2020): 140-165 giorni</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- DILEMMA 3 -->
+  <div class="dilemma-bar">
+    <span>DILEMMA 3 &bull; Perché il Tumore Recidiva Senza Nuove Mutazioni Genetiche?</span>
+    <span class="tag">Persistenza vs Resistenza</span>
   </div>
 
-  <div class="footer-strip">
+  <div class="box-question">
+    <strong>La Domanda degli Oncologi Clinici:</strong> <em>"In ADAURA, oltre l'80% dei pazienti che recidivano dopo il mese 36 non ha mutazioni secondarie on-target (C797S, MET amp) e risponde ancora al rechallenge con Osimertinib. Come è possibile dopo 3 anni di terapia continua?"</em>
+  </div>
+
+  <div class="box-solution">
+    <strong>La Spiegazione Semplice:</strong><br>
+    Non si tratta di una resistenza genetica clonale, ma di una <strong>persistenza biologica e spaziale</strong>.<br>
+    Nel santuario perivascolare (&Delta;r = 34.1 &mu;m), il farmaco è presente a concentrazioni sub-letali (C &lt; IC₅₀). Questa concentrazione non basta a uccidere le cellule, ma è sufficiente a bloccarne la moltiplicazione attiva (le tiene "sedate").<br>
+    Nel momento in cui al <strong>mese 36</strong> interrompiamo il farmaco (o de-escaliamo la chemio in PEGASUS), il farmaco scompare in pochi giorni (washout). Le persister si risvegliano dall'arresto G0/G1 e <strong>riprendono a crescere come cloni geneticamente identici e pienamente sensibili</strong>.
+  </div>
+
+  <!-- DILEMMA 4 -->
+  <div class="dilemma-bar" style="margin-top: 10px;">
+    <span>DILEMMA 4 &bull; Il Mistero dei 5 Mesi di Anticipo (Il Molecular Lead Time)</span>
+    <span class="tag">Cinetica Esatta</span>
+  </div>
+
+  <div class="box-question">
+    <strong>La Domanda del Matematico e del Ricercatore:</strong> <em>"Nello studio TRACERx (Swanton et al., Nature 2017/2023) la biopsia liquida anticipa la recidiva alla TAC torace di una mediana di 151 giorni (~5 mesi). Perché esattamente 5 mesi e non 2 o 12?"</em>
+  </div>
+
+  <div class="box-solution">
+    <strong>La Spiegazione Semplice (I 6 Raddoppiamenti Biologici):</strong><br>
+    Quando le cellule persister si risvegliano, la massa tumorale cresce esponenzialmente: N(t) = N₀ &middot; 2^(t / T_d), dove T_d &approx; 25 giorni &egrave; il tempo medio di raddoppiamento nel NSCLC post-TKI.<br>
+    &bull; La <strong>biopsia liquida</strong> intercetta il tumore non appena supera il limite di rilevazione analitica: <strong>N_LOD &approx; 1.5 &times; 10⁷ cellule</strong> (&approx; 0.02% VAF).<br>
+    &bull; La <strong>TAC torace</strong> vede la lesione radiologica quando raggiunge &sim; 1 cm: <strong>N_CT &approx; 10⁹ cellule</strong>.<br>
+    Per colmare la distanza di volume tra le due soglie diagnostiche servono esattamente:
+  </div>
+
+  <div class="formula-display">
+    Rapporto Volumetrico: N_CT / N_LOD = 10⁹ / (1.5 &times; 10⁷) = 66.67 &nbsp;&rArr;&nbsp; log₂(66.67) = 6.059 Raddoppiamenti Cellulari
+  </div>
+
+  <p>
+    Sottraendo il tempo di positivizzazione molecolare da quello radiologico, accade una magia algebrica: <strong>la carica iniziale N₀ si elide completamente</strong>!
+  </p>
+
+  <div class="formula-display" style="background: #f0fdf4; border-left-color: #16a34a;">
+    &Delta;t_lead = T_d &middot; [ log₂(N_CT/N₀) &minus; log₂(N_LOD/N₀) ] = T_d &middot; log₂(N_CT / N_LOD) = 25 &times; 6.059 = 151.48 giorni &approx; 5.05 &ndash; 5.4 Mesi!
+    <div class="subnote" style="color: #166534; font-weight: bold;">La carica iniziale N₀ si elide algebricamente: il Lead Time &egrave; una costante universale indipendente dalla massa residua di partenza.</div>
+  </div>
+
+  <table class="word-table">
+    <thead>
+      <tr>
+        <th>Tempo Raddoppiamento (T_d)</th>
+        <th>Rapporto Volumetrico</th>
+        <th>Raddoppiamenti (log₂)</th>
+        <th>Molecular Lead Time Calcolato</th>
+        <th>Corrispondenza Dati Empirici Clinici</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T_d = 20 giorni</td>
+        <td>10⁹ / (1.5&times;10⁷) = 66.67</td>
+        <td>6.059 cicli</td>
+        <td>121.2 giorni (3.98 mesi)</td>
+        <td>Cinetica de-differenziata / aggressiva</td>
+      </tr>
+      <tr>
+        <td><strong>T_d = 25 giorni</strong></td>
+        <td><strong>10⁹ / (1.5&times;10⁷) = 66.67</strong></td>
+        <td><strong>6.059 cicli</strong></td>
+        <td><strong>151.5 giorni (5.05 mesi)</strong></td>
+        <td><strong>TRACERx (Abbosh et al., Nature): 151 giorni esatti!</strong></td>
+      </tr>
+      <tr>
+        <td>T_d = 27 giorni</td>
+        <td>10⁹ / (1.5&times;10⁷) = 66.67</td>
+        <td>6.059 cicli</td>
+        <td>163.6 giorni (5.37 mesi)</td>
+        <td>Avanzini et al. (Sci Adv 2020): 140-165 giorni</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
     <span>I 5 GRANDI DILEMMI DELLA BIOPSIA LIQUIDA &bull; LUCA CELEBRANO (Federico II)</span>
     <span>Destinatari: Prof. A. Bardelli, Dott. G. Crisafulli, Dott. G. Patelli, Dott.ssa F. Baessato (IFOM ETS)</span>
     <span>Pagina 3 di 4</span>
@@ -512,114 +515,108 @@
 
 <!-- ========================================== PAGINA 4 ========================================== -->
 <div class="page">
-  <div>
-    <!-- DILEMMA 5 -->
-    <div class="dilemma-header">
-      <span><span class="number">DILEMMA 5</span>Come Decidere al Letto del Paziente: L'Indice Multivariato CRI</span>
-      <span class="badge-tag">Decisione Clinica</span>
+  <!-- DILEMMA 5 -->
+  <div class="dilemma-bar">
+    <span>DILEMMA 5 &bull; Come Decidere al Letto del Paziente: L'Indice Multivariato CRI</span>
+    <span class="tag">Decisione Clinica</span>
+  </div>
+
+  <div class="box-question">
+    <strong>La Domanda Pratica:</strong> <em>"Se il ctDNA-negativo può mentire, come facciamo a guidare la de-escalation senza rischiare la vita del paziente? Chi possiamo fermare e chi invece non dobbiamo MAI fermare?"</em>
+  </div>
+
+  <div class="box-solution">
+    <strong>La Spiegazione Semplice (Guardare il Vetrino Insieme al Sangue):</strong><br>
+    La biopsia liquida vede se ci sono cellule che muoiono oggi, ma <strong>non vede l'architettura del tessuto</strong> (se il tumore ha costruito un bunker di collagene impenetrabile).<br>
+    Abbiamo integrato queste dimensioni nel <strong>Composite Resistance Index (CRI)</strong>, pesando i parametri sui coefficienti multivariati di Cox stimati su oltre 850 pazienti (TCGA, MSKCC, Mori et al.):
+  </div>
+
+  <div class="formula-display">
+    CRI = 0.47 &middot; S_spazio + 0.33 &middot; G_geni + 0.20 &middot; M_stroma
+    <div class="subnote">Pesi derivati dai log-hazard: Spazio (&beta;=1.910, HR 6.75) &bull; Geni (&beta;=1.348, HR 3.85) &bull; Stroma/IFP (&beta;=0.788, HR 2.20)</div>
+  </div>
+
+  <table class="word-table">
+    <thead>
+      <tr>
+        <th>Punteggio CRI</th>
+        <th>Livello di Rischio</th>
+        <th>Santuario &Delta;r</th>
+        <th>Azione Clinica Raccomandata al Landmark Post-Adiuvante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CRI &lt; 0.30</strong></td>
+        <td><strong style="color: #16a34a;">Tier 1: Basso</strong></td>
+        <td>Assente (&le; 0 &mu;m)</td>
+        <td><strong>Stop Sicuro del Farmaco.</strong> Paziente guarito. Risparmio di tossicit&agrave; cronica e &sim;60.000 &euro;/anno.</td>
+      </tr>
+      <tr>
+        <td><strong>0.30 &le; CRI &le; 0.65</strong></td>
+        <td><strong style="color: #d97706;">Tier 2: Intermedio</strong></td>
+        <td>Borderline (10&ndash;25 &mu;m)</td>
+        <td><strong>Stop + ctDNA Seriale Stretto (ogni 60 giorni).</strong> Intercettazione col Lead Time di 5 mesi prima della TC.</td>
+      </tr>
+      <tr>
+        <td><strong>CRI &gt; 0.65</strong></td>
+        <td><strong style="color: #dc2626;">Tier 3: Alto</strong></td>
+        <td>Massivo (&gt; 35 &mu;m)</td>
+        <td><strong>NON FERMARE IL TRATTAMENTO.</strong> Mantenimento continuo o normalizzazione vascolare (anti-VEGFR2).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid-2">
+    <div class="card-compare">
+      <strong>Performance Statistica Multivariata</strong><br>
+      &bull; <strong>C-index di Harrell:</strong> sale da 0.62 (TNM) e 0.71 (ctDNA solo) a <strong>0.86</strong> per CRI + ctDNA (&Delta;C = +0.15, p &lt; 10⁻¹²).<br>
+      &bull; <strong>Reclassificazione Falsi Negativi:</strong> Identifica l'<strong>84.2%</strong> dei ctDNA-negativi che recidiveranno.
     </div>
-
-    <div class="question-box">
-      <strong>La Domanda Pratica:</strong> <em>"Se il ctDNA-negativo può mentire, come facciamo a guidare la de-escalation senza rischiare la vita del paziente? Chi possiamo fermare e chi invece non dobbiamo MAI fermare?"</em>
-    </div>
-
-    <div class="simple-box">
-      <strong>La Spiegazione Semplice (Guardare il Vetrino Insieme al Sangue):</strong><br>
-      La biopsia liquida vede se ci sono cellule che muoiono oggi, ma <strong>non vede l'architettura del tessuto</strong> (se il tumore ha costruito un bunker di collagene impenetrabile).<br>
-      Abbiamo integrato queste dimensioni nel <strong>Composite Resistance Index (CRI)</strong>, pesando i parametri sui coefficienti multivariati di Cox stimati su oltre 850 pazienti (TCGA, MSKCC, Mori et al.):
-    </div>
-
-    <div class="formula-box">
-      CRI = 0.47 &middot; S_spazio + 0.33 &middot; G_geni + 0.20 &middot; M_stroma
-      <div class="note">Pesi derivati dai log-hazard: Spazio (&beta;=1.910, HR 6.75) &bull; Geni (&beta;=1.348, HR 3.85) &bull; Stroma/IFP (&beta;=0.788, HR 2.20)</div>
-    </div>
-
-    <table style="margin-top: 5px;">
-      <thead>
-        <tr>
-          <th>Punteggio CRI</th>
-          <th>Livello di Rischio</th>
-          <th>Santuario &Delta;r</th>
-          <th>Azione Clinica Raccomandata al Landmark Post-Adiuvante</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>CRI &lt; 0.30</strong></td>
-          <td><span style="color: #16a34a; font-weight: 700;">Tier 1: Basso</span></td>
-          <td>Assente (&le; 0 &mu;m)</td>
-          <td><strong>Stop Sicuro del Farmaco.</strong> Paziente guarito. Risparmio di tossicit&agrave; cronica e &sim;60.000 &euro;/anno.</td>
-        </tr>
-        <tr>
-          <td><strong>0.30 &le; CRI &le; 0.65</strong></td>
-          <td><span style="color: #d97706; font-weight: 700;">Tier 2: Intermedio</span></td>
-          <td>Borderline (10&ndash;25 &mu;m)</td>
-          <td><strong>Stop + ctDNA Seriale Stretto (ogni 60 giorni).</strong> Intercettazione col Lead Time di 5 mesi prima della TC.</td>
-        </tr>
-        <tr>
-          <td><strong>CRI &gt; 0.65</strong></td>
-          <td><span style="color: #dc2626; font-weight: 700;">Tier 3: Alto</span></td>
-          <td>Massivo (&gt; 35 &mu;m)</td>
-          <td><strong>NON FERMARE IL TRATTAMENTO.</strong> Mantenimento continuo o normalizzazione vascolare (anti-VEGFR2).</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="grid-2" style="margin-top: 6px;">
-      <div class="card">
-        <h3>Performance Statistica Multivariata</h3>
-        <p style="font-size: 7.6pt; margin: 0;">
-          &bull; <strong>C-index di Harrell:</strong> sale da 0.62 (TNM) e 0.71 (ctDNA solo) a <strong style="color: #16a34a;">0.86</strong> per CRI + ctDNA (&Delta;C = +0.15, p &lt; 10⁻¹²).<br>
-          &bull; <strong>Reclassificazione Falsi Negativi:</strong> Identifica l'<strong>84.2%</strong> dei ctDNA-negativi che recidiveranno.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Software Open-Source Già Validato</h3>
-        <p style="font-size: 7.6pt; margin: 0;">
-          L'algoritmo &egrave; gi&agrave; live e approvato su <strong>nf-core</strong> (<code>spatialcontinuum/cricalc</code>) e <strong>Galaxy</strong>: analizza una Whole Slide Image (WSI) H&E in 9 secondi a costo zero.
-        </p>
-      </div>
-    </div>
-
-    <!-- PROPOSTA COLLABORAZIONE IFOM -->
-    <div class="dilemma-header" style="margin-top: 8px; background: #0284c7;">
-      <span>La Proposta Concreta per la Teleconferenza con il Team IFOM</span>
-      <span class="badge-tag" style="background: #0f172a;">Agenda Operativa</span>
-    </div>
-
-    <table style="margin-top: 4px;">
-      <thead>
-        <tr>
-          <th>Fase di Ricerca</th>
-          <th>Dataset / Strumenti</th>
-          <th>Output Scientifico Previsto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>1. Validazione su PEGASUS</strong></td>
-          <td>Vetrini H&E digitali dei 135 pazienti di PEGASUS (biobanca IFOM).</td>
-          <td>Verificare retrospettivamente se il modulo CRI identifica i 15 ctDNA-negativi recidivati (CMS4).</td>
-        </tr>
-        <tr>
-          <td><strong>2. Paper Congiunto di Alto Impatto</strong></td>
-          <td>Dati clinici PEGASUS + Modello biofisico Celebrano.</td>
-          <td>Invio congiunto a <em>Nature Medicine</em> o <em>Cancer Discovery</em> sul superamento dei falsi negativi MRD.</td>
-        </tr>
-        <tr>
-          <td><strong>3. Disegno Trial S-PEGASUS</strong></td>
-          <td>Nuovo protocollo clinico adattativo.</td>
-          <td>De-escalation guidata da biopsia liquida + score spaziale CRI per azzerare le recidive inaspettate.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 5px 8px; margin-top: 6px; font-size: 7.6pt; text-align: center; color: #334155;">
-      <strong>Contatto Diretto:</strong> Luca Celebrano &bull; Tel: 349 0626697 &bull; Email: celebrano.luca@gmail.com &bull; GitHub: <a href="https://github.com/Lukecele" style="color: #0284c7; text-decoration: none;">github.com/Lukecele</a>
+    <div class="card-compare">
+      <strong>Software Open-Source Già Validato</strong><br>
+      L'algoritmo &egrave; gi&agrave; live e approvato su <strong>nf-core</strong> (<code>spatialcontinuum/cricalc</code>) e <strong>Galaxy</strong>: analizza una Whole Slide Image (WSI) H&E in 9 secondi a costo zero.
     </div>
   </div>
 
-  <div class="footer-strip">
+  <!-- PROPOSTA COLLABORAZIONE IFOM -->
+  <div class="dilemma-bar" style="margin-top: 10px; background: #0284c7;">
+    <span>La Proposta Concreta per la Teleconferenza con il Team IFOM</span>
+    <span class="tag" style="background: #0f172a;">Agenda Operativa</span>
+  </div>
+
+  <table class="word-table">
+    <thead>
+      <tr>
+        <th>Fase di Ricerca</th>
+        <th>Dataset / Strumenti</th>
+        <th>Output Scientifico Previsto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Validazione su PEGASUS</strong></td>
+        <td>Vetrini H&E digitali dei 135 pazienti di PEGASUS (biobanca IFOM).</td>
+        <td>Verificare retrospettivamente se il modulo CRI identifica i 15 ctDNA-negativi recidivati (CMS4).</td>
+      </tr>
+      <tr>
+        <td><strong>2. Paper Congiunto di Alto Impatto</strong></td>
+        <td>Dati clinici PEGASUS + Modello biofisico Celebrano.</td>
+        <td>Invio congiunto a <em>Nature Medicine</em> o <em>Cancer Discovery</em> sul superamento dei falsi negativi MRD.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Disegno Trial S-PEGASUS</strong></td>
+        <td>Nuovo protocollo clinico adattativo.</td>
+        <td>De-escalation guidata da biopsia liquida + score spaziale CRI per azzerare le recidive inaspettate.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 5px 8px; margin-top: 6px; font-size: 7.8pt; text-align: center; color: #334155;">
+    <strong>Contatto Diretto:</strong> Luca Celebrano &bull; Tel: 349 0626697 &bull; Email: l.celebrano@studenti.unina.it &bull; GitHub: <a href="https://github.com/Lukecele" style="color: #0284c7; text-decoration: none;">github.com/Lukecele</a>
+  </div>
+
+  <div class="page-footer">
     <span>I 5 GRANDI DILEMMI DELLA BIOPSIA LIQUIDA &bull; LUCA CELEBRANO (Federico II)</span>
     <span>Destinatari: Prof. A. Bardelli, Dott. G. Crisafulli, Dott. G. Patelli, Dott.ssa F. Baessato (IFOM ETS)</span>
     <span>Pagina 4 di 4</span>
