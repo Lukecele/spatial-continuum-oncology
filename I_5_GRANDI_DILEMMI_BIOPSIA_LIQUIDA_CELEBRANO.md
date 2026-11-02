@@ -4,7 +4,7 @@
 **Autore:** Luca Celebrano, MD Candidate (Scuola di Medicina e Chirurgia, Università degli Studi di Napoli Federico II)  
 **Destinatari:** Prof. Alberto Bardelli, Dott. Giovanni Crisafulli, Dott. Giorgio Patelli, Dott.ssa Francesca Baessato (IFOM ETS Milano / Università degli Studi di Torino)  
 **Data:** Novembre 2026 | **Documento:** Executive Working Paper Pre-Teleconferenza  
-**Contatti:** Tel: 349 0626697 | Email: l.celebrano@studenti.unina.it | GitHub: https://github.com/Lukecele
+**Contatti:** Tel: 349 0626697 / 0817392845 | Email unina: l.celebrano@studenti.unina.it | Email personale: l.celebrano5@gmail.com | GitHub: https://github.com/Lukecele
 
 ---
 
