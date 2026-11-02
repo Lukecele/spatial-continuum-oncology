@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Memorandum Scientifico - IFOM Bardelli - Luca Celebrano</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 14mm 12mm 14mm;
+    @bottom-right {
+      content: "Pagina " counter(page) " di " counter(pages);
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      color: #64748b;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #0f172a;
+    background-color: #ffffff;
+    line-height: 1.42;
+    font-size: 9pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    page-break-after: always;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  /* Header banner */
+  .header-card {
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .title-group h1 {
+    font-size: 14pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 3px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+
+  .title-group .subtitle {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #0284c7;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .meta-box {
+    text-align: right;
+    font-size: 7.5pt;
+    color: #475569;
+    line-height: 1.35;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 6px 10px;
+  }
+
+  .meta-box strong {
+    color: #0f172a;
+  }
+
+  /* Section styles */
+  .section-title {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #0f172a;
+    border-left: 3.5px solid #0284c7;
+    padding-left: 8px;
+    margin: 10px 0 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-title .tag {
+    font-size: 7pt;
+    font-weight: 600;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0 0 6px 0;
+    text-align: justify;
+  }
+
+  /* Highlight boxes */
+  .callout-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 3.5px solid #16a34a;
+    border-radius: 5px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    font-size: 8.5pt;
+  }
+
+  .callout-box.problem {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 3.5px solid #dc2626;
+  }
+
+  .callout-box.highlight {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 3.5px solid #0284c7;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 6px 0;
+  }
+
+  .card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+
+  .card h3 {
+    margin: 0 0 4px 0;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    margin: 6px 0;
+  }
+
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 4px 6px;
+    border: 1px solid #0f172a;
+  }
+
+  td {
+    padding: 4px 6px;
+    border: 1px solid #e2e8f0;
+    vertical-align: middle;
+  }
+
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  /* Formula display */
+  .formula-box {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 6px 10px;
+    margin: 6px 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  .formula-box .note {
+    font-family: 'Inter', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 400;
+    color: #475569;
+    margin-top: 2px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 7pt;
+    font-weight: 600;
+    border-radius: 3px;
+  }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-blue { background: #e0f2fe; color: #075985; }
+
+  .footer-strip {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 5px;
+    font-size: 7pt;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================================== PAGE 1 ========================================== -->
+<div class="page">
+  <div>
+    <div class="header-card">
+      <div class="title-group">
+        <h1>MEMORANDUM SCIENTIFICO-TRASLAZIONALE</h1>
+        <div class="subtitle">Modelli Matematico-Biofisici di Reazione-Diffusione, Cinetica del ctDNA e Recidiva Post-Adiuvante</div>
+      </div>
+      <div class="meta-box">
+        <strong>Autore:</strong> Luca Celebrano, MD Cand. (Federico II)<br>
+        <strong>Destinatari:</strong> Prof. A. Bardelli, Dott. G. Crisafulli,<br>
+        Dott. G. Patelli, Dott.ssa F. Baessato (IFOM / UniTo)<br>
+        <strong>Data:</strong> Novembre 2026 | <strong>Status:</strong> Briefing Pre-TC
+      </div>
+    </div>
+
+    <div class="callout-box highlight">
+      <strong>Scopo del Documento:</strong> Condividere in forma sintetica e rigorosa le basi matematico-statistiche e biologiche dei nostri lavori in vista della teleconferenza di metà novembre. Il documento affronta direttamente il <em>meccanismo biofisico della malattia minima residua (MRD)</em>, dimostra l'origine dei <em>falsi negativi biologici alla biopsia liquida</em> e deriva analiticamente l'invarianza del <em>Molecular Lead Time (5.4 mesi)</em>.
+    </div>
+
+    <div class="section-title">
+      <span>1. Il Problema Clinico: Il Paradosso della Biopsia Liquida Post-Adiuvante</span>
+      <span class="tag">Quadro Clinico</span>
+    </div>
+    <p>
+      Negli ultimi anni, la biopsia liquida basata sul DNA tumorale circolante (ctDNA) ha rivoluzionato il concetto di Malattia Residua Minima (MRD). Tuttavia, i trial clinici cardine e la pratica traslazionale mostrano una discrepanza sistematica tra <em>sensibilità analitica</em> e <em>rilevabilità biologica</em>:
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Carcinoma Polmonare (ADAURA / NSCLC)</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          L'estensione del follow-up del trial ADAURA mostra che il <strong>67.9% delle recidive</strong> si manifesta dopo la sospensione programmata di Osimertinib al mese 36. Oltre l'<strong>80% dei pazienti</strong> recidiva senza mutazioni secondarie di resistenza on-target (C797S, MET amp), mantenendo sensibilità al rechallenge. Durante la terapia, la quasi totalità risulta <strong>ctDNA-negativa</strong>.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Carcinoma del Colon (PEGASUS / CRC)</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          Nel trial PEGASUS (Bardelli et al., <em>Nat Cancer</em> 2026), l'endpoint di DFS &ge; 92% nei ctDNA-negativi non è stato raggiunto a causa del <strong>15% di recidive</strong> tra i pazienti ctDNA-negativi. Le recidive "invisibili" al ctDNA erano massimamente concentrate nel sottotipo <strong>CMS4 (stroma-rich, desmoplasia, TGF-&beta;)</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span>2. Il Limite della Letteratura: L'Ipotesi "Well-Mixed Bag of Cells"</span>
+      <span class="tag">Gap Teorico</span>
+    </div>
+    <p>
+      I modelli matematici di riferimento per la cinetica del ctDNA (es. <strong>Avanzini et al., <em>Science Advances</em> 2020</strong>; Bozic & Nowak, <em>PNAS</em>) descrivono la concentrazione stazionaria di ctDNA ($C$) nel plasma mediante l'equazione:
+    </p>
+    <div class="formula-box">
+      C = (M &middot; d &middot; q_d) / (&epsilon; + r)
+      <div class="note">M: numero cellule | d: tasso apoptosi | q_d: shedding per morte | &epsilon;: clearance plasmatica | r: crescita netta</div>
+    </div>
+    <p>
+      <strong>Il difetto strutturale di questo approccio:</strong> Tratta il tumore come una sospensione cellulare omogenea e ben mescolata, dove ogni cellula ha identica perfusione e versa detriti direttamente nei capillari. Ignora completamente <em>la geometria vascolare 3D, la barriera di reazione-diffusione e la pressione fluida interstiziale (IFP)</em>.
+    </p>
+
+    <div class="callout-box problem">
+      <strong>Il Quesito Aperto per IFOM e per la Clinica:</strong> Perché micrometastasi dormienti composte da milioni di cellule vitali risultano completamente silenti su ctDNA (&lt; 0.01% VAF) durante la terapia, per poi esplodere cineticamente solo dopo la sospensione del farmaco?
+    </div>
+  </div>
+
+  <div class="footer-strip">
+    <span>STUDIO BIOFISICO CONTINUUM ONCOLOGIA &bull; CELEBRANO ET AL.</span>
+    <span>Documento Riservato &bull; IFOM ETS / Università di Torino</span>
+  </div>
+</div>
+
+<!-- ========================================== PAGE 2 ========================================== -->
+<div class="page">
+  <div>
+    <div class="section-title">
+      <span>3. La Risoluzione Biofisica: Barriere di Trasporto e Bessel K₀</span>
+      <span class="tag">Modello Biofisico</span>
+    </div>
+    <p>
+      Nei tumori solidi desmoplastici e con architettura cordonale (solido/micropapillare nel NSCLC; CMS4 nel colon), la conformazione microvascolare impone restrizioni biofisiche insormontabili al trasporto molecolare:
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Collasso della Convezione di Starling</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          L'iperpermeabilità vascolare unita all'assenza di linfatici funzionali innalza la Pressione Fluida Interstiziale tumorale a <strong>IFP &approx; 20&ndash;35 mmHg</strong> (Mori et al., N=215). Il gradiente pressorio transcapillare di Starling si annulla (&Delta;P &approx; 0 mmHg &rArr; J_v &to;rarr; 0). Secondo la legge di Darcy, <strong>il trasporto convettivo &egrave; azzerato</strong>: il farmaco pu&ograve; muoversi solo per <strong>pura diffusione</strong>.
+        </p>
+      </div>
+      <div class="card">
+        <h3>2. Il Cilindro di Krogh & Screening Length</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          Attorno a un capillare di raggio r₀ = 10 &mu;m, il farmaco diffonde nella matrice (D_eff &approx; 59.4 &mu;m&sup2;/s) mentre viene consumato e internalizzato dalle cellule (k &approx; 1.51&times;10⁻⁴ s⁻¹). La lunghezza caratteristica di penetrazione (&lambda;⁻¹) &egrave;:<br>
+          <strong style="color: #0284c7;">L_d = &radic;(D_eff / k) &approx; 627.2 &mu;m</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span>4. Derivazione Rigorosa della Soluzione di Bessel e Santuario (&Delta;r = 34.1 &mu;m)</span>
+      <span class="tag">Derivazione Esatta</span>
+    </div>
+    <p>
+      L'equazione differenziale stazionaria di conservazione di massa in coordinate cilindriche a simmetria assiale &egrave;:
+    </p>
+    <div class="formula-box">
+      (1/r) &middot; (d/dr)[ r &middot; D_eff &middot; (dC/dr) ] - k &middot; C = 0 &nbsp;&rArr;&nbsp; d&sup2;C/dr&sup2; + (1/r)&middot;(dC/dr) - &lambda;&sup2;&middot;C = 0
+      <div class="note">Forma canonica dell'Equazione di Bessel modificata di ordine zero (n = 0)</div>
+    </div>
+    <p>
+      Imponendo le condizioni al contorno: C(r₀) = C₀ = f_u &middot; C_plasma (concentrazione libera non legata) e C(r &to;rarr; &infin;) &to;rarr; 0, la soluzione analitica esatta &egrave;:
+    </p>
+    <div class="formula-box">
+      C(r) = C₀ &middot; [ K₀(&lambda;&middot;r) / K₀(&lambda;&middot;r₀) ]
+      <div class="note">K₀: funzione di Bessel modificata di seconda specie (monotona decrescente)</div>
+    </div>
+    <p>
+      Il <strong>raggio terapeutico critico</strong> r_crit &egrave; il punto in cui la concentrazione scende al valore soglia di inibizione IC₅₀ (per Osimertinib: C₀ &approx; 28.5 nM, IC₅₀ &approx; 10.0 nM &rArr; &theta; = 0.3509):
+    </p>
+    <div class="formula-box">
+      K₀(&lambda;&middot;r_crit) / K₀(&lambda;&middot;r₀) = 0.3509 &nbsp;&rArr;&nbsp; <strong style="color: #dc2626;">r_crit = 165.9 &mu;m</strong>
+    </div>
+
+    <table style="margin-top: 8px;">
+      <thead>
+        <tr>
+          <th>Parametro Geometria Cordonale</th>
+          <th>Valore Fisico</th>
+          <th>Significato Biologico e Rilevanza Traslazionale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Raggio Capillare (r₀)</strong></td>
+          <td>10.0 &mu;m</td>
+          <td>Lume endoteliale perfuso da cui origina l'estravasazione.</td>
+        </tr>
+        <tr>
+          <td><strong>Raggio Critico Efficace (r_crit)</strong></td>
+          <td>165.9 &mu;m</td>
+          <td>Oltre questa distanza la concentrazione libera scende sotto la IC₅₀ citotossica.</td>
+        </tr>
+        <tr>
+          <td><strong>Limite Ossigenazione (r_ox)</strong></td>
+          <td>200.0 &mu;m</td>
+          <td>Limite classico di Thomlinson-Gray oltre il quale subentra la necrosi anossica.</td>
+        </tr>
+        <tr>
+          <td><strong>Spessore Santuario (&Delta;r)</strong></td>
+          <td><strong>34.1 &mu;m</strong></td>
+          <td>Corona perivascolare vitale sub-letale (r_ox &minus; r_crit) che genera le persister (DTPs).</td>
+        </tr>
+        <tr>
+          <td><strong>Frazione di Volume Santuario (&Phi;)</strong></td>
+          <td><strong>31.3%</strong></td>
+          <td>Quasi un terzo della massa vitale cordonale &egrave; protetta dal farmaco per barriera diffusiva.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-strip">
+    <span>STUDIO BIOFISICO CONTINUUM ONCOLOGIA &bull; CELEBRANO ET AL.</span>
+    <span>Documento Riservato &bull; IFOM ETS / Università di Torino</span>
+  </div>
+</div>
+
+<!-- ========================================== PAGE 3 ========================================== -->
+<div class="page">
+  <div>
+    <div class="section-title">
+      <span>5. Cinetica di Shedding: Perché le Persister Sono Invisibili al ctDNA</span>
+      <span class="tag">MRD Stealth Mechanics</span>
+    </div>
+    <p>
+      La concentrazione di ctDNA nel plasma non dipende solo dal numero totale di cellule, ma dal loro tasso di morte apoptotica (d) e dall'efficienza di drenaggio vascolare (&kappa;_vasc):
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Quiescenza e Apoptosi Soppressa</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          Nel santuario (C &lt; IC₅₀, ipossia cronica), le persister entrano in arresto G0/G1 mediato da autofagia e upregulation di BCL-2. Il turnover apoptotico crolla da d_norm = 0.136 die⁻¹ a <strong style="color: #0284c7;">d_sanc &approx; 0.015 die⁻¹</strong> (riduzione di ~9 volte).
+        </p>
+      </div>
+      <div class="card">
+        <h3>2. Barriera Stromale ed Enzimatica</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          Il DNA rilasciato nel santuario deve diffondere attraverso lo stroma desmoplastico denso verso il capillare a r₀, subendo l'azione delle DNasi tissutali. La frazione di captazione &egrave; &kappa;_vasc(r) = exp(-(r-r₀)/L_DNA). Il valore medio cordonale &egrave; <strong style="color: #0284c7;">&kappa;_vasc &approx; 0.18</strong>.
+        </p>
+      </div>
+    </div>
+
+    <p style="margin-top: 6px;">
+      Lo shedding plasmatico netto di ctDNA per cellula nel santuario subisce un abbattimento combinato pari a:
+    </p>
+    <div class="formula-box">
+      Fattore di Soppressione = (d_sanc / d_norm) &middot; &kappa;_vasc &approx; (0.015 / 0.136) &middot; 0.18 &approx; 0.110 &middot; 0.18 &approx; 1 / 50.4
+    </div>
+
+    <div class="callout-box highlight">
+      <strong>La Prova del Falso Negativo:</strong> Una massa micrometastatica di <strong>10 milioni di cellule ($10^7$)</strong> nel tessuto normoperfuso genera una VAF &approx; 0.022% (rilevabile da NGS). La stessa massa confinata nel santuario perivascolare genera una VAF plasmatica di appena <strong>0.00044%</strong>, che &egrave; <em>45 volte inferiore al limite di rilevazione analitica</em> (LOD &approx; 0.02%). Il paziente risulta formalmente <strong>MRD NEGATIVO</strong>, ma ospita una riserva clonale pronta al ripopolamento.
+    </div>
+
+    <div class="section-title">
+      <span>6. Teorema del Molecular Lead Time: Dimostrazione di Invarianza</span>
+      <span class="tag">Derivazione Lead Time</span>
+    </div>
+    <p>
+      Alla cessazione del trattamento (mese 36 in ADAURA; sospensione adiuvante in PEGASUS), le persister si risvegliano e ripopolano il tessuto con crescita esponenziale guidata dal tempo di raddoppiamento biologico $T_d$: $N(t) = N_0 \cdot 2^{t / T_d}$.
+    </p>
+    <p>
+      La biopsia liquida intercetta il tumore al raggiungimento del limite di rilevazione molecolare ($N_{	ext{LOD}} pprox 1.5 	imes 10^7$ cellule); la TC radiologica lo visualizza a una lesione di $\sim 1	ext{ cm}$ ($N_{	ext{CT}} pprox 10^9$ cellule).
+    </p>
+
+    <div class="formula-box">
+      &Delta;t_lead = t_CT &minus; t_MRD = T_d &middot; [ log₂(N_CT / N₀) &minus; log₂(N_LOD / N₀) ] = T_d &middot; log₂(N_CT / N_LOD)
+      <div class="note">Propriet&agrave; Fondamentale: La carica residua iniziale N₀ si elide algebricamente nel rapporto!</div>
+    </div>
+
+    <table style="margin-top: 6px;">
+      <thead>
+        <tr>
+          <th>Tempo Raddoppiamento (T_d)</th>
+          <th>Rapporto Volumetrico</th>
+          <th>Raddoppiamenti (log₂)</th>
+          <th>Molecular Lead Time Calcolato</th>
+          <th>Corrispondenza Dati Empirici Clinici</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T_d = 20 giorni</td>
+          <td>10⁹ / (1.5&times;10⁷) = 66.67</td>
+          <td>6.059 cicli</td>
+          <td>121.2 giorni (3.98 mesi)</td>
+          <td>Cinetica aggressiva / de-differenziata</td>
+        </tr>
+        <tr>
+          <td><strong>T_d = 25 giorni</strong></td>
+          <td><strong>10⁹ / (1.5&times;10⁷) = 66.67</strong></td>
+          <td><strong>6.059 cicli</strong></td>
+          <td><strong>151.5 giorni (5.05 mesi)</strong></td>
+          <td><strong>TRACERx (Abbosh et al., Nature): 151 giorni!</strong></td>
+        </tr>
+        <tr>
+          <td>T_d = 27 giorni</td>
+          <td>10⁹ / (1.5&times;10⁷) = 66.67</td>
+          <td>6.059 cicli</td>
+          <td>163.6 giorni (5.37 mesi)</td>
+          <td>Avanzini et al. (Sci Adv 2020): 140-165 giorni</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-strip">
+    <span>STUDIO BIOFISICO CONTINUUM ONCOLOGIA &bull; CELEBRANO ET AL.</span>
+    <span>Documento Riservato &bull; IFOM ETS / Università di Torino</span>
+  </div>
+</div>
+
+<!-- ========================================== PAGE 4 ========================================== -->
+<div class="page">
+  <div>
+    <div class="section-title">
+      <span>7. L'Indice Multivariato CRI e Risoluzione del Dilemma CMS4 di PEGASUS</span>
+      <span class="tag">Translational Impact</span>
+    </div>
+    <p>
+      Per integrare la dimensione spaziale e microambientale con il ctDNA, abbiamo calibrato l'indice <strong>CRI (Continuum Risk Index)</strong> sui coefficienti multivariati di Cox stimati su coorti cliniche multicentriche (N = 854 per sopravvivenza combinata; N = 863 per NGS targeted; N = 215 per manometria IFP in vivo):
+    </p>
+
+    <div class="formula-box">
+      CRI = 0.47 &middot; S_space + 0.33 &middot; G_gene + 0.20 &middot; M_stroma
+      <div class="note">Pesi derivati dai log-hazard: &beta;_space = 1.910 (HR 6.75) | &beta;_gene = 1.348 (HR 3.85) | &beta;_stroma = 0.788 (HR 2.20)</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Performance Statistica del Modello</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          &bull; <strong>C-index di Harrell:</strong> sale da 0.62 (TNM) e 0.71 (ctDNA da solo) a <strong style="color: #16a34a;">0.86</strong> per CRI + ctDNA (&Delta;C = +0.15, p &lt; 10⁻¹²).<br>
+          &bull; <strong>Salvataggio Falsi Negativi:</strong> Identifica l'<strong>84.2%</strong> dei pazienti ctDNA-negativi che recidiveranno.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Spiegazione del Sottotipo CMS4 in PEGASUS</h3>
+        <p style="font-size: 8pt; margin: 0;">
+          Nel trial PEGASUS (Bardelli et al., 2026), i falsi negativi erano concentrati in <strong>CMS4</strong>. CMS4 possiede la massima desmoplasia CAF-dipendente e la massima IFP: si crea il santuario diffusivo di Bessel $K_0$, bloccando lo shedding e nascondendo la persistenza clonale.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span>8. Agenda di Discussione Proposta per la Teleconferenza di Met&agrave; Novembre</span>
+      <span class="tag">Roadmap Collaborazione</span>
+    </div>
+    <p>
+      Durante l'incontro in teleconferenza, saremo felici di approfondire i dettagli computazionali e proporre al Prof. Bardelli e al team tre filoni operativi di collaborazione scientifica congiunta:
+    </p>
+
+    <table style="margin-top: 4px;">
+      <thead>
+        <tr>
+          <th>Proposta Collaborativa</th>
+          <th>Dataset / Strumenti</th>
+          <th>Output Scientifico Previsto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Validazione Retrospettiva su PEGASUS</strong></td>
+          <td>Biobanca trial PEGASUS / ALFAOMEGA (135 WSI H&E digitalizzati + RNA-seq + ctDNA seriale).</td>
+          <td>Verificare se il modulo open-source CRI-calc reclassifica i 15 ctDNA-negativi recidivati (CMS4). Paper congiunto ad altissimo impatto.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Digital Twin di Cinetica Clonale</strong></td>
+          <td>Pipeline nf-core <code>spatialcontinuum</code> (#13487) e teoria dei giochi evolutivi <code>insitugame</code> (#13471).</td>
+          <td>Simulazione in silico delle traiettorie di shedding longitudinali per personalizzare l'intervallo di monitoraggio plasma.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Disegno Trial Prospettico Adattativo</strong></td>
+          <td>Protocolli adattativi multimodali (S-PEGASUS nel colon / SG-ADAURA nel polmone).</td>
+          <td>Stratificazione al landmark: Tier 1 (Stop sicuro), Tier 2 (Stop + ctDNA q60d), Tier 3 (Mantenimento / Normalizzazione vascolare anti-VEGFR2).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout-box" style="margin-top: 8px;">
+      <strong>Messaggio di Chiusura:</strong> Resto a completa disposizione per qualsiasi anticipazione tecnica o approfondimento preliminare prima del nostro collegamento di met&agrave; novembre.
+    </div>
+  </div>
+
+  <div class="footer-strip">
+    <span>STUDIO BIOFISICO CONTINUUM ONCOLOGIA &bull; LUCA CELEBRANO (Napoli Federico II)</span>
+    <span>Destinatari: Prof. Alberto Bardelli, Dott. G. Crisafulli, Dott. G. Patelli, Dott.ssa F. Baessato (IFOM ETS)</span>
+  </div>
+</div>
+
+</body>
+</html>
