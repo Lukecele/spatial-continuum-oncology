@@ -35,7 +35,7 @@
   <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
   <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
   <a href="https://orcid.org/0009-0007-0931-3555"><img src="https://img.shields.io/badge/ORCID-0009--0007--0931--3555-a6ce39.svg?logo=orcid&logoColor=white" alt="ORCID"></a>
-  <a href="https://www.nature.com/ncomms/"><img src="https://img.shields.io/badge/Target-Nature%20Communications-darkred.svg" alt="Target Nature Communications"></a>
+  <a href="https://www.nature.com/srep/"><img src="https://img.shields.io/badge/Scientific%20Reports-Under%20Consideration-007acc.svg" alt="Scientific Reports — Under Consideration"></a>
   <a href="https://pypi.org/project/spatial-continuum/"><img src="https://img.shields.io/pypi/v/spatial-continuum.svg?logo=pypi&logoColor=white" alt="PyPI"></a>
   <a href="https://quay.io/repository/biocontainers/spatial-continuum"><img src="https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?logo=docker&logoColor=white" alt="BioContainers"></a>
   <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python 3.9+">
@@ -326,7 +326,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 | :--- | :--- | :--- |
 | [📁 `00_INDICE_E_GUIDA_AI_DOCUMENTI.md`](00_INDICE_E_GUIDA_AI_DOCUMENTI.md) | **Master Index & Complete Architectural Map** | Comprehensive cross-referenced index organizing all 17 clinical monographs, biophysical derivations, and congress dossiers. |
 | [📄 `14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md`](14_EXECUTIVE_CLINICAL_BRIEF_ADAURA_HERBST_ASTRAZENECA.md) | **Clinical Executive One-Pager & Strategic Trial Brief** | Addressed to Prof. Roy S. Herbst (Yale Cancer Center), AstraZeneca Oncology R&D, and Clinical Oncology Centers (IRCCS Pascale, AIOM). Details the in silico Phase III trial SG-ADAURA and Arm B3 consolidation. |
-| [📄 `15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md`](15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md) | **Pre-Emptive Reviewer Response Matrix** | Prepared for *Nature Communications* (tracking `NCOMMS-26-091227`). Formulates pre-computed mathematical proofs and empirical answers to 12 referee objections across biophysics, clinical oncology, and spatial pathology. |
+| [📄 `15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md`](15_DOSSIER_ANTICIPAZIONE_REVIEWERS_NATURE_COMMS.md) | **Historical Reviewer Response Matrix** | Prepared for an earlier *Nature Communications* submission; retained as a versioned research dossier while the current manuscript is under consideration at *Scientific Reports*. |
 | [📄 `12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md`](12_ABSTRACT_SOTTOMISSIONE_AACR_2027.md) | **Official AACR 2027 Abstract** | Calibrated to 2,423 characters (strictly under the 2,600 character ceiling) for the AACR Annual Meeting in Orlando, FL. |
 | [📄 `13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md`](13_DOSSIER_CONGRESSI_MONDIALI_AACR_ASCO_ESMO.md) | **Tri-Congress Strategy Dossier (AACR, ASCO, ESMO)** | Tailored abstracts and submission calendar across biological, clinical, and translational tracks for the 3 major worldwide oncology congresses. |
 | [📊 `16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md`](16_MASTER_SLIDE_DECK_CONGRESSI_E_PRIMARI.md) | **Master Slide Deck (12 Slides)** | Oral presentation deck for oncology congresses and department grand rounds. Includes companion interactive deck: [`slide_deck_interattivo.html`](slide_deck_interattivo.html). |
@@ -341,7 +341,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 | Identifier / DOI | Platform / Repository | Scholarly Asset & Description |
 | :--- | :--- | :--- |
-| [`10.21203/rs.3.rs-11530312/v1`](https://doi.org/10.21203/rs.3.rs-11530312/v1) | **Research Square (Springer Nature)** | Scientific Preprint (*Nature Communications* Tracking: `NCOMMS-26-091227`) |
+| [`10.21203/rs.3.rs-11530312/v1`](https://doi.org/10.21203/rs.3.rs-11530312/v1) | **Research Square (Springer Nature)** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
 | [`10.5281/zenodo.23754999`](https://doi.org/10.5281/zenodo.23754999) | **Zenodo (CERN / OpenAIRE)** | Master Codebase, Reaction-Diffusion Solvers & MSKCC Resection Cohort |
 | [`10.5281/zenodo.23623653`](https://doi.org/10.5281/zenodo.23623653) | **Zenodo (CERN / OpenAIRE)** | Digital Pathology AI Suite (Subcellular Microvascular Decoupling) |
 | [`10.5281/zenodo.23585216`](https://doi.org/10.5281/zenodo.23585216) | **Zenodo (CERN / OpenAIRE)** | InSituGame Package (Spatial Evolutionary Game Assay) |
@@ -372,4 +372,4 @@ To preserve academic priority for medical journal peer-review while ensuring 100
   Licensed under the permissive **[MIT License](LICENSE-MIT)** (`LICENSE-MIT`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.
 
 * 📄 **Monograph, Clinical Trial Protocols, Figures & Manuscript Texts:**  
-  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE)** (`LICENSE`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Nature Communications* (`NCOMMS-26-091227`) and *Cancer Research Communications* / AACR (`CRC-26-0804`), while permitting global educational and scholarly citation with attribution.
+  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE)** (`LICENSE`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Scientific Reports* and related conference workflows, while permitting global educational and scholarly citation with attribution.
