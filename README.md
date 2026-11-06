@@ -24,6 +24,9 @@
   <a href="https://github.com/Lukecele/spatial-continuum-oncology">
     <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
   </a>
+  <a href="https://lukecele-research.vercel.app/">
+    <img src="https://img.shields.io/badge/%F0%9F%8F%B0%20Caverna%20di%20Luca-Research%20Hub-60d9c5.svg?style=for-the-badge" height="28" alt="Caverna di Luca research hub">
+  </a>
 </p>
 
 <p align="center">
@@ -43,6 +46,8 @@
 </p>
 
 *Author:* **Luca Celebrano**, MD Candidate · Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II · `l.celebrano@studenti.unina.it`
+
+**Portfolio hub:** [Caverna di Luca](https://lukecele-research.vercel.app/) · [ORCID](https://orcid.org/0009-0007-0931-3555) · [LinkedIn](https://www.linkedin.com/in/luca-celebrano/)
 
 ---
 
