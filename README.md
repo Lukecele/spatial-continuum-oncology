@@ -27,6 +27,9 @@
   <a href="https://lukecele-research.vercel.app/">
     <img src="https://img.shields.io/badge/%F0%9F%8F%B0%20Caverna%20di%20Luca-Research%20Hub-60d9c5.svg?style=for-the-badge" height="28" alt="Caverna di Luca research hub">
   </a>
+  <a href="https://bio.tools/spatial-continuum-oncology">
+    <img src="https://img.shields.io/badge/bio.tools-Spatial%20Continuum-60d9c5.svg?style=for-the-badge" height="28" alt="bio.tools Spatial Continuum record">
+  </a>
 </p>
 
 <p align="center">
