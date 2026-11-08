@@ -18,8 +18,8 @@ This leaves a 34.1 µm perivascular sanctuary (31.3% cord vol) protecting dorman
 Using volume doubling (Ts=24.6 d), mathematical identity predicts Δt = Ts·log₂(100) = 5.4 mo ctDNA surge, exactly matching human trial data.
 
 --- TWEET 5 (236/280) ---
-5/6 To assist oncologists, we built the Bedside CRI Decision Engine.
-Runs 100% offline as an installable PWA on iOS/Android with 0 ms latency, even in shielded radiotherapy bunkers:
+5/6 To explore this biophysics, we built the In Silico CRI Solver (RUO).
+Runs 100% offline as an installable PWA on iOS/Android with 0 ms latency, modeling continuous transport & trial hypotheses:
 https://lukecele.github.io/spatial-continuum-oncology/
 
 --- TWEET 6 (204/280) ---
@@ -48,8 +48,8 @@ Si crea un manicotto santuario di 34.1 µm (31.3% del volume) dove i persister r
 L'identità cinetica Δt = Ts·log₂(100) predice esattamente i 5.4 mesi di finestra molecolare ctDNA osservati nei trial clinici (Herbst et al. 2025).
 
 --- TWEET 5 (235/280) ---
-5/6 Per i clinici abbiamo creato il Bedside CRI:
-PWA offline per smartphone (iOS/Android) a zero millisecondi, utilizzabile anche nei bunker di radioterapia o in corsia senza rete:
+5/6 Per la ricerca traslazionale abbiamo sviluppato l'In Silico CRI (RUO):
+PWA interattiva a zero dipendenze per esplorare la fisica dei trasporti e formulare ipotesi di stratificazione:
 https://lukecele.github.io/spatial-continuum-oncology/
 
 --- TWEET 6 (206/280) ---

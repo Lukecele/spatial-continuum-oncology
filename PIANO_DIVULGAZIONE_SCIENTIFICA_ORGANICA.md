@@ -27,7 +27,7 @@ La formula vincente che attrae programmatori, bioinformatici e ricercatori clini
 ```text
 Hi HN,
 
-I am an MD candidate at the University of Naples Federico II doing independent research in mathematical oncology. Today I'm releasing spatial-continuum, an open-source biophysical solver and clinical decision engine for early-stage EGFR-mutated lung adenocarcinoma.
+I am an MD candidate at the University of Naples Federico II doing research in mathematical oncology. Today I'm releasing spatial-continuum, an open-source in silico biophysical solver and cohort stratification engine (RUO) for early-stage EGFR-mutated lung adenocarcinoma.
 
 The clinical paradox:
 In the landmark ADAURA trial, adjuvant osimertinib significantly prolongs disease-free survival. However, long-term molecular residual disease (MRD) monitoring (Herbst et al., Nature Medicine 2025) uncovered a paradox: 67.9% of all relapses cluster after the planned 36-month discontinuation, and ~80% of relapsing patients have NO secondary target mutations (like EGFR C797S).
@@ -44,7 +44,7 @@ What we built:
 
 All mathematical models, dimensional derivations, and 500-patient in silico survival benchmarks are open source and verifiable with zero external dependencies.
 
-Would love feedback from the HN community on the reaction-diffusion formulation and clinical decision scoring!
+Would love feedback from the HN community on the reaction-diffusion formulation and in silico cohort risk scoring!
 ```
 
 ---
