@@ -170,9 +170,9 @@ style: |
 
 ---
 
-## Slide 8: The Bedside Composite Resistance Index (CRI)
+## Slide 8: From Transport Biophysics to Trial Stratification: The Composite Resistance Index (CRI)
 
-To translate these complex transport partial differential equations to the clinic, we engineered the **Composite Resistance Index (CRI)**:
+To translate these transport partial differential equations into prospective clinical trial stratification, we engineered the **Composite Resistance Index (CRI)**:
 
 $$\mathbf{\text{CRI} = 0.47\,\mathcal{S} + 0.33\,\mathcal{G} + 0.20\,\mathcal{M}}$$
 
@@ -181,10 +181,11 @@ $$\mathbf{\text{CRI} = 0.47\,\mathcal{S} + 0.33\,\mathcal{G} + 0.20\,\mathcal{M}
 * **$\mathcal{M}$ (Microenvironment & Stroma):** Collagen desmoplasia (Loose = 0.0; Dense = 1.0).
 
 <div class="highlight-box">
-  <strong>CRI Score Ranges:</strong><br>
-  • <strong>Tier 1 (&lt; 0.35):</strong> Minimal sanctuary. Candidate for safe Month-36 de-escalation.<br>
-  • <strong>Tier 2 (0.35–0.65):</strong> Intermediate risk. Plasma ctDNA-guided surveillance.<br>
-  • <strong>Tier 3 (&gt; 0.65):</strong> Obligate sanctuary shell. <strong>DO NOT DISCONTINUE AT MONTH 36!</strong>
+  <strong>CRI Stratification & Proposed Trial Arms:</strong><br>
+  • <strong>Tier 1 (&lt; 0.35):</strong> Minimal sanctuary. Favorable profile for observational de-escalation / surveillance arm.<br>
+  • <strong>Tier 2 (0.35–0.65):</strong> Intermediate risk. Longitudinal ctDNA-guided surveillance arm.<br>
+  • <strong>Tier 3 (&gt; 0.65):</strong> Obligate sanctuary shell. Active intervention arm: continuous osimertinib or combination with vascular normalizer (e.g., ramucirumab, SG-ADAURA Arm B3).<br>
+  <em>(Translational framework: in silico biophysical modeling opening the path for prospective clinical trial validation.)</em>
 </div>
 
 ---

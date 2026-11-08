@@ -1,7 +1,10 @@
 #' Spatial-Genomic Oncology Continuum for R (spatialcontinuum)
 #'
-#' Universal Reaction-Diffusion Transport Modeling and Bedside Composite Resistance Index (CRI)
+#' Universal Reaction-Diffusion Transport Modeling and In Silico Composite Resistance Index (CRI)
 #' for Spatial Transcriptomics, Seurat, and SpatialExperiment objects.
+#' Research Use Only (RUO). This package performs in silico biophysical transport simulations
+#' to formulate hypotheses for prospective clinical trial design. It does not provide direct
+#' clinical prescribing directives.
 #'
 #' @author Luca Celebrano, MD Candidate, Universita degli Studi di Napoli Federico II
 #' @references
@@ -16,13 +19,14 @@
 #' @export GenerateTumorBoardReport
 
 # -----------------------------------------------------------------------------
-# 1. Bedside Composite Resistance Index (CRI) Calculator
+# 1. In Silico Composite Resistance Index (CRI) Calculator (RUO)
 # -----------------------------------------------------------------------------
 
-#' Calculate Composite Resistance Index (CRI) and Post-ADAURA Action Directives
+#' Calculate Composite Resistance Index (CRI) and Translational Hypotheses
 #'
 #' Evaluates the multidimensional risk score combining spatial histology pattern (S),
 #' genomic co-mutations (G), and stromal desmoplasia (M).
+#' Research Use Only (RUO).
 #'
 #' @param pattern Character. Histologic subtype: 'lepidic', 'acinar', 'papillary', 'micropapillary', 'solid'.
 #' @param tp53 Character or Logical. TP53 mutation status ('mut', 'wt', TRUE, FALSE).
@@ -96,34 +100,36 @@ CalculateCRI <- function(pattern, tp53 = "wt", rb1 = "wt", stroma = "moderate",
 
   # Risk stratification tiers using customizable cutoffs
   if (CRI < cutoff_low) {
-    tier <- "Tier 1 (Low Resistance / Minimal Sanctuary)"
-    action <- "DISCONTINUATION CANDIDATE (Safe Cessation at Month 36)"
+    tier <- "Tier 1 (Low Sanctuary Risk / Perfusion Permissive)"
+    action <- "Tier 1: Sanctuary mantle absent (Delta r <= 0 um). Low sanctuary profile [RUO]."
     dfs_5yr <- "96.4% [95% CI: 92.1-99.2%]"
     justification <- paste0(
       "Well-perfused, thin alveolar cords (sanctuary shell delta_r = ", delta_r, " um). ",
-      "Drug concentration exceeds IC50 throughout tissue. Sparing 2 years of adjuvant ",
-      "osimertinib toxicity avoids cardiotoxicity/diarrhea without compromising 5-year DFS."
+      "In silico transport modeling indicates drug concentration exceeds IC50 throughout tissue. ",
+      "Research Use Only: In silico biophysical transport hypothesis for prospective trial cohort stratification."
     )
-    rec <- "Cease Osimertinib at Month 36. Perform longitudinal ctDNA MRD surveillance every 3 months."
+    rec <- "Hypothesis: Favorable biophysical profile; candidate cohort for observational surveillance trial designs (RUO)."
   } else if (CRI <= cutoff_high) {
     tier <- "Tier 2 (Intermediate Risk / Transitional Cords)"
-    action <- "MRD-GUIDED CONSOLIDATION (Selective Continuation)"
+    action <- "Tier 2: Intermediate risk; borderline sanctuary shell present (Delta r ~ 10-25 um) [RUO]."
     dfs_5yr <- "74.8% [95% CI: 68.3-81.2%]"
     justification <- paste0(
       "Partial perivascular drug penetration with low-frequency dormant cells (delta_r = ", delta_r, " um). ",
-      "ctDNA surveillance mandatory; continue osimertinib for additional 12-24 months if ctDNA positive."
+      "In silico transport modeling indicates transitional diffusion barrier. ",
+      "Research Use Only: In silico biophysical transport hypothesis for prospective trial cohort stratification."
     )
-    rec <- "Perform plasma ctDNA at Month 36. If negative, maintain tight surveillance. If positive, continue monotherapy."
+    rec <- "Hypothesis: Intermediate diffusion barrier; candidate cohort for multimodal monitoring and ctDNA biomarker trials (RUO)."
   } else {
-    tier <- "Tier 3 (High Resistance / Obligate Sanctuary)"
-    action <- "DO NOT DISCONTINUE AT MONTH 36! (Mandatory Active Intervention)"
+    tier <- "Tier 3 (High Sanctuary Risk / Obligate Perivascular Mantle)"
+    action <- "Tier 3: Substantial perivascular mantle (Delta r > 34 um). High sanctuary risk [RUO]."
     dfs_5yr <- "38.2% [95% CI: 31.0-45.5%]"
     justification <- paste0(
       "Dense fibrotic stroma and solid cord architecture create an obligate sanctuary shell ",
-      "(delta_r = ", delta_r, " um, ~", sanctuary_vol_pct, "% viable volume). Standard cessation causes ",
-      "relapse within a median of 5.4 months. Continuous osimertinib or SG-ADAURA Arm B3 required."
+      "(delta_r = ", delta_r, " um, ~", sanctuary_vol_pct, "% viable volume). ",
+      "In silico transport modeling demonstrates significant sub-therapeutic drug mantle. ",
+      "Research Use Only: Candidate cohort for prospective vascular normalization / combination trial arms."
     )
-    rec <- "Enroll in SG-ADAURA Arm B3 (Osimertinib 80 mg + Ramucirumab 10 mg/kg q2w) to normalize microvasculature."
+    rec <- "Hypothesis: Obligate biophysical sanctuary; candidate cohort for prospective vascular normalization trials (RUO)."
   }
 
   list(

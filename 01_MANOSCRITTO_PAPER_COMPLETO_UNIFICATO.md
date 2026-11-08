@@ -266,7 +266,7 @@ To preserve epistemological integrity, we state three laboratory/clinical condit
 
 ---
 
-## 6. The Bedside Clinical Decision Engine: The Composite Resistance Index (CRI)
+## 6. The Translational Risk Stratification Engine: The Composite Resistance Index (CRI)
 
 To resolve the month-36 cessation dilemma, we synthesized spatial microvascular histology, clonal co-genomics, and longitudinal liquid biopsy into a calibrated, single-value scoring function:
 
@@ -292,13 +292,13 @@ Using global Sobol variance decomposition across the audited cohorts:
 
 $$\mathbf{\text{CRI} = 0.47 \mathcal{S} + 0.33 \mathcal{G} + 0.20 \mathcal{M}}$$
 
-> **CRI Risk Stratification & Clinical Guidance at Month 36:**  
-> • **Tier 1: Low Risk ($\text{CRI} < 0.30$) $\to$ Safe Cessation:** Discontinue osimertinib at Month 36; initiate standard surveillance (CT chest/abdomen every 6 months).  
+> **CRI Risk Stratification & Translational Hypothesis at Month 36:**  
+> • **Tier 1: Low Risk ($\text{CRI} < 0.30$) $\to$ De-escalation Profile:** Discontinue osimertinib at Month 36; initiate standard surveillance (CT chest/abdomen every 6 months).  
 > • **Tier 2: Intermediate Risk ($0.30 \le \text{CRI} < 0.70$) $\to$ Intensified Molecular Surveillance:** Planned osimertinib suspension with bimonthly ctDNA liquid biopsy and contrast-enhanced brain MRI every 6 months; immediate re-challenge at molecular rise to intercept clinical recurrence.  
-> • **Tier 3: High Risk ($\text{CRI} \ge 0.70$) $\to$ Active Escalation / SG-ADAURA Trial:** High probability of persistent sanctuary micrometastases; patient does NOT stop therapy but transitions into the SG-ADAURA interventional study.
+> • **Tier 3: High Risk ($\text{CRI} \ge 0.70$) $\to$ Active Escalation / SG-ADAURA Trial:** High probability of persistent sanctuary micrometastases; patient candidate for the SG-ADAURA interventional study.
 
-### 6.2 Bedside Implementation
-The engine is coded in pure Python standard library ([`cri-calc.py`](file:///home/luca/.gemini/antigravity-cli/brain/266ed2e2-762b-4d6e-b0fa-f25c95a35512/scratch/cri-calc.py)), requiring zero dependencies, and executes instantaneously on hospital workstations:
+### 6.2 Lightweight In Silico Implementation
+The engine is coded in pure Python standard library (`cri_calc.py`), requiring zero external dependencies, and executes instantaneously for research cohort stratification:
 ```bash
 # High-Risk: Solid, TP53 mut, RB1 mut, dense stroma
 python3 cri_calc.py --pattern solid --tp53 mut --rb1 mut --stroma dense

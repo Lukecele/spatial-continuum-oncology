@@ -4,11 +4,11 @@ Unit tests for cri-calc: Single-Patient and High-Throughput Batch Processing.
 """
 
 import os
-import sys
 import tempfile
 import unittest
 
 from spatial_continuum.cri_calc import calculate_cri, process_batch
+
 
 class TestCRICalculator(unittest.TestCase):
 
@@ -19,7 +19,7 @@ class TestCRICalculator(unittest.TestCase):
         self.assertEqual(res["M"], 0.0)
         self.assertEqual(res["CRI"], 0.0)
         self.assertIn("TIER 1", res["tier"])
-        self.assertIn("SAFE DISCONTINUATION", res["action"])
+        self.assertIn("mantle absent", res["action"])
 
     def test_single_patient_solid_triple_dense(self):
         res = calculate_cri(pattern="solid", tp53="mut", rb1="mut", stroma="dense")
@@ -28,7 +28,7 @@ class TestCRICalculator(unittest.TestCase):
         self.assertEqual(res["M"], 1.0)
         self.assertEqual(res["CRI"], 1.0)
         self.assertIn("TIER 3", res["tier"])
-        self.assertIn("DO NOT DISCONTINUE", res["action"])
+        self.assertIn("Substantial perivascular mantle", res["action"])
 
     def test_single_patient_acinar_intermediate(self):
         res = calculate_cri(pattern="acinar", tp53="mut", rb1="wt", stroma="moderate")
@@ -53,7 +53,7 @@ class TestCRICalculator(unittest.TestCase):
             process_batch(tf_in_path, tf_out_path, delimiter="\t")
             with open(tf_out_path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
-            self.assertEqual(len(lines), 4) # Header + 3 patients
+            self.assertEqual(len(lines), 4)  # Header + 3 patients
             header = lines[0].strip().split("\t")
             self.assertIn("CRI_Score", header)
             self.assertIn("Risk_Tier", header)
@@ -91,7 +91,7 @@ class TestCRICalculator(unittest.TestCase):
             process_batch(tf_in_path, tf_out_path)
             with open(tf_out_path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
-            self.assertEqual(len(lines), 3) # Header + 2 cases
+            self.assertEqual(len(lines), 3)  # Header + 2 cases
             self.assertIn("CRI_Score", lines[0])
             self.assertIn("TIER 3", lines[1])
             self.assertIn("TIER 1", lines[2])
@@ -125,6 +125,7 @@ class TestCRICalculator(unittest.TestCase):
         self.assertIn("bio_summary", res)
         self.assertAlmostEqual(res["sanctuary_depth_um"], 57.9, delta=0.5)
         self.assertAlmostEqual(res["concentration_ratio"], 0.022, places=3)
+
 
 if __name__ == "__main__":
     unittest.main()

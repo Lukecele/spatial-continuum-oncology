@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Biophysical Composite Resistance Index (CRI) and Reaction-Diffusion Solver.
 
-Translational Modeling Tool for Perivascular Drug Penetration and Cohort Risk Stratification.
-Research Use Only (RUO). This tool performs mathematical biophysical simulations and risk
-scoring; it does not constitute clinical prescribing advice.
+In Silico Computational Biophysics & Translational Modeling Tool for Perivascular Drug Penetration
+and Cohort Risk Stratification.
+Research Use Only (RUO). This tool performs in silico mathematical biophysical simulations and
+translational cohort risk scoring to formulate hypotheses for prospective clinical trial design.
+It does not constitute clinical prescribing advice, bedside guidance, or diagnostic intervention.
 """
 
 from __future__ import annotations
@@ -13,7 +15,7 @@ import csv
 import math
 import os
 import sys
-from typing import Dict, Iterable, List, Optional, Sequence, TextIO, Tuple
+from typing import Dict, Iterable, Optional, Sequence, TextIO, Tuple
 
 
 def bessel_k0_approx(x: float) -> float:
@@ -171,18 +173,18 @@ def calculate_cri(
     if cri < cutoff_low:
         tier = "TIER 1 (LOW RESISTANCE & SANCTUARY RISK)"
         pfs_5yr = "> 85 %"
-        action = "SAFE DISCONTINUATION AT MONTH 36: sanctuaries absent (Delta r <= 0 um). Research Use Only."
-        action_short = "Safe discontinuation profile (sanctuaries absent)"
+        action = "Tier 1: Sanctuary mantle absent (Delta r <= 0 um). Low sanctuary profile. Research Use Only (in silico model)."
+        action_short = "Low sanctuary profile (Delta r <= 0 um)"
     elif cri <= cutoff_high:
         tier = "TIER 2 (INTERMEDIATE RISK / BORDERLINE SANCTUARY)"
         pfs_5yr = "~ 55 %"
-        action = "INTERMEDIATE RISK: borderline sanctuary shell present (Delta r ~ 10-25 um). Research Use Only."
-        action_short = "Intermediate risk profile"
+        action = "Tier 2: Intermediate risk; borderline sanctuary shell present (Delta r ~ 10-25 um). Research Use Only (in silico model)."
+        action_short = "Intermediate risk profile (Delta r ~ 10-25 um)"
     else:
         tier = "TIER 3 (HIGH RESISTANCE & SANCTUARY RISK)"
         pfs_5yr = "< 25 %"
-        action = "DO NOT DISCONTINUE: substantial sanctuary burden (Delta r > 34 um). Research Use Only."
-        action_short = "High sanctuary risk profile"
+        action = "Tier 3: Substantial perivascular mantle (Delta r > 34 um). High sanctuary risk; candidate cohort for vascular normalization / trial stratification. Research Use Only (in silico model)."
+        action_short = "High sanctuary risk profile (Delta r > 34 um)"
 
     sanctuary_depth, conc_ratio, bio_summary = compute_biophysical_sanctuary(
         str(pattern), lambda_pen=lambda_pen, r_vessel=r_vessel

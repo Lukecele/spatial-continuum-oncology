@@ -1,14 +1,16 @@
-# Clinical Decision Support System (CDSS) & SG-ADAURA Trial Protocol
-## Evidence-Calibrated Composite Resistance Index (CRI) and Randomized Clinical Trial Protocol
+# In Silico Biophysical Stratification & SG-ADAURA Trial Design Hypothesis (RUO)
+## Evidence-Calibrated Composite Resistance Index (CRI) and Randomized Clinical Trial Protocol Hypothesis
 
 > [!IMPORTANT]
-> **Clinical Objective: Personalizing the 36-Month Post-ADAURA Cliff**  
+> **Research Objective: Biophysical Hypothesis for Personalizing the 36-Month Post-ADAURA Cliff**  
 > Under current international clinical guidelines (NCCN, ESMO, AIOM), every stage IB–IIIA *EGFR*-mutant NSCLC patient who completes 36 months of adjuvant osimertinib is stopped, irrespective of their biophysical microenvironment or co-mutational status. This "one-size-fits-all" cessation triggers a massive wave of non-genetic relapses (67.9% of all recurrence events occur post-cessation, Herbst et al., *Nat Med* 2025).  
 > 
-> This Phase 4 document delivers:
+> *Disclaimer: Research Use Only (RUO). This work provides an in silico computational biophysics model and translational trial design hypothesis; it does not claim wet-lab trial execution means or clinical prescribing authority.*
+> 
+> This document delivers:
 > 1. The evidence-calibrated **Composite Resistance Index (CRI)** integrating Space, Genes, and Stroma.
-> 2. The complete clinical trial protocol for **SG-ADAURA** (Spatial-Genomic ADAURA Phase III Trial).
-> 3. The zero-friction, lightweight bedside decision tool.
+> 2. The complete in silico clinical trial protocol hypothesis for **SG-ADAURA** (Spatial-Genomic ADAURA Phase III Trial).
+> 3. The reproducible in silico cohort stratification tool.
 
 ---
 
@@ -34,9 +36,9 @@ flowchart TD
     CRI --> T2["Tier 2: Intermediate (0.30 <= CRI <= 0.65)<br/>5-yr DFS ~55%"]
     CRI --> T3["Tier 3: High Risk (CRI > 0.65)<br/>5-yr DFS < 25%"]
 
-    T1 --> Act1["CLINICAL ACTION:<br/>Safe Osimertinib Cessation at Month 36<br/>Avoid toxicity, save ~60,000 €/year"]
-    T2 --> Act2["CLINICAL ACTION:<br/>Cessation + Ultra-Dense ctDNA Monitoring<br/>Plasma sampling every 60 days"]
-    T3 --> Act3["CLINICAL ACTION:<br/>DO NOT STOP OSIMERTINIB AT MONTH 36<br/>Continuous Maintenance OR Osimertinib + Ramucirumab"]
+    T1 --> Act1["PROPOSED TRIAL ARM B1:<br/>Observation / De-escalation Arm<br/>Avoid toxicity, spare healthcare expenditure"]
+    T2 --> Act2["PROPOSED TRIAL ARM B2:<br/>MRD-Guided ctDNA Surveillance Arm<br/>Serial plasma sampling every 60 days"]
+    T3 --> Act3["PROPOSED TRIAL ARM B3:<br/>Sanctuary Intervention Arm<br/>Continuous Maintenance OR Osimertinib + Ramucirumab"]
 ```
 
 ### 1.1 Derivation of Weights from Multivariate Cox Hazards
@@ -147,7 +149,7 @@ python cri-calc.py --pattern solid --tp53 mutated --rb1 wildtype --stroma dense
 **Output:**
 ```
 ======================================================================
-  COMPOSITE RESISTANCE INDEX (CRI) CLINICAL DECISION SUPPORT
+  COMPOSITE RESISTANCE INDEX (CRI) TRANSLATIONAL TRIAL STRATIFICATION
 ======================================================================
   Spatial Decoupling Score (S):    1.00  (Solid/Micropapillary > 50%)
   Genomic Risk Score (G):          0.50  (EGFR + TP53 mutated)
@@ -157,10 +159,10 @@ python cri-calc.py --pattern solid --tp53 mutated --rb1 wildtype --stroma dense
   RISK CATEGORY:                    TIER 3 (HIGH RESISTANCE & SANCTUARY RISK)
   ESTIMATED 5-YEAR RELAPSE RISK:    78.4 %
 ----------------------------------------------------------------------
-  RECOMMENDED ACTION AT MONTH 36:
-  🚨 DO NOT DISCONTINUE OSIMERTINIB AT MONTH 36!
-  • High probability of viable persister sanctuaries (Delta r > 34 µm).
-  • Recommend continuous osimertinib maintenance OR dual therapy
-    with vascular normalizer (Ramucirumab) per SG-ADAURA Arm B3.
+  RECOMMENDED TRIAL ARM ASSIGNMENT AT MONTH 36:
+  • Candidate for SG-ADAURA Arm B3 (High Sanctuary Risk, Delta r > 34 µm).
+  • Recommended intervention within trial: Continuous osimertinib maintenance OR
+    dual therapy with vascular normalizer (Ramucirumab) per SG-ADAURA Arm B3 protocol.
+  • Research Use Only (In silico biophysical transport model).
 ======================================================================
 ```

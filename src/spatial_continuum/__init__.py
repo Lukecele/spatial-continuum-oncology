@@ -1,6 +1,6 @@
 """
 The Spatial-Genomic Oncology Continuum (spatial-continuum)
-Universal biophysical reaction-diffusion transport framework and Bedside Composite Resistance Index (CRI).
+Universal biophysical reaction-diffusion transport framework and In Silico Composite Resistance Index (CRI) (RUO).
 Native scverse AnnData interoperability for spatial biology and precision oncology.
 """
 

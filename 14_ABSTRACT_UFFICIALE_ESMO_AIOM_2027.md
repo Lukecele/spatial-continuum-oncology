@@ -17,7 +17,7 @@
 
 ```text
 TITLE:
-Overcoming the Post-ADAURA Cessation Paradox in Resected EGFR-Mutant NSCLC: A Reaction-Diffusion Biophysical Theory, Bedside CRI Stratification, and Anti-VEGFR2 Sanctuary Elimination
+Overcoming the Post-ADAURA Cessation Paradox in Resected EGFR-Mutant NSCLC: A Reaction-Diffusion Biophysical Theory, In Silico CRI Stratification, and Anti-VEGFR2 Sanctuary Elimination
 
 AUTHORS:
 Luca Celebrano
@@ -26,16 +26,16 @@ AFFILIATION:
 Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy.
 
 BACKGROUND:
-In resected EGFR-mutated NSCLC, 36 months of adjuvant osimertinib improves disease-free survival (DFS; ADAURA). However, 68% of relapses cluster post-cessation without secondary resistance mutations (C797S, MET). We hypothesized that microvascular transport barriers create perivascular pharmacological sanctuaries sheltering persisters, and developed a bedside Composite Resistance Index (CRI) to guide month-36 decisions.
+In resected EGFR-mutated NSCLC, 36 months of adjuvant osimertinib improves disease-free survival (DFS; ADAURA). However, 68% of relapses cluster post-cessation without secondary resistance mutations (C797S, MET). We hypothesized that microvascular transport barriers create perivascular pharmacological sanctuaries sheltering persisters, and developed a biophysical Composite Resistance Index (CRI) to inform post-cessation risk stratification.
 
 METHODS:
-A reaction-diffusion biophysical model was calibrated with human osimertinib pharmacokinetics and validated across 6 multicentric cohorts (N = 3,205). The bedside score (CRI = 0.47*S + 0.33*G + 0.20*M) integrated IASLC histology (S), TP53/RB1 NGS status (G), and stromal desmoplasia (M) to predict 5-year DFS and cessation outcomes.
+A reaction-diffusion biophysical model was calibrated with human osimertinib pharmacokinetics and evaluated across 6 multicentric cohorts (N = 3,205). The translational score (CRI = 0.47*S + 0.33*G + 0.20*M) integrated IASLC histology (S), TP53/RB1 NGS status (G), and stromal desmoplasia (M) to predict 5-year DFS and cessation outcomes.
 
 RESULTS:
 Sub-therapeutic drug penetration (rcrit = 165.9 μm) within oxygenated cords (rox = 200.0 μm) generates an obligate sanctuary shell (Δr = 34.1 μm; 31.3% cord volume) sheltering dormant persisters. Post-cessation drug clearance predicted median recurrence in 5.4 months, matching clinical trial data (4.7 months). The CRI predicted 5-year DFS with an AUC of 0.89 (95% CI: 0.86-0.92), outperforming TNM 8th stage (AUC 0.64, P < 0.0001). Fixed 36-month cessation yielded 92.4% 5-year DFS in Tier 1 (CRI < 0.30; safe de-escalation), 54.8% in Tier 2 (0.30-0.65; requiring bimonthly ctDNA surveillance), but only 18.2% in Tier 3 (CRI > 0.65; HR = 6.42, P < 0.0001). In Tier 3, continuous maintenance or anti-VEGFR2 vascular normalization abolished sanctuaries (Δr -> 0), restoring disease control.
 
 CONCLUSIONS:
-Post-ADAURA recurrence is governed by microvascular transport barriers rather than immediate genetic resistance. Bedside CRI stratification prevents toxic overtreatment in low-risk disease while averting premature cessation in high-risk patients.
+Post-ADAURA recurrence is governed by microvascular transport barriers rather than immediate genetic resistance. Biophysical CRI stratification provides an in silico foundation to inform prospective clinical trial design, sparing toxicity in low-risk cohorts while identifying candidates for vascular normalization in high-risk disease.
 ```
 
 ---
@@ -47,7 +47,7 @@ Post-ADAURA recurrence is governed by microvascular transport barriers rather th
 
 ```text
 TITOLO:
-Risoluzione del Paradosso Post-ADAURA nel NSCLC EGFR-Mutato Resecato: Biofisica dei Santuari Perivascolari, Stratificazione Bedside con CRI e Normalizzazione Vascolare Anti-VEGFR2
+Risoluzione del Paradosso Post-ADAURA nel NSCLC EGFR-Mutato Resecato: Biofisica dei Santuari Perivascolari, Stratificazione Biofisica con CRI e Normalizzazione Vascolare Anti-VEGFR2
 
 AUTORI:
 Luca Celebrano

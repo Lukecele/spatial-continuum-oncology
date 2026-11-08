@@ -35,10 +35,10 @@
   4. Genomic Plasticity: Co-occurring TP53/RB1 loss suppresses apoptotic arrest and promotes phenotypic
      lineage plasticity, transforming dormancy into explosive post-discontinuation recurrence.
   
-  CLINICAL UTILITY:
-  • Bedside Composite Resistance Index (CRI = 0.47·S + 0.33·G + 0.20·M): C-index 0.84 on MSKCC (N = 604).
-  • Low CRI (Tier 1): Safe discontinuation at Month 36 (sparing toxicity and unnecessary financial cost).
-  • High CRI (Tier 3): Mandatory maintenance extension or vascular normalization consolidation
+  TRANSLATIONAL UTILITY:
+  • Biophysical Composite Resistance Index (CRI = 0.47·S + 0.33·G + 0.20·M): C-index 0.84 on MSKCC (N = 604).
+  • Low CRI (Tier 1): Favorable de-escalation profile at Month 36 (sparing toxicity and unnecessary financial cost).
+  • High CRI (Tier 3): Candidate cohort for maintenance extension or vascular normalization consolidation
     (Osimertinib + Ramucirumab/anti-VEGFR2) to remodel stroma and eradicate residual sanctuaries.
 =======================================================================================================
 ```
@@ -123,7 +123,7 @@ While ADAURA has unequivocally transformed clinical practice, the emergence of l
 
 1. Microvascular Decoupling: In tumors displaying solid and micropapillary architectural predominance, inter-capillary diffusion distances exceed critical thresholds (Δr > 34 μm). Concomitant interstitial hypertension (P_ifp > 20 mmHg) abolishes convective fluid exchange, creating sub-therapeutic perivascular pharmacological sanctuaries (C_eff < IC_90).
 2. Minimal Residual Disease Persisters: Rather than de novo gatekeeper mutations, post-ADAURA relapses are predominantly driven by dormant drug-tolerant persister cells preserved within these physical sanctuaries, whose survival is further fortified by co-occurring TP53/RB1 alterations.
-3. Bedside Decision Support: We have formalized these findings into an open-source clinical metric, the Composite Resistance Index (CRI = 0.47·S + 0.33·G + 0.20·M; C-index 0.84 on MSKCC cohort), and designed a biomarker-directed trial concept ("SG-ADAURA") evaluating vascular normalization consolidation (Osimertinib + anti-VEGFR2) to eradicate residual sanctuaries.
+3. Translational Stratification: We have formalized these findings into an open-source biophysical metric, the Composite Resistance Index (CRI = 0.47·S + 0.33·G + 0.20·M; C-index 0.84 on MSKCC cohort), and designed a biomarker-directed trial concept ("SG-ADAURA") evaluating vascular normalization consolidation (Osimertinib + anti-VEGFR2) to eradicate residual sanctuaries.
 
 Our complete manuscript is currently Under Consideration at Nature Communications (Tracking: NCOMMS-26-091227) and accessible on Research Square (DOI: 10.21203/rs.3.rs-11530312/v1). The software and clinical calculators are fully open-source and registered with ELIXIR bio.tools (biotools:spatial-continuum-oncology) and Bioconda.
 
@@ -191,7 +191,7 @@ IRCCS Istituto Nazionale Tumori - IRCCS Fondazione G. Pascale, Napoli
 Dipartimento di Medicina Clinica e Chirurgia, Università Federico II, Napoli
 Società Italiana di Oncologia Medica (AIOM)
 
-Oggetto: Dossier Clinico-Translazionale: Risoluzione Meccanicistica della Resistenza Spaziale Post-ADAURA e Stratificazione al Bedside mediante Composite Resistance Index (CRI)
+Oggetto: Dossier Clinico-Traslazionale: Risoluzione Meccanicistica della Resistenza Spaziale Post-ADAURA e Stratificazione Clinica mediante Composite Resistance Index (CRI)
 
 Gentili Professori e Primari di Oncologia Toracica,
 
