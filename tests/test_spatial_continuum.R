@@ -40,7 +40,7 @@ assert <- function(condition, message) {
 # -----------------------------------------------------------------------------
 # Test 1: CalculateCRI extreme tiers and exact weights
 # -----------------------------------------------------------------------------
-cat("\n--- Test Suite 1: Bedside CalculateCRI ---\n")
+cat("\n--- Test Suite 1: In Silico CalculateCRI (RUO) ---\n")
 
 # Tier 1 patient: Lepidic (0.0), Double WT (0.0), Loose (0.0)
 p1 <- CalculateCRI("Lepidic", tp53 = "wt", rb1 = "wt", stroma = "loose")

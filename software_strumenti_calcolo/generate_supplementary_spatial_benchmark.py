@@ -2,7 +2,7 @@
 """
 Supplementary Figure S1 Generator:
 'Experimental Spatial Transcriptomics Validation of the Reaction-Diffusion Sanctuary Model
-and Bedside Composite Resistance Index (cri-calc) in EGFR-Mutant NSCLC'
+and In Silico Composite Resistance Index (cri-calc) in EGFR-Mutant NSCLC'
 
 Author: Luca Celebrano, MD Candidate, Universita degli Studi di Napoli Federico II
 Journal Target: Nature Communications (Supplementary Information)
@@ -319,15 +319,15 @@ ax_c.grid(True, axis='y', linestyle=':', alpha=0.5)
 ax_c.legend(loc='lower left', fontsize=7.8, framealpha=0.92, facecolor='white', edgecolor='#CCCCCC')
 
 # =============================================================================
-# PANEL D: Bedside cri-calc Stratification & Prospective Relapse Prediction
+# PANEL D: In Silico cri-calc Stratification & Prospective Relapse Prediction
 # =============================================================================
 ax_d = fig.add_subplot(gs[1, 1])
-ax_d.set_title("d  Bedside cri-calc Score Engine vs Progression-Free Survival",
+ax_d.set_title("d  In Silico cri-calc Score Engine vs Progression-Free Survival",
                loc="left", fontweight="bold", pad=10)
 
 # Shaded clinical risk tier bands
 ax_d.axhspan(0.00, 0.30, facecolor='#E8F5E9', alpha=0.75, zorder=1)
-ax_d.text(12, 0.25, "TIER 1: LOW RISK (CRI < 0.30)\nSafe Cessation at Month 36",
+ax_d.text(12, 0.25, "TIER 1: LOW RISK (CRI < 0.30)\nDe-escalation Profile (RUO)",
           ha='left', va='center', fontsize=8.0, fontweight='bold', color='#1B5E20')
 
 ax_d.axhspan(0.30, 0.65, facecolor='#FFF8E1', alpha=0.75, zorder=1)
@@ -335,7 +335,7 @@ ax_d.text(12, 0.58, "TIER 2: INTERMEDIATE RISK (0.30 <= CRI < 0.65)\nIntensified
           ha='left', va='center', fontsize=8.0, fontweight='bold', color='#B78103')
 
 ax_d.axhspan(0.65, 1.00, facecolor='#FFEBEE', alpha=0.75, zorder=1)
-ax_d.text(12, 0.92, "TIER 3: HIGH SANCTUARY RISK (CRI >= 0.65)\nDo NOT Discontinue / SG-ADAURA Escalation",
+ax_d.text(12, 0.92, "TIER 3: HIGH SANCTUARY RISK (CRI >= 0.65)\nCandidate for SG-ADAURA Arm B3 (RUO)",
           ha='left', va='center', fontsize=8.0, fontweight='bold', color='#B71C1C')
 
 # Plot patient CRI scores

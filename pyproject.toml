@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "spatial-continuum"
 version = "1.0.3"
-description = "Universal biophysical reaction-diffusion transport framework and Bedside Composite Resistance Index (CRI) for NSCLC."
+description = "Universal biophysical reaction-diffusion transport framework and In Silico Composite Resistance Index (CRI) for NSCLC (RUO)."
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}

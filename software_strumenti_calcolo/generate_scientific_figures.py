@@ -260,7 +260,7 @@ def draw_box(ax, x, y, w, h, text, bg='#E0F3F8', ec='#333333', bold=False):
 
 draw_box(ax4b, 0.05, 0.80, 0.90, 0.15, 'Target Population: Resected Stage IB-IIIA EGFRm NSCLC Completing 36 Months Osimertinib\nNED (No Evidence of Disease) by Contrast CT & Brain MRI (N = 800)', bg='#E6F598', bold=True)
 
-draw_box(ax4b, 0.05, 0.55, 0.90, 0.14, 'CRI Bedside Risk Stratification Engine (Month 36 Biopsy/Archival + Plasma ctDNA)\nTier 1: CRI < 0.30 (N=350)  |  Tier 2: CRI 0.30-0.65 (N=300)  |  Tier 3: CRI >= 0.65 (N=150)', bg='#FFFFBF')
+draw_box(ax4b, 0.05, 0.55, 0.90, 0.14, 'In Silico CRI Risk Stratification Engine (Month 36 Biopsy/Archival + Plasma ctDNA)\nTier 1: CRI < 0.30 (N=350)  |  Tier 2: CRI 0.30-0.65 (N=300)  |  Tier 3: CRI >= 0.65 (N=150)', bg='#FFFFBF')
 
 draw_box(ax4b, 0.02, 0.18, 0.28, 0.24, 'ARM A (Control, 1:1)\nStandard Cessation\nObservation + ctDNA Q3M\n(Current ADAURA Standard)', bg='#FEE08B')
 draw_box(ax4b, 0.35, 0.18, 0.30, 0.24, 'ARM B1 / B2 (Intervention)\nB1: Extended Osimertinib\nB2: 12-Wk Ramucirumab Pulse\n(Vascular Normalization)', bg='#ABD9E9')

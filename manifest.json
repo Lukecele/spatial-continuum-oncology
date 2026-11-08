@@ -1,6 +1,6 @@
 {
-  "name": "Bedside CRI — Spatial Oncology Decision Engine",
-  "short_name": "Bedside CRI",
+  "name": "In Silico CRI — Spatial Biophysics Engine (RUO)",
+  "short_name": "Biophysical CRI",
   "id": "/spatial-continuum-oncology/",
   "start_url": "./index.html",
   "scope": "./",
@@ -9,7 +9,7 @@
   "orientation": "any",
   "background_color": "#090d16",
   "theme_color": "#06b6d4",
-  "description": "Bedside Composite Resistance Index (CRI) and biophysical reaction-diffusion clinical decision engine for EGFR-mutant lung adenocarcinoma.",
+  "description": "In Silico Composite Resistance Index (CRI) and biophysical reaction-diffusion transport simulation engine (RUO) for EGFR-mutant lung adenocarcinoma.",
   "categories": ["medical", "health", "education"],
   "lang": "en",
   "dir": "ltr",
@@ -41,7 +41,7 @@
   ],
   "shortcuts": [
     {
-      "name": "Calcola Bedside CRI",
+      "name": "Calcola In Silico CRI",
       "short_name": "Calcola CRI",
       "description": "Valutazione rischio santuario farmacologico e score CRI post-ADAURA",
       "url": "./index.html#cri",
