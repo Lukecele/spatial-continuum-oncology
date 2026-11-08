@@ -24,6 +24,9 @@
   <a href="https://github.com/Lukecele/spatial-continuum-oncology">
     <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
   </a>
+  <a href="https://youtube.com/shorts/6YAtcmN_-kU">
+    <img src="https://img.shields.io/badge/YouTube-3D%20Simulation-red.svg?style=for-the-badge&logo=youtube&logoColor=white" height="28" alt="YouTube Shorts 3D Simulation">
+  </a>
   <a href="https://lukecele-research.vercel.app/">
     <img src="https://img.shields.io/badge/%F0%9F%8F%B0%20Caverna%20di%20Luca-Research%20Hub-60d9c5.svg?style=for-the-badge" height="28" alt="Caverna di Luca research hub">
   </a>
