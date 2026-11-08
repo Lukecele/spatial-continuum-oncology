@@ -3,7 +3,7 @@
 # 🔬 The Spatial-Genomic Oncology Continuum
 ### Resolving the Post-ADAURA Cessation Paradox with First-Principles Biophysics
 
-**An open-source reaction-diffusion transport solver, 60 FPS tumor digital twin, and bedside clinical decision engine (`cri-calc`) for targeted lung oncology.**
+**An open-source reaction-diffusion transport solver, 60 FPS tumor digital twin, and biophysical cohort stratification engine (`cri-calc`) for targeted lung oncology.**
 
 <p align="center">
   <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
@@ -16,7 +16,7 @@
     <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Simulator-60%20FPS%20Digital%20Twin-0284c7.svg?style=for-the-badge" height="28" alt="Live Simulator">
   </a>
   <a href="https://lukecele.github.io/spatial-continuum-oncology/">
-    <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-Bedside%20CRI%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
+    <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-CRI%20Biophysical%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
   </a>
   <a href="https://anaconda.org/bioconda/spatial-continuum">
     <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.3-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
@@ -56,16 +56,16 @@
 
 ### ⚡ 10-Second Interactive Quickstart (Zero Install Required)
 
-| 🚀 **1-Click Google Colab** | 🌐 **3D WebGL Digital Twin (HF)** | 🎮 **60 FPS Live Digital Twin** | 🏥 **Bedside CRI Clinical Decision** |
+| 🚀 **1-Click Google Colab** | 🌐 **3D WebGL Digital Twin (HF)** | 🎮 **60 FPS Live Digital Twin** | 🔬 **CRI Biophysical Stratification** |
 | :---: | :---: | :---: | :---: |
-| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 3D Sanctuary Twin**](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Bedside Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
-| Run Bessel $K_0$ diffusion & in silico trials in 10s | Full 360° perivascular santuary & Month 36 washout | Watch dormant persisters awaken in real-time | Compute patient risk tier & clinical guidance |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb) | [**▶ Launch 3D Sanctuary Twin**](https://huggingface.co/spaces/spatial-continuum-lab/tumor-cord-sanctuary-3d) | [**▶ Launch 60 FPS Simulator**](https://lukecele.github.io/spatial-continuum-oncology/simulator.html) | [**▶ Open Biophysical Web App**](https://lukecele.github.io/spatial-continuum-oncology/) |
+| Run Bessel $K_0$ diffusion & in silico trials in 10s | Full 360° perivascular santuary & Month 36 washout | Watch dormant persisters awaken in real-time | Compute sanctuary depth & cohort stratification |
 
 ```bash
 # Or run locally from your terminal in 3 seconds:
 pip install spatial-continuum
 
-# 1. Single-patient bedside consultation:
+# 1. Single-case biophysical consultation (with customizable model weights):
 cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
 
 # 2. High-throughput batch cohort analysis (TSV or CSV):
@@ -92,7 +92,7 @@ cri-calc --batch examples/patient_cohort_demo.tsv --out annotated_cohort.tsv
 
 | 🎯 The Clinical Paradox (ADAURA) | 🔬 The Biophysical Discovery | 💡 The Precision Solution (SG-ADAURA) |
 | :--- | :--- | :--- |
-| **67.9% of all relapses cluster AFTER planned 36-month stop** (*Herbst et al., Nature Medicine 2025*), with **57.9% occurring within 12 months**, and **75–80% harboring NO resistant mutations** (e.g. *EGFR* C797S). Why do drug-sensitive cells recur? | Elevated Interstitial Fluid Pressure shuts down convection ($Pe < 0.1$). Cylindrical Bessel $K_0$ diffusion leaves an **unperfused 34.1 $\mu$m sanctuary sleeve** where cells arrest cytostatically in $G_0/G_1$. | Bedside **Composite Resistance Index (`cri-calc`)**: safe cessation for Lepidic cords (saves €60k/yr & toxicity) vs **anti-VEGFR2 vascular normalization** for Solid cords ($\text{HR} < 0.05, p < 10^{-15}$). |
+| **67.9% of all relapses cluster AFTER planned 36-month stop** (*Herbst et al., Nature Medicine 2025*), with **57.9% occurring within 12 months**, and **75–80% harboring NO resistant mutations** (e.g. *EGFR* C797S). Why do drug-sensitive cells recur? | Elevated Interstitial Fluid Pressure shuts down convection ($Pe < 0.1$). Cylindrical Bessel $K_0$ diffusion leaves an **unperfused 34.1 $\mu$m sanctuary sleeve** where cells arrest cytostatically in $G_0/G_1$. | Biophysical **Composite Resistance Index (`cri-calc`)**: stratifies thin Lepidic cords (favorable penetration) vs dense Solid cords requiring **anti-VEGFR2 vascular normalization** ($\text{HR} < 0.05, p < 10^{-15}$). |
 
 </div>
 
@@ -206,17 +206,18 @@ git clone https://github.com/Lukecele/spatial-continuum-oncology.git
 cd spatial-continuum-oncology
 pip install -e .
 ```
-Both provide the bedside CLI commands `cri-calc` and `spatial-continuum-audit`.
+Both provide the CLI commands `cri-calc` and `spatial-continuum-audit`.
 
 All calculation tools can also be run directly from `software_strumenti_calcolo/`:
 
-### 1. Bedside Composite Resistance Index (CRI) Calculator
-Computes risk tier and clinical action at ADAURA Month 36:
-$$\text{CRI} = 0.47 \mathcal{S} + 0.33 \mathcal{G} + 0.20 \mathcal{M}$$
+### 1. Biophysical Composite Resistance Index (CRI) Calculator (RUO)
+Computes multi-component resistance index, perivascular sanctuary depth ($\Delta r$), and reaction-diffusion concentration ratios:
+$$\text{CRI} = w_S \mathcal{S} + w_G \mathcal{G} + w_M \mathcal{M}$$
 
 ```bash
-# Mode A: Single-patient bedside consultation
-cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense
+# Mode A: Single-case biophysical consultation (with customizable model weights)
+cri-calc --pattern solid --tp53 mutated --rb1 loss --stroma dense \
+         --w-spatial 0.47 --w-genomic 0.33 --w-stromal 0.20
 
 # Mode B: High-throughput batch cohort processing (TSV / CSV)
 cri-calc --batch examples/patient_cohort_demo.tsv --out results.tsv
@@ -224,20 +225,35 @@ cri-calc --batch examples/patient_cohort_demo.tsv --out results.tsv
 # Or run standalone directly from source:
 python3 software_strumenti_calcolo/cri_calc.py --pattern solid --tp53 mutated --rb1 loss --stroma dense
 ```
-**Decision Output:**
+**Biophysical Solver Output:**
 ```
 ========================================================================
-  COMPOSITE RESISTANCE INDEX (CRI): 1.000 / 1.000
-  CLINICAL RISK STRATIFICATION:    TIER 3 (HIGH RESISTANCE & SANCTUARY RISK)
-  EXPECTED 5-YEAR RELAPSE-FREE:    < 25 %
-  RECOMMENDATION: DO NOT DISCONTINUE OSIMERTINIB AT MONTH 36!
-  Mandatory ongoing treatment: Extended Osimertinib or SG-ADAURA Arm B3
+  COMPOSITE RESISTANCE INDEX (CRI) BIOPHYSICAL ANALYSIS
+  Translational Reaction-Diffusion Sanctuary Modeling for Solid Tumors
+  Research Use Only (RUO) - Quantitative Model
+========================================================================
+  [1] Spatial Architecture (S):   1.00  (Solid/Micropapillary architecture (severe vascular decoupling))
+  [2] Genomic Co-Mutation (G):    1.00  (Genomic: TP53 altered / RB1 altered (dual disruption))
+  [3] Stromal Desmoplasia (M):    1.00  (Stroma: Dense collagen desmoplasia)
+------------------------------------------------------------------------
+  Model Weights Applied:          w_S=0.47, w_G=0.33, w_M=0.20
+  Effective Penetration Lambda:   34.1 um (vessel radius: 8.0 um)
+  Perivascular Sanctuary Depth:   Delta r = 57.9 um
+  Boundary Concentration Ratio:   C_min / C0 = 0.0224
+------------------------------------------------------------------------
+  COMPOSITE RESISTANCE INDEX:     1.000 / 1.000
+  STRATIFICATION TIER:            TIER 3 (HIGH RESISTANCE & SANCTUARY RISK)
+  BIOPHYSICAL SUMMARY:            Substantial sanctuary mantle: Delta r = 57.9 um (C_min/C0 = 0.022)
+========================================================================
+  Disclaimer: For research and computational exploration only.
+  Downstream survival modeling (e.g. Kaplan-Meier / Cox) should be
+  performed on cohort datasets using Galaxy survival packages.
 ========================================================================
 ```
 
 <div align="center">
-  <img src="figure_scientifiche/notebook_fig2_cri_dashboard.png" alt="Bedside CRI Clinical Decision Support Dashboard" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
-  <p><i><b>Figure 3: Bedside CRI Clinical Decision Engine Output:</b> Automated patient risk stratification (Tier 1 safe cessation vs. Tier 3 mandatory continued treatment/remodeling) with component decomposition of Spatial Architecture ($\mathcal{S}$), Genomic Co-Mutations ($\mathcal{G}$), and Interstitial Desmoplasia ($\mathcal{M}$).</i></p>
+  <img src="figure_scientifiche/notebook_fig2_cri_dashboard.png" alt="CRI Stratification & Component Decomposition Dashboard" width="95%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); margin: 16px 0;">
+  <p><i><b>Figure 3: CRI Biophysical Engine Output:</b> Automated patient risk stratification (Tier 1 thin cords vs. Tier 3 obligate sanctuary mantle) with component decomposition of Spatial Architecture ($\mathcal{S}$), Genomic Co-Mutations ($\mathcal{G}$), and Interstitial Desmoplasia ($\mathcal{M}$). Research Use Only.</i></p>
 </div>
 
 ### 2. Analytical & Statistical Audit Suite
@@ -310,7 +326,7 @@ To enable immediate, hands-on replication of all biophysical derivations, numeri
 The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.ipynb) is fully self-contained and pre-computed with all execution outputs:
 * **Cell 1:** Zero-configuration environment setup (automatic local `src/` detection or Google Colab `pip` installation).
 * **Cell 2:** Exact Bessel $K_0$ radial diffusion solver, calculating $r_{\text{crit}}$ and the $34.1\,\mu\text{m}$ sanctuary shell.
-* **Cell 3:** Interactive Bedside CRI patient profiler with dynamic Colab form controls and visual risk gauge visualization.
+* **Cell 3:** Interactive CRI patient profiler with dynamic Colab form controls and visual risk gauge visualization (RUO).
 * **Cell 4:** 500-patient Monte Carlo clinical trial simulation producing publication-grade Kaplan-Meier survival curves.
 
 ---

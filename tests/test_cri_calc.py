@@ -101,5 +101,30 @@ class TestCRICalculator(unittest.TestCase):
             if os.path.exists(tf_out_path):
                 os.remove(tf_out_path)
 
+    def test_custom_weights_and_cutoffs(self):
+        # S=1.0, G=0.0, M=0.0
+        # Default weights: 0.47*1.0 = 0.47 -> TIER 2 (0.30 <= CRI <= 0.65)
+        # Custom weights: w_spatial=0.80, w_genomic=0.10, w_stromal=0.10 -> CRI = 0.80 -> TIER 3
+        res = calculate_cri(
+            pattern="solid", tp53="wt", rb1="wt", stroma="low",
+            w_spatial=0.80, w_genomic=0.10, w_stromal=0.10,
+            cutoff_low=0.25, cutoff_high=0.75
+        )
+        self.assertAlmostEqual(res["CRI"], 0.80, places=2)
+        self.assertIn("TIER 3", res["tier"])
+        self.assertGreater(res["sanctuary_depth_um"], 0.0)
+        self.assertLess(res["concentration_ratio"], 1.0)
+
+    def test_biophysical_sanctuary_metrics(self):
+        res = calculate_cri(
+            pattern="solid", tp53="mut", rb1="mut", stroma="dense",
+            lambda_pen=34.1, r_vessel=8.0
+        )
+        self.assertIn("sanctuary_depth_um", res)
+        self.assertIn("concentration_ratio", res)
+        self.assertIn("bio_summary", res)
+        self.assertAlmostEqual(res["sanctuary_depth_um"], 57.9, delta=0.5)
+        self.assertAlmostEqual(res["concentration_ratio"], 0.022, places=3)
+
 if __name__ == "__main__":
     unittest.main()

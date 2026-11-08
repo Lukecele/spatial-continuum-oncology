@@ -28,11 +28,18 @@
 #' @param tp53 Character or Logical. TP53 mutation status ('mut', 'wt', TRUE, FALSE).
 #' @param rb1 Character or Logical. RB1 mutation status ('mut', 'wt', TRUE, FALSE).
 #' @param stroma Character. Stromal grade: 'loose', 'moderate', 'dense'.
+#' @param w_spatial Numeric. Weight for spatial histology (default: 0.47).
+#' @param w_genomic Numeric. Weight for genomic co-mutations (default: 0.33).
+#' @param w_stromal Numeric. Weight for stromal desmoplasia (default: 0.20).
+#' @param cutoff_low Numeric. Low-risk tier cutoff (default: 0.35).
+#' @param cutoff_high Numeric. High-risk tier cutoff (default: 0.65).
 #' @return A named list containing S, G, M, CRI score, Risk Tier, Expected 5-year DFS, and clinical directive.
 #' @examples
 #' res <- CalculateCRI("solid", tp53 = "mut", rb1 = "wt", stroma = "dense")
 #' print(res$CRI)
-CalculateCRI <- function(pattern, tp53 = "wt", rb1 = "wt", stroma = "moderate") {
+CalculateCRI <- function(pattern, tp53 = "wt", rb1 = "wt", stroma = "moderate",
+                         w_spatial = 0.47, w_genomic = 0.33, w_stromal = 0.20,
+                         cutoff_low = 0.35, cutoff_high = 0.65) {
   # Normalize strings
   p_norm <- tolower(trimws(as.character(pattern)))
   s_norm <- tolower(trimws(as.character(stroma)))
@@ -79,16 +86,16 @@ CalculateCRI <- function(pattern, tp53 = "wt", rb1 = "wt", stroma = "moderate") 
     0.50 # Moderate
   }
 
-  # Linear combination: w_S = 0.47, w_G = 0.33, w_M = 0.20
-  cri_raw <- 0.47 * S + 0.33 * G + 0.20 * M
+  # Linear combination with customizable weights
+  cri_raw <- w_spatial * S + w_genomic * G + w_stromal * M
   CRI <- round(min(max(cri_raw, 0.0), 1.0), 3)
 
   # Biophysical sanctuary shell calculation
   delta_r <- round(34.11 * ((S + M) / 2.0), 1)
   sanctuary_vol_pct <- round(31.28 * ((S + M) / 2.0), 1)
 
-  # Risk stratification tiers
-  if (CRI < 0.35) {
+  # Risk stratification tiers using customizable cutoffs
+  if (CRI < cutoff_low) {
     tier <- "Tier 1 (Low Resistance / Minimal Sanctuary)"
     action <- "DISCONTINUATION CANDIDATE (Safe Cessation at Month 36)"
     dfs_5yr <- "96.4% [95% CI: 92.1-99.2%]"
@@ -98,7 +105,7 @@ CalculateCRI <- function(pattern, tp53 = "wt", rb1 = "wt", stroma = "moderate") 
       "osimertinib toxicity avoids cardiotoxicity/diarrhea without compromising 5-year DFS."
     )
     rec <- "Cease Osimertinib at Month 36. Perform longitudinal ctDNA MRD surveillance every 3 months."
-  } else if (CRI <= 0.65) {
+  } else if (CRI <= cutoff_high) {
     tier <- "Tier 2 (Intermediate Risk / Transitional Cords)"
     action <- "MRD-GUIDED CONSOLIDATION (Selective Continuation)"
     dfs_5yr <- "74.8% [95% CI: 68.3-81.2%]"

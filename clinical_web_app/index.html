@@ -1249,7 +1249,7 @@
             The Spatial-Genomic Oncology Continuum
           </h1>
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.2rem;">
-            Bedside Composite Resistance Index (CRI) · Bessel K₀ Sanctuary Engine · SG-ADAURA Trial Protocol
+            Composite Resistance Index (CRI) · Bessel K₀ Reaction-Diffusion Solver · Research Use Only (RUO)
           </p>
         </div>
 
@@ -1283,6 +1283,12 @@
         <span id="pwa-offline-badge" class="badge badge-teal" title="PWA Offline Storage (Bunker Ready)">
           <span>⚡ PWA Offline Ready</span>
         </span>
+      </div>
+
+      <!-- RESEARCH USE ONLY REGULATORY DISCLAIMER -->
+      <div style="margin-top: 0.75rem; padding: 0.55rem 0.85rem; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; font-size: 0.78rem; color: #fbbf24; display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 1rem;">⚠️</span>
+        <div><strong>Research Use Only (RUO):</strong> This software is an in silico biophysical reaction-diffusion and cohort stratification modeling tool intended solely for academic and preclinical exploration. It is not approved for clinical diagnostic or bedside treatment decision use. Survival curves and hazard metrics must be derived via empirical cohort statistical modeling.</div>
       </div>
     </div>
   </header>
@@ -1612,19 +1618,19 @@
           </div>
         </div>
 
-        <!-- EVIDENCE-BASED ACTION RECOMMENDATION -->
+        <!-- BIOPHYSICAL STRATIFICATION & RUO CATEGORIZATION -->
         <div class="action-box">
           <div class="action-header" id="action-title" style="color: #f87171;">
-            <span>🚨</span> Mandatory Bedside Recommendation: DO NOT DISCONTINUE AT MONTH 36
+            <span>⚠️</span> High Sanctuary Risk: Substantial Reaction-Diffusion Barrier
           </div>
           <p id="action-body" style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
             High probability of viable persister cells in the outer perivascular cord shell protected by Bessel K₀ decay.
-            Planned 3-year cessation will trigger post-ADAURA exponential recurrence surge within 5.4 months.
+            Biophysical simulations predict persistent sub-therapeutic exposure in outer cord margins. Research Use Only (RUO).
           </p>
 
           <div style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px dashed #374151;">
             <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase;">
-              Allocated SG-ADAURA Phase III Trial Arm:
+              In Silico SG-ADAURA Phase III Trial Arm Allocation:
             </div>
             <div id="trial-arm" style="font-weight: bold; font-size: 0.95rem; color: #fff; margin-top: 0.2rem;">
               Arm B3 · Dual Vascular Normalization (Osimertinib 80mg + Ramucirumab Consolidation)
@@ -2486,43 +2492,43 @@
         hero.classList.add('tier-3');
         tierLabel.innerText = 'TIER 3 · HIGH RESISTANCE & SANCTUARY RISK';
         tierLabel.style.color = '#f87171';
-        rfsLabel.innerText = 'Expected 5-Year Relapse-Free Survival: < 25% (High Sanctuary Persister Burden)';
+        rfsLabel.innerText = 'Biophysical Stratification: Obligate Sanctuary Shell (Delta r ~ 34-58 um)';
         actionTitle.style.color = '#f87171';
-        actionTitle.innerHTML = '<span>🚨</span> Mandatory Recommendation: DO NOT DISCONTINUE AT MONTH 36';
+        actionTitle.innerHTML = '<span>⚠️</span> High Sanctuary Risk Cohort: Substantial Reaction-Diffusion Barrier';
         actionBody.innerHTML = `
           High probability of viable persister cells in the outer perivascular cord shell protected by Bessel K₀ decay.
-          Planned 3-year cessation will trigger post-ADAURA exponential recurrence surge within 5.4 months.
-          <strong>Continuous suppression or microvascular remodeling consolidation required.</strong>
+          Cylindrical diffusion gradients indicate sub-therapeutic drug concentrations in outer cord regions.
+          <strong>Translational exploration: microvascular normalization or continued suppression. (RUO)</strong>
         `;
         if (G === 1.00 && S === 1.00) {
-          trialArm.innerText = 'Arm B3 · Dual Vascular Remodeling (Osimertinib 80mg + Ramucirumab / Anti-VEGFR2)';
+          trialArm.innerText = 'Arm B3 · Dual Vascular Remodeling In Silico Arm (Osimertinib + Anti-VEGFR2)';
         } else {
-          trialArm.innerText = 'Arm B1 · Extended Indefinite Osimertinib Maintenance (80 mg/day indefinite)';
+          trialArm.innerText = 'Arm B1 · Extended Osimertinib In Silico Maintenance Arm';
         }
       } else if (CRI >= 0.35) {
         hero.classList.add('tier-2');
         tierLabel.innerText = 'TIER 2 · INTERMEDIATE RESISTANCE RISK';
         tierLabel.style.color = '#fbbf24';
-        rfsLabel.innerText = 'Expected 5-Year Relapse-Free Survival: 50% – 65%';
+        rfsLabel.innerText = 'Biophysical Stratification: Intermediate Diffusion Decoupling';
         actionTitle.style.color = '#fbbf24';
-        actionTitle.innerHTML = '<span>⚠️</span> Intensive ctDNA Surveillance & Conditional Cessation';
+        actionTitle.innerHTML = '<span>ℹ️</span> Intermediate Sanctuary Risk Cohort (Conditional Monitoring)';
         actionBody.innerHTML = `
-          Moderate persister sanctuary risk. If planned cessation is considered at Month 36, mandatory serial monthly
-          ctDNA testing (limit of detection VAF &lt; 0.005%) is required to intercept exponential molecular recurrence.
+          Moderate persister sanctuary risk. Biophysical transport indicates intermediate perivascular penetration.
+          Serial monitoring (e.g. longitudinal ctDNA) recommended in translational protocol evaluations. (RUO)
         `;
-        trialArm.innerText = 'Arm B2 · ctDNA-Guided Pulse Consolidation (160 mg alternate days if ctDNA detected)';
+        trialArm.innerText = 'Arm B2 · ctDNA-Guided Pulse Consolidation In Silico Arm';
       } else {
         hero.classList.add('tier-1');
         tierLabel.innerText = 'TIER 1 · LOW RESISTANCE RISK (CURATIVE CANDIDATE)';
         tierLabel.style.color = '#34d399';
-        rfsLabel.innerText = 'Expected 5-Year Relapse-Free Survival: > 85%';
+        rfsLabel.innerText = 'Biophysical Stratification: Thin Cords / Minimal Sanctuary Sleeve';
         actionTitle.style.color = '#34d399';
-        actionTitle.innerHTML = '<span>✅</span> Safe Planned Cessation Feasible at Month 36';
+        actionTitle.innerHTML = '<span>✅</span> Low Sanctuary Risk Cohort: Favorable Transport Profile';
         actionBody.innerHTML = `
-          Minimal pharmacological sanctuary volume. Intact alveolar microvasculature precludes sub-therapeutic shelters.
-          Patient is an optimal candidate for definitive curative cessation after 36 months of adjuvant osimertinib.
+          Minimal pharmacological sanctuary volume. Intact alveolar microvasculature facilitates uniform drug penetration.
+          Favorable candidate cohort for standard planned post-adjuvant monitoring. (RUO)
         `;
-        trialArm.innerText = 'Arm A · Standard Planned Cessation at Month 36 (ADAURA Protocol)';
+        trialArm.innerText = 'Arm A · Standard Planned Cessation In Silico Arm (ADAURA Protocol)';
       }
 
       // 4. Biophysical Parameters

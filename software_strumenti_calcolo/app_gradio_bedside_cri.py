@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-CRI Bedside Clinical Decision Support - Gradio Web Application
-==============================================================
+CRI Biophysical Sanctuary Explorer - Gradio Web Application (RUO)
+================================================================
 The Spatial-Genomic Oncology Continuum
 Author: Luca Celebrano, MD Candidate
 Affiliation: Università degli Studi di Napoli Federico II
@@ -31,13 +31,23 @@ STROMA_SCORES = {
     "Dense Fibrotic (>30% desmoplasia)": 1.00
 }
 
-def calculate_cri(histology: str, tp53_mut: bool, rb1_mut: bool, stroma: str) -> Dict[str, Any]:
-    """Calculates Composite Resistance Index (CRI) and returns clinical directives."""
+def calculate_cri(
+    histology: str,
+    tp53_mut: bool,
+    rb1_mut: bool,
+    stroma: str,
+    w_spatial: float = 0.47,
+    w_genomic: float = 0.33,
+    w_stromal: float = 0.20,
+    cutoff_low: float = 0.35,
+    cutoff_high: float = 0.65
+) -> Dict[str, Any]:
+    """Calculates Composite Resistance Index (CRI) and returns biophysical sanctuary metrics (RUO)."""
     S = HISTOLOGY_SCORES.get(histology, 0.50)
     
     # Genomic co-mutation score G in [0.0, 1.0]
     if tp53_mut and rb1_mut:
-        G = 1.00  # Double mutant: catastrophic SCLC risk & neuroendocrine plasticity
+        G = 1.00  # Double mutant: severe genomic instability & transformation risk
     elif tp53_mut or rb1_mut:
         G = 0.50  # Single mutant
     else:
@@ -46,7 +56,7 @@ def calculate_cri(histology: str, tp53_mut: bool, rb1_mut: bool, stroma: str) ->
     M = STROMA_SCORES.get(stroma, 0.50)
     
     # Mathematical linear combination weights
-    CRI = 0.47 * S + 0.33 * G + 0.20 * M
+    CRI = w_spatial * S + w_genomic * G + w_stromal * M
     CRI = round(min(max(CRI, 0.0), 1.0), 3)
     
     # Biophysical sanctuary shell calculation
@@ -55,33 +65,32 @@ def calculate_cri(histology: str, tp53_mut: bool, rb1_mut: bool, stroma: str) ->
     delta_r = round(34.11 * ((S + M) / 2.0), 1)
     sanctuary_vol_pct = round(31.28 * ((S + M) / 2.0), 1)
     
-    # Stratification logic
-    if CRI < 0.35:
+    # Stratification logic based on customizable cutoffs
+    if CRI < cutoff_low:
         tier = "Tier 1 (Low Resistance / Minimal Sanctuary)"
-        action = "DISCONTINUATION CANDIDATE (Safe Cessation at Month 36)"
+        action = "Low Sanctuary Risk: Favorable Transport Profile (RUO)"
         justification = (
-            "Well-perfused, thin alveolar cords (sanctuary shell Δr ≈ 0 µm). "
-            "Drug concentration exceeds IC50 throughout tissue. Sparing 2 years of adjuvant "
-            "osimertinib toxicity avoids cardiotoxicity/diarrhea without compromising 5-year DFS (100%)."
+            f"Well-perfused, thin cords with minimal sanctuary mantle (Δr ≈ {delta_r} µm). "
+            "Drug concentration is predicted to exceed IC50 throughout tissue geometry under baseline parameters."
         )
-        rec = "Cease Osimertinib at Month 36. Perform longitudinal ctDNA MRD surveillance every 3 months."
-    elif CRI <= 0.65:
+        rec = "Optimal candidate for standard post-cessation monitoring in cohort trials."
+    elif CRI <= cutoff_high:
         tier = "Tier 2 (Intermediate Risk / Transitional Cords)"
-        action = "MRD-GUIDED CONSOLIDATION (Selective Continuation)"
+        action = "Intermediate Sanctuary Risk: Transitional Perivascular Gradient (RUO)"
         justification = (
-            "Partial perivascular drug penetration with low-frequency dormant cells. "
-            "ctDNA surveillance mandatory; continue osimertinib for additional 12–24 months if ctDNA positive."
+            f"Partial perivascular drug penetration with low-frequency dormant cells (Δr ≈ {delta_r} µm). "
+            "Suggests close serial monitoring (e.g. ctDNA) in translational protocol investigations."
         )
-        rec = "Perform plasma ctDNA at Month 36. If negative, maintain tight surveillance. If positive, continue monotherapy."
+        rec = "Consider intensive surveillance protocols within clinical trial designs."
     else:
         tier = "Tier 3 (High Resistance / Obligate Sanctuary)"
-        action = "DO NOT DISCONTINUE AT MONTH 36! (Mandatory Active Intervention)"
+        action = "High Sanctuary Risk: Substantial Perivascular Shielding (RUO)"
         justification = (
             f"Dense fibrotic stroma and solid cord architecture create an obligate sanctuary shell "
-            f"(Δr ≈ {delta_r} µm, ~{sanctuary_vol_pct}% viable volume). Standard cessation causes "
-            f"100% relapse within 5.4 months. Continuous osimertinib or SG-ADAURA Arm B3 required."
+            f"(Δr ≈ {delta_r} µm, ~{sanctuary_vol_pct}% viable cord volume). Reaction-diffusion decay "
+            f"predicts sub-therapeutic exposure in outer cord margins."
         )
-        rec = "Enroll in SG-ADAURA Arm B3 (Osimertinib 80 mg + Ramucirumab 10 mg/kg q2w) to normalize microvasculature."
+        rec = "Candidate cohort for vascular remodeling or anti-angiogenic trial arms (e.g. anti-VEGFR2)."
         
     return {
         "CRI": CRI,
@@ -93,28 +102,54 @@ def calculate_cri(histology: str, tp53_mut: bool, rb1_mut: bool, stroma: str) ->
         "Sanctuary_Volume_Pct": sanctuary_vol_pct
     }
 
-def process_single_patient(histology: str, tp53: bool, rb1: bool, stroma: str) -> str:
-    res = calculate_cri(histology, tp53, rb1, stroma)
+def process_single_patient(
+    histology: str,
+    tp53: bool,
+    rb1: bool,
+    stroma: str,
+    w_spatial: float,
+    w_genomic: float,
+    w_stromal: float,
+    cutoff_low: float,
+    cutoff_high: float
+) -> str:
+    res = calculate_cri(
+        histology, tp53, rb1, stroma,
+        w_spatial=w_spatial, w_genomic=w_genomic, w_stromal=w_stromal,
+        cutoff_low=cutoff_low, cutoff_high=cutoff_high
+    )
     return f"""
-### 🧬 Bedside Composite Resistance Index (CRI) Report
+### 🔬 Composite Resistance Index (CRI) Biophysical Analysis
+*Research Use Only (RUO) · Not for Clinical Diagnostic Use*
 
 - **CRI Score:** `{res['CRI']} / 1.000`
-- **Clinical Risk Tier:** **{res['Tier']}**
-- **Action Directive:** `{res['Action']}`
+- **Stratification Tier:** **{res['Tier']}**
+- **Biophysical Category:** `{res['Action']}`
 
 ---
-#### 🔬 Biophysical Sanctuary Status
-- **Sanctuary Shell Thickness (Δr):** `{res['Sanctuary_Delta_r_um']} µm` (Theoretical maximum: 34.1 µm)
+#### 📐 Perivascular Sanctuary Metrics
+- **Sanctuary Shell Thickness (Δr):** `{res['Sanctuary_Delta_r_um']} µm`
 - **Sanctuary Volume Fraction:** `{res['Sanctuary_Volume_Pct']}%` of viable cord volume
+- **Applied Model Weights:** `w_S = {w_spatial:.2f}, w_G = {w_genomic:.2f}, w_M = {w_stromal:.2f}`
 
 ---
-#### 📋 Clinical Recommendation
+#### 💡 Translational Cohort Implication
 > **{res['Recommendation']}**
 
-*Rationale:* {res['Justification']}
+*Biophysical Rationale:* {res['Justification']}
+
+---
+> ⚠️ **Disclaimer:** Survival probabilities and clinical hazard ratios must be empirically fitted to patient cohort survival data (e.g., Kaplan-Meier, Cox Proportional Hazards via Survminer) rather than assumed fixed bedside rates.
 """
 
-def batch_process_csv(file_obj) -> Tuple[pd.DataFrame, str]:
+def batch_process_csv(
+    file_obj,
+    w_spatial: float,
+    w_genomic: float,
+    w_stromal: float,
+    cutoff_low: float,
+    cutoff_high: float
+) -> Tuple[pd.DataFrame, str]:
     if file_obj is None:
         return pd.DataFrame(), "Please upload a CSV file."
         
@@ -139,21 +174,25 @@ def batch_process_csv(file_obj) -> Tuple[pd.DataFrame, str]:
         elif "dense" in stroma_val.lower() or "fibrotic" in stroma_val.lower():
             stroma_key = "Dense Fibrotic (>30% desmoplasia)"
             
-        res = calculate_cri(hist, tp53, rb1, stroma_key)
+        res = calculate_cri(
+            hist, tp53, rb1, stroma_key,
+            w_spatial=w_spatial, w_genomic=w_genomic, w_stromal=w_stromal,
+            cutoff_low=cutoff_low, cutoff_high=cutoff_high
+        )
         results.append({
-            "Patient_ID": row.get("patient_id", row.get("id", len(results) + 1)),
+            "Case_ID": row.get("patient_id", row.get("id", len(results) + 1)),
             "Histology": hist,
             "CRI_Score": res["CRI"],
-            "Risk_Tier": res["Tier"].split(" ")[0] + " " + res["Tier"].split(" ")[1],
-            "Clinical_Action": res["Action"].split("(")[0].strip(),
+            "Stratification_Tier": res["Tier"].split(" ")[0] + " " + res["Tier"].split(" ")[1],
+            "Sanctuary_Category": res["Action"].split(":")[0].strip(),
             "Sanctuary_Shell_um": res["Sanctuary_Delta_r_um"]
         })
         
     res_df = pd.DataFrame(results)
-    summary = f"Successfully analyzed {len(res_df)} patients: "
-    summary += f"{len(res_df[res_df['CRI_Score'] < 0.35])} Tier 1, "
-    summary += f"{len(res_df[(res_df['CRI_Score'] >= 0.35) & (res_df['CRI_Score'] <= 0.65)])} Tier 2, "
-    summary += f"{len(res_df[res_df['CRI_Score'] > 0.65])} Tier 3."
+    summary = f"Successfully analyzed {len(res_df)} cases: "
+    summary += f"{len(res_df[res_df['CRI_Score'] < cutoff_low])} Tier 1, "
+    summary += f"{len(res_df[(res_df['CRI_Score'] >= cutoff_low) & (res_df['CRI_Score'] <= cutoff_high)])} Tier 2, "
+    summary += f"{len(res_df[res_df['CRI_Score'] > cutoff_high])} Tier 3."
     return res_df, summary
 
 if __name__ == "__main__":
@@ -163,17 +202,26 @@ if __name__ == "__main__":
         print("Gradio not installed. Install with: pip install gradio pandas matplotlib")
         exit(1)
         
-    with gr.Blocks(title="CRI Bedside Decision Engine - Spatial Oncology Continuum") as demo:
+    with gr.Blocks(title="CRI Biophysical Sanctuary Explorer - Spatial Oncology") as demo:
         gr.Markdown(
             """
-            # 🩺 Bedside Composite Resistance Index (CRI) Clinical Decision Engine
-            ### *The Spatial-Genomic Oncology Continuum (ADAURA Post-Cessation Management)*
+            # 🔬 Composite Resistance Index (CRI) Biophysical Explorer
+            ### *Translational Reaction-Diffusion Sanctuary Modeling (Research Use Only)*
             **Author:** Luca Celebrano, MD Candidate • Università degli Studi di Napoli Federico II  
             *Preprint:* [Research Square (Springer Nature)](https://doi.org/10.21203/rs.3.rs-11530312/v1) • *Zenodo DOI:* [10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
             """
         )
         
-        with gr.Tab("Single Patient Bedside Assessment"):
+        with gr.Accordion("⚙️ Model Parameters & Calibration Weights (Customizable)", open=False):
+            with gr.Row():
+                w_s = gr.Slider(minimum=0.0, maximum=1.0, value=0.47, step=0.01, label="Spatial Architecture Weight (w_S)")
+                w_g = gr.Slider(minimum=0.0, maximum=1.0, value=0.33, step=0.01, label="Genomic Co-Mutation Weight (w_G)")
+                w_m = gr.Slider(minimum=0.0, maximum=1.0, value=0.20, step=0.01, label="Stromal Desmoplasia Weight (w_M)")
+            with gr.Row():
+                c_low = gr.Slider(minimum=0.1, maximum=0.5, value=0.35, step=0.05, label="Tier 1 Cutoff Threshold")
+                c_high = gr.Slider(minimum=0.5, maximum=0.9, value=0.65, step=0.05, label="Tier 3 Cutoff Threshold")
+
+        with gr.Tab("Single Case Biophysical Assessment"):
             with gr.Row():
                 with gr.Column():
                     hist = gr.Dropdown(
@@ -192,12 +240,16 @@ if __name__ == "__main__":
                         value="Dense Fibrotic (>30% desmoplasia)",
                         label="Stromal Desmoplasia & Architecture (M)"
                     )
-                    btn_calc = gr.Button("Calculate Bedside CRI & Directives", variant="primary")
+                    btn_calc = gr.Button("Calculate Biophysical Metrics", variant="primary")
                     
                 with gr.Column():
                     output_text = gr.Markdown()
                     
-            btn_calc.click(process_single_patient, inputs=[hist, tp53, rb1, stroma], outputs=output_text)
+            btn_calc.click(
+                process_single_patient,
+                inputs=[hist, tp53, rb1, stroma, w_s, w_g, w_m, c_low, c_high],
+                outputs=output_text
+            )
             
         with gr.Tab("Cohort Batch Simulator (CSV Upload)"):
             gr.Markdown("Upload a patient cohort CSV containing columns: `histology`, `tp53`, `rb1`, `stroma`.")
@@ -205,7 +257,11 @@ if __name__ == "__main__":
                 csv_input = gr.File(label="Upload Patient Cohort CSV", file_types=[".csv"])
             btn_batch = gr.Button("Run Cohort Stratification", variant="primary")
             batch_status = gr.Textbox(label="Batch Status Summary", interactive=False)
-            batch_table = gr.DataFrame(label="Patient Stratification Results")
-            btn_batch.click(batch_process_csv, inputs=[csv_input], outputs=[batch_table, batch_status])
+            batch_table = gr.DataFrame(label="Cohort Stratification Results")
+            btn_batch.click(
+                batch_process_csv,
+                inputs=[csv_input, w_s, w_g, w_m, c_low, c_high],
+                outputs=[batch_table, batch_status]
+            )
 
     demo.launch()

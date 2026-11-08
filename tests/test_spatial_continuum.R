@@ -3,7 +3,22 @@
 # Comprehensive Unit Test Suite for spatialcontinuum R Bridge
 # ==============================================================================
 
-source("/home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/R/spatial_continuum.R")
+# Dynamically locate spatial_continuum.R relative to this script or repo root
+script_dir <- tryCatch({
+  dirname(normalizePath(sys.frame(1)$ofile))
+}, error = function(e) {
+  getwd()
+})
+r_file <- file.path(script_dir, "../R/spatial_continuum.R")
+if (!file.exists(r_file)) {
+  r_file <- file.path(getwd(), "R/spatial_continuum.R")
+}
+if (!file.exists(r_file)) {
+  r_file <- "/home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/R/spatial_continuum.R"
+}
+if (file.exists(r_file)) {
+  source(r_file)
+}
 
 cat("================================================================\n")
 cat("🧪 RUNNING UNIT TESTS FOR SPATIAL CONTINUUM R MODULE\n")
