@@ -1,5 +1,5 @@
 ---
-title: CRI Bedside Clinical Decision Engine - Post-ADAURA Stratification
+title: In Silico Biophysical CRI Solver (RUO) - Post-ADAURA Stratification
 emoji: 🧬
 colorFrom: blue
 colorTo: indigo
@@ -9,12 +9,12 @@ tags:
   - oncology
   - lung-cancer
   - egfr
-  - clinical-decision-support
+  - biophysics
   - spatial-biology
   - precision-medicine
 ---
 
-# Composite Resistance Index (CRI) Bedside Clinical Decision Engine
+# In Silico Biophysical Composite Resistance Index (CRI) Solver (RUO)
 ### Post-ADAURA Adjuvant Stratification for Resected Stage IB–IIIA EGFR-Mutant NSCLC
 
 **Lead Author & Principal Investigator:** Luca Celebrano, MD Candidate  
@@ -30,13 +30,15 @@ tags:
 
 ## Overview
 
-This interactive clinical application provides real-time bedside decision support for thoracic oncologists and multidisciplinary tumor boards evaluating adjuvant osimertinib continuation or cessation following 36 months of therapy in resected *EGFR*-mutated NSCLC (ADAURA trial).
+*Disclaimer: Research Use Only (RUO). This interactive application simulates reaction-diffusion transport physics to formulate translational hypotheses for prospective trial design; it does not constitute clinical prescribing advice or medical diagnostics.*
+
+This interactive research application provides in silico biophysical transport simulations and cohort risk scoring for evaluating perivascular sanctuary burden in resected *EGFR*-mutated NSCLC.
 
 ### Core Capabilities:
-1. **Single Patient Bedside CRI Calculator:** Integrates IASLC architectural subtype, targeted NGS (*TP53* and *RB1* status), and stromal desmoplasia into the multi-parametric Composite Resistance Index (CRI).
-2. **Cohort Batch Stratification & Kaplan-Meier Simulator:** Upload CSV patient cohorts or simulate the 604-patient MSKCC validation distribution to generate real-time Disease-Free Survival (DFS) curves and hazard ratios.
+1. **Single Patient In Silico CRI Solver (RUO):** Integrates IASLC architectural subtype, targeted NGS (*TP53* and *RB1* status), and stromal desmoplasia into the multi-parametric Composite Resistance Index (CRI).
+2. **Cohort Batch Stratification & Kaplan-Meier Simulator:** Upload CSV patient cohorts or simulate the 604-patient MSKCC validation distribution to explore Disease-Free Survival (DFS) curves and hazard ratios.
 3. **Reaction-Diffusion Biophysics Explorer:** Interactive simulation of radial osimertinib penetration gradients $C(r)$ across tumor cords to visualize perivascular persister sanctuaries.
-4. **Direct PDF/Print Export:** Generates standardized clinical reports for electronic health records (EHR) and tumor boards.
+4. **Direct Report Export:** Generates standardized research reports for documentation.
 
 ---
 
