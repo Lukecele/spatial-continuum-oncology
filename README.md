@@ -5,10 +5,10 @@
 
 **An open-source reaction-diffusion transport solver, 60 FPS tumor digital twin, and biophysical cohort stratification engine (`cri-calc`) for targeted lung oncology.**
 
-> 🏰 **Live Interactive 3D Lab & Flagship Research Hub:** [**Explore Luca's Cave ↗**](https://lukecele-research.vercel.app/)
+> 🏰 **Live Interactive 3D Lab & Flagship Research Hub:** [**Explore Luca's Cave ↗**](https://lucacelebrano.me/)
 
 <p align="center">
-  <a href="https://lukecele-research.vercel.app/">
+  <a href="https://lucacelebrano.me/">
     <img src="https://img.shields.io/badge/%F0%9F%8F%B0%20Luca's%20Cave-Research%20Hub-60d9c5.svg?style=for-the-badge" height="28" alt="Luca's Cave research hub">
   </a>
   <a href="https://colab.research.google.com/github/Lukecele/spatial-continuum-oncology/blob/main/demo_spatial_continuum.ipynb">
@@ -56,7 +56,7 @@
 
 *Author:* **Luca Celebrano**, MD Candidate · Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II · `l.celebrano@studenti.unina.it`
 
-**Portfolio hub:** [Luca's Cave](https://lukecele-research.vercel.app/) · [ORCID](https://orcid.org/0009-0007-0931-3555) · [LinkedIn](https://www.linkedin.com/in/luca-celebrano/)
+**Portfolio hub:** [Luca's Cave](https://lucacelebrano.me/) · [ORCID](https://orcid.org/0009-0007-0931-3555) · [LinkedIn](https://www.linkedin.com/in/luca-celebrano/)
 
 ---
 
