@@ -48,7 +48,7 @@
   <a href="https://orcid.org/0009-0007-0931-3555"><img src="https://img.shields.io/badge/ORCID-0009--0007--0931--3555-a6ce39.svg?logo=orcid&logoColor=white" alt="ORCID"></a>
   <a href="https://www.nature.com/srep/"><img src="https://img.shields.io/badge/Scientific%20Reports-Under%20Consideration-007acc.svg" alt="Scientific Reports — Under Consideration"></a>
   <a href="https://pypi.org/project/spatial-continuum/"><img src="https://img.shields.io/pypi/v/spatial-continuum.svg?logo=pypi&logoColor=white" alt="PyPI"></a>
-  <a href="https://github.com/nf-core/modules/pull/13487"><img src="https://img.shields.io/badge/nf--core%20module-10.00%2F10%20Score-success.svg?logo=nextflow&logoColor=white" alt="nf-core module 10/10 Score"></a>
+  <a href="https://github.com/nf-core/modules/pull/13487"><img src="https://img.shields.io/badge/nf--core-spatialcontinuum%2Fcricalc%20(merged)-success.svg?logo=nextflow&logoColor=white" alt="nf-core spatialcontinuum/cricalc module merged"></a>
   <a href="https://quay.io/repository/biocontainers/spatial-continuum"><img src="https://img.shields.io/badge/BioContainers-Docker%20%26%20Singularity-brightgreen.svg?logo=docker&logoColor=white" alt="BioContainers"></a>
   <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg" alt="Zero Dependencies">
