@@ -1,2 +1,4 @@
 *.ipynb linguist-documentation=true
+*.ipynb linguist-detectable=false
 *.html linguist-documentation=true
+*.html linguist-detectable=false
