@@ -337,16 +337,17 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 ---
 
-## 📚 Multi-Cohort Clinical Validation Summary ($N = 3,205$)
+## 📚 Multi-Cohort Clinical Validation Summary ($N = 4,744$)
 
 | Cohort | N | Primary Endpoint Verified | Reference |
 | :--- | :---: | :--- | :--- |
-| **ADAURA ctDNA MRD** | 220 | 67.9% post-stop relapses; ctDNA lead time 4.7 mo | Herbst et al., *Nat Med* 2025 (PMID: [40097663](https://pubmed.ncbi.nlm.nih.gov/40097663/)) |
-| **MSKCC Thoracic Histology** | 604 | Solid/Micropapillary recurrence HR raw 6.75 (Firth 2.60–3.42) | MSKCC Thoracic Database 2020 |
-| **TCGA-LUAD + GSE31210** | 854 | Spatial gene expression prognostic signature validation | TCGA / Okayama et al. |
+| **Stage I LUAD High-Grade Replication** | 1,539 | Solid/Micropapillary components DFS HR = 3.95 ($p < 0.001$) | Liang et al., *Cancer Med* 2026 (DOI: [10.1002/cam4.72439](https://doi.org/10.1002/cam4.72439)) |
 | **MSKCC Targeted Genomics** | 863 | *EGFR*/*TP53*/*RB1* triple mutant TTD 9.5 mo, SCLC 18–25% | Offin et al., *J Thorac Oncol* 2019 (PMID: [31228622](https://pubmed.ncbi.nlm.nih.gov/31228622/)) |
-| **Human Lung Cancer IFP** | 211 | Mean IFP 8.5 mmHg, Solid 9.8 mmHg (independent RFS predictor) | Mori et al., *Ann Thorac Cardiovasc Surg* 2015 (PMID: [25641031](https://pubmed.ncbi.nlm.nih.gov/25641031/)) |
+| **TCGA-LUAD + GSE31210** | 854 | Spatial gene expression prognostic signature validation | TCGA / Okayama et al. |
+| **MSKCC Thoracic Histology** | 604 | Solid/Micropapillary recurrence HR raw 6.75 (Firth 2.60–3.42) | MSKCC Thoracic Database 2020 |
 | **RELAY Phase III Trial** | 449 | Ramucirumab (anti-VEGFR2) + TKI PFS HR = 0.59 ($p < 0.0001$) | Nakagawa et al., *J Thorac Oncol* 2025 (PMID: [39622410](https://pubmed.ncbi.nlm.nih.gov/39622410/)) |
+| **ADAURA ctDNA MRD** | 220 | 67.9% post-stop relapses; ctDNA lead time 4.7 mo | Herbst et al., *Nat Med* 2025 (PMID: [40097663](https://pubmed.ncbi.nlm.nih.gov/40097663/)) |
+| **Human Lung Cancer IFP** | 211 | Mean IFP 8.5 mmHg, Solid 9.8 mmHg (independent RFS predictor) | Mori et al., *Ann Thorac Cardiovasc Surg* 2015 (PMID: [25641031](https://pubmed.ncbi.nlm.nih.gov/25641031/)) |
 
 ---
 
