@@ -325,10 +325,25 @@ def print_single_report(res: Dict[str, object], args: argparse.Namespace) -> Non
     print("  Disclaimer: For research and computational exploration only.")
     print("  Downstream survival modeling (e.g. Kaplan-Meier / Cox) should be")
     print("  performed on cohort datasets using Galaxy survival packages.")
+    print("------------------------------------------------------------------------")
+    print("  ⭐ If this biophysical solver supports your research, star on GitHub:")
+    print("  👉 https://github.com/Lukecele/spatial-continuum-oncology")
     print("========================================================================")
 
 
 def main() -> None:
+    banner = (
+        "\x1b[1;36m┌────────────────────────────────────────────────────────────────────────┐\n"
+        "│ \x1b[1;32m🔬 The Spatial-Genomic Oncology Continuum — CRI Solver v1.0.3          \x1b[1;36m│\n"
+        "│                                                                        │\n"
+        "│ \x1b[1;33m⭐ If this in silico biophysical solver supports your research:         \x1b[1;36m│\n"
+        "│ 👉 \x1b[1;34mhttps://github.com/Lukecele/spatial-continuum-oncology\x1b[1;36m              │\n"
+        "└────────────────────────────────────────────────────────────────────────┘\x1b[0m\n"
+    )
+    if sys.stdout.isatty():
+        sys.stdout.write(banner)
+        sys.stdout.flush()
+
     parser = argparse.ArgumentParser(
         description="Biophysical Composite Resistance Index and Reaction-Diffusion Solver (RUO)."
     )
