@@ -200,29 +200,30 @@ ax3a.grid(True, linestyle=':', alpha=0.5)
 ax3a.text(50, 0.85, 'Erlotinib Sanctuary: 82.0% Vol\nGefitinib Sanctuary: 75.0% Vol\nOsimertinib Sanctuary: 31.3% Vol',
           bbox=dict(boxstyle='round,pad=0.5', facecolor='#F0F0F0', edgecolor='#999999'), fontsize=9)
 
-# Panel B: Multi-Cohort Forest Plot (N = 3,205)
+# Panel B: Multi-Cohort Forest Plot (N = 4,744)
 cohort_names = [
-    'ADAURA ctDNA Cohort (Herbst 2025, N=220)',
-    'MSKCC Histology Cohort (N=604)',
-    'TCGA + GSE31210 Cohort (N=854)',
+    'Stage I High-Grade Replication (Liang 2026, N=1,539)',
     'MSKCC Genomic Cohort (Offin 2019, N=863)',
-    'Human Lung IFP Cohort (Mori 2015, N=211)',
-    'RELAY Trial VEGFR2 (Nakagawa 2025, N=449)'
+    'TCGA + GSE31210 Cohort (N=854)',
+    'MSKCC Histology Cohort (N=604)',
+    'RELAY Trial VEGFR2 (Nakagawa 2025, N=449)',
+    'ADAURA ctDNA Cohort (Herbst 2025, N=220)',
+    'Human Lung IFP Cohort (Mori 2015, N=211)'
 ]
-n_patients = [220, 604, 854, 863, 211, 449]
+n_patients = [1539, 863, 854, 604, 449, 220, 211]
 y_pos = np.arange(len(cohort_names))
 
 bars3b = ax3b.barh(y_pos, n_patients, color='#4575B4', edgecolor='#333333', alpha=0.85, height=0.55)
 for bar, n in zip(bars3b, n_patients):
     xval = bar.get_width()
-    ax3b.text(xval + 15, bar.get_y() + bar.get_height()/2.0, f'N = {n:,}', ha='left', va='center', fontweight='bold')
+    ax3b.text(xval + 20, bar.get_y() + bar.get_height()/2.0, f'N = {n:,}', ha='left', va='center', fontweight='bold', fontsize=8.5)
 
 ax3b.set_yticks(y_pos)
-ax3b.set_yticklabels(cohort_names, fontsize=8.5)
+ax3b.set_yticklabels(cohort_names, fontsize=8.0)
 ax3b.invert_yaxis()
 ax3b.set_xlabel('Number of Analyzed Human Patients')
-ax3b.set_title('b  Multi-Cohort Empirical Evidence Base (Total N = 3,205)', loc='left', fontweight='bold')
-ax3b.set_xlim(0, 1100)
+ax3b.set_title('b  Multi-Cohort Empirical Evidence Base (Total N = 4,744)', loc='left', fontweight='bold')
+ax3b.set_xlim(0, 1850)
 ax3b.grid(axis='x', linestyle=':', alpha=0.6)
 
 plt.tight_layout()

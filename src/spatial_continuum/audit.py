@@ -206,6 +206,14 @@ def run_deep_audit():
             "primary_metrics": "Erlotinib + Ramucirumab PFS HR 0.59 (p < 0.0001)",
             "statistical_degrees_of_freedom": "Phase III stratified log-rank (1 df)",
             "risk_of_confounding": "Double-blind, placebo-controlled, international multicenter"
+        },
+        {
+            "name": "Stage I LUAD High-Grade Component Replication Cohort",
+            "N": 1539,
+            "reference": "Liang et al., Cancer Medicine 2026 (DOI: 10.1002/cam4.72439)",
+            "primary_metrics": "Solid/Micropapillary components (>5%) DFS HR 3.95 (95% CI 1.53-10.15, p < 0.001)",
+            "statistical_degrees_of_freedom": "Multivariate Cox model (df = 4: stage, grade, CTR, high-grade components)",
+            "risk_of_confounding": "Multicenter real-world surgical R0 resection cohort with 38-month median follow-up"
         }
     ]
 
