@@ -227,7 +227,8 @@ for r in summary_rows:
 print("=" * 115)
 
 # Save result JSON
-out_path = "/home/luca/Scrivania/STUDIO_CONTINUUM_ONCOLOGIA_CELEBRANO/software_strumenti_calcolo/fast_superiority_benchmark_results.json"
+import os
+out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fast_superiority_benchmark_results.json")
 with open(out_path, "w") as f:
     json.dump(summary_rows, f, indent=2)
 
