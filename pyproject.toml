@@ -35,6 +35,14 @@ classifiers = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+scverse = [
+  "anndata>=0.8.0",
+  "numpy",
+  "scipy",
+  "pandas"
+]
+
 [project.scripts]
 cri-calc = "spatial_continuum.cri_calc:main"
 spatial-continuum-audit = "spatial_continuum.audit:main"

@@ -400,7 +400,7 @@ If you use this biophysical model, the computational suite, or the CRI clinical 
 To preserve academic priority for medical journal peer-review while ensuring 100% permissive open-source distribution across scientific package managers (Bioconda, nf-core, Galaxy, PyPI), this repository is governed by an explicit **dual-license architecture**:
 
 * 💻 **Computational Software, CLI (`cri-calc`), Algorithms & Pipeline Code:**  
-  Licensed under the permissive **[MIT License](LICENSE-MIT)** (`LICENSE-MIT`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.
+  Licensed under the canonical **[MIT License](LICENSE)** (`LICENSE`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.
 
 * 📄 **Monograph, Clinical Trial Protocols, Figures & Manuscript Texts:**  
-  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE)** (`LICENSE`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Scientific Reports* and related conference workflows, while permitting global educational and scholarly citation with attribution.
+  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CC-BY)** (`LICENSE-CC-BY`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Scientific Reports* and related conference workflows, while permitting global educational and scholarly citation with attribution.
