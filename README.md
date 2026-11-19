@@ -32,9 +32,7 @@
   <a href="https://youtube.com/shorts/6YAtcmN_-kU">
     <img src="https://img.shields.io/badge/YouTube-3D%20Simulation-red.svg?style=for-the-badge&logo=youtube&logoColor=white" height="28" alt="YouTube Shorts 3D Simulation">
   </a>
-  <a href="https://bio.tools/spatial-continuum-oncology">
-    <img src="https://img.shields.io/badge/bio.tools-Spatial%20Continuum-60d9c5.svg?style=for-the-badge" height="28" alt="bio.tools Spatial Continuum record">
-  </a>
+  
 </p>
 
 <p align="center">
@@ -44,7 +42,7 @@
   <a href="#research"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
   <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
   <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
-  <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
+  
   <a href="https://orcid.org/0009-0007-0931-3555"><img src="https://img.shields.io/badge/ORCID-0009--0007--0931--3555-a6ce39.svg?logo=orcid&logoColor=white" alt="ORCID"></a>
   <a href="https://www.nature.com/srep/"><img src="https://img.shields.io/badge/Scientific%20Reports-Under%20Consideration-007acc.svg" alt="Scientific Reports — Under Consideration"></a>
   <a href="https://pypi.org/project/spatial-continuum/"><img src="https://img.shields.io/pypi/v/spatial-continuum.svg?logo=pypi&logoColor=white" alt="PyPI"></a>
