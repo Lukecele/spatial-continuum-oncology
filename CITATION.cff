@@ -3,8 +3,8 @@ message: "If you use this biophysical model, CRI software suite, or dataset in y
 authors:
   - family-names: "Celebrano"
     given-names: "Luca"
-    affiliation: "Department of Clinical Medicine and Surgery, School of Medicine and Surgery, Università degli Studi di Napoli Federico II, Naples, Italy"
-    email: "l.celebrano@studenti.unina.it"
+    affiliation: "Independent Researcher, Naples, Italy"
+    email: "luca.celebrano1@gmail.com"
 title: "The Spatial-Genomic Oncology Continuum: A Biophysical Reaction-Diffusion Theory of Pharmacological Sanctuaries, the Post-ADAURA Cessation Dilemma, and the SG-ADAURA Clinical Trial Protocol"
 version: 1.0.3
 date-released: 2026-10-28
@@ -28,9 +28,8 @@ preferred-citation:
   authors:
     - family-names: "Celebrano"
       given-names: "Luca"
-      affiliation: "Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II, Naples, Italy"
-      email: "l.celebrano@studenti.unina.it"
+      affiliation: "Independent Researcher, Naples, Italy"
+      email: "luca.celebrano1@gmail.com"
   title: "Conditions for Pharmacological Sanctuaries in Perivascular Tumour Cords: A Reaction–Diffusion Analysis, a Regrowth-Kinetics Identity, and a Descriptive Survival Analysis of Histologic Subtype in Resected Lung Adenocarcinoma"
-  journal: "Research Square (Springer Nature)"
-  doi: "10.21203/rs.3.rs-11530312/v1"
+  journal: "Preprint / Working Paper"
   year: 2026
