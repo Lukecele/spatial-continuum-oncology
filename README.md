@@ -40,8 +40,8 @@
 <p align="center">
   <a href="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml"><img src="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
-  <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
-  <a href="https://doi.org/10.21203/rs.3.rs-11530312/v1"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
+  <a href="#research"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
+  <a href="#research"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
   <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
   <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
   <a href="https://doi.org/10.5281/zenodo.23754999"><img src="https://zenodo.org/badge/1437679243.svg" alt="Zenodo"></a>
@@ -54,7 +54,7 @@
   <img src="https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg" alt="Zero Dependencies">
 </p>
 
-*Author:* **Luca Celebrano**, MD Candidate · Department of Clinical Medicine and Surgery, School of Medicine, Università degli Studi di Napoli Federico II · `l.celebrano@studenti.unina.it`
+*Author:* **Luca Celebrano**, MD Candidate · Independent Researcher · `l.celebrano@studenti.unina.it`
 
 **Portfolio hub:** [Luca's Cave](https://lucacelebrano.me/) · [ORCID](https://orcid.org/0009-0007-0931-3555) · [LinkedIn](https://www.linkedin.com/in/luca-celebrano/)
 
@@ -372,7 +372,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 | Identifier / DOI | Platform / Repository | Scholarly Asset & Description |
 | :--- | :--- | :--- |
-| [`10.21203/rs.3.rs-11530312/v1`](https://doi.org/10.21203/rs.3.rs-11530312/v1) | **Research Square (Springer Nature)** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
+| [`10.21203/rs.3.rs-11530312/v1`](#research) | **Research Square (Springer Nature)** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
 | [`10.5281/zenodo.23754999`](https://doi.org/10.5281/zenodo.23754999) | **Zenodo (CERN / OpenAIRE)** | Master Codebase, Reaction-Diffusion Solvers & MSKCC Resection Cohort |
 | [`10.5281/zenodo.23623653`](https://doi.org/10.5281/zenodo.23623653) | **Zenodo (CERN / OpenAIRE)** | Digital Pathology AI Suite (Subcellular Microvascular Decoupling) |
 | [`10.5281/zenodo.23585216`](https://doi.org/10.5281/zenodo.23585216) | **Zenodo (CERN / OpenAIRE)** | InSituGame Package (Spatial Evolutionary Game Assay) |
@@ -389,7 +389,7 @@ If you use this biophysical model, the computational suite, or the CRI clinical 
   journal={Research Square (Springer Nature)},
   year={2026},
   doi={10.21203/rs.3.rs-11530312/v1},
-  url={https://doi.org/10.21203/rs.3.rs-11530312/v1},
+  url={#research},
   institution={Department of Clinical Medicine and Surgery, School of Medicine, Universit{\`a} degli Studi di Napoli Federico II},
   note={Independent Medical Student Research Program in Mathematical Oncology}
 }
