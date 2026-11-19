@@ -21,7 +21,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .cri_calc import calculate_cri
 
 # Biophysical constants derived from Bessel reaction-diffusion transport modeling
-# (Celebrano et al., Research Square DOI: 10.21203/rs.3.rs-11530312/v1)
+# (Celebrano et al., Open Computational Suite DOI: 10.5281/zenodo.23623653)
 BESSEL_TRANSPORT_METRICS = {
     "r0_vessel_radius_um": 8.0,
     "rcrit_effective_penetration_um": 42.1,
@@ -35,8 +35,8 @@ BESSEL_TRANSPORT_METRICS = {
 
 SCIENTIFIC_ANCHORS = {
     "framework": "Spatial-Genomic Oncology Continuum",
-    "primary_doi": "10.21203/rs.3.rs-11530312/v1",
-    "primary_doi_url": "https://doi.org/10.21203/rs.3.rs-11530312/v1",
+    "primary_doi": "10.5281/zenodo.23623653",
+    "primary_doi_url": "https://doi.org/10.5281/zenodo.23623653",
     "zenodo_monograph_doi": "10.5281/zenodo.23754999",
     "repository": "https://github.com/Lukecele/spatial-continuum-oncology",
     "documentation": "https://lukecele.github.io/spatial-continuum-oncology/",

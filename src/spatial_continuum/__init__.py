@@ -6,7 +6,7 @@ Native scverse AnnData interoperability for spatial biology and precision oncolo
 
 __version__ = "1.0.3"
 __author__ = "Luca Celebrano"
-__email__ = "l.celebrano@studenti.unina.it"
+__email__ = "luca.celebrano1@gmail.com"
 
 from .cri_calc import calculate_cri
 from .audit import K0_integral, run_deep_audit

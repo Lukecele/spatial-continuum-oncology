@@ -5,7 +5,7 @@ Demonstrating Bessel K0 reaction-diffusion transport physics and in-situ pharmac
 sanctuary quantification directly on intact human EGFR-mutated lung adenocarcinoma.
 
 Scientific Framework: Spatial-Genomic Oncology Continuum (Celebrano et al., 2026)
-DOI: 10.21203/rs.3.rs-11530312/v1 | Zenodo: 10.5281/zenodo.23754999
+DOI: 10.5281/zenodo.23623653 | Zenodo: 10.5281/zenodo.23754999
 """
 
 import os

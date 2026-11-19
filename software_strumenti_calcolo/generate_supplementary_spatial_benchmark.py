@@ -4,7 +4,7 @@ Supplementary Figure S1 Generator:
 'Experimental Spatial Transcriptomics Validation of the Reaction-Diffusion Sanctuary Model
 and In Silico Composite Resistance Index (cri-calc) in EGFR-Mutant NSCLC'
 
-Author: Luca Celebrano, MD Candidate, Universita degli Studi di Napoli Federico II
+Author: Luca Celebrano, MD Candidate, Universita degli Studi di Napoli Independent Researcher, Naples, Italy
 Journal Target: Nature Communications (Supplementary Information)
 Output: 300 DPI Publication PNG and Vector PDF
 """

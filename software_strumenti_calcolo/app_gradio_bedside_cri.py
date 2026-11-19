@@ -4,7 +4,7 @@ CRI Biophysical Sanctuary Explorer - Gradio Web Application (RUO)
 ================================================================
 The Spatial-Genomic Oncology Continuum
 Author: Luca Celebrano, MD Candidate
-Affiliation: Università degli Studi di Napoli Federico II
+Affiliation: Independent Researcher, Naples, Italy
 
 Launch locally with:
     pip install gradio pandas matplotlib
@@ -207,8 +207,8 @@ if __name__ == "__main__":
             """
             # 🔬 Composite Resistance Index (CRI) Biophysical Explorer
             ### *Translational Reaction-Diffusion Sanctuary Modeling (Research Use Only)*
-            **Author:** Luca Celebrano, MD Candidate • Università degli Studi di Napoli Federico II  
-            *Preprint:* [Research Square (Springer Nature)](https://doi.org/10.21203/rs.3.rs-11530312/v1) • *Zenodo DOI:* [10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
+            **Author:** Luca Celebrano, MD Candidate • Independent Researcher, Naples, Italy  
+            *Preprint:* [Open Computational Suite](https://doi.org/10.5281/zenodo.23623653) • *Zenodo DOI:* [10.5281/zenodo.23748047](https://doi.org/10.5281/zenodo.23748047)
             """
         )
         

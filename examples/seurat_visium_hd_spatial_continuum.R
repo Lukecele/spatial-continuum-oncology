@@ -2,9 +2,9 @@
 # ==============================================================================
 # Visium HD 10x Subcellular Spatial Benchmark in R (Seurat & Spatial Interop)
 # ==============================================================================
-# Author: Luca Celebrano, MD Candidate, Università degli Studi di Napoli Federico II
+# Author: Luca Celebrano, MD Candidate, Independent Researcher, Naples, Italy
 # Framework: Spatial-Genomic Oncology Continuum
-# Scientific Anchors: Research Square DOI: 10.21203/rs.3.rs-11530312/v1
+# Scientific Anchors: Open Computational Suite DOI: 10.5281/zenodo.23623653
 #                    Zenodo DOI: 10.5281/zenodo.23754999
 # ==============================================================================
 

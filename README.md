@@ -38,7 +38,7 @@
 <p align="center">
   <a href="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml"><img src="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
-  <a href="#research"><img src="https://img.shields.io/badge/Research%20Square-10.21203%2Frs.3.rs--11530312%2Fv1-blue.svg" alt="Research Square"></a>
+  <a href="https://doi.org/10.5281/zenodo.23623653"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23623653-blue.svg" alt="Zenodo DOI"></a>
   <a href="#research"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
   <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
   <a href="https://www.biostars.org/p/9623490/"><img src="https://img.shields.io/badge/Biostars-p%2F9623490-orange.svg" alt="Biostars Discussion"></a>
@@ -52,7 +52,7 @@
   <img src="https://img.shields.io/badge/dependencies-pure%20standard%20lib-brightgreen.svg" alt="Zero Dependencies">
 </p>
 
-*Author:* **Luca Celebrano**, MD Candidate · Independent Researcher · `l.celebrano@studenti.unina.it`
+*Author:* **Luca Celebrano**, MD Candidate · Independent Researcher · `luca.celebrano1@gmail.com`
 
 **Portfolio hub:** [Luca's Cave](https://lucacelebrano.me/) · [ORCID](https://orcid.org/0009-0007-0931-3555) · [LinkedIn](https://www.linkedin.com/in/luca-celebrano/)
 
@@ -370,7 +370,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 | Identifier / DOI | Platform / Repository | Scholarly Asset & Description |
 | :--- | :--- | :--- |
-| [`10.21203/rs.3.rs-11530312/v1`](#research) | **Research Square (Springer Nature)** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
+| [`10.5281/zenodo.23623653`](#research) | **Open Computational Suite** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
 | [`10.5281/zenodo.23754999`](https://doi.org/10.5281/zenodo.23754999) | **Zenodo (CERN / OpenAIRE)** | Master Codebase, Reaction-Diffusion Solvers & MSKCC Resection Cohort |
 | [`10.5281/zenodo.23623653`](https://doi.org/10.5281/zenodo.23623653) | **Zenodo (CERN / OpenAIRE)** | Digital Pathology AI Suite (Subcellular Microvascular Decoupling) |
 | [`10.5281/zenodo.23585216`](https://doi.org/10.5281/zenodo.23585216) | **Zenodo (CERN / OpenAIRE)** | InSituGame Package (Spatial Evolutionary Game Assay) |
@@ -384,21 +384,14 @@ If you use this biophysical model, the computational suite, or the CRI clinical 
 @article{celebrano2026spatialcontinuum,
   title={Conditions for Pharmacological Sanctuaries in Perivascular Tumour Cords: A Reaction–Diffusion Analysis, a Regrowth-Kinetics Identity, and a Descriptive Survival Analysis of Histologic Subtype in Resected Lung Adenocarcinoma},
   author={Celebrano, Luca},
-  journal={Research Square (Springer Nature)},
+  journal={Open Computational Suite},
   year={2026},
-  doi={10.21203/rs.3.rs-11530312/v1},
-  url={#research},
-  institution={Department of Clinical Medicine and Surgery, School of Medicine, Universit{\`a} degli Studi di Napoli Federico II},
-  note={Independent Medical Student Research Program in Mathematical Oncology}
+  doi={10.5281/zenodo.23623653},
+  url={https://github.com/Lukecele/spatial-continuum-oncology},
+  institution={Independent Researcher, Naples, Italy}
 }
 ```
 
-## ⚖️ Dual-Licensing Framework (Software & Scholarly Monograph)
+## ⚖️ License
 
-To preserve academic priority for medical journal peer-review while ensuring 100% permissive open-source distribution across scientific package managers (Bioconda, nf-core, Galaxy, PyPI), this repository is governed by an explicit **dual-license architecture**:
-
-* 💻 **Computational Software, CLI (`cri-calc`), Algorithms & Pipeline Code:**  
-  Licensed under the canonical **[MIT License](LICENSE)** (`LICENSE`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.
-
-* 📄 **Monograph, Clinical Trial Protocols, Figures & Manuscript Texts:**  
-  Licensed under the **[Creative Commons Attribution 4.0 International (CC BY 4.0)](docs/MANUSCRIPT_CC_BY_4.0.md)** (`docs/MANUSCRIPT_CC_BY_4.0.md`). This protects academic authorship and priority for the theoretical discoveries and clinical protocols submitted to *Scientific Reports* and related conference workflows, while permitting global educational and scholarly citation with attribution.
+Licensed under the canonical **[MIT License](LICENSE)** (`LICENSE`). Applies to all Python software, modules under `src/`, entrypoints, conda recipes, Docker containers, and test suites. Anyone is free to use, modify, distribute, and integrate the computational tooling without restriction.

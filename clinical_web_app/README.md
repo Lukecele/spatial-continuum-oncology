@@ -18,8 +18,8 @@ tags:
 ### Post-ADAURA Adjuvant Stratification for Resected Stage IB–IIIA EGFR-Mutant NSCLC
 
 **Lead Author & Principal Investigator:** Luca Celebrano, MD Candidate  
-**Affiliation:** School of Medicine & Surgery, Università degli Studi di Napoli Federico II, Naples, Italy  
-**Flagship Preprint:** *Nature Portfolio (Research Square)* DOI: [10.21203/rs.3.rs-11530312/v1](https://doi.org/10.21203/rs.3.rs-11530312/v1)  
+**Affiliation:** School of Medicine & Surgery, Independent Researcher, Naples, Italy, Naples, Italy  
+**Flagship Preprint:** *Nature Portfolio (Open Computational Suite)* DOI: [10.5281/zenodo.23623653](https://doi.org/10.5281/zenodo.23623653)  
 **Journal Status:** Under Consideration at *Nature Communications* (Tracking: `NCOMMS-26-091227`)  
 **CERN Zenodo Open Archive:** DOI [10.5281/zenodo.23754999](https://doi.org/10.5281/zenodo.23754999)  
 **ELIXIR bio.tools:** [biotools:spatial-continuum-oncology](https://bio.tools/spatial-continuum-oncology)  
@@ -65,8 +65,8 @@ $$\text{CRI} = w_S \cdot S + w_G \cdot G + w_M \cdot M$$
   title     = {The Spatial-Genomic Oncology Continuum: Reaction-Diffusion Biophysics and Digital Twin Modeling Resolve the 36-Month Post-ADAURA Discontinuation Cliff in Non-Small Cell Lung Cancer},
   journal   = {Nature Communications (Under Consideration)},
   year      = {2026},
-  doi       = {10.21203/rs.3.rs-11530312/v1},
-  publisher = {Research Square (Nature Portfolio)},
-  url       = {https://doi.org/10.21203/rs.3.rs-11530312/v1}
+  doi       = {10.5281/zenodo.23623653},
+  publisher = {Open Computational Suite (Nature Portfolio)},
+  url       = {https://doi.org/10.5281/zenodo.23623653}
 }
 ```

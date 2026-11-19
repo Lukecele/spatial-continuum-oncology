@@ -6,9 +6,9 @@
 #' to formulate hypotheses for prospective clinical trial design. It does not provide direct
 #' clinical prescribing directives.
 #'
-#' @author Luca Celebrano, MD Candidate, Universita degli Studi di Napoli Federico II
+#' @author Luca Celebrano, MD Candidate, Universita degli Studi di Napoli Independent Researcher, Naples, Italy
 #' @references
-#'   Celebrano et al. (2026), Research Square DOI: 10.21203/rs.3.rs-11530312/v1
+#'   Celebrano et al. (2026), Open Computational Suite DOI: 10.5281/zenodo.23623653
 #'   Zenodo Monograph DOI: 10.5281/zenodo.23754999
 #'   GitHub: https://github.com/Lukecele/spatial-continuum-oncology
 #'
@@ -144,7 +144,7 @@ CalculateCRI <- function(pattern, tp53 = "wt", rb1 = "wt", stroma = "moderate",
     Sanctuary_Volume_Pct = sanctuary_vol_pct,
     Clinical_Recommendation = rec,
     Biological_Rationale = justification,
-    Scientific_DOI = "10.21203/rs.3.rs-11530312/v1"
+    Scientific_DOI = "10.5281/zenodo.23623653"
   )
 }
 

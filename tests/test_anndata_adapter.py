@@ -106,7 +106,7 @@ class TestAnnDataAdapter(unittest.TestCase):
         # 5. Uns biophysical transport metadata
         self.assertIn("spatial_continuum", adata.uns)
         sc_meta = adata.uns["spatial_continuum"]
-        self.assertEqual(sc_meta["primary_doi"], "10.21203/rs.3.rs-11530312/v1")
+        self.assertEqual(sc_meta["primary_doi"], "10.5281/zenodo.23623653")
         self.assertEqual(sc_meta["bessel_transport_metrics"]["delta_r_sanctuary_thickness_um"], 34.1)
         self.assertEqual(sc_meta["bessel_transport_metrics"]["r0_vessel_radius_um"], 8.0)
         self.assertEqual(sc_meta["bessel_transport_metrics"]["rcrit_effective_penetration_um"], 42.1)

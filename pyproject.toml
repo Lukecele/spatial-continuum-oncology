@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-  {name = "Luca Celebrano", email = "l.celebrano@studenti.unina.it"}
+  {name = "Luca Celebrano", email = "luca.celebrano1@gmail.com"}
 ]
 keywords = [
   "spatial-transcriptomics",

@@ -4,7 +4,7 @@
  * Evaluates index.html across 8 distinct device profiles (4K down to compact mobile).
  * Tests horizontal overflow, canvas scaling, module navigation, and visual rendering via Headless Chrome CDP.
  *
- * Author: Luca Celebrano, MD Candidate, Università degli Studi di Napoli Federico II
+ * Author: Luca Celebrano, MD Candidate, Independent Researcher, Naples, Italy
  */
 
 const { spawn } = require('child_process');

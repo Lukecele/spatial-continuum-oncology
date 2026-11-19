@@ -1,3 +1,0 @@
-[console_scripts]
-cri-calc = spatial_continuum.cri_calc:main
-spatial-continuum-audit = spatial_continuum.audit:main
