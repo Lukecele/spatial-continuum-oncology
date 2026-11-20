@@ -37,7 +37,7 @@
 
 <p align="center">
   <a href="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml"><img src="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="01_MANOSCRITTO_FINALE_CON_FIGURE.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Read%20Full%20Manuscript-PDF%20(Nature%20Communications)-dc2626.svg" alt="Manuscript PDF"></a>
+  <a href="https://doi.org/10.5281/zenodo.23854902"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.23854902.svg" alt="Zenodo DOI"></a>
   <a href="https://doi.org/10.5281/zenodo.23623653"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23623653-blue.svg" alt="Zenodo DOI"></a>
   <a href="#research"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
   <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
