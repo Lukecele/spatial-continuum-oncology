@@ -24,7 +24,10 @@
     <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Live%20Web%20App-CRI%20Biophysical%20Engine-2ea44f.svg?style=for-the-badge" height="28" alt="Live Web App">
   </a>
   <a href="https://anaconda.org/bioconda/spatial-continuum">
-    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.3-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
+    <img src="https://img.shields.io/badge/Bioconda-spatial--continuum%20v1.0.4-brightgreen.svg?style=for-the-badge&logo=anaconda" height="28" alt="Bioconda">
+  </a>
+  <a href="https://bio.tools/spatial-continuum-v2">
+    <img src="https://img.shields.io/badge/bio.tools-spatial--continuum--v2-blue.svg?style=for-the-badge" height="28" alt="bio.tools">
   </a>
   <a href="https://github.com/Lukecele/spatial-continuum-oncology">
     <img src="https://img.shields.io/github/stars/Lukecele/spatial-continuum-oncology?style=for-the-badge&logo=github&color=gold" height="28" alt="GitHub stars">
