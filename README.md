@@ -57,7 +57,7 @@
 
 *Author:* **Luca Celebrano**, MD Candidate · Independent Researcher · `luca.celebrano1@gmail.com`
 
-**Portfolio hub:** [Luca's Cave](https://lucacelebrano.me/) · [ORCID](https://orcid.org/0009-0007-0931-3555) · [LinkedIn](https://www.linkedin.com/in/luca-celebrano/)
+**Portfolio hub:** [Luca's Cave](https://lucacelebrano.me/) · [ORCID](https://orcid.org/0009-0007-0931-3555)
 
 ---
 
