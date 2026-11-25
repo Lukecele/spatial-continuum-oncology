@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spatial-continuum"
-version = "1.0.3"
+version = "1.0.5"
 description = "Universal biophysical reaction-diffusion transport framework and In Silico Composite Resistance Index (CRI) for NSCLC (RUO)."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -49,6 +49,7 @@ spatial-continuum-audit = "spatial_continuum.audit:main"
 
 [project.urls]
 Homepage = "https://github.com/Lukecele/spatial-continuum-oncology"
+PyPI = "https://pypi.org/project/spatial-continuum/"
 Documentation = "https://github.com/Lukecele/spatial-continuum-oncology"
 Repository = "https://github.com/Lukecele/spatial-continuum-oncology.git"
 "Interactive Simulator" = "https://huggingface.co/spaces/spatial-continuum-lab/spatial-oncology-simulator"

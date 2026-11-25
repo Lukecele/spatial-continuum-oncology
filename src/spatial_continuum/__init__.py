@@ -4,7 +4,7 @@ Universal biophysical reaction-diffusion transport framework and In Silico Compo
 Native scverse AnnData interoperability for spatial biology and precision oncology.
 """
 
-__version__ = "1.0.3"
+__version__ = "1.0.5"
 __author__ = "Luca Celebrano"
 __email__ = "luca.celebrano1@gmail.com"
 

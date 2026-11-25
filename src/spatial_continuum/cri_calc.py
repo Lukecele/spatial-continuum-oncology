@@ -334,7 +334,7 @@ def print_single_report(res: Dict[str, object], args: argparse.Namespace) -> Non
 def main() -> None:
     banner = (
         "\x1b[1;36m┌────────────────────────────────────────────────────────────────────────┐\n"
-        "│ \x1b[1;32m🔬 The Spatial-Genomic Oncology Continuum — CRI Solver v1.0.3          \x1b[1;36m│\n"
+        "│ \x1b[1;32m🔬 The Spatial-Genomic Oncology Continuum — CRI Solver v1.0.5          \x1b[1;36m│\n"
         "│                                                                        │\n"
         "│ \x1b[1;33m⭐ If this in silico biophysical solver supports your research:         \x1b[1;36m│\n"
         "│ 👉 \x1b[1;34mhttps://github.com/Lukecele/spatial-continuum-oncology\x1b[1;36m              │\n"

@@ -237,7 +237,7 @@ def to_anndata(
     adata.uns["spatial_continuum"] = {
         **SCIENTIFIC_ANCHORS,
         "bessel_transport_metrics": BESSEL_TRANSPORT_METRICS,
-        "anndata_adapter_version": "1.0.3",
+        "anndata_adapter_version": "1.0.5",
     }
 
     return adata
@@ -344,7 +344,7 @@ def annotate_anndata(
     target.uns["spatial_continuum"].update({
         **SCIENTIFIC_ANCHORS,
         "bessel_transport_metrics": BESSEL_TRANSPORT_METRICS,
-        "anndata_adapter_version": "1.0.3",
+        "anndata_adapter_version": "1.0.5",
     })
 
     return target

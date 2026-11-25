@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="spatial-continuum",
-    version="1.0.3",
+    version="1.0.5",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     entry_points={
