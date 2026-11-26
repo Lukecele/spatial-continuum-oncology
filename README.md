@@ -40,6 +40,7 @@
 
 <p align="center">
   <a href="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml"><img src="https://github.com/Lukecele/spatial-continuum-oncology/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://doi.org/10.21203/rs.3.rs-11530312/v2"><img src="https://img.shields.io/badge/Preprint-Research_Square_v2-0284c7.svg" alt="Research Square Preprint v2"></a>
   <a href="https://doi.org/10.5281/zenodo.24393478"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.24393478-blue" alt="Zenodo DOI"></a>
   <a href="#research"><img src="https://img.shields.io/badge/Papers%20with%20Code-Research%20Square-21cbf3.svg?logo=paperswithcode&logoColor=white" alt="Papers with Code"></a>
   <a href="https://gist.science/paper/rs/rs-11530312"><img src="https://img.shields.io/badge/Gist.Science-Author--Reviewed-0284c7.svg" alt="Gist.Science Author-Reviewed"></a>
@@ -375,7 +376,7 @@ The companion notebook [`demo_spatial_continuum.ipynb`](demo_spatial_continuum.i
 
 | Identifier / DOI | Platform / Repository | Scholarly Asset & Description |
 | :--- | :--- | :--- |
-| [`10.5281/zenodo.24393478`](https://doi.org/10.5281/zenodo.24393478) | **Open Computational Suite** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
+| [`10.21203/rs.3.rs-11530312/v2`](https://doi.org/10.21203/rs.3.rs-11530312/v2) | **Research Square (v2)** | Scientific preprint for the manuscript currently under consideration at *Scientific Reports* |
 | [`10.5281/zenodo.24393478`](https://doi.org/10.5281/zenodo.24393478) | **Zenodo (CERN / OpenAIRE)** | Master Codebase, Reaction-Diffusion Solvers & MSKCC Resection Cohort |
 | [`10.5281/zenodo.24393481`](https://doi.org/10.5281/zenodo.24393481) | **Zenodo (CERN / OpenAIRE)** | Digital Pathology AI Suite (Subcellular Microvascular Decoupling) |
 | [`10.5281/zenodo.24393480`](https://doi.org/10.5281/zenodo.24393480) | **Zenodo (CERN / OpenAIRE)** | InSituGame Package (Spatial Evolutionary Game Assay) |
